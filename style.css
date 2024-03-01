@@ -77,3 +77,45 @@ ul li a:hover {
 .button-container button:hover {
     background-color: #0056b3;
 }
+.subgroup {
+    margin-top: 20px;
+    margin-bottom: 20px;
+    padding: 10px;
+    border-left: 3px solid #4285f4; /* Mantém em sintonia com a cor do grupo PJe */
+    background-color: #e3f2fd; /* Um azul mais claro para diferenciar o subgroup */
+}
+
+.subgroup h3 {
+    margin-top: 0;
+    color: #333; /* Cor mais escura para o título do subgroup para contraste */
+}
+.sistemas-satelites {
+    border: 2px solid #4CAF50; /* Verde */
+    background-color: #e8f5e9; /* Verde claro */
+}
+
+.sistemas-satelites h2 {
+    color: #388E3C; /* Verde escuro */
+}
+
+.sistemas-satelites .button-container button {
+    background-color: #4CAF50; /* Verde */
+}
+
+.sistemas-satelites .button-container button:hover {
+    background-color: #388E3C; /* Verde escuro */
+}
+.container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px; /* Espaço entre os grupos */
+    justify-content: center; /* Centraliza os itens horizontalmente se não ocuparem toda a largura */
+}
+
+.group {
+    flex: 1; /* Faz com que os grupos se expandam para ocupar o espaço disponível */
+    min-width: 300px; /* Define uma largura mínima para cada grupo para garantir a legibilidade */
+    /* Mantenha as outras propriedades do .group como borda, padding, etc. */
+}
+
+/* Mantém as regras anteriores para .group e .button-container */
