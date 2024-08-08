@@ -1,0 +1,170 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Times New Roman', Times, serif;
+    background-color: #dfe1e2 ;
+    color: #333;
+    padding: 8px;
+  
+}
+
+.container {
+    max-width: 1000px;
+    margin: auto;
+    background-color: #eff1f5;
+    padding: 8px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+   justify-items: center;
+}
+
+h1 {
+    font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    display: block;
+    justify-items: center;
+    color: #6d84c6;
+    font-size: 32px;
+    
+    
+}
+
+.date-time-container {
+    display: block;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    align-items: center;
+}
+
+#calendar, #clock{
+    font-weight: bold;
+    padding: 8px;
+    border-radius: 9px;
+   border: 1px solid #080707;
+   font-size: 20px;
+    color: #041266;
+    outline: none;
+    text-align: center;
+    background-color: #f2f5f5;
+}
+
+
+.group {
+    border: 2px solid #007bff;
+    padding: 8px;
+    border-radius: 8px;
+    background-color: #fff;
+}
+
+.group h2 {
+    text-align: center;
+    color: #00070d;
+    margin-bottom: 20px;
+    font-size: 25px;
+}
+
+.subgroup {
+    margin-top: 10px;
+    padding: 8px;
+    border-left: 3px solid #4285f4;
+    background-color: #e3f2fd;
+    font-size: 18px;
+}
+
+.subgroup h3 {
+    margin-top: 8px;
+    color: #333;
+}
+
+.button-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    justify-content: center;
+}
+
+.button-container button,
+.button-container input {
+    background-color: #4a90db;
+    color: white;
+    padding: 8px 10px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s;
+}
+
+.button-container input {
+    background-color: #fff;
+    color: #333;
+    border: 2px solid #007bff;
+}
+
+.button-container button:hover,
+.button-container input:hover {
+    background-color: #0056b3;
+    color: white;
+}
+
+/* Cores específicas para cada grupo */
+.google-apps-bg {
+    background-color: #e9ecf7;
+}
+
+.pje-bg {
+    background-color: #d9def4;
+}
+
+.assyst-bg {
+    background-color: #c6d3f1;
+}
+
+.sistemas-satelites-bg {
+    background-color: #ccd0ee;
+}
+
+.apps-externos-bg {
+    background-color: #e5e6eb;
+}
+
+#author {
+    text-align: center;
+    margin-top: 8px;
+    font-style: italic;
+    color: #007bff;
+}
+.btn-plantao {
+    align-items: center;
+    justify-content: center;
+    display: flex;
+    color: #186204;
+    color: white;
+    padding: 8px 15px;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    font-size: 15px;
+    transition: background-color 0.3s;
+    margin-top: 8px;
+     
+}
+
+.footer {
+    padding: 0px;
+    text-align: center;
+    font-style: italic;
+   }
