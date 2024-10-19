@@ -8,10 +8,29 @@
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <!-- Fonte Google -->
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
 </head>
 
 <body>
+    <!-- Navbar Superior -->
+    <nav class="navbar">
+        <div class="navbar-container">
+            <a href="https://trt15.jus.br/" class="navbar-logo" target="_blank">
+                <img src="https://trt15.jus.br/logo-trt15.png" alt="Logo TRT15">
+            </a>
+            <div class="navbar-links">
+                <a href="#google-apps">Google Apps/Intranet-TRT15</a>
+                <a href="#pje">Sistemas do PJe</a>
+                <a href="#assyst">ASSYST-PJe</a>
+                <a href="#sistemas-satelites">Sistemas Satélites</a>
+                <a href="#apps-externos">Apps Externos</a>
+            </div>
+        </div>
+    </nav>
+
     <div class="container">
+        <!-- Header Principal -->
         <div class="header">
             <h1><i class="bi bi-laptop"></i> Central de Acessos - NAPJe - V. 2.10.7</h1>
             <div class="date-time-container">
@@ -21,7 +40,7 @@
         </div>
 
         <!-- Google Apps/Intranet-TRT15 -->
-        <div class="group google-apps google-apps-bg">
+        <div class="group google-apps" id="google-apps">
             <h2><i class="bi bi-diagram-3-fill"></i> Google Apps/Intranet-TRT15</h2>
             <div class="button-container">
                 <button onclick="window.open('https://mail.google.com/mail/u/0/#inbox', '_blank')">
@@ -85,7 +104,7 @@
         </div>
 
         <!-- Sistemas do PJe - V. 2.10.7 -->
-        <div class="group pje pje-bg">
+        <div class="group pje" id="pje">
             <h2><i class="bi bi-diagram-3"></i> Sistemas do PJe - V. 2.10.7</h2>
             
             <!-- PJe-Produção -->
@@ -117,7 +136,7 @@
         </div>
 
         <!-- ASSYST-PJe -->
-        <div class="group assyst assyst-bg">
+        <div class="group assyst" id="assyst">
             <h2><i class="bi bi-card-heading"></i> ASSYST-PJe</h2>
             <div class="button-container">
                 <button onclick="window.open('https://centraldetic.trt15.jus.br/assystweb/application.do', '_blank')">ASSYSTWEB</button>
@@ -127,7 +146,7 @@
         </div>
 
         <!-- Sistemas Satélites -->
-        <div class="group sistemas-satelites sistemas-satelites-bg">
+        <div class="group sistemas-satelites" id="sistemas-satelites">
             <h2><i class="bi bi-signpost-2-fill"></i> Sistemas Satélites</h2>
             <div class="button-container">
                 <button onclick="window.open('https://siscondj.trt15.jus.br/portaltrt15/pages/mandado/consulta/new', '_blank')">SISCONDJ</button>
@@ -140,7 +159,7 @@
         </div>
 
         <!-- Apps Externos -->
-        <div class="group apps-externos apps-externos-bg">
+        <div class="group apps-externos" id="apps-externos">
             <h2><i class="bi bi-signpost-2"></i> Apps Externos</h2>
             <div class="button-container">
                 <button onclick="window.open('https://secjud-hm.trt15.jus.br/', '_blank')">SecJud</button>
@@ -158,7 +177,7 @@
 
     <!-- Footer -->
     <footer class="footer">
-        <a href="https://myactivity.google.com/myactivity?pli=1">
+        <a href="https://myactivity.google.com/myactivity?pli=1" target="_blank">
             <p id="author">@Marcelo S. Ribeiro | 2024</p>
         </a>
     </footer>
