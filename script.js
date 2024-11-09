@@ -47,7 +47,7 @@ document.addEventListener("DOMContentLoaded", function () {
         }
     });
 
-    // Função para toggle Accordion
+    // Função para toggle Accordion com max-height dinâmico
     function toggleAccordion(event) {
         const header = event.currentTarget;
         const content = header.nextElementSibling;
@@ -57,11 +57,12 @@ document.addEventListener("DOMContentLoaded", function () {
         // Alterna o atributo aria-expanded
         header.setAttribute("aria-expanded", !isExpanded);
 
-        // Alterna a classe 'active' no conteúdo
-        if (isExpanded) {
-            content.classList.remove("active");
+        if (!isExpanded) {
+            // Define o max-height para permitir a transição
+            content.style.maxHeight = content.scrollHeight + "px";
         } else {
-            content.classList.add("active");
+            // Remove o max-height para recolher o accordion
+            content.style.maxHeight = null;
         }
     }
 
@@ -93,23 +94,21 @@ document.addEventListener("DOMContentLoaded", function () {
 
                 const isExpanded = header.getAttribute("aria-expanded") === "true";
 
-                // Se já estiver expandido, apenas rola até o grupo
-                if (isExpanded) {
-                    targetGroup.scrollIntoView({ behavior: "smooth", block: "start" });
-                } else {
+                if (!isExpanded) {
                     // Fecha todos os accordions
                     accordionHeaders.forEach(accHeader => {
                         accHeader.setAttribute("aria-expanded", "false");
-                        accHeader.nextElementSibling.classList.remove("active");
+                        const accContent = accHeader.nextElementSibling;
+                        accContent.style.maxHeight = null;
                     });
 
                     // Abre o accordion alvo
                     header.setAttribute("aria-expanded", "true");
-                    content.classList.add("active");
-
-                    // Rola suavemente até o grupo
-                    targetGroup.scrollIntoView({ behavior: "smooth", block: "start" });
+                    content.style.maxHeight = content.scrollHeight + "px";
                 }
+
+                // Rola suavemente até o grupo
+                targetGroup.scrollIntoView({ behavior: "smooth", block: "start" });
             }
         });
     });
@@ -119,15 +118,15 @@ document.addEventListener("DOMContentLoaded", function () {
 
     // Lista de aniversariantes
     const birthdays = [
-        { name: "Marcelo Silva Ribeiro - ", date: " 29/12" },
-        { name: "Marta Maria de Souza Pinto Silva -", date: "28/02" },
-        { name: "Severino Caetano da Silva Filho -", date: "26/03" },
-        { name: "Natalia Pereira Morais -", date: "31/03" },
-        { name: "Wagner Waldir Leite -", date: "07/04" },
-        { name: "Lloyd Hildevert Beteille Sobrinho -", date: "12/04" },
-        { name: "Thais Helena Santos Camargo Simoes -", date: "11/05" },
-        { name: "Nathany Gazolli de Souza -", date: "23/09" },
-        { name: "Tatiana da Rocha Natale -", date: "28/09" }
+        { name: "Marcelo Silva Ribeiro", date: "29/12" },
+        { name: "Marta Maria de Souza Pinto Silva", date: "28/02" },
+        { name: "Severino Caetano da Silva Filho", date: "26/03" },
+        { name: "Natalia Pereira Morais", date: "31/03" },
+        { name: "Wagner Waldir Leite", date: "07/04" },
+        { name: "Lloyd Hildevert Beteille Sobrinho", date: "12/04" },
+        { name: "Thais Helena Santos Camargo Simoes", date: "11/05" },
+        { name: "Nathany Gazolli de Souza", date: "23/09" },
+        { name: "Tatiana da Rocha Natale", date: "28/09" }
     ];
 
     // Função para obter aniversariantes do mês atual

@@ -103,10 +103,10 @@ body {
 .birthdays {
     width: 100%;
     max-width: 300px; /* Ajuste conforme necessário */
-    background-color: rgba(254, 254, 0, 0.9);
+    background-color: rgba(255, 255, 255, 0.9);
     padding: 15px;
     border-radius: 8px;
-    box-shadow: 0 4px 6px rgb(26, 25, 25);
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
     transition: background-color 0.3s, color 0.3s;
 }
 
@@ -124,7 +124,7 @@ body {
 
 .birthdays ul li {
     padding: 8px;
-    border-bottom: 1px solid #f6cccc;
+    border-bottom: 1px solid #ddd;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -251,11 +251,6 @@ body {
     overflow: hidden;
     transition: max-height 0.3s ease-out, padding 0.3s;
     padding: 0 20px;
-}
-
-.accordion-content.active {
-    max-height: 500px; /* Ajuste conforme necessário */
-    padding: 20px;
 }
 
 /* Botões */
