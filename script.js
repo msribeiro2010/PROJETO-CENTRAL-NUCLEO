@@ -118,15 +118,15 @@ document.addEventListener("DOMContentLoaded", function () {
 
     // Lista de aniversariantes
     const birthdays = [
-        { name: "Marcelo Silva Ribeiro", date: "29/12" },
-        { name: "Marta Maria de Souza Pinto Silva", date: "28/02" },
-        { name: "Severino Caetano da Silva Filho", date: "26/03" },
-        { name: "Natalia Pereira Morais", date: "31/03" },
-        { name: "Wagner Waldir Leite", date: "07/04" },
-        { name: "Lloyd Hildevert Beteille Sobrinho", date: "12/04" },
-        { name: "Thais Helena Santos Camargo Simoes", date: "11/05" },
-        { name: "Nathany Gazolli de Souza", date: "23/09" },
-        { name: "Tatiana da Rocha Natale", date: "28/09" }
+        { name: "Marcelo Silva Ribeiro - ", date: "29/12" },
+        { name: "Marta Maria de Souza Pinto Silva - ", date: "28/02" },
+        { name: "Severino Caetano da Silva Filho - ", date: "26/03" },
+        { name: "Natalia Pereira Morais - ", date: "31/03" },
+        { name: "Wagner Waldir Leite - ", date: "07/04" },
+        { name: "Lloyd Hildevert Beteille Sobrinho - ", date: "12/04" },
+        { name: "Thais Helena Santos Camargo Simoes - ", date: "11/05" },
+        { name: "Nathany Gazolli de Souza - ", date: "23/09" },
+        { name: "Tatiana da Rocha Natale - ", date: "28/09" }
     ];
 
     // Função para obter aniversariantes do mês atual
