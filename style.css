@@ -76,45 +76,53 @@ body {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    flex-wrap: wrap;
     background: linear-gradient(135deg, #6d84c6, #a2b9f0);
     padding: 20px;
     border-radius: 10px;
     color: #ffffff;
     margin-bottom: 30px;
-    transition: background 0.3s, color 0.3s;
+    flex-wrap: nowrap; /* Evita que o conteúdo quebre em múltiplas linhas */
 }
 
-.header h1 {
-    font-size: 28px;
-    display: flex;
-    align-items: center;
-    gap: 10px;
-}
-
-.date-time-container {
+.left-group {
     display: flex;
     flex-direction: column;
-    gap: 10px;
-    align-items: center;
+    gap: 15px;
+    align-items: flex-start;
+    flex: 0 0 auto; /* Não cresce nem encolhe */
+}
+
+.title {
+    flex: 1 1 auto; /* Pode crescer */
+    text-align: center;
+    font-size: 28px;
+    white-space: nowrap; /* Evita quebra de linha */
+    overflow: hidden; /* Esconde o excesso de texto */
+    text-overflow: ellipsis; /* Adiciona reticências se o texto for muito longo */
+    padding: 0 20px; /* Espaçamento lateral */
+}
+
+.right-group {
+    flex: 0 0 auto; /* Não cresce nem encolhe */
 }
 
 /* Aniversariantes do Mês */
 .birthdays {
     width: 100%;
     max-width: 300px; /* Ajuste conforme necessário */
-    background-color: rgba(249, 241, 9, 0.9);
+    background: linear-gradient(135deg, #1e3c72, #2a5298); /* Gradiente azul */
     padding: 15px;
     border-radius: 8px;
     box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-    transition: background-color 0.3s, color 0.3s;
+    transition: background 0.3s, color 0.3s;
+    color: #ffffff;
 }
 
 .birthdays h2 {
     font-size: 20px;
     margin-bottom: 10px;
     text-align: center;
-    color: #007bff;
+    color: #ffffff;
 }
 
 .birthdays ul {
@@ -124,10 +132,11 @@ body {
 
 .birthdays ul li {
     padding: 8px;
-    border-bottom: 1px solid #ddd;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.3);
     display: flex;
     justify-content: space-between;
     align-items: center;
+    color: #ffffff;
 }
 
 .birthdays ul li:last-child {
@@ -136,15 +145,22 @@ body {
 
 .birthdays ul li span {
     font-weight: bold;
-    color: #333;
+    color: #ffffff;
 }
 
 .birthdays ul li .birthday-date {
     font-style: italic;
-    color: #555;
+    color: rgba(255, 255, 255, 0.8);
 }
 
 /* Calendar e Clock */
+.date-time-container {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    align-items: flex-start;
+}
+
 .calendar-input,
 .clock {
     font-weight: bold;
@@ -167,15 +183,15 @@ body {
 /* Grupos de Links */
 .group {
     border-radius: 10px;
-    padding: 0; /* Remover padding para o accordion */
-    margin-bottom: 20px; /* Ajustar o espaçamento entre grupos */
+    padding: 0;
+    margin-bottom: 20px;
     background: #f9f9f9;
     transition: transform 0.3s, background 0.3s;
-    overflow: hidden; /* Esconder conteúdo ao fechar */
+    overflow: hidden;
 }
 
 .group:hover {
-    transform: translateY(-2px); /* Reduzido para não interferir com o accordion */
+    transform: translateY(-2px);
 }
 
 /* Estilos do Accordion */
@@ -212,12 +228,12 @@ body {
 .subgroup {
     border-radius: 5px;
     margin: 10px 20px;
-    padding: 0; /* Remover padding para o accordion */
+    padding: 0;
     border-left: 4px solid #4285f4;
     background-color: #e3f2fd;
     font-size: 18px;
     transition: background-color 0.3s, border-left-color 0.3s;
-    overflow: hidden; /* Esconder conteúdo ao fechar */
+    overflow: hidden;
 }
 
 .accordion-subheader {
@@ -320,6 +336,17 @@ body {
     background: #fff7e6;
 }
 
+/* Grid Layout para Google Apps */
+.grid-layout {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 15px;
+}
+
+.grid-layout button {
+    /* Ajustes adicionais se necessário */
+}
+
 /* Footer */
 .footer {
     padding: 20px 0;
@@ -343,7 +370,32 @@ body {
 @media (max-width: 768px) {
     .header {
         flex-direction: column;
+        align-items: center;
         text-align: center;
+        padding: 20px;
+    }
+
+    .left-group {
+        align-items: center; /* Centraliza os itens no mobile */
+        width: 100%;
+        max-width: none;
+    }
+
+    .birthdays {
+        max-width: 100%;
+    }
+
+    .title {
+        flex-grow: 0;
+        margin: 20px 0;
+        white-space: normal;
+        padding: 0;
+    }
+
+    .right-group {
+        width: 100%;
+        max-width: none;
+        margin-top: 20px;
     }
 
     .navbar-links {
@@ -355,8 +407,9 @@ body {
         align-items: flex-start;
     }
 
-    .birthdays {
-        max-width: 100%; /* Ajuste para telas menores */
+    /* Ajuste do Grid Layout no Mobile */
+    .grid-layout {
+        grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
     }
 }
 
@@ -496,3 +549,13 @@ body.dark #author:hover {
     font-size: 16px;
     padding: 8px 12px;
 }
+/* Ajuste específico para o grupo Google Apps */
+.google-apps .button-container button {
+    background: linear-gradient(135deg, #4a90db, #357ab7);
+    font-size: 14px; /* Diminui o tamanho da fonte */
+    text-overflow: ellipsis; /* Adiciona reticências ao final do texto que ultrapassar */
+    white-space: wrap; /* Adiciona reticências ao final do texto que ultrapassar */
+   
+        overflow: hidden;
+}
+
