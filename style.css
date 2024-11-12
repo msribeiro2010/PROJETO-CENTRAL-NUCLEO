@@ -558,4 +558,34 @@ body.dark #author:hover {
    
         overflow: hidden;
 }
+/* Estilos para o botão Comunicado GP-AAM -2o.Grau (Plantão) */
+.btn-comunicado {
+    background-color: #000000; /* Preto */
+    color: #ffffff;            /* Texto branco */
+    border: none;              /* Remove a borda padrão */
+    padding: 10px 20px;        /* Espaçamento interno */
+    cursor: pointer;           /* Cursor de mão ao passar o mouse */
+    border-radius: 4px;        /* Cantos arredondados */
+    transition: background-color 0.3s; /* Transição suave para hover */
+}
+
+.btn-comunicado:hover {
+    background-color: #333333; /* Tom mais claro de preto no hover */
+}
+
+/* Estilos para o botão Consulta/Contracheque */
+.btn-contracheque {
+    background-color: #28a745; /* Verde */
+    color: #ffffff;            /* Texto branco */
+    border: none;              /* Remove a borda padrão */
+    padding: 10px 20px;        /* Espaçamento interno */
+    cursor: pointer;           /* Cursor de mão ao passar o mouse */
+    border-radius: 4px;        /* Cantos arredondados */
+    transition: background-color 0.3s; /* Transição suave para hover */
+}
+
+.btn-contracheque:hover {
+    background-color: #218838; /* Tom mais escuro de verde no hover */
+}
+
 
