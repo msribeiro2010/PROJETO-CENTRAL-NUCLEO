@@ -107,50 +107,12 @@ body {
 }
 
 /* Aniversariantes do Mês */
-.birthdays {
-    width: 100%;
-    max-width: 300px; /* Ajuste conforme necessário */
-    background: linear-gradient(135deg, #1e3c72, #2a5298); /* Gradiente azul */
-    padding: 15px;
-    border-radius: 8px;
-    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-    transition: background 0.3s, color 0.3s;
-    color: #ffffff;
-}
 
-.birthdays h2 {
-    font-size: 20px;
-    margin-bottom: 10px;
-    text-align: center;
-    color: #ffffff;
-}
 
-.birthdays ul {
-    list-style: none;
-    width: 100%;
-}
-
-.birthdays ul li {
-    padding: 8px;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.3);
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    color: #ffffff;
-}
 
 .birthdays ul li:last-child {
     border-bottom: none;
-}
-
-.birthdays ul li span {
-    font-weight: bold;
-    color: #ffffff;
-}
-
-.birthdays ul li .birthday-date {
-    font-style: italic;
-    color: rgba(255, 255, 255, 0.8);
+    color: blue;
 }
 
 /* Calendar e Clock */
