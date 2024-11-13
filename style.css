@@ -240,7 +240,7 @@ body {
 }
 
 .button-container button {
-    background: linear-gradient(135deg, #4a90db, #357ab7);
+    background: linear-gradient(135deg, #4a90db, #02345f);
     color: #ffffff;
     padding: 12px 20px;
     border: none;
@@ -255,7 +255,7 @@ body {
 }
 
 .button-container button:hover {
-    background: linear-gradient(135deg, #357ab7, #285e9e);
+    background: linear-gradient(135deg, #357ab7, #bec3c8);
     transform: translateY(-3px);
 }
 
