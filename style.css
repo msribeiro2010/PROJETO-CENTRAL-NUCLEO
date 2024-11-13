@@ -7,7 +7,7 @@
 
 body {
     font-family: 'Roboto', sans-serif;
-    background: linear-gradient(135deg, #f0f4f8, #dfe1e2);
+    background: linear-gradient(135deg, #b5c2d0, #08678d);
     color: #333;
     padding: 0;
     transition: background 0.3s, color 0.3s;
@@ -15,7 +15,7 @@ body {
 
 /* Navbar Superior */
 .navbar {
-    background: linear-gradient(135deg, #007bff, #0056b3);
+    background: linear-gradient(135deg, #96a9be, #0056b3);
     padding: 10px 20px;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     position: sticky;
