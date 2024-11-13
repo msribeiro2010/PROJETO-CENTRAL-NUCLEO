@@ -118,7 +118,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
     // Lista de aniversariantes
     const birthdays = [
-        { name: "Marcelo Silva Ribeiro - ", date: "29/11" },
+        { name: "Marcelo Silva Ribeiro - ", date: "29/12" },
         { name: "Marta Maria de Souza Pinto Silva - ", date: "28/02" },
         { name: "Severino Caetano da Silva Filho - ", date: "26/03" },
         { name: "Natalia Pereira Morais - ", date: "31/03" },
