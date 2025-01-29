@@ -1,0 +1,1471 @@
+/* Reset de estilos */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Roboto', sans-serif;
+    background: linear-gradient(135deg, #f5f7fa, #c3cfe2);
+    color: #2d3748;
+    padding: 0;
+    transition: all 0.3s ease;
+    min-height: 100vh;
+}
+
+/* Navbar Superior */
+.navbar {
+    background: linear-gradient(90deg, 
+        #63b3ed 0%,
+        #4299e1 20%,
+        #3182ce 50%,
+        #2b6cb0 80%,
+        #2c5282 100%
+    );
+    padding: 15px 30px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    transition: all 0.3s ease;
+}
+
+.navbar::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(90deg,
+        rgba(255, 255, 255, 0.15) 0%,
+        rgba(255, 255, 255, 0.1) 50%,
+        rgba(255, 255, 255, 0.05) 100%
+    );
+    pointer-events: none;
+}
+
+.navbar-container {
+    max-width: 1400px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: relative;
+    z-index: 1;
+}
+
+.navbar-logo img {
+    height: 45px;
+    transition: transform 0.3s ease;
+}
+
+.navbar-logo img:hover {
+    transform: scale(1.05);
+}
+
+.navbar-links {
+    display: flex;
+    gap: 25px;
+    align-items: center;
+}
+
+.navbar-links a {
+    color: #ffffff;
+    text-decoration: none;
+    font-weight: 500;
+    font-size: 0.95rem;
+    padding: 8px 12px;
+    border-radius: 6px;
+    transition: all 0.3s ease;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
+}
+
+.navbar-links a:hover {
+    background: rgba(255, 255, 255, 0.15);
+    transform: translateY(-2px);
+}
+
+/* Botão de Alternância Tema */
+.theme-toggle {
+    background: rgba(255, 255, 255, 0.1);
+    border: none;
+    color: #ffffff;
+    font-size: 1.25rem;
+    cursor: pointer;
+    padding: 8px;
+    border-radius: 50%;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.theme-toggle:hover {
+    background: rgba(255, 255, 255, 0.2);
+    transform: rotate(360deg);
+}
+
+/* Container Principal */
+.container {
+    max-width: 1200px;
+    margin: 40px auto;
+    background-color: rgba(255, 255, 255, 0.95);
+    padding: 30px;
+    border-radius: 16px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+    backdrop-filter: blur(10px);
+}
+
+/* Header Principal */
+.header {
+    background: linear-gradient(135deg, 
+        rgba(49, 130, 206, 0.95),
+        rgba(66, 153, 225, 0.85) 30%,
+        rgba(43, 108, 176, 0.8) 70%,
+        rgba(44, 82, 130, 0.9)
+    );
+    padding: 25px;
+    border-radius: 12px;
+    color: #ffffff;
+    margin-bottom: 35px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    position: relative;
+    overflow: hidden;
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+}
+
+.header::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(135deg,
+        rgba(255, 255, 255, 0.15),
+        rgba(255, 255, 255, 0.1) 30%,
+        rgba(255, 255, 255, 0.05) 70%,
+        rgba(255, 255, 255, 0.02)
+    );
+    pointer-events: none;
+}
+
+.header h1 {
+    font-size: 1.75rem;
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    position: relative;
+    z-index: 2;
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.4);
+    color: #ffffff;
+}
+
+.header h1 i {
+    font-size: 1.5rem;
+    filter: drop-shadow(1px 1px 3px rgba(0, 0, 0, 0.4));
+    color: #ffffff;
+}
+
+.date-time-container {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    position: relative;
+    z-index: 2;
+    color: #ffffff;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
+}
+
+/* Dark mode */
+body.dark .header {
+    background: linear-gradient(135deg, 
+        rgba(49, 130, 206, 0.9),
+        rgba(66, 153, 225, 0.8) 30%,
+        rgba(43, 108, 176, 0.75) 70%,
+        rgba(44, 82, 130, 0.85)
+    );
+}
+
+body.dark .header::before {
+    background: linear-gradient(135deg,
+        rgba(0, 0, 0, 0.15),
+        rgba(0, 0, 0, 0.1) 30%,
+        rgba(0, 0, 0, 0.05) 70%,
+        rgba(0, 0, 0, 0.02)
+    );
+}
+
+body.dark .header h1,
+body.dark .header h1 i,
+body.dark .date-time-container {
+    color: #e2e8f0;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+}
+
+body.dark .header::before {
+    background: linear-gradient(135deg, rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.05));
+}
+
+/* Grupo Sistema-PJe */
+.group.sistema-pje {
+    background: linear-gradient(135deg, 
+        rgba(49, 151, 149, 0.1),
+        rgba(136, 19, 55, 0.1)
+    );
+    border-radius: 12px;
+    padding: 20px;
+    margin-bottom: 20px;
+}
+
+.group.sistema-pje .accordion-header {
+    background: linear-gradient(90deg,
+        #319795 0%,
+        #805ad5 30%,
+        #97266d 60%,
+        #822727 100%
+    );
+    color: white;
+    padding: 15px 20px;
+    border-radius: 8px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.group.sistema-pje .accordion-header:hover {
+    background: linear-gradient(90deg,
+        #38B2AC 0%,
+        #9f7aea 30%,
+        #b83280 60%,
+        #9b2c2c 100%
+    );
+    transform: translateY(-1px);
+}
+
+.group.sistema-pje .button-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 15px;
+    padding: 20px 0;
+}
+
+.group.sistema-pje .button-container button {
+    background: linear-gradient(135deg, 
+        #319795 0%,
+        #805ad5 50%,
+        #97266d 100%
+    );
+    color: white;
+    border: none;
+    padding: 12px 20px;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-size: 0.95rem;
+    font-weight: 500;
+    text-align: left;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    border-left: 4px solid #97266d;
+}
+
+.group.sistema-pje .button-container button:hover {
+    background: linear-gradient(135deg, 
+        #38B2AC 0%,
+        #9f7aea 50%,
+        #b83280 100%
+    );
+    transform: translateX(5px);
+}
+
+.group.sistema-pje .button-container button i {
+    font-size: 1.1rem;
+    color: rgba(255, 255, 255, 0.9);
+    filter: drop-shadow(1px 1px 1px rgba(0, 0, 0, 0.2));
+}
+
+/* Dark mode */
+body.dark .group.sistema-pje {
+    background: linear-gradient(135deg, 
+        rgba(49, 151, 149, 0.15),
+        rgba(136, 19, 55, 0.15)
+    );
+}
+
+body.dark .group.sistema-pje .accordion-header {
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+body.dark .group.sistema-pje .button-container button {
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+/* Grupo com Accordion */
+.group {
+    margin-bottom: 20px;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+    transition: all 0.3s ease;
+}
+
+.accordion-header {
+    width: 100%;
+    padding: 18px 25px;
+    background: linear-gradient(135deg, #4299e1, #3182ce);
+    color: white;
+    border: none;
+    text-align: left;
+    font-size: 1.1rem;
+    font-weight: 500;
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    transition: all 0.3s ease;
+}
+
+.accordion-header:hover {
+    background: linear-gradient(135deg, #3182ce, #2b6cb0);
+}
+
+.accordion-header i {
+    margin-right: 10px;
+}
+
+.accordion-content {
+    background: #ffffff;
+    padding: 20px;
+    display: none;
+    transition: all 0.3s ease;
+}
+
+/* Grid de Botões */
+.button-container.grid-layout {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 15px;
+    padding: 10px;
+}
+
+.button-container button {
+    background: linear-gradient(135deg, #4299e1, #3182ce);
+    color: #ffffff;
+    padding: 12px 20px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 0.95rem;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.button-container button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    background: linear-gradient(135deg, #3182ce, #2b6cb0);
+}
+
+.button-container button i {
+    font-size: 1.1rem;
+}
+
+/* Botões do Google Apps */
+.google-apps .button-container.grid-layout {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 15px;
+    padding: 15px;
+}
+
+.google-apps .button-container button {
+    height: 48px;
+    padding: 0 20px;
+    border-radius: 8px;
+    font-size: 14px;
+    font-weight: 500;
+    letter-spacing: 0.3px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    transition: all 0.3s ease;
+    border: none;
+    position: relative;
+    overflow: hidden;
+}
+
+.google-apps .button-container button[onclick*="gmail"],
+.google-apps .button-container button[onclick*="drive"],
+.google-apps .button-container button[onclick*="spreadsheets"],
+.google-apps .button-container button[onclick*="document"] {
+    background: linear-gradient(135deg, #4285f4, #0d47a1);
+    border-left: 4px solid #4285f4;
+    color: white;
+}
+
+.google-apps .button-container button[onclick*="gmail"]:hover,
+.google-apps .button-container button[onclick*="drive"]:hover,
+.google-apps .button-container button[onclick*="spreadsheets"]:hover,
+.google-apps .button-container button[onclick*="document"]:hover {
+    background: linear-gradient(135deg, #5a95f5, #1565c0);
+    transform: translateX(5px);
+}
+
+.google-apps .button-container button[onclick*="Registro"],
+.google-apps .button-container button[onclick*="Atendimentos"] {
+    background: linear-gradient(135deg, #673ab7, #4527a0);
+    border-left: 4px solid #673ab7;
+    color: white;
+}
+
+.google-apps .button-container button[onclick*="Registro"]:hover,
+.google-apps .button-container button[onclick*="Atendimentos"]:hover {
+    background: linear-gradient(135deg, #7e57c2, #512da8);
+    transform: translateX(5px);
+}
+
+.google-apps .button-container button[onclick*="E-mails"],
+.google-apps .button-container button[onclick*="Emails"] {
+    background: linear-gradient(135deg, #00bcd4, #006064);
+    border-left: 4px solid #00bcd4;
+    color: white;
+}
+
+.google-apps .button-container button[onclick*="E-mails"]:hover,
+.google-apps .button-container button[onclick*="Emails"]:hover {
+    background: linear-gradient(135deg, #26c6da, #00838f);
+    transform: translateX(5px);
+}
+
+.google-apps .button-container button[onclick*="requerimento"],
+.google-apps .button-container button[onclick*="Ferias"],
+.google-apps .button-container button[onclick*="Folga"] {
+    background: linear-gradient(135deg, #ff5722, #d84315);
+    border-left: 4px solid #ff5722;
+    color: white;
+}
+
+.google-apps .button-container button[onclick*="requerimento"]:hover,
+.google-apps .button-container button[onclick*="Ferias"]:hover,
+.google-apps .button-container button[onclick*="Folga"]:hover {
+    background: linear-gradient(135deg, #ff7043, #e64a19);
+    transform: translateX(5px);
+}
+
+.google-apps .button-container button[onclick*="Sistemas"],
+.google-apps .button-container button[onclick*="relatorio"] {
+    background: linear-gradient(135deg, #009688, #00695c);
+    border-left: 4px solid #009688;
+    color: white;
+}
+
+.google-apps .button-container button[onclick*="Sistemas"]:hover,
+.google-apps .button-container button[onclick*="relatorio"]:hover {
+    background: linear-gradient(135deg, #26a69a, #00796b);
+    transform: translateX(5px);
+}
+
+.google-apps .button-container button:not([onclick*="mail"]):not([onclick*="calendar"]):not([onclick*="drive"]):not([onclick*="docs"]):not([onclick*="sheets"]):not([onclick*="forms"]) {
+    background: linear-gradient(135deg, #2196f3 50%, #4caf50 50%);
+    border-left: 4px solid #2196f3;
+    border-right: 4px solid #4caf50;
+    color: white;
+    font-weight: 500;
+}
+
+.google-apps .button-container button:not([onclick*="mail"]):not([onclick*="calendar"]):not([onclick*="drive"]):not([onclick*="docs"]):not([onclick*="sheets"]):not([onclick*="forms"]):hover {
+    background: linear-gradient(135deg, #42a5f5 50%, #66bb6a 50%);
+    transform: translateX(5px);
+}
+
+.google-apps .button-container button::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(255, 255, 255, 0.1);
+    transform: translateX(-100%);
+    transition: transform 0.3s ease;
+}
+
+.google-apps .button-container button:hover::before {
+    transform: translateX(0);
+}
+
+.google-apps .button-container button i {
+    font-size: 18px;
+    margin-right: 10px;
+    transition: transform 0.3s ease;
+}
+
+.google-apps .button-container button:hover i {
+    transform: scale(1.1);
+}
+
+/* Google Apps - Header Multicolor */
+.group.google-apps .accordion-header {
+    background: linear-gradient(135deg, #4285f4, #34a853);
+    border-left: 4px solid #4285f4;
+}
+
+.group.google-apps .accordion-header:hover {
+    background: linear-gradient(135deg, #5094f5, #3ab85d);
+}
+
+.group.google-apps .accordion-content {
+    background: rgba(66, 133, 244, 0.95);
+}
+
+/* Google Apps - Botões */
+/* Gmail (Azul) */
+.group.google-apps .button-container button[onclick*="mail"] {
+    background: linear-gradient(135deg, #3182ce, #2b6cb0);
+    border-left: 4px solid #3182ce;
+    color: white;
+    font-weight: 500;
+}
+
+.group.google-apps .button-container button[onclick*="mail"]:hover {
+    background: linear-gradient(135deg, #4299e1, #3182ce);
+    transform: translateX(5px);
+}
+
+/* Demais botões (Verde) */
+.group.google-apps .button-container button:not([onclick*="mail"]) {
+    background: linear-gradient(135deg, #48bb78, #38a169);
+    border-left: 4px solid #48bb78;
+    color: white;
+    font-weight: 500;
+}
+
+.group.google-apps .button-container button:not([onclick*="mail"]):hover {
+    background: linear-gradient(135deg, #68d391, #48bb78);
+    transform: translateX(5px);
+}
+
+/* Efeitos comuns para os botões */
+.group.google-apps .button-container button {
+    position: relative;
+    overflow: hidden;
+    height: 48px;
+    padding: 0 20px;
+    border-radius: 8px;
+    font-size: 14px;
+    letter-spacing: 0.3px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    transition: all 0.3s ease;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.group.google-apps .button-container button i {
+    margin-right: 10px;
+    font-size: 18px;
+    opacity: 0.9;
+}
+
+/* Dark mode */
+body.dark .group.google-apps .button-container button {
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+body.dark .group.google-apps .button-container button[onclick*="mail"] {
+    background: linear-gradient(135deg, #2b6cb0, #2c5282);
+}
+
+body.dark .group.google-apps .button-container button[onclick*="mail"]:hover {
+    background: linear-gradient(135deg, #3182ce, #2b6cb0);
+}
+
+body.dark .group.google-apps .button-container button:not([onclick*="mail"]) {
+    background: linear-gradient(135deg, #38a169, #2f855a);
+}
+
+body.dark .group.google-apps .button-container button:not([onclick*="mail"]):hover {
+    background: linear-gradient(135deg, #48bb78, #38a169);
+}
+
+/* Dark mode */
+body.dark .group.google-apps .accordion-header {
+    background: linear-gradient(135deg, #1a73e8, #188038);
+}
+
+body.dark .group.google-apps .accordion-content {
+    background: rgba(26, 115, 232, 0.98);
+}
+
+/* Dark mode adjustments */
+body.dark .google-apps .button-container button {
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+}
+
+/* Footer */
+.footer {
+    text-align: center;
+    padding: 20px 0;
+    color: #4a5568;
+    font-size: 0.9rem;
+}
+
+.footer a {
+    color: #3182ce;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.footer a:hover {
+    color: #2b6cb0;
+}
+
+/* Dark Mode */
+body.dark {
+    background: linear-gradient(135deg, #1a202c, #2d3748);
+    color: #e2e8f0;
+}
+
+body.dark .container {
+    background-color: rgba(26, 32, 44, 0.95);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+}
+
+body.dark .accordion-content {
+    background-color: #2d3748;
+}
+
+body.dark .button-container button {
+    background: linear-gradient(135deg, #3182ce, #2b6cb0);
+}
+
+body.dark .button-container button:hover {
+    background: linear-gradient(135deg, #2b6cb0, #1a365d);
+}
+
+body.dark .footer {
+    color: #a0aec0;
+}
+
+body.dark .footer a {
+    color: #4299e1;
+}
+
+/* Calendário e Relógio */
+.calendar-wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    background: rgba(255, 255, 255, 0.1);
+    padding: 15px 20px;
+    border-radius: 12px;
+    min-width: 280px;
+    backdrop-filter: blur(8px);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+}
+
+.calendar-wrapper:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+}
+
+.weekday {
+    color: #ffffff;
+    font-size: 1.2rem;
+    font-weight: 500;
+    text-align: center;
+    opacity: 0.9;
+    letter-spacing: 0.5px;
+}
+
+.current-date {
+    color: #ffffff;
+    font-size: 1.4rem;
+    font-weight: 700;
+    text-align: center;
+    letter-spacing: 0.5px;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.calendar-input {
+    padding: 8px 12px;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 6px;
+    font-size: 0.9rem;
+    background: rgba(255, 255, 255, 0.1);
+    color: #ffffff;
+    text-align: center;
+    margin-top: 8px;
+}
+
+.clock {
+    font-size: 1.3rem;
+    font-weight: 600;
+    padding: 15px 20px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 12px;
+    min-width: 140px;
+    text-align: center;
+    color: #ffffff;
+    backdrop-filter: blur(8px);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+    letter-spacing: 1px;
+}
+
+.clock:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+}
+
+/* Dark mode adjustments */
+body.dark .calendar-wrapper,
+body.dark .clock {
+    background: rgba(0, 0, 0, 0.2);
+}
+
+/* Aniversariantes */
+#birthdays {
+    margin-top: 15px;
+    padding: 10px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 8px;
+}
+
+.birthday-header {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    margin-bottom: 10px;
+    font-weight: 500;
+    color: #fff;
+}
+
+.birthday-header i {
+    color: #ffeb3b;
+    font-size: 1.2rem;
+}
+
+#birthday-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+
+.birthday-item {
+    background: rgba(255, 255, 255, 0.15);
+    padding: 5px 10px;
+    border-radius: 15px;
+    font-size: 0.9rem;
+    display: flex;
+    align-items: center;
+    transition: all 0.3s ease;
+}
+
+.birthday-item:hover {
+    background: rgba(255, 255, 255, 0.25);
+    transform: translateY(-2px);
+}
+
+.birthday-item .date {
+    color: #ffeb3b;
+    margin-left: 5px;
+    font-weight: 500;
+}
+
+/* Dark mode */
+body.dark #birthdays {
+    background: rgba(0, 0, 0, 0.2);
+}
+
+body.dark .birthday-item {
+    background: rgba(255, 255, 255, 0.1);
+}
+
+body.dark .birthday-item:hover {
+    background: rgba(255, 255, 255, 0.15);
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+    .navbar-links {
+        display: none;
+    }
+    
+    .header {
+        flex-direction: column;
+        gap: 20px;
+        text-align: center;
+    }
+    
+    .date-time-container {
+        flex-direction: column;
+        gap: 15px;
+    }
+    
+    .button-container.grid-layout {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* Animações */
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.accordion-content.active {
+    display: block;
+    animation: fadeIn 0.3s ease-out;
+}
+
+/* Estilos para subgrupos do PJe */
+.subgroup {
+    margin: 10px 0;
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+.accordion-subheader {
+    width: 100%;
+    padding: 12px 20px;
+    background: rgba(255, 255, 255, 0.1);
+    border: none;
+    border-radius: 8px;
+    color: #ffffff;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.accordion-subheader:hover {
+    background: rgba(255, 255, 255, 0.15);
+}
+
+.accordion-subheader i {
+    margin-right: 8px;
+}
+
+.accordion-subheader .accordion-icon {
+    transition: transform 0.3s ease;
+}
+
+.accordion-subheader[aria-expanded="true"] .accordion-icon {
+    transform: rotate(180deg);
+}
+
+.subgroup .accordion-content {
+    display: none;
+    padding: 10px;
+    background: rgba(0, 0, 0, 0.1);
+}
+
+.subgroup .button-container {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.subgroup .button-container button {
+    width: 100%;
+    padding: 10px 15px;
+    background: rgba(255, 255, 255, 0.1);
+    border: none;
+    border-radius: 6px;
+    color: #ffffff;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-align: left;
+}
+
+.subgroup .button-container button:hover {
+    background: rgba(255, 255, 255, 0.2);
+    transform: translateX(5px);
+}
+
+/* PJe - Produção (Azul mais escuro) */
+.subgroup:nth-child(1) .accordion-subheader {
+    background: linear-gradient(135deg, #1a73e8, #0d47a1);
+    border-left: 4px solid #1a73e8;
+}
+
+.subgroup:nth-child(1) .accordion-subheader:hover {
+    background: linear-gradient(135deg, #1557b0, #1a73e8);
+}
+
+.subgroup:nth-child(1) .accordion-content {
+    background: rgba(13, 71, 161, 0.9);
+}
+
+.subgroup:nth-child(1) .button-container button {
+    background: rgba(13, 71, 161, 0.85);
+    border-left: 3px solid #1a73e8;
+    font-weight: 500;
+}
+
+.subgroup:nth-child(1) .button-container button:hover {
+    background: rgba(26, 115, 232, 0.95);
+}
+
+/* PJe - Incidentes (Verde mais escuro) */
+.subgroup:nth-child(2) .accordion-subheader {
+    background: linear-gradient(135deg, #34a853, #1b5e20);
+    border-left: 4px solid #34a853;
+}
+
+.subgroup:nth-child(2) .accordion-subheader:hover {
+    background: linear-gradient(135deg, #2e7d32, #34a853);
+}
+
+.subgroup:nth-child(2) .accordion-content {
+    background: rgba(27, 94, 32, 0.9);
+}
+
+.subgroup:nth-child(2) .button-container button {
+    background: rgba(27, 94, 32, 0.85);
+    border-left: 3px solid #34a853;
+    font-weight: 500;
+}
+
+.subgroup:nth-child(2) .button-container button:hover {
+    background: rgba(52, 168, 83, 0.95);
+}
+
+/* PJe - Homologação (Amarelo mais escuro) */
+.subgroup:nth-child(3) .accordion-subheader {
+    background: linear-gradient(135deg, #f9a825, #f57f17);
+    border-left: 4px solid #fbbc04;
+    color: #000;
+}
+
+.subgroup:nth-child(3) .accordion-subheader:hover {
+    background: linear-gradient(135deg, #f57f17, #f9a825);
+}
+
+.subgroup:nth-child(3) .accordion-content {
+    background: rgba(245, 127, 23, 0.9);
+}
+
+.subgroup:nth-child(3) .button-container button {
+    background: rgba(245, 127, 23, 0.85);
+    border-left: 3px solid #fbbc04;
+    color: #ffffff;
+    font-weight: 500;
+}
+
+.subgroup:nth-child(3) .button-container button:hover {
+    background: rgba(251, 188, 4, 0.95);
+}
+
+/* Melhorias gerais de legibilidade */
+.subgroup .button-container button {
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+    letter-spacing: 0.3px;
+}
+
+/* Dark mode adjustments */
+body.dark .subgroup:nth-child(1) .accordion-content {
+    background: rgba(13, 71, 161, 0.95);
+}
+
+body.dark .subgroup:nth-child(2) .accordion-content {
+    background: rgba(27, 94, 32, 0.95);
+}
+
+body.dark .subgroup:nth-child(3) .accordion-content {
+    background: rgba(245, 127, 23, 0.95);
+}
+
+body.dark .subgroup .button-container button {
+    background: rgba(0, 0, 0, 0.7);
+}
+
+body.dark .subgroup .button-container button:hover {
+    background: rgba(0, 0, 0, 0.8);
+}
+
+/* ASSYST-PJe (Roxo) */
+.group.assyst .accordion-header {
+    background: linear-gradient(135deg, #4CAF50, #1B5E20);
+    border-left: 4px solid #4CAF50;
+}
+
+.group.assyst .accordion-header:hover {
+    background: linear-gradient(135deg, #43A047, #2E7D32);
+}
+
+.group.assyst .accordion-content {
+    background: rgba(27, 94, 32, 0.95);
+}
+
+.group.assyst .button-container button[onclick*="chamados"],
+.group.assyst .button-container button[onclick*="Chamados"] {
+    background: linear-gradient(135deg, #f44336, #c62828);
+    border-left: 4px solid #f44336;
+    color: white;
+    font-weight: 500;
+}
+
+.group.assyst .button-container button[onclick*="chamados"]:hover,
+.group.assyst .button-container button[onclick*="Chamados"]:hover {
+    background: linear-gradient(135deg, #ef5350, #d32f2f);
+    transform: translateX(5px);
+}
+
+.group.assyst .button-container button[onclick*="consulta"],
+.group.assyst .button-container button[onclick*="Consulta"] {
+    background: linear-gradient(135deg, #2196f3, #1565c0);
+    border-left: 4px solid #2196f3;
+    color: white;
+    font-weight: 500;
+}
+
+.group.assyst .button-container button[onclick*="consulta"]:hover,
+.group.assyst .button-container button[onclick*="Consulta"]:hover {
+    background: linear-gradient(135deg, #42a5f5, #1976d2);
+    transform: translateX(5px);
+}
+
+.group.assyst .button-container button[onclick*="abertos"],
+.group.assyst .button-container button[onclick*="Abertos"] {
+    background: linear-gradient(135deg, #9c27b0, #6a1b9a);
+    border-left: 4px solid #9c27b0;
+    color: white;
+    font-weight: 500;
+}
+
+.group.assyst .button-container button[onclick*="abertos"]:hover,
+.group.assyst .button-container button[onclick*="Abertos"]:hover {
+    background: linear-gradient(135deg, #ab47bc, #7b1fa2);
+    transform: translateX(5px);
+}
+
+.group.assyst .button-container button:not([onclick*="chamados"]):not([onclick*="Chamados"]):not([onclick*="consulta"]):not([onclick*="Consulta"]):not([onclick*="abertos"]):not([onclick*="Abertos"]) {
+    background: linear-gradient(135deg, #ff9800, #ef6c00);
+    border-left: 4px solid #ff9800;
+    color: white;
+    font-weight: 500;
+}
+
+.group.assyst .button-container button:not([onclick*="chamados"]):not([onclick*="Chamados"]):not([onclick*="consulta"]):not([onclick*="Consulta"]):not([onclick*="abertos"]):not([onclick*="Abertos"]):hover {
+    background: linear-gradient(135deg, #ffa726, #f57c00);
+    transform: translateX(5px);
+}
+
+.group.assyst .button-container button {
+    position: relative;
+    overflow: hidden;
+    height: 48px;
+    padding: 0 20px;
+    border-radius: 8px;
+    font-size: 14px;
+    letter-spacing: 0.3px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    transition: all 0.3s ease;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+}
+
+.group.assyst .button-container button::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(255, 255, 255, 0.1);
+    transform: translateX(-100%);
+    transition: transform 0.3s ease;
+}
+
+.group.assyst .button-container button:hover::before {
+    transform: translateX(0);
+}
+
+.group.assyst .button-container button i {
+    font-size: 18px;
+    margin-right: 10px;
+    transition: transform 0.3s ease;
+}
+
+.group.assyst .button-container button:hover i {
+    transform: scale(1.1);
+}
+
+/* Dark mode adjustments */
+body.dark .group.assyst .accordion-header {
+    background: linear-gradient(135deg, #388E3C, #1B5E20);
+}
+
+body.dark .group.assyst .accordion-content {
+    background: rgba(27, 94, 32, 0.98);
+}
+
+body.dark .group.assyst .button-container button::before {
+    background: rgba(255, 255, 255, 0.05);
+}
+
+/* Grupo Assyst-PJe */
+.group.assyst-pje {
+    background: linear-gradient(135deg, 
+        rgba(49, 130, 206, 0.1),
+        rgba(44, 82, 130, 0.15)
+    );
+    border-radius: 12px;
+    padding: 20px;
+    margin-bottom: 20px;
+}
+
+.group.assyst-pje .accordion-header {
+    background: linear-gradient(90deg,
+        #3182ce 0%,
+        #2b6cb0 50%,
+        #2c5282 100%
+    );
+    color: white;
+    padding: 15px 20px;
+    border-radius: 8px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.group.assyst-pje .accordion-header:hover {
+    background: linear-gradient(90deg,
+        #4299e1 0%,
+        #3182ce 50%,
+        #2b6cb0 100%
+    );
+    transform: translateY(-1px);
+}
+
+.group.assyst-pje .button-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 15px;
+    padding: 20px 0;
+}
+
+.group.assyst-pje .button-container button {
+    background: linear-gradient(135deg, 
+        #4299e1 0%,
+        #3182ce 50%,
+        #2b6cb0 100%
+    );
+    color: white;
+    border: none;
+    padding: 12px 20px;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-size: 0.95rem;
+    font-weight: 500;
+    text-align: left;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    border-left: 4px solid #2b6cb0;
+    position: relative;
+    overflow: hidden;
+}
+
+.group.assyst-pje .button-container button:hover {
+    background: linear-gradient(135deg, 
+        #63b3ed 0%,
+        #4299e1 50%,
+        #3182ce 100%
+    );
+    transform: translateX(5px);
+}
+
+.group.assyst-pje .button-container button i {
+    font-size: 1.1rem;
+    color: rgba(255, 255, 255, 0.9);
+    filter: drop-shadow(1px 1px 1px rgba(0, 0, 0, 0.2));
+}
+
+/* Dark mode */
+body.dark .group.assyst-pje {
+    background: linear-gradient(135deg, 
+        rgba(49, 130, 206, 0.15),
+        rgba(44, 82, 130, 0.2)
+    );
+}
+
+body.dark .group.assyst-pje .accordion-header {
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+body.dark .group.assyst-pje .button-container button {
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+/* Apps Externos - Header Cinza Prateado */
+.group.apps-externos .accordion-header {
+    background: linear-gradient(135deg, #78909c, #455a64);
+    border-left: 4px solid #78909c;
+}
+
+.group.apps-externos .accordion-header:hover {
+    background: linear-gradient(135deg, #90a4ae, #546e7a);
+}
+
+.group.apps-externos .accordion-content {
+    background: rgba(69, 90, 100, 0.95);
+}
+
+/* Apps Externos - Botões com cores diferentes */
+/* Botão Azul Suave - Sistemas Judiciais */
+.group.apps-externos .button-container button[onclick*="pje"],
+.group.apps-externos .button-container button[onclick*="gestao"],
+.group.apps-externos .button-container button[onclick*="judicial"] {
+    background: linear-gradient(135deg, #64b5f6, #1e88e5);
+    border-left: 4px solid #64b5f6;
+    color: white;
+    font-weight: 500;
+}
+
+.group.apps-externos .button-container button[onclick*="pje"]:hover,
+.group.apps-externos .button-container button[onclick*="gestao"]:hover,
+.group.apps-externos .button-container button[onclick*="judicial"]:hover {
+    background: linear-gradient(135deg, #90caf9, #42a5f5);
+    transform: translateX(5px);
+}
+
+/* Botão Roxo Suave - Sistemas Administrativos */
+.group.apps-externos .button-container button[onclick*="admin"],
+.group.apps-externos .button-container button[onclick*="sigeo"],
+.group.apps-externos .button-container button[onclick*="folha"] {
+    background: linear-gradient(135deg, #9575cd, #5e35b1);
+    border-left: 4px solid #9575cd;
+    color: white;
+    font-weight: 500;
+}
+
+.group.apps-externos .button-container button[onclick*="admin"]:hover,
+.group.apps-externos .button-container button[onclick*="sigeo"]:hover,
+.group.apps-externos .button-container button[onclick*="folha"]:hover {
+    background: linear-gradient(135deg, #b39ddb, #7e57c2);
+    transform: translateX(5px);
+}
+
+/* Botão Verde Suave - Sistemas de Segurança e Controle */
+.group.apps-externos .button-container button[onclick*="seguranca"],
+.group.apps-externos .button-container button[onclick*="controle"],
+.group.apps-externos .button-container button[onclick*="acesso"] {
+    background: linear-gradient(135deg, #81c784, #43a047);
+    border-left: 4px solid #81c784;
+    color: white;
+    font-weight: 500;
+}
+
+.group.apps-externos .button-container button[onclick*="seguranca"]:hover,
+.group.apps-externos .button-container button[onclick*="controle"]:hover,
+.group.apps-externos .button-container button[onclick*="acesso"]:hover {
+    background: linear-gradient(135deg, #a5d6a7, #66bb6a);
+    transform: translateX(5px);
+}
+
+/* Botão Âmbar Suave - Outros sistemas */
+.group.apps-externos .button-container button:not([onclick*="pje"]):not([onclick*="gestao"]):not([onclick*="judicial"]):not([onclick*="admin"]):not([onclick*="sigeo"]):not([onclick*="folha"]):not([onclick*="seguranca"]):not([onclick*="controle"]):not([onclick*="acesso"]) {
+    background: linear-gradient(135deg, #ffb74d, #ef6c00);
+    border-left: 4px solid #ffb74d;
+    color: white;
+    font-weight: 500;
+}
+
+.group.apps-externos .button-container button:not([onclick*="pje"]):not([onclick*="gestao"]):not([onclick*="judicial"]):not([onclick*="admin"]):not([onclick*="sigeo"]):not([onclick*="folha"]):not([onclick*="seguranca"]):not([onclick*="controle"]):not([onclick*="acesso"]):hover {
+    background: linear-gradient(135deg, #ffcc80, #ffa726);
+    transform: translateX(5px);
+}
+
+/* Dark mode */
+body.dark .group.apps-externos .accordion-header {
+    background: linear-gradient(135deg, #546e7a, #37474f);
+}
+
+body.dark .group.apps-externos .accordion-content {
+    background: rgba(55, 71, 79, 0.98);
+}
+
+/* Sistemas Satélites (Ciano) */
+.group.sistemas-satelites .accordion-header {
+    background: linear-gradient(135deg, #00bcd4, #006064);
+    border-left: 4px solid #00bcd4;
+}
+
+.group.sistemas-satelites .accordion-header:hover {
+    background: linear-gradient(135deg, #26c6da, #00838f);
+}
+
+.group.sistemas-satelites .accordion-content {
+    background: rgba(0, 96, 100, 0.95);
+}
+
+/* Sistemas Satélites - Botões Diversos */
+/* SIGS (Azul Royal) */
+.group.sistemas-satelites .button-container button[onclick*="sigs"] {
+    background: linear-gradient(135deg, #1976d2, #0d47a1);
+    border-left: 4px solid #1976d2;
+    color: white;
+    font-weight: 500;
+}
+
+.group.sistemas-satelites .button-container button[onclick*="sigs"]:hover {
+    background: linear-gradient(135deg, #2196f3, #1565c0);
+    transform: translateX(5px);
+}
+
+/* PROAD (Verde Esmeralda) */
+.group.sistemas-satelites .button-container button[onclick*="proad"] {
+    background: linear-gradient(135deg, #2e7d32, #1b5e20);
+    border-left: 4px solid #2e7d32;
+    color: white;
+    font-weight: 500;
+}
+
+.group.sistemas-satelites .button-container button[onclick*="proad"]:hover {
+    background: linear-gradient(135deg, #43a047, #388e3c);
+    transform: translateX(5px);
+}
+
+/* Sistemas de Gestão (Roxo) */
+.group.sistemas-satelites .button-container button[onclick*="gestao"],
+.group.sistemas-satelites .button-container button[onclick*="gest"] {
+    background: linear-gradient(135deg, #7b1fa2, #4a148c);
+    border-left: 4px solid #7b1fa2;
+    color: white;
+    font-weight: 500;
+}
+
+.group.sistemas-satelites .button-container button[onclick*="gestao"]:hover,
+.group.sistemas-satelites .button-container button[onclick*="gest"]:hover {
+    background: linear-gradient(135deg, #9c27b0, #6a1b9a);
+    transform: translateX(5px);
+}
+
+/* Sistemas Financeiros (Índigo) */
+.group.sistemas-satelites .button-container button[onclick*="financ"],
+.group.sistemas-satelites .button-container button[onclick*="pagamento"] {
+    background: linear-gradient(135deg, #3949ab, #1a237e);
+    border-left: 4px solid #3949ab;
+    color: white;
+    font-weight: 500;
+}
+
+.group.sistemas-satelites .button-container button[onclick*="financ"]:hover,
+.group.sistemas-satelites .button-container button[onclick*="pagamento"]:hover {
+    background: linear-gradient(135deg, #5c6bc0, #303f9f);
+    transform: translateX(5px);
+}
+
+/* Outros Sistemas (Teal) */
+.group.sistemas-satelites .button-container button:not([onclick*="sigs"]):not([onclick*="proad"]):not([onclick*="gestao"]):not([onclick*="gest"]):not([onclick*="financ"]):not([onclick*="pagamento"]) {
+    background: linear-gradient(135deg, #00897b, #004d40);
+    border-left: 4px solid #00897b;
+    color: white;
+    font-weight: 500;
+}
+
+.group.sistemas-satelites .button-container button:not([onclick*="sigs"]):not([onclick*="proad"]):not([onclick*="gestao"]):not([onclick*="gest"]):not([onclick*="financ"]):not([onclick*="pagamento"]):hover {
+    background: linear-gradient(135deg, #26a69a, #00796b);
+    transform: translateX(5px);
+}
+
+/* Efeitos comuns para os botões */
+.group.sistemas-satelites .button-container button {
+    position: relative;
+    overflow: hidden;
+    height: 48px;
+    padding: 0 20px;
+    border-radius: 8px;
+    font-size: 14px;
+    letter-spacing: 0.3px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    transition: all 0.3s ease;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+}
+
+/* Dark mode */
+body.dark .group.sistemas-satelites .accordion-header {
+    background: linear-gradient(135deg, #0097a7, #00838f);
+}
+
+body.dark .group.sistemas-satelites .accordion-content {
+    background: rgba(0, 131, 143, 0.98);
+}
+
+/* Melhorias gerais para todos os grupos */
+.group .accordion-header {
+    position: relative;
+    overflow: hidden;
+    transition: all 0.3s ease;
+}
+
+.group .accordion-header::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(255, 255, 255, 0.1);
+    transform: translateX(-100%);
+    transition: transform 0.3s ease;
+}
+
+.group .accordion-header:hover::before {
+    transform: translateX(0);
+}
+
+.group .button-container button {
+    position: relative;
+    overflow: hidden;
+    letter-spacing: 0.3px;
+}
+
+/* Dark mode adjustments */
+body.dark .group .accordion-content {
+    background: rgba(0, 0, 0, 0.85);
+}
+
+body.dark .group .button-container button {
+    background: rgba(0, 0, 0, 0.75);
+}
+
+body.dark .group .button-container button:hover {
+    background: rgba(0, 0, 0, 0.85);
+}
