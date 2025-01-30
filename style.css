@@ -525,8 +525,8 @@ body.dark .group.sistema-pje .button-container button {
 /* Grupo Google Apps */
 .group.google-apps {
     background: linear-gradient(135deg, 
-        rgba(49, 130, 206, 0.1),
-        rgba(44, 82, 130, 0.15)
+        rgba(104, 211, 145, 0.15),
+        rgba(72, 187, 120, 0.2)
     );
     border-radius: 12px;
     padding: 20px;
@@ -534,11 +534,8 @@ body.dark .group.sistema-pje .button-container button {
 }
 
 .group.google-apps .accordion-header {
-    background: linear-gradient(90deg,
-        #3182ce 0%,
-        #2b6cb0 50%,
-        #2c5282 100%
-    );
+    background: linear-gradient(135deg, #4299e1, #2b6cb0);
+    border-left: 4px solid #4299e1;
     color: white;
     padding: 15px 20px;
     border-radius: 8px;
@@ -551,41 +548,10 @@ body.dark .group.sistema-pje .button-container button {
 }
 
 .group.google-apps .accordion-header:hover {
-    background: linear-gradient(90deg,
-        #4299e1 0%,
-        #3182ce 50%,
-        #2b6cb0 100%
-    );
+    background: linear-gradient(135deg, #63b3ed, #4299e1);
     transform: translateY(-1px);
 }
 
-/* Gmail (Amarelo) */
-.group.google-apps .button-container button[onclick*="mail"] {
-    background: linear-gradient(135deg, #ecc94b, #d69e2e);
-    border-left: 4px solid #d69e2e;
-    color: #744210;
-    font-weight: 600;
-}
-
-.group.google-apps .button-container button[onclick*="mail"]:hover {
-    background: linear-gradient(135deg, #f6e05e, #ecc94b);
-    transform: translateX(5px);
-}
-
-/* Demais botões (Verde) */
-.group.google-apps .button-container button:not([onclick*="mail"]) {
-    background: linear-gradient(135deg, #48bb78, #38a169);
-    border-left: 4px solid #38a169;
-    color: white;
-    font-weight: 500;
-}
-
-.group.google-apps .button-container button:not([onclick*="mail"]):hover {
-    background: linear-gradient(135deg, #68d391, #48bb78);
-    transform: translateX(5px);
-}
-
-/* Efeitos comuns para os botões */
 .group.google-apps .button-container {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
@@ -594,9 +560,12 @@ body.dark .group.sistema-pje .button-container button {
 }
 
 .group.google-apps .button-container button {
+    background: linear-gradient(135deg, #4299e1, #2b6cb0);
+    border-left: 4px solid #4299e1;
+    color: white;
+    font-weight: 500;
     padding: 12px 20px;
-    border-radius: 6px;
-    border: none;
+    border-radius: 8px;
     cursor: pointer;
     transition: all 0.3s ease;
     font-size: 0.95rem;
@@ -605,137 +574,35 @@ body.dark .group.sistema-pje .button-container button {
     align-items: center;
     gap: 10px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    position: relative;
-    overflow: hidden;
+}
+
+.group.google-apps .button-container button:hover {
+    background: linear-gradient(135deg, #63b3ed, #4299e1);
+    transform: translateX(5px);
+    box-shadow: 0 4px 12px rgba(66, 153, 225, 0.2);
 }
 
 .group.google-apps .button-container button i {
     font-size: 1.1rem;
+    color: rgba(255, 255, 255, 0.9);
     filter: drop-shadow(1px 1px 1px rgba(0, 0, 0, 0.2));
 }
 
 /* Dark mode */
 body.dark .group.google-apps {
     background: linear-gradient(135deg, 
-        rgba(49, 130, 206, 0.15),
-        rgba(44, 82, 130, 0.2)
+        rgba(104, 211, 145, 0.1),
+        rgba(72, 187, 120, 0.15)
     );
 }
 
-body.dark .group.google-apps .button-container button[onclick*="mail"] {
-    background: linear-gradient(135deg, #d69e2e, #b7791f);
-    color: #fefcbf;
-}
-
-body.dark .group.google-apps .button-container button[onclick*="mail"]:hover {
-    background: linear-gradient(135deg, #ecc94b, #d69e2e);
-}
-
-body.dark .group.google-apps .button-container button:not([onclick*="mail"]) {
-    background: linear-gradient(135deg, #38a169, #2f855a);
-}
-
-body.dark .group.google-apps .button-container button:not([onclick*="mail"]):hover {
-    background: linear-gradient(135deg, #48bb78, #38a169);
-}
-
-/* Google Apps - Header Multicolor */
-.group.google-apps .accordion-header {
-    background: linear-gradient(135deg, #4285f4, #34a853);
-    border-left: 4px solid #4285f4;
-}
-
-.group.google-apps .accordion-header:hover {
-    background: linear-gradient(135deg, #5094f5, #3ab85d);
-}
-
-.group.google-apps .accordion-content {
-    background: rgba(66, 133, 244, 0.95);
-}
-
-/* Google Apps - Botões */
-/* Gmail (Azul) */
-.group.google-apps .button-container button[onclick*="mail"] {
-    background: linear-gradient(135deg, #3182ce, #2b6cb0);
-    border-left: 4px solid #3182ce;
-    color: white;
-    font-weight: 500;
-}
-
-.group.google-apps .button-container button[onclick*="mail"]:hover {
-    background: linear-gradient(135deg, #4299e1, #3182ce);
-    transform: translateX(5px);
-}
-
-/* Demais botões (Verde) */
-.group.google-apps .button-container button:not([onclick*="mail"]) {
-    background: linear-gradient(135deg, #48bb78, #38a169);
-    border-left: 4px solid #48bb78;
-    color: white;
-    font-weight: 500;
-}
-
-.group.google-apps .button-container button:not([onclick*="mail"]):hover {
-    background: linear-gradient(135deg, #68d391, #48bb78);
-    transform: translateX(5px);
-}
-
-/* Efeitos comuns para os botões */
-.group.google-apps .button-container button {
-    position: relative;
-    overflow: hidden;
-    height: 48px;
-    padding: 0 20px;
-    border-radius: 8px;
-    font-size: 14px;
-    letter-spacing: 0.3px;
-    display: flex;
-    align-items: center;
-    justify-content: flex-start;
-    transition: all 0.3s ease;
-    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-}
-
-.group.google-apps .button-container button i {
-    margin-right: 10px;
-    font-size: 18px;
-    opacity: 0.9;
-}
-
-/* Dark mode */
 body.dark .group.google-apps .button-container button {
+    background: linear-gradient(135deg, #3182ce, #2b6cb0);
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
 }
 
-body.dark .group.google-apps .button-container button[onclick*="mail"] {
-    background: linear-gradient(135deg, #2b6cb0, #2c5282);
-}
-
-body.dark .group.google-apps .button-container button[onclick*="mail"]:hover {
-    background: linear-gradient(135deg, #3182ce, #2b6cb0);
-}
-
-body.dark .group.google-apps .button-container button:not([onclick*="mail"]) {
-    background: linear-gradient(135deg, #38a169, #2f855a);
-}
-
-body.dark .group.google-apps .button-container button:not([onclick*="mail"]):hover {
-    background: linear-gradient(135deg, #48bb78, #38a169);
-}
-
-/* Dark mode adjustments */
-body.dark .group.google-apps .accordion-header {
-    background: linear-gradient(135deg, #1a73e8, #188038);
-}
-
-body.dark .group.google-apps .accordion-content {
-    background: rgba(26, 115, 232, 0.98);
-}
-
-/* Dark mode adjustments */
-body.dark .google-apps .button-container button {
-    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+body.dark .group.google-apps .button-container button:hover {
+    background: linear-gradient(135deg, #4299e1, #3182ce);
 }
 
 /* Footer */
