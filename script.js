@@ -67,7 +67,7 @@ document.querySelectorAll('.accordion-header').forEach(header => {
             if (openHeader !== this) {
                 openHeader.setAttribute('aria-expanded', 'false');
                 openHeader.nextElementSibling.style.display = 'none';
-                openHeader.nextElementSibling.classList.remove('active');
+                openHeader.querySelector('.accordion-icon').style.transform = 'rotate(0deg)';
             }
         });
 
@@ -75,11 +75,9 @@ document.querySelectorAll('.accordion-header').forEach(header => {
         this.setAttribute('aria-expanded', !isExpanded);
         content.style.display = isExpanded ? 'none' : 'block';
         
-        if (!isExpanded) {
-            content.classList.add('active');
-        } else {
-            content.classList.remove('active');
-        }
+        // Rotacionar o ícone
+        const icon = this.querySelector('.accordion-icon');
+        icon.style.transform = isExpanded ? 'rotate(0deg)' : 'rotate(180deg)';
     });
 });
 
@@ -96,7 +94,7 @@ document.querySelectorAll('.accordion-subheader').forEach(subheader => {
             if (openSubheader !== this) {
                 openSubheader.setAttribute('aria-expanded', 'false');
                 openSubheader.nextElementSibling.style.display = 'none';
-                openSubheader.nextElementSibling.classList.remove('active');
+                openSubheader.querySelector('.accordion-icon').style.transform = 'rotate(0deg)';
             }
         });
 
@@ -104,11 +102,24 @@ document.querySelectorAll('.accordion-subheader').forEach(subheader => {
         this.setAttribute('aria-expanded', !isExpanded);
         content.style.display = isExpanded ? 'none' : 'block';
         
-        if (!isExpanded) {
-            content.classList.add('active');
-        } else {
-            content.classList.remove('active');
-        }
+        // Rotacionar o ícone
+        const icon = this.querySelector('.accordion-icon');
+        icon.style.transform = isExpanded ? 'rotate(0deg)' : 'rotate(180deg)';
+    });
+});
+
+// Inicializar todos os accordions como fechados
+document.addEventListener('DOMContentLoaded', () => {
+    // Fechar todos os accordions principais
+    document.querySelectorAll('.accordion-header').forEach(header => {
+        header.setAttribute('aria-expanded', 'false');
+        header.nextElementSibling.style.display = 'none';
+    });
+    
+    // Fechar todos os sub-accordions
+    document.querySelectorAll('.accordion-subheader').forEach(subheader => {
+        subheader.setAttribute('aria-expanded', 'false');
+        subheader.nextElementSibling.style.display = 'none';
     });
 });
 
