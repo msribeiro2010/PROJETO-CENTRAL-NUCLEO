@@ -1,108 +1,137 @@
-// Cores predefinidas para os botões
+// Cores disponíveis para personalização
 const buttonColors = {
     blue: {
+        name: 'Azul',
         gradient: ['#60A5FA', '#3B82F6'],
-        hoverGradient: ['#3B82F6', '#2563EB'],
-        iconColor: '#BFDBFE',
-        darkGradient: ['#3B82F6', '#2563EB'],
-        darkHoverGradient: ['#60A5FA', '#3B82F6']
+        hoverGradient: ['#3B82F6', '#2563EB']
+    },
+    green: {
+        name: 'Verde',
+        gradient: ['#34D399', '#059669'],
+        hoverGradient: ['#059669', '#047857']
+    },
+    red: {
+        name: 'Vermelho',
+        gradient: ['#F87171', '#DC2626'],
+        hoverGradient: ['#DC2626', '#B91C1C']
     },
     purple: {
-        gradient: ['#8B5CF6', '#6D28D9'],
-        hoverGradient: ['#7C3AED', '#5B21B6'],
-        iconColor: '#DDD6FE',
-        darkGradient: ['#6D28D9', '#4C1D95'],
-        darkHoverGradient: ['#8B5CF6', '#6D28D9']
+        name: 'Roxo',
+        gradient: ['#A78BFA', '#7C3AED'],
+        hoverGradient: ['#7C3AED', '#6D28D9']
     },
-    teal: {
-        gradient: ['#06B6D4', '#0891B2'],
-        hoverGradient: ['#0E7490', '#0369A1'],
-        iconColor: '#A5F3FC',
-        darkGradient: ['#0E7490', '#155E75'],
-        darkHoverGradient: ['#06B6D4', '#0891B2']
+    orange: {
+        name: 'Laranja',
+        gradient: ['#FB923C', '#EA580C'],
+        hoverGradient: ['#EA580C', '#C2410C']
     },
-    rose: {
-        gradient: ['#F43F5E', '#E11D48'],
-        hoverGradient: ['#BE123C', '#9F1239'],
-        iconColor: '#FECDD3',
-        darkGradient: ['#BE123C', '#881337'],
-        darkHoverGradient: ['#F43F5E', '#E11D48']
-    },
-    amber: {
-        gradient: ['#F59E0B', '#D97706'],
-        hoverGradient: ['#B45309', '#92400E'],
-        iconColor: '#FDE68A',
-        darkGradient: ['#B45309', '#78350F'],
-        darkHoverGradient: ['#F59E0B', '#D97706']
-    },
-    emerald: {
-        gradient: ['#10B981', '#059669'],
-        hoverGradient: ['#047857', '#065F46'],
-        iconColor: '#A7F3D0',
-        darkGradient: ['#047857', '#064E3B'],
-        darkHoverGradient: ['#10B981', '#059669']
+    pink: {
+        name: 'Rosa',
+        gradient: ['#F472B6', '#DB2777'],
+        hoverGradient: ['#DB2777', '#BE185D']
     }
 };
 
-// Verificar se o Sortable está disponível
-function checkSortable() {
-    if (typeof Sortable === 'undefined') {
-        console.error('Sortable.js não está carregado!');
-        return false;
+// Cores padrão para cada grupo
+const defaultColors = {
+    'google-apps': {
+        default: ['#4285F4', '#0F9D58'],
+        hover: ['#357ABD', '#0B7B44']
+    },
+    'assyst-pje': {
+        default: ['#60A5FA', '#3B82F6'],
+        hover: ['#3B82F6', '#2563EB']
     }
-    return true;
-}
+};
 
-// Função para salvar a ordem dos botões no localStorage
-function saveButtonOrder(groupId, order) {
-    localStorage.setItem(`buttonOrder_${groupId}`, JSON.stringify(order));
-}
-
-// Função para carregar a ordem dos botões do localStorage
-function loadButtonOrder(groupId) {
-    const savedOrder = localStorage.getItem(`buttonOrder_${groupId}`);
-    return savedOrder ? JSON.parse(savedOrder) : null;
-}
-
-// Função para reordenar os botões baseado na ordem salva
-function reorderButtons(container, order) {
-    const buttons = Array.from(container.children);
-    const orderedButtons = [];
+// Função para aplicar cor ao botão
+function applyButtonColor(button, colorName) {
+    let gradient, hoverGradient;
     
-    // Primeiro, criar um mapa dos botões existentes
-    const buttonMap = new Map();
-    buttons.forEach(button => {
-        const id = button.getAttribute('data-button-id');
-        buttonMap.set(id, button);
-    });
-    
-    // Reordenar baseado na ordem salva
-    order.forEach(id => {
-        const button = buttonMap.get(id);
-        if (button) {
-            orderedButtons.push(button);
-            buttonMap.delete(id);
+    if (colorName === 'default') {
+        const groupId = button.closest('.group').id;
+        const defaultColor = defaultColors[groupId];
+        if (defaultColor) {
+            gradient = defaultColor.default;
+            hoverGradient = defaultColor.hover;
         }
-    });
+    } else {
+        const color = buttonColors[colorName];
+        if (color) {
+            gradient = color.gradient;
+            hoverGradient = color.hoverGradient;
+        }
+    }
     
-    // Adicionar quaisquer botões novos que não estavam na ordem salva
-    buttonMap.forEach(button => {
-        orderedButtons.push(button);
-    });
-    
-    // Limpar o container e adicionar os botões na nova ordem
-    container.innerHTML = '';
-    orderedButtons.forEach(button => container.appendChild(button));
+    if (gradient && hoverGradient) {
+        button.style.setProperty('--button-gradient', `linear-gradient(135deg, ${gradient[0]}, ${gradient[1]})`);
+        button.style.setProperty('--button-hover-gradient', `linear-gradient(135deg, ${hoverGradient[0]}, ${hoverGradient[1]})`);
+        
+        // Salvar a cor no localStorage apenas se não for a cor padrão
+        if (colorName !== 'default') {
+            localStorage.setItem(`buttonColor_${button.getAttribute('data-button-id')}`, colorName);
+        }
+    }
 }
 
-// Função para salvar a cor do botão no localStorage
-function saveButtonColor(buttonId, color) {
-    localStorage.setItem(`buttonColor_${buttonId}`, color);
-}
-
-// Função para carregar a cor do botão do localStorage
-function loadButtonColor(buttonId) {
-    return localStorage.getItem(`buttonColor_${buttonId}`);
+// Função para criar o menu de cores
+function createColorMenu(button) {
+    const menu = document.createElement('div');
+    menu.className = 'color-menu';
+    menu.style.cssText = `
+        position: absolute;
+        background: white;
+        border: 1px solid #E5E7EB;
+        border-radius: 8px;
+        padding: 8px;
+        box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+        z-index: 1000;
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 4px;
+    `;
+    
+    // Adicionar opção padrão
+    const defaultOption = document.createElement('button');
+    defaultOption.innerHTML = 'Padrão';
+    defaultOption.style.cssText = `
+        padding: 8px;
+        border: 1px solid #E5E7EB;
+        border-radius: 4px;
+        background: white;
+        cursor: pointer;
+        font-size: 12px;
+        grid-column: span 3;
+        margin-bottom: 4px;
+    `;
+    defaultOption.onclick = (e) => {
+        e.preventDefault();
+        applyButtonColor(button, 'default');
+        menu.remove();
+    };
+    menu.appendChild(defaultOption);
+    
+    // Adicionar todas as cores disponíveis
+    Object.entries(buttonColors).forEach(([key, color]) => {
+        const colorButton = document.createElement('button');
+        colorButton.style.cssText = `
+            width: 32px;
+            height: 32px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            background: linear-gradient(135deg, ${color.gradient[0]}, ${color.gradient[1]});
+        `;
+        colorButton.title = color.name;
+        colorButton.onclick = (e) => {
+            e.preventDefault();
+            applyButtonColor(button, key);
+            menu.remove();
+        };
+        menu.appendChild(colorButton);
+    });
+    
+    return menu;
 }
 
 // Função para inicializar o Sortable em um container
@@ -181,46 +210,6 @@ function initializeSortable(container) {
     }
 }
 
-// Função para aplicar a cor ao botão
-function applyButtonColor(button, colorName) {
-    const color = buttonColors[colorName];
-    if (!color) return;
-
-    const gradient = `linear-gradient(135deg, ${color.gradient[0]}, ${color.gradient[1]})`;
-    const hoverGradient = `linear-gradient(135deg, ${color.hoverGradient[0]}, ${color.hoverGradient[1]})`;
-
-    button.style.setProperty('--button-gradient', gradient);
-    button.style.setProperty('--button-hover-gradient', hoverGradient);
-    button.style.backgroundImage = gradient;
-    
-    const icon = button.querySelector('i');
-    if (icon) {
-        icon.style.color = color.iconColor;
-    }
-
-    // Salvar a cor no localStorage
-    localStorage.setItem(`buttonColor_${button.getAttribute('data-button-id')}`, colorName);
-}
-
-// Função para criar o menu de cores
-function createColorMenu(button) {
-    const menu = document.createElement('div');
-    menu.className = 'color-menu';
-
-    Object.keys(buttonColors).forEach(colorName => {
-        const option = document.createElement('div');
-        option.className = 'color-option';
-        option.style.background = `linear-gradient(135deg, ${buttonColors[colorName].gradient[0]}, ${buttonColors[colorName].gradient[1]})`;
-        option.onclick = () => {
-            applyButtonColor(button, colorName);
-            menu.remove();
-        };
-        menu.appendChild(option);
-    });
-
-    return menu;
-}
-
 // Inicializar personalização
 function initializeCustomization() {
     console.log('Iniciando personalização...');
@@ -230,10 +219,14 @@ function initializeCustomization() {
             button.setAttribute('data-button-id', `button_${index}`);
         }
         
-        // Carregar cor salva
-        const savedColor = localStorage.getItem(`buttonColor_${button.getAttribute('data-button-id')}`);
-        if (savedColor) {
+        // Carregar cor salva ou usar cor padrão
+        const buttonId = button.getAttribute('data-button-id');
+        const savedColor = localStorage.getItem(`buttonColor_${buttonId}`);
+        
+        if (savedColor && buttonColors[savedColor]) {
             applyButtonColor(button, savedColor);
+        } else {
+            applyButtonColor(button, 'default');
         }
         
         // Adicionar menu de contexto para cores
@@ -267,53 +260,6 @@ function initializeCustomization() {
         initializeSortable(container);
     });
 }
-
-// Estilos CSS
-const style = document.createElement('style');
-style.textContent = `
-    .button-container {
-        position: relative;
-        min-height: 48px;
-    }
-
-    .draggable-button {
-        cursor: move !important;
-        user-select: none !important;
-        -webkit-user-drag: none !important;
-    }
-
-    .sortable-ghost {
-        opacity: 0.5 !important;
-        background: rgba(96, 165, 250, 0.2) !important;
-        border: 2px dashed #60A5FA !important;
-    }
-
-    .color-menu {
-        position: absolute;
-        background: white;
-        border: 1px solid #ddd;
-        border-radius: 8px;
-        padding: 8px;
-        box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-        z-index: 1000;
-        display: grid;
-        grid-template-columns: repeat(3, 1fr);
-        gap: 4px;
-    }
-
-    .color-option {
-        width: 24px;
-        height: 24px;
-        border-radius: 4px;
-        cursor: pointer;
-        transition: transform 0.2s;
-    }
-
-    .color-option:hover {
-        transform: scale(1.1);
-    }
-`;
-document.head.appendChild(style);
 
 // Aguardar o carregamento completo da página
 window.addEventListener('load', function() {
