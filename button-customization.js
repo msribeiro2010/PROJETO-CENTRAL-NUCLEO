@@ -44,6 +44,15 @@ const buttonColors = {
     }
 };
 
+// Verificar se o Sortable está disponível
+function checkSortable() {
+    if (typeof Sortable === 'undefined') {
+        console.error('Sortable.js não está carregado!');
+        return false;
+    }
+    return true;
+}
+
 // Função para salvar a ordem dos botões no localStorage
 function saveButtonOrder(groupId, order) {
     localStorage.setItem(`buttonOrder_${groupId}`, JSON.stringify(order));
@@ -55,6 +64,37 @@ function loadButtonOrder(groupId) {
     return savedOrder ? JSON.parse(savedOrder) : null;
 }
 
+// Função para reordenar os botões baseado na ordem salva
+function reorderButtons(container, order) {
+    const buttons = Array.from(container.children);
+    const orderedButtons = [];
+    
+    // Primeiro, criar um mapa dos botões existentes
+    const buttonMap = new Map();
+    buttons.forEach(button => {
+        const id = button.getAttribute('data-button-id');
+        buttonMap.set(id, button);
+    });
+    
+    // Reordenar baseado na ordem salva
+    order.forEach(id => {
+        const button = buttonMap.get(id);
+        if (button) {
+            orderedButtons.push(button);
+            buttonMap.delete(id);
+        }
+    });
+    
+    // Adicionar quaisquer botões novos que não estavam na ordem salva
+    buttonMap.forEach(button => {
+        orderedButtons.push(button);
+    });
+    
+    // Limpar o container e adicionar os botões na nova ordem
+    container.innerHTML = '';
+    orderedButtons.forEach(button => container.appendChild(button));
+}
+
 // Função para salvar a cor do botão no localStorage
 function saveButtonColor(buttonId, color) {
     localStorage.setItem(`buttonColor_${buttonId}`, color);
@@ -63,6 +103,82 @@ function saveButtonColor(buttonId, color) {
 // Função para carregar a cor do botão do localStorage
 function loadButtonColor(buttonId) {
     return localStorage.getItem(`buttonColor_${buttonId}`);
+}
+
+// Função para inicializar o Sortable em um container
+function initializeSortable(container) {
+    try {
+        console.log('Inicializando Sortable no container:', container);
+        
+        // Flag para controlar se está arrastando
+        let isDragging = false;
+        
+        // Prevenir cliques durante o arrasto
+        container.addEventListener('click', function(e) {
+            if (isDragging) {
+                e.preventDefault();
+                e.stopPropagation();
+                return false;
+            }
+        }, true);
+        
+        const sortable = Sortable.create(container, {
+            animation: 150,
+            delay: 100,
+            delayOnTouchOnly: true,
+            touchStartThreshold: 5,
+            handle: 'button',
+            ghostClass: 'sortable-ghost',
+            chosenClass: 'sortable-chosen',
+            dragClass: 'sortable-drag',
+            forceFallback: true,
+            scroll: true,
+            scrollSensitivity: 80,
+            scrollSpeed: 30,
+            bubbleScroll: true,
+            
+            onStart: function(evt) {
+                isDragging = true;
+                const item = evt.item;
+                document.body.style.cursor = 'grabbing';
+                container.classList.add('drag-highlight');
+                
+                // Desabilitar links durante o arrasto
+                const links = item.getElementsByTagName('a');
+                for (let link of links) {
+                    link.style.pointerEvents = 'none';
+                }
+            },
+            
+            onEnd: function(evt) {
+                const item = evt.item;
+                document.body.style.cursor = '';
+                container.classList.remove('drag-highlight');
+                
+                // Reabilitar links após o arrasto
+                const links = item.getElementsByTagName('a');
+                for (let link of links) {
+                    link.style.pointerEvents = 'auto';
+                }
+                
+                // Salvar a nova ordem
+                const buttons = Array.from(container.children);
+                const order = buttons.map(btn => btn.getAttribute('data-button-id'));
+                const groupId = container.closest('.group').id;
+                localStorage.setItem(`buttonOrder_${groupId}`, JSON.stringify(order));
+                
+                // Resetar o estado de arrasto após um pequeno delay
+                setTimeout(() => {
+                    isDragging = false;
+                }, 50);
+            }
+        });
+        
+        console.log('Sortable inicializado com sucesso');
+        return sortable;
+    } catch (error) {
+        console.error('Erro ao inicializar Sortable:', error);
+    }
 }
 
 // Função para aplicar a cor ao botão
@@ -76,52 +192,50 @@ function applyButtonColor(button, colorName) {
     button.style.setProperty('--button-gradient', gradient);
     button.style.setProperty('--button-hover-gradient', hoverGradient);
     button.style.backgroundImage = gradient;
-    button.style.boxShadow = `0 2px 4px ${color.gradient[0]}33`;
     
     const icon = button.querySelector('i');
     if (icon) {
         icon.style.color = color.iconColor;
     }
 
-    saveButtonColor(button.getAttribute('data-button-id'), colorName);
+    // Salvar a cor no localStorage
+    localStorage.setItem(`buttonColor_${button.getAttribute('data-button-id')}`, colorName);
 }
 
 // Função para criar o menu de cores
 function createColorMenu(button) {
     const menu = document.createElement('div');
     menu.className = 'color-menu';
-    
+
     Object.keys(buttonColors).forEach(colorName => {
-        const colorOption = document.createElement('div');
-        colorOption.className = 'color-option';
-        colorOption.style.background = `linear-gradient(135deg, ${buttonColors[colorName].gradient[0]}, ${buttonColors[colorName].gradient[1]})`;
-        colorOption.onclick = () => {
+        const option = document.createElement('div');
+        option.className = 'color-option';
+        option.style.background = `linear-gradient(135deg, ${buttonColors[colorName].gradient[0]}, ${buttonColors[colorName].gradient[1]})`;
+        option.onclick = () => {
             applyButtonColor(button, colorName);
             menu.remove();
         };
-        menu.appendChild(colorOption);
+        menu.appendChild(option);
     });
 
     return menu;
 }
 
-// Inicializar drag and drop e personalização de cores
+// Inicializar personalização
 function initializeCustomization() {
-    // Adicionar IDs únicos aos botões se não existirem
+    console.log('Iniciando personalização...');
+    
     document.querySelectorAll('.button-container button').forEach((button, index) => {
         if (!button.getAttribute('data-button-id')) {
             button.setAttribute('data-button-id', `button_${index}`);
         }
-
-        // Carregar cor salva ou usar azul como padrão
-        const savedColor = loadButtonColor(button.getAttribute('data-button-id'));
+        
+        // Carregar cor salva
+        const savedColor = localStorage.getItem(`buttonColor_${button.getAttribute('data-button-id')}`);
         if (savedColor) {
             applyButtonColor(button, savedColor);
-        } else {
-            // Definir azul como cor padrão
-            applyButtonColor(button, 'blue');
         }
-
+        
         // Adicionar menu de contexto para cores
         button.addEventListener('contextmenu', (e) => {
             e.preventDefault();
@@ -136,7 +250,6 @@ function initializeCustomization() {
             menu.style.top = `${e.pageY}px`;
             document.body.appendChild(menu);
 
-            // Fechar menu ao clicar fora
             document.addEventListener('click', function closeMenu(e) {
                 if (!menu.contains(e.target)) {
                     menu.remove();
@@ -144,43 +257,37 @@ function initializeCustomization() {
                 }
             });
         });
+        
+        // Adicionar título para indicar que pode ser arrastado
+        button.title = 'Clique e arraste para reordenar • Clique com botão direito para mudar a cor';
     });
-
-    // Inicializar drag and drop para cada grupo
+    
+    // Inicializar Sortable em cada container
     document.querySelectorAll('.button-container').forEach(container => {
-        new Sortable(container, {
-            animation: 150,
-            ghostClass: 'sortable-ghost',
-            onEnd: function(evt) {
-                const buttons = Array.from(evt.target.children).map(button => 
-                    button.getAttribute('data-button-id')
-                );
-                saveButtonOrder(evt.target.closest('.group').id, buttons);
-            }
-        });
-
-        // Carregar ordem salva
-        const groupId = container.closest('.group').id;
-        const savedOrder = loadButtonOrder(groupId);
-        if (savedOrder) {
-            const buttonMap = new Map();
-            container.querySelectorAll('button').forEach(button => {
-                buttonMap.set(button.getAttribute('data-button-id'), button);
-            });
-
-            savedOrder.forEach(buttonId => {
-                const button = buttonMap.get(buttonId);
-                if (button) {
-                    container.appendChild(button);
-                }
-            });
-        }
+        initializeSortable(container);
     });
 }
 
-// Adicionar estilos necessários
+// Estilos CSS
 const style = document.createElement('style');
 style.textContent = `
+    .button-container {
+        position: relative;
+        min-height: 48px;
+    }
+
+    .draggable-button {
+        cursor: move !important;
+        user-select: none !important;
+        -webkit-user-drag: none !important;
+    }
+
+    .sortable-ghost {
+        opacity: 0.5 !important;
+        background: rgba(96, 165, 250, 0.2) !important;
+        border: 2px dashed #60A5FA !important;
+    }
+
     .color-menu {
         position: absolute;
         background: white;
@@ -205,24 +312,17 @@ style.textContent = `
     .color-option:hover {
         transform: scale(1.1);
     }
-
-    .sortable-ghost {
-        opacity: 0.5;
-    }
-
-    .button-container button {
-        transition: all 0.3s ease;
-        background-color: transparent !important;
-    }
-
-    .button-container button:hover {
-        transform: translateX(5px);
-    }
 `;
 document.head.appendChild(style);
 
-// Carregar Sortable.js
-const sortableScript = document.createElement('script');
-sortableScript.src = 'https://cdn.jsdelivr.net/npm/sortablejs@latest/Sortable.min.js';
-sortableScript.onload = initializeCustomization;
-document.head.appendChild(sortableScript);
+// Aguardar o carregamento completo da página
+window.addEventListener('load', function() {
+    console.log('Página carregada, verificando Sortable.js...');
+    
+    if (typeof Sortable !== 'undefined') {
+        console.log('Sortable.js está disponível');
+        initializeCustomization();
+    } else {
+        console.error('Sortable.js não está disponível!');
+    }
+});

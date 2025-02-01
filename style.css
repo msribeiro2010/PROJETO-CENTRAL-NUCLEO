@@ -369,9 +369,17 @@ body.dark .group.sistema-pje .button-container button {
 /* Grid de Botões */
 .button-container.grid-layout {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-    gap: 15px;
-    padding: 10px;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 12px;
+    padding: 12px;
+    min-height: 50px;
+}
+
+.button-container.grid-layout button {
+    width: 100%;
+    height: 100%;
+    min-height: 48px;
+    margin: 0;
 }
 
 .button-container button,
@@ -1171,58 +1179,56 @@ body.dark .group .button-container button:hover {
     border: none;
     position: relative;
     overflow: hidden;
+    user-select: none;
+    -webkit-user-drag: none;
+    touch-action: none;
 }
 
-.button-container button::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: linear-gradient(135deg, rgba(255, 255, 255, 0.15), rgba(255, 255, 255, 0.05));
-    opacity: 0;
-    transition: opacity 0.3s ease;
+.button-container button a {
+    pointer-events: auto; /* Reabilita eventos apenas para os links dentro do botão */
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    width: 100%;
+    height: 100%;
+    text-decoration: none;
+    color: inherit;
 }
 
-.button-container button:hover {
-    background: linear-gradient(135deg, #3B82F6, #2563EB) !important;
-    transform: translateX(5px);
-    box-shadow: 0 10px 15px -3px rgba(59, 130, 246, 0.1), 0 4px 6px -2px rgba(59, 130, 246, 0.05);
+/* Elemento fantasma durante o arrasto */
+.sortable-ghost {
+    opacity: 0.3 !important;
+    border: 2px dashed #60A5FA !important;
+    background: rgba(96, 165, 250, 0.1) !important;
+    box-shadow: none !important;
+    transform: scale(0.98) !important;
 }
 
-.button-container button:hover::before {
-    opacity: 1;
+/* Elemento sendo arrastado */
+.sortable-drag {
+    cursor: grabbing !important;
+    transform: scale(1.02) !important;
+    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.15) !important;
+    opacity: 0.95 !important;
+    z-index: 1000 !important;
 }
 
-.button-container button i {
-    color: #BFDBFE;
-    filter: drop-shadow(0 1px 1px rgba(0, 0, 0, 0.1));
-    transition: all 0.3s ease;
+/* Elemento escolhido (quando começa o arrasto) */
+.sortable-chosen {
+    cursor: grabbing !important;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1) !important;
 }
 
-.button-container button:hover i {
-    transform: scale(1.1);
+/* Área de destino durante o arrasto */
+.button-container.drag-highlight {
+    background: rgba(96, 165, 250, 0.05);
+    border-radius: 8px;
+    transition: background 0.2s ease;
 }
 
-/* Dark mode */
-body.dark .button-container button {
-    background: linear-gradient(135deg, #3B82F6, #2563EB) !important;
-    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.2), 0 2px 4px -1px rgba(0, 0, 0, 0.1);
-}
-
-body.dark .button-container button:hover {
-    background: linear-gradient(135deg, #60A5FA, #3B82F6) !important;
-    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.2), 0 4px 6px -2px rgba(0, 0, 0, 0.1);
-}
-
-/* Manter os estilos personalizados */
-.button-container button[style*="--button-gradient"] {
-    background: var(--button-gradient) !important;
-}
-
-.button-container button[style*="--button-gradient"]:hover {
-    background: var(--button-hover-gradient) !important;
+/* Modo escuro - área de destino */
+body.dark .button-container.drag-highlight {
+    background: rgba(59, 130, 246, 0.05);
 }
 
 /* Footer */
@@ -1587,4 +1593,33 @@ body.dark .group.google-apps .button-container button[onclick*="document"]:hover
 .group.assyst-pje .button-container button:hover {
     background-color: transparent !important;
     background-image: var(--button-hover-gradient) !important;
+}
+
+.sortable-ghost {
+    opacity: 0.4;
+    background: rgba(96, 165, 250, 0.2) !important;
+    border: 2px dashed #60A5FA !important;
+}
+
+.sortable-drag {
+    cursor: grabbing !important;
+    transform: scale(1.05);
+    box-shadow: 0 8px 20px rgba(59, 130, 246, 0.2) !important;
+}
+
+.button-container button {
+    cursor: grab;
+    touch-action: none;
+    -webkit-user-drag: none;
+    user-select: none;
+}
+
+.button-container button:active {
+    cursor: grabbing;
+}
+
+/* Modo escuro */
+body.dark .sortable-ghost {
+    background: rgba(59, 130, 246, 0.15) !important;
+    border: 2px dashed #3B82F6 !important;
 }
