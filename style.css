@@ -327,36 +327,30 @@ body.dark .group.sistema-pje .button-container button {
 /* Grupo com Accordion */
 .group {
     margin-bottom: 20px;
-    border-radius: 12px;
+    border-radius: 8px;
     overflow: hidden;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
-    transition: all 0.3s ease;
-    background: rgba(255, 255, 255, 0.05);
-    border: 1px solid #2563eb;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    border: 1px solid rgba(0, 0, 0, 0.1);
 }
 
 .accordion-header {
     width: 100%;
-    padding: 18px 25px;
-    background: linear-gradient(135deg, #4299e1, #3182ce);
-    color: white;
     border: none;
-    text-align: left;
-    font-size: 1.1rem;
-    font-weight: 500;
-    cursor: pointer;
+    padding: 15px 20px;
     display: flex;
     justify-content: space-between;
     align-items: center;
+    cursor: pointer;
     transition: all 0.3s ease;
+    color: white;
+    font-size: 1.1rem;
+    font-weight: 500;
+    position: relative;
+    border-left: 4px solid transparent;
 }
 
 .accordion-header:hover {
     background: linear-gradient(135deg, #3182ce, #2b6cb0);
-}
-
-.accordion-header i {
-    margin-right: 10px;
 }
 
 .accordion-content {
