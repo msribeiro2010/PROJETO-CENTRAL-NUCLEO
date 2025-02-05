@@ -1675,3 +1675,68 @@ body.dark .sortable-ghost {
     background: rgba(59, 130, 246, 0.15) !important;
     border: 2px dashed #3B82F6 !important;
 }
+
+/* Estilos base para todos os botões nos containers */
+.button-container button,
+.group .button-container button {
+    width: 100%;
+    padding: 10px 14px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-size: 0.85rem;
+    text-align: left;
+    display: flex;
+    align-items: flex-start;
+    gap: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    min-height: 44px;
+    line-height: 1.3;
+    white-space: normal;
+    word-wrap: break-word;
+    width: 100%;
+    border: none;
+}
+
+.button-container button:hover,
+.group .button-container button:hover {
+    transform: translateX(5px);
+    box-shadow: 0 4px 12px rgba(43, 108, 176, 0.2);
+}
+
+.button-container button i,
+.group .button-container button i {
+    font-size: 1rem;
+    color: rgba(255, 255, 255, 0.9);
+    filter: drop-shadow(1px 1px 1px rgba(0, 0, 0, 0.2));
+    flex-shrink: 0;
+    width: 18px;
+    text-align: center;
+    margin-top: 2px;
+}
+
+/* Estilos específicos para cada grupo */
+.group.google-apps .button-container button {
+    background: linear-gradient(135deg, #DB4437, #C31C0D);
+}
+
+.group.pje .button-container button {
+    background: linear-gradient(135deg, #4A5568, #2D3748);
+}
+
+.group.sistema-pje .button-container button {
+    background: linear-gradient(135deg, #319795, #2C7A7B);
+}
+
+.group.sistemas-satelites .button-container button {
+    background: linear-gradient(135deg, #00838F, #006064);
+}
+
+.group.assyst-pje .button-container button {
+    background: linear-gradient(135deg, #4CAF50, #388E3C);
+}
+
+.group.apps-externos .button-container button {
+    background: linear-gradient(135deg, #64748B, #475569);
+}
