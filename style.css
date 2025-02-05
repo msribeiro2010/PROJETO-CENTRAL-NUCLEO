@@ -333,6 +333,30 @@ body.dark .group.sistema-pje .button-container button {
     border: 1px solid rgba(0, 0, 0, 0.1);
 }
 
+.group.google-apps {
+    border: 1px solid #DB4437;
+}
+
+.group.pje {
+    border: 1px solid #4A5568;
+}
+
+.group.sistema-pje {
+    border: 1px solid #319795;
+}
+
+.group.sistemas-satelites {
+    border: 1px solid #00838F;
+}
+
+.group.assyst-pje {
+    border: 1px solid #4CAF50;
+}
+
+.group.apps-externos {
+    border: 1px solid #64748B;
+}
+
 .accordion-header {
     width: 100%;
     border: none;
