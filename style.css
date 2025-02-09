@@ -487,7 +487,10 @@ body.dark .group.google-apps .accordion-header:hover {
 .group.assyst,
 .group.sistemas-satelites {
     background: #ffffff;
-    border: 1px solid #2b6cb0;
+    border-radius: 12px;
+    margin-bottom: 20px;
+    overflow: hidden;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
 .group.pje .button-container,
@@ -591,286 +594,48 @@ body.dark .group.pje .button-container button:hover {
     background: linear-gradient(135deg, #2563eb, #1d4ed8);
 }
 
-/* Responsividade */
-@media (max-width: 1024px) {
-    .group.pje .ambientes-container {
-        grid-template-columns: repeat(2, 1fr);
-    }
-}
-
-@media (max-width: 768px) {
-    .group.pje .ambientes-container {
-        grid-template-columns: 1fr;
-    }
-}
-
-.subgroup {
-    width: 100%;
+/* Modo escuro para os grupos */
+body.dark .group.pje,
+body.dark .group.assyst-pje,
+body.dark .group.sistemas-satelites {
     background: rgba(255, 255, 255, 0.05);
-    border-radius: 8px;
-    overflow: hidden;
-    margin-bottom: 15px;
-    border: 1px solid #2563eb;
-}
-
-.subgroup:last-child {
-    margin-bottom: 0;
-}
-
-.accordion-subheader {
-    width: 100%;
-    padding: 12px 16px;
-    background: linear-gradient(135deg, #2b6cb0, #1a4971);
-    color: white;
-    border: none;
-    text-align: left;
-    font-size: 0.95rem;
-    font-weight: 500;
-    cursor: pointer;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    transition: all 0.3s ease;
-}
-
-.accordion-subheader:hover {
-    background: linear-gradient(135deg, #2d74bd, #1e5285);
-}
-
-.accordion-subheader i {
-    font-size: 1rem;
-    margin-right: 8px;
-}
-
-.accordion-subheader .accordion-icon {
-    margin-left: auto;
-    margin-right: 0;
-    transition: transform 0.3s ease;
-}
-
-.subgroup .accordion-content {
-    padding: 12px;
-    background: rgba(255, 255, 255, 0.02);
-}
-
-.subgroup .button-container {
-    display: grid;
-    grid-template-columns: 1fr;
-    gap: 8px;
-}
-
-.subgroup .button-container button {
-    background: linear-gradient(135deg, #2b6cb0, #1a4971);
-    color: white;
-    font-weight: 500;
-    padding: 10px 14px;
-    border-radius: 8px;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    font-size: 0.85rem;
-    text-align: left;
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    min-height: 44px;
-    line-height: 1.3;
-    white-space: normal;
-    word-wrap: break-word;
-    width: 100%;
-    border: none;
-}
-
-.subgroup .button-container button:hover {
-    background: linear-gradient(135deg, #2d74bd, #1e5285);
-    transform: translateX(5px);
-    box-shadow: 0 4px 12px rgba(43, 108, 176, 0.2);
-}
-
-/* Dark mode */
-body.dark .subgroup {
-    background: rgba(26, 32, 44, 0.3);
-    border-color: rgba(255, 255, 255, 0.1);
-}
-
-body.dark .accordion-subheader {
-    background: linear-gradient(135deg, #1e5285, #143655);
-}
-
-body.dark .accordion-subheader:hover {
-    background: linear-gradient(135deg, #2b6cb0, #1a4971);
-}
-
-body.dark .subgroup .accordion-content {
-    background: rgba(26, 32, 44, 0.2);
-}
-
-body.dark .subgroup .button-container button {
-    background: linear-gradient(135deg, #1e5285, #143655);
-}
-
-body.dark .subgroup .button-container button:hover {
-    background: linear-gradient(135deg, #2b6cb0, #1a4971);
-}
-
-/* ASSYST-PJe (Roxo) */
-.group.assyst .accordion-header {
-    background: linear-gradient(135deg, #4CAF50, #1B5E20);
-    border-left: 4px solid #4CAF50;
-}
-
-.group.assyst .accordion-header:hover {
-    background: linear-gradient(135deg, #43A047, #2E7D32);
-}
-
-.group.assyst .accordion-content {
-    background: rgba(27, 94, 32, 0.95);
-}
-
-.group.assyst .button-container button[onclick*="chamados"],
-.group.assyst .button-container button[onclick*="Chamados"] {
-    background: linear-gradient(135deg, #f44336, #c62828);
-    border-left: 4px solid #f44336;
-    color: white;
-    font-weight: 500;
-}
-
-.group.assyst .button-container button[onclick*="chamados"]:hover,
-.group.assyst .button-container button[onclick*="Chamados"]:hover {
-    background: linear-gradient(135deg, #ef5350, #d32f2f);
-    transform: translateX(5px);
-}
-
-.group.assyst .button-container button[onclick*="consulta"],
-.group.assyst .button-container button[onclick*="Consulta"] {
-    background: linear-gradient(135deg, #2196f3, #1565c0);
-    border-left: 4px solid #2196f3;
-    color: white;
-    font-weight: 500;
-}
-
-.group.assyst .button-container button[onclick*="consulta"]:hover,
-.group.assyst .button-container button[onclick*="Consulta"]:hover {
-    background: linear-gradient(135deg, #42a5f5, #1976d2);
-    transform: translateX(5px);
-}
-
-.group.assyst .button-container button[onclick*="abertos"],
-.group.assyst .button-container button[onclick*="Abertos"] {
-    background: linear-gradient(135deg, #9c27b0, #6a1b9a);
-    border-left: 4px solid #9c27b0;
-    color: white;
-    font-weight: 500;
-}
-
-.group.assyst .button-container button[onclick*="abertos"]:hover,
-.group.assyst .button-container button[onclick*="Abertos"]:hover {
-    background: linear-gradient(135deg, #ab47bc, #7b1fa2);
-    transform: translateX(5px);
-}
-
-.group.assyst .button-container button:not([onclick*="chamados"]):not([onclick*="Chamados"]):not([onclick*="consulta"]):not([onclick*="Consulta"]):not([onclick*="abertos"]):not([onclick*="Abertos"]) {
-    background: linear-gradient(135deg, #ff9800, #ef6c00);
-    border-left: 4px solid #ff9800;
-    color: white;
-    font-weight: 500;
-}
-
-.group.assyst .button-container button:not([onclick*="chamados"]):not([onclick*="Chamados"]):not([onclick*="consulta"]):not([onclick*="Consulta"]):not([onclick*="abertos"]):not([onclick*="Abertos"]):hover {
-    background: linear-gradient(135deg, #ffa726, #f57c00);
-    transform: translateX(5px);
-}
-
-.group.assyst .button-container button {
-    position: relative;
-    overflow: hidden;
-    height: 48px;
-    padding: 0 20px;
-    border-radius: 8px;
-    font-size: 14px;
-    letter-spacing: 0.3px;
-    display: flex;
-    align-items: center;
-    justify-content: flex-start;
-    transition: all 0.3s ease;
-    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
-}
-
-.group.assyst .button-container button::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(255, 255, 255, 0.1);
-    transform: translateX(-100%);
-    transition: transform 0.3s ease;
-}
-
-.group.assyst .button-container button:hover::before {
-    transform: translateX(0);
-}
-
-.group.assyst .button-container button i {
-    font-size: 18px;
-    margin-right: 10px;
-    transition: transform 0.3s ease;
-}
-
-.group.assyst .button-container button:hover i {
-    transform: scale(1.1);
-}
-
-/* Dark mode adjustments */
-body.dark .group.assyst .accordion-header {
-    background: linear-gradient(135deg, #388E3C, #1B5E20);
-}
-
-body.dark .group.assyst .accordion-content {
-    background: rgba(27, 94, 32, 0.98);
-}
-
-body.dark .group.assyst .button-container button::before {
-    background: rgba(255, 255, 255, 0.05);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
 }
 
 /* Grupo Assyst-PJe */
 .group.assyst-pje {
-    background: linear-gradient(135deg, 
-        rgba(49, 130, 206, 0.1),
-        rgba(44, 82, 130, 0.15)
-    );
+    background: #ffffff;
     border-radius: 12px;
-    padding: 20px;
     margin-bottom: 20px;
-    border: 1px solid #2563eb;
+    overflow: hidden;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
 .group.assyst-pje .accordion-header {
-    background: linear-gradient(90deg,
-        #3182ce 0%,
-        #2b6cb0 50%,
-        #2c5282 100%
-    );
+    background: linear-gradient(135deg, #1e3c72, #2a5298);
     color: white;
     padding: 15px 20px;
-    border-radius: 8px;
+    border: none;
+    width: 100%;
+    text-align: left;
     cursor: pointer;
     display: flex;
-    align-items: center;
     justify-content: space-between;
+    align-items: center;
     transition: all 0.3s ease;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
 .group.assyst-pje .accordion-header:hover {
-    background: linear-gradient(90deg,
-        #4299e1 0%,
-        #3182ce 50%,
-        #2b6cb0 100%
-    );
-    transform: translateY(-1px);
+    background: linear-gradient(135deg, #2a5298, #1e3c72);
+    transform: translateY(-2px);
+}
+
+body.dark .group.assyst-pje .accordion-header {
+    background: linear-gradient(135deg, #15325f, #1e4785);
+}
+
+body.dark .group.assyst-pje .accordion-header:hover {
+    background: linear-gradient(135deg, #1e4785, #15325f);
 }
 
 .group.assyst-pje .button-container {
@@ -914,28 +679,10 @@ body.dark .group.assyst .button-container button::before {
     color: #93c5fd;
 }
 
-/* Estilo específico para o botão Assyst's/Abertos */
-.group.assyst-pje .button-container button[onclick*="queryProfileForm"] {
-    background: linear-gradient(135deg, #ef4444, #dc2626);
-    box-shadow: 0 2px 4px rgba(220, 38, 38, 0.2);
-}
-
-.group.assyst-pje .button-container button[onclick*="queryProfileForm"]:hover {
-    background: linear-gradient(135deg, #dc2626, #b91c1c);
-    box-shadow: 0 4px 12px rgba(220, 38, 38, 0.3);
-}
-
-.group.assyst-pje .button-container button[onclick*="queryProfileForm"] i {
-    color: #fca5a5;
-}
-
 /* Dark mode */
 body.dark .group.assyst-pje {
-    background: linear-gradient(135deg, 
-        rgba(49, 130, 206, 0.15),
-        rgba(44, 82, 130, 0.2)
-    );
-    border-color: rgba(255, 255, 255, 0.1);
+    background: rgba(255, 255, 255, 0.05);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
 }
 
 body.dark .group.assyst-pje .accordion-header {
