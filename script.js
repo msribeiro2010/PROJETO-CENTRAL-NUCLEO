@@ -264,3 +264,57 @@ navbarLinks.forEach(link => {
         }
     });
 });
+
+// Função para buscar e exibir dados do clima
+async function fetchWeather() {
+    const city = 'Campinas';
+    const apiKey = 'a5057b2b8909f6f1b65b912656d2beea';
+    const url = `http://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric&lang=pt_br`;
+
+    try {
+        const response = await fetch(url);
+        const data = await response.json();
+
+        if (data.main && data.weather) {
+            const temp = Math.round(data.main.temp);
+            const desc = data.weather[0].description;
+            const icon = getWeatherIcon(data.weather[0].icon);
+
+            document.querySelector('#weather-temp').textContent = `${temp}°C`;
+            document.querySelector('#weather-desc').textContent = desc;
+            document.querySelector('.weather i').className = `bi ${icon}`;
+        }
+    } catch (error) {
+        console.error('Erro ao buscar dados do clima:', error);
+    }
+}
+
+// Função para mapear ícones do OpenWeather para Bootstrap Icons
+function getWeatherIcon(weatherIcon) {
+    const iconMap = {
+        '01d': 'bi-sun',
+        '01n': 'bi-moon-stars',
+        '02d': 'bi-cloud-sun',
+        '02n': 'bi-cloud-moon',
+        '03d': 'bi-cloud',
+        '03n': 'bi-cloud',
+        '04d': 'bi-clouds',
+        '04n': 'bi-clouds',
+        '09d': 'bi-cloud-drizzle',
+        '09n': 'bi-cloud-drizzle',
+        '10d': 'bi-cloud-rain',
+        '10n': 'bi-cloud-rain',
+        '11d': 'bi-cloud-lightning',
+        '11n': 'bi-cloud-lightning',
+        '13d': 'bi-snow',
+        '13n': 'bi-snow',
+        '50d': 'bi-cloud-haze',
+        '50n': 'bi-cloud-haze'
+    };
+
+    return iconMap[weatherIcon] || 'bi-cloud';
+}
+
+// Buscar clima inicialmente e atualizar a cada 30 minutos
+fetchWeather();
+setInterval(fetchWeather, 30 * 60 * 1000);

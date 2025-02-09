@@ -1842,3 +1842,40 @@ body.dark .group.pje .accordion-header:hover {
     background: linear-gradient(135deg, #1C1C1C, #000000);
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.6);
 }
+
+/* Estilo para o widget do clima */
+.weather {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    background: rgba(255, 255, 255, 0.1);
+    padding: 8px 15px;
+    border-radius: 8px;
+    margin: 0 15px;
+    backdrop-filter: blur(5px);
+    transition: all 0.3s ease;
+}
+
+.weather i {
+    font-size: 1.5rem;
+    color: #ffd700;
+}
+
+.weather span {
+    color: white;
+    font-weight: 500;
+}
+
+.weather #weather-temp {
+    font-size: 1.2rem;
+}
+
+.weather #weather-desc {
+    text-transform: capitalize;
+    font-size: 0.9rem;
+    opacity: 0.9;
+}
+
+body.dark .weather {
+    background: rgba(0, 0, 0, 0.2);
+}
