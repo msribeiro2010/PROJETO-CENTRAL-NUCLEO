@@ -1813,3 +1813,32 @@ body.dark .group.google-apps .button-container button[onclick*="informacoes-func
     background: linear-gradient(135deg, #c71585, #800080);
     box-shadow: 0 4px 12px rgba(128, 0, 128, 0.4);
 }
+
+/* Estilo para o header do PJe */
+.group.pje .accordion-header {
+    background: linear-gradient(135deg, #000000, #2C2C2C);
+    color: white;
+    border-left: 4px solid #000000;
+    transition: all 0.3s ease;
+}
+
+.group.pje .accordion-header:hover {
+    background: linear-gradient(135deg, #2C2C2C, #000000);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
+}
+
+.group.pje .accordion-header i {
+    color: white;
+}
+
+/* Versão dark mode */
+body.dark .group.pje .accordion-header {
+    background: linear-gradient(135deg, #000000, #1C1C1C);
+    border-left: 4px solid #000000;
+}
+
+body.dark .group.pje .accordion-header:hover {
+    background: linear-gradient(135deg, #1C1C1C, #000000);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.6);
+}
