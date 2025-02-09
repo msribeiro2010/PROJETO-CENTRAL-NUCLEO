@@ -122,10 +122,11 @@ body {
 /* Header Principal */
 .header {
     background: linear-gradient(135deg, 
-        rgba(49, 130, 206, 0.95),
-        rgba(66, 153, 225, 0.85) 30%,
-        rgba(43, 108, 176, 0.8) 70%,
-        rgba(44, 82, 130, 0.9)
+        #1e3c72 0%,
+        #2a5298 25%,
+        #3674be 50%,
+        #2a5298 75%,
+        #1e3c72 100%
     );
     padding: 25px;
     border-radius: 12px;
@@ -134,11 +135,12 @@ body {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    box-shadow: 0 8px 24px rgba(30, 60, 114, 0.4);
     position: relative;
     overflow: hidden;
     backdrop-filter: blur(8px);
     -webkit-backdrop-filter: blur(8px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 .header::before {
@@ -149,10 +151,11 @@ body {
     right: 0;
     bottom: 0;
     background: linear-gradient(135deg,
-        rgba(255, 255, 255, 0.15),
-        rgba(255, 255, 255, 0.1) 30%,
-        rgba(255, 255, 255, 0.05) 70%,
-        rgba(255, 255, 255, 0.02)
+        rgba(255, 255, 255, 0.1) 0%,
+        rgba(255, 255, 255, 0.05) 25%,
+        rgba(255, 255, 255, 0.025) 50%,
+        rgba(255, 255, 255, 0.05) 75%,
+        rgba(255, 255, 255, 0.1) 100%
     );
     pointer-events: none;
 }
@@ -188,19 +191,23 @@ body {
 /* Dark mode */
 body.dark .header {
     background: linear-gradient(135deg, 
-        rgba(49, 130, 206, 0.9),
-        rgba(66, 153, 225, 0.8) 30%,
-        rgba(43, 108, 176, 0.75) 70%,
-        rgba(44, 82, 130, 0.85)
+        #15325f 0%,
+        #1e4785 25%,
+        #2765ac 50%,
+        #1e4785 75%,
+        #15325f 100%
     );
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    box-shadow: 0 8px 24px rgba(21, 50, 95, 0.5);
 }
 
 body.dark .header::before {
     background: linear-gradient(135deg,
-        rgba(0, 0, 0, 0.15),
-        rgba(0, 0, 0, 0.1) 30%,
-        rgba(0, 0, 0, 0.05) 70%,
-        rgba(0, 0, 0, 0.02)
+        rgba(255, 255, 255, 0.05) 0%,
+        rgba(255, 255, 255, 0.025) 25%,
+        rgba(255, 255, 255, 0.01) 50%,
+        rgba(255, 255, 255, 0.025) 75%,
+        rgba(255, 255, 255, 0.05) 100%
     );
 }
 
