@@ -269,10 +269,13 @@ navbarLinks.forEach(link => {
 async function fetchWeather() {
     const city = 'Campinas';
     const apiKey = 'a5057b2b8909f6f1b65b912656d2beea';
-    const url = `http://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric&lang=pt_br`;
+    const url = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric&lang=pt_br`;
 
     try {
         const response = await fetch(url);
+        if (!response.ok) {
+            throw new Error(`HTTP error! status: ${response.status}`);
+        }
         const data = await response.json();
 
         if (data.main && data.weather) {
@@ -280,12 +283,27 @@ async function fetchWeather() {
             const desc = data.weather[0].description;
             const icon = getWeatherIcon(data.weather[0].icon);
 
-            document.querySelector('#weather-temp').textContent = `${temp}°C`;
-            document.querySelector('#weather-desc').textContent = desc;
-            document.querySelector('.weather i').className = `bi ${icon}`;
+            // Atualizar elementos do DOM com verificação de existência
+            const tempElement = document.querySelector('#weather-temp');
+            const descElement = document.querySelector('#weather-desc');
+            const iconElement = document.querySelector('.weather i');
+
+            if (tempElement) tempElement.textContent = `${temp}°C`;
+            if (descElement) descElement.textContent = desc;
+            if (iconElement) iconElement.className = `bi ${icon}`;
+
+            console.log('Clima atualizado:', { temperatura: temp, descricao: desc, icone: icon });
+        } else {
+            console.error('Dados do clima incompletos:', data);
         }
     } catch (error) {
         console.error('Erro ao buscar dados do clima:', error);
+        
+        // Mostrar mensagem de erro na interface
+        const tempElement = document.querySelector('#weather-temp');
+        const descElement = document.querySelector('#weather-desc');
+        if (tempElement) tempElement.textContent = '--°C';
+        if (descElement) descElement.textContent = 'Indisponível';
     }
 }
 
