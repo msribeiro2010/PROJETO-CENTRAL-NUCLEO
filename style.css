@@ -1225,6 +1225,23 @@ body.dark .clock {
     font-weight: 500;
 }
 
+.birthday-today {
+    background-color: rgba(255, 182, 193, 0.2);
+    border-radius: 8px;
+    padding: 8px;
+}
+
+.birthday-icon {
+    color: #ff4d6d;
+    margin-left: 8px;
+    animation: bounce 1s infinite;
+}
+
+@keyframes bounce {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-5px); }
+}
+
 /* Dark mode */
 body.dark #birthdays {
     background: rgba(0, 0, 0, 0.2);

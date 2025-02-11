@@ -171,12 +171,13 @@ async function loadBirthdays() {
         { nome: 'Tatiana da Rocha Natale', aniversario: '28/09' }
     ];
 
-    const currentMonth = new Date().getMonth() + 1; // Mês atual (1-12)
+    const currentMonth = new Date().getMonth() + 1;
+    const currentDay = new Date().getDate();
     
     // Filtra aniversariantes do mês atual
     const birthdaysThisMonth = funcionarios.filter(funcionario => {
-        const birthMonth = parseInt(funcionario.aniversario.split('/')[1]);
-        return birthMonth === currentMonth;
+        const [day, month] = funcionario.aniversario.split('/').map(num => parseInt(num));
+        return month === currentMonth;
     });
 
     // Ordena por dia do mês
@@ -198,15 +199,52 @@ async function loadBirthdays() {
         const birthdayItem = document.createElement('div');
         birthdayItem.className = 'birthday-item';
         
-        const [day] = funcionario.aniversario.split('/');
-        const nome = funcionario.nome.split(' ').slice(0, 2).join(' '); // Mostra apenas primeiro e segundo nome
+        const [day] = funcionario.aniversario.split('/').map(num => parseInt(num));
+        const nome = funcionario.nome.split(' ').slice(0, 2).join(' ');
+        
+        // Verifica se é aniversário hoje
+        const isToday = day === currentDay;
         
         birthdayItem.innerHTML = `
-            ${nome} <span class="date">${day}/${currentMonth.toString().padStart(2, '0')}</span>
+            ${nome} <span class="date">${day.toString().padStart(2, '0')}/${currentMonth.toString().padStart(2, '0')}</span>
+            ${isToday ? '<i class="bi bi-balloon-heart-fill birthday-icon"></i>' : ''}
         `;
+        
+        if (isToday) {
+            birthdayItem.classList.add('birthday-today');
+            triggerConfetti();
+        }
         
         birthdayList.appendChild(birthdayItem);
     });
+}
+
+// Função para disparar o efeito de confetes
+function triggerConfetti() {
+    // Confetti em diferentes posições
+    const duration = 5 * 1000;
+    const end = Date.now() + duration;
+
+    (function frame() {
+        confetti({
+            particleCount: 2,
+            angle: 60,
+            spread: 55,
+            origin: { x: 0 },
+            colors: ['#ff0000', '#00ff00', '#0000ff', '#ffff00', '#ff00ff']
+        });
+        confetti({
+            particleCount: 2,
+            angle: 120,
+            spread: 55,
+            origin: { x: 1 },
+            colors: ['#ff0000', '#00ff00', '#0000ff', '#ffff00', '#ff00ff']
+        });
+
+        if (Date.now() < end) {
+            requestAnimationFrame(frame);
+        }
+    }());
 }
 
 // Carrega os aniversariantes quando a página é carregada
