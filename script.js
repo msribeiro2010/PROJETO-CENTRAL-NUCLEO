@@ -284,24 +284,36 @@ async function fetchWeather() {
 
             document.querySelector('#weather-temp').textContent = `${temp}°C`;
             document.querySelector('#weather-desc').textContent = desc;
-            document.querySelector('.weather i').className = `bi ${icon}`;
+            document.querySelector('.current-weather i').className = `bi ${icon}`;
 
             // Processar previsão para os próximos dias
             const dailyForecasts = {};
+            const weekDays = {
+                'Sun': 'Dom',
+                'Mon': 'Seg',
+                'Tue': 'Ter',
+                'Wed': 'Qua',
+                'Thu': 'Qui',
+                'Fri': 'Sex',
+                'Sat': 'Sáb'
+            };
+
             data.list.forEach(forecast => {
                 const date = new Date(forecast.dt * 1000);
-                const day = date.toLocaleDateString('pt-BR', { weekday: 'short' });
+                const day = date.toLocaleDateString('en-US', { weekday: 'short' });
+                const localDay = weekDays[day];
                 
-                if (!dailyForecasts[day] || date.getHours() === 12) {
-                    dailyForecasts[day] = {
+                if (!dailyForecasts[localDay] || date.getHours() === 12) {
+                    dailyForecasts[localDay] = {
                         temp_min: forecast.main.temp_min,
                         temp_max: forecast.main.temp_max,
                         icon: forecast.weather[0].icon,
-                        description: forecast.weather[0].description
+                        description: forecast.weather[0].description,
+                        date: date.toLocaleDateString('pt-BR', { day: '2-digit', month: '2-digit' })
                     };
                 } else {
-                    dailyForecasts[day].temp_min = Math.min(dailyForecasts[day].temp_min, forecast.main.temp_min);
-                    dailyForecasts[day].temp_max = Math.max(dailyForecasts[day].temp_max, forecast.main.temp_max);
+                    dailyForecasts[localDay].temp_min = Math.min(dailyForecasts[localDay].temp_min, forecast.main.temp_min);
+                    dailyForecasts[localDay].temp_max = Math.max(dailyForecasts[localDay].temp_max, forecast.main.temp_max);
                 }
             });
 
@@ -313,13 +325,14 @@ async function fetchWeather() {
                 const forecastElement = document.createElement('div');
                 forecastElement.className = 'weather-day';
                 forecastElement.innerHTML = `
-                    <div class="weather-day-header">${day}</div>
+                    <div class="weather-day-header">${day} ${forecast.date}</div>
                     <i class="bi ${getWeatherIcon(forecast.icon)}"></i>
                     <div class="weather-day-temp">
                         <span class="max">${Math.round(forecast.temp_max)}°</span>
                         <span class="min">${Math.round(forecast.temp_min)}°</span>
                     </div>
                 `;
+                forecastElement.title = forecast.description;
                 forecastContainer.appendChild(forecastElement);
             });
         }
