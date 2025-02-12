@@ -1225,23 +1225,6 @@ body.dark .clock {
     font-weight: 500;
 }
 
-.birthday-today {
-    background-color: rgba(255, 182, 193, 0.2);
-    border-radius: 8px;
-    padding: 8px;
-}
-
-.birthday-icon {
-    color: #ff4d6d;
-    margin-left: 8px;
-    animation: bounce 1s infinite;
-}
-
-@keyframes bounce {
-    0%, 100% { transform: translateY(0); }
-    50% { transform: translateY(-5px); }
-}
-
 /* Dark mode */
 body.dark #birthdays {
     background: rgba(0, 0, 0, 0.2);
@@ -1633,4 +1616,83 @@ body.dark .group.pje .accordion-header:hover {
 
 body.dark .weather {
     background: rgba(0, 0, 0, 0.2);
+}
+
+/* Estilo específico para o header do Atendimento Externo */
+.group.atendimento-externo .accordion-header {
+    background: linear-gradient(135deg, #0f2653, #1e3a8a);
+    color: white;
+    border-left: 4px solid #0f2653;
+    transition: all 0.3s ease;
+}
+
+.group.atendimento-externo .accordion-header:hover {
+    background: linear-gradient(135deg, #1e3a8a, #1e40af);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(15, 38, 83, 0.5);
+}
+
+/* Dark mode */
+body.dark .group.atendimento-externo .accordion-header {
+    background: linear-gradient(135deg, #0a1a3a, #172554);
+}
+
+body.dark .group.atendimento-externo .accordion-header:hover {
+    background: linear-gradient(135deg, #172554, #1e3a8a);
+    box-shadow: 0 4px 12px rgba(10, 26, 58, 0.6);
+}
+
+/* Estilo específico para o header de Informações Gerais */
+.group.info-funcionais .accordion-header {
+    background: linear-gradient(135deg, #ca8a04, #a16207);
+    color: white;
+    border-left: 4px solid #ca8a04;
+    transition: all 0.3s ease;
+}
+
+.group.info-funcionais .accordion-header:hover {
+    background: linear-gradient(135deg, #d97706, #ca8a04);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(202, 138, 4, 0.4);
+}
+
+.group.info-funcionais .accordion-header i {
+    color: white;
+}
+
+/* Dark mode */
+body.dark .group.info-funcionais .accordion-header {
+    background: linear-gradient(135deg, #a16207, #854d0e);
+    border-left: 4px solid #a16207;
+}
+
+body.dark .group.info-funcionais .accordion-header:hover {
+    background: linear-gradient(135deg, #ca8a04, #a16207);
+    box-shadow: 0 4px 12px rgba(161, 98, 7, 0.5);
+}
+
+/* Refinamento do efeito hover para Informações Gerais */
+.group.info-funcionais .accordion-header::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.05));
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.group.info-funcionais .accordion-header:hover::before {
+    opacity: 1;
+}
+
+.group.info-funcionais {
+    border: 1px solid #975a16;
+}
+
+/* Dark mode ajustes */
+body.dark .group.info-funcionais {
+    border: 1px solid #854d0e;
 }

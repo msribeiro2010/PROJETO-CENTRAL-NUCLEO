@@ -27,7 +27,13 @@
             </a>
             <div class="navbar-links">
                 <a href="#google-apps" data-target="google-apps" title="Google Apps">
-                    <i class="bi bi-google"></i> Google Apps
+                    <i class="bi bi-google"></i> Google
+                </a>
+                <a href="#atendimento-externo" data-target="atendimento-externo" title="Atendimento Externo">
+                    <i class="bi bi-headset"></i> Atendimento
+                </a>
+                <a href="#info-funcionais" data-target="info-funcionais" title="Informações Funcionais">
+                    <i class="bi bi-person-vcard-fill"></i> Info.Funcionais
                 </a>
                 <a href="#pje" data-target="pje" title="PJe">
                     <i class="bi bi-briefcase-fill"></i> PJe
@@ -81,7 +87,7 @@
             <button class="accordion-header" aria-expanded="false" aria-controls="google-apps-content">
                 <div class="header-content">
                     <i class="bi bi-google"></i>
-                    Google/Informações Funcionais
+                    oogle Apps
                 </div>
                 <i class="bi bi-chevron-down accordion-icon"></i>
             </button>
@@ -95,18 +101,50 @@
                         <i class="bi bi-google"></i> Google Planilhas</button>
                     <button onclick="window.open('https://docs.google.com/document/u/0/?tgif=d', '_blank')">
                         <i class="bi bi-google"></i> Google Documentos</button>
-                    <!-- Botão corrigido sem aninhamento -->
+                </div>
+            </div>
+        </div>
+
+        <!-- Grupo Atendimento Externo -->
+        <div class="group atendimento-externo" id="atendimento-externo">
+            <button class="accordion-header" aria-expanded="false" aria-controls="atendimento-externo-content">
+                <div class="header-content">
+                    <i class="bi bi-headset"></i>
+                    Atendimento Externo
+                </div>
+                <i class="bi bi-chevron-down accordion-icon"></i>
+            </button>
+            <div class="accordion-content" id="atendimento-externo-content">
+                <div class="button-container grid-layout">
                     <button onclick="window.open('https://script.google.com/a/macros/trt15.jus.br/s/AKfycbziZENr6M0xQhmRGmG1IBULgL4Q7NQ-XRg7PjLKmNVHn-rWV0KBsIg7X6qybZTdO1pZ/exec', '_blank')">
                         <i class="bi bi-card-checklist"></i> (0800)Registros dos Atendimentos</button>
                     <button onclick="window.open('https://docs.google.com/spreadsheets/d/10_eaPcU5vmbOZBjvCKajOhvwssh_GkvaVjoKSeeSgcA/edit?pli=1&gid=1865698719#gid=1865698719', '_blank')">
                         <i class="bi bi-card-checklist"></i> Planilha/Atendimentos Telefônicos
                     </button>
-                     <button onclick="window.open('https://docs.google.com/spreadsheets/d/1g7pme1VNFhffy2zdbCyRfvdpNFqLjRku8hObrOwqXNY/edit?pli=1&gid=1693944372#gid=1693944372', '_blank')">
+                    <button onclick="window.open('https://docs.google.com/spreadsheets/d/1g7pme1VNFhffy2zdbCyRfvdpNFqLjRku8hObrOwqXNY/edit?pli=1&gid=1693944372#gid=1693944372', '_blank')">
                         <i class="bi bi-envelope-paper"></i> E-mails Diários
                     </button>
                     <button onclick="window.open('https://docs.google.com/spreadsheets/d/1NXxxSjHc04X919BT741lZ1H0Bqs0kHrFVc8nuWFjqNY/edit?gid=1824743735', '_blank')">
                         <i class="bi bi-envelope-arrow-up-fill"></i> Emails Dinâmicos
                     </button>
+                    <button onclick="window.open('https://trt15.jus.br/pje/suporte-ao-pje', '_blank')">
+                        <i class="bi bi-wrench-adjustable-circle"></i> PJe-Suporte
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Informações Funcionais -->
+        <div class="group info-funcionais" id="info-funcionais">
+            <button class="accordion-header" aria-expanded="false" aria-controls="info-funcionais-content">
+                <div class="header-content">
+                    <i class="bi bi-person-vcard-fill"></i>
+                    Informações Gerais - TRT15
+                </div>
+                <i class="bi bi-chevron-down accordion-icon"></i>
+            </button>
+            <div class="accordion-content" id="info-funcionais-content">
+                <div class="button-container grid-layout">
                     <button onclick="window.open('https://trt15.jus.br/intranet/sec-geral-judiciaria/relatorio-distribuicao', '_blank')">
                         <i class="bi bi-bar-chart-line-fill"></i>Relatório de Distribuição</button>
                     <button onclick="window.open('https://autoatendimento.trt15.jus.br/autoatendimentoexterno/f/t/selecaorequerimentosel?fwPlc=fazerrequerimentoman', '_blank')">
@@ -118,39 +156,38 @@
                     <button onclick="window.open('https://autoatendimento.trt15.jus.br/autoatendimentoexterno/f/t/fazerrequerimentoman?chPlc=30411', '_blank')">
                         <i class="bi bi-emoji-sunglasses"></i>SolicitarFolga</button>
                     <button onclick="window.open('https://docs.google.com/spreadsheets/d/1Mz5kOQEBC7qlDVP47i4RMWlZboLKLJWGSsRpgR7kMJk/edit?gid=1762963453', '_blank')">
-                        Presencial/Plantão/Férias
+                        <i class="bi bi-calendar3"></i> Presencial/Plantão/Férias
                     </button>
                     <button onclick="window.open('https://trt15.jus.br/pje/suporte-ao-pje', '_blank')">
                         <i class="bi bi-wrench-adjustable-circle"></i> PJe-Suporte
                     </button>
                     <button onclick="window.open('https://drive.google.com/file/d/1-6R-ZzSC3dSTGXh9NZLWeP25CY8MZ9DG/view?ths=true', '_blank')">
                         <i class="bi bi-book"></i>KB-Conhecimento</button>
-                     <button class="btn-contracheque" onclick="window.open('https://autoatendimento.trt15.jus.br/consultainformacoesfuncionais/contracheque', '_blank')">
+                    <button class="btn-contracheque" onclick="window.open('https://autoatendimento.trt15.jus.br/consultainformacoesfuncionais/contracheque', '_blank')">
                         <i class="bi bi-currency-exchange"></i>Consulta/Contracheque</button>
                     <button onclick="window.open('https://sisad.jt.jus.br/portal-nacional', '_blank')">
                         <i class="bi bi-bank2"></i>Sistemas Nacionais-TRT15</button>
-                           <button onclick="window.open('https://satelites.trt15.jus.br/aplicacoesExtranet/', '_blank')">
+                    <button onclick="window.open('https://satelites.trt15.jus.br/aplicacoesExtranet/', '_blank')">
                         <i class="bi bi-bank2"></i> INTRANET-TRT15</button>
-                          <button onclick="window.open('https://sisad.jt.jus.br/portal-nacional', '_blank')">
+                    <button onclick="window.open('https://sisad.jt.jus.br/portal-nacional', '_blank')">
                         <i class="bi bi-bank2"></i> SISAD  </button>
-                      <button onclick="window.open('https://sisad.jt.jus.br/portal-programa/1', '_blank')">
+                    <button onclick="window.open('https://sisad.jt.jus.br/portal-programa/1', '_blank')">
                         <i class="bi bi-bank2"></i> SIGEP/ARTEMIS/SIGS...  </button>
                     <button onclick="window.open('https://portal.sigeo.jt.jus.br/portal/0', '_blank')">
                         <i class="bi bi-bank2"></i> SIGEO/DIARIAS...  </button>
                     <button onclick="window.open('https://www.gov.br/esocial/pt-br', '_blank')">
                         <i class="bi bi-file-earmark-text"></i> eSocial</button>
-                   <button class="btn-comunicado" onclick="window.open('https://trt15.jus.br/intranet/comunicacao-social/comunicados', '_blank')">
-                    <i class="bi bi-wrench-adjustable-circle"></i> Comunicado-Plantão-2o.Grau</button>
-
+                    <button class="btn-comunicado" onclick="window.open('https://trt15.jus.br/intranet/comunicacao-social/comunicados', '_blank')">
+                        <i class="bi bi-wrench-adjustable-circle"></i> Comunicado-Plantão-2o.Grau</button>
                     <button class="btn-comunicado" onclick="window.open('https://proad.trt15.jus.br/proad/pages/', '_blank')">
                         <i class="bi bi-card-list"></i> PROAD</button>
-
                     <button onclick="window.open('https://msribeiro2010.github.io/SITE-NOVO-ORGAO-JULGADOR-2G/', '_blank')">
-                        Criando Novo OJ-2G
+                        <i class="bi bi-building-add"></i> Criando Novo OJ-2G
                     </button>
                     <button onclick="window.open('https://script.google.com/a/macros/trt15.jus.br/s/AKfycbwf0ABcwmAUcvf5DqeOqI1OcbIWKskDUJrlnuaLRfZQ/dev', '_blank')">
-                        Registros-Chamados </button>
-                     <button class="btn-plantao" onclick="window.open('https://msribeiro2010.github.io/controle-ferias/', '_blank')">Gestor de Trabalho</button>
+                        <i class="bi bi-ticket"></i> Registros-Chamados </button>
+                    <button class="btn-plantao" onclick="window.open('https://msribeiro2010.github.io/controle-ferias/', '_blank')">
+                        <i class="bi bi-calendar-check"></i> Gestor de Trabalho</button>
                 </div>
             </div>
         </div>
@@ -298,7 +335,7 @@
     </div>
 
     <footer class="footer">
-        <p id="author">
+        <p id="author"></p>
             <a href="https://myactivity.google.com/myactivity?pli=1" target="_blank">
                 <i class="bi bi-person-circle"></i> @msribeiro | 2025
             </a>
