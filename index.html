@@ -16,6 +16,7 @@
     <!-- Favicon -->
     <link rel="icon" href="logo.svg" type="image/x-icon">
     <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+    <script src="notes.js" defer></script>
 </head>
 
 <body>
@@ -87,7 +88,7 @@
             <button class="accordion-header" aria-expanded="false" aria-controls="google-apps-content">
                 <div class="header-content">
                     <i class="bi bi-google"></i>
-                    oogle Apps
+                    Google Apps
                 </div>
                 <i class="bi bi-chevron-down accordion-icon"></i>
             </button>
@@ -116,6 +117,8 @@
             </button>
             <div class="accordion-content" id="atendimento-externo-content">
                 <div class="button-container grid-layout">
+                    <button onclick="openNotes()" class="notes-button">
+                        <i class="bi bi-journal-text"></i> Bloco de Notas</button>
                     <button onclick="window.open('https://script.google.com/a/macros/trt15.jus.br/s/AKfycbziZENr6M0xQhmRGmG1IBULgL4Q7NQ-XRg7PjLKmNVHn-rWV0KBsIg7X6qybZTdO1pZ/exec', '_blank')">
                         <i class="bi bi-card-checklist"></i> (0800)Registros dos Atendimentos</button>
                     <button onclick="window.open('https://docs.google.com/spreadsheets/d/10_eaPcU5vmbOZBjvCKajOhvwssh_GkvaVjoKSeeSgcA/edit?pli=1&gid=1865698719#gid=1865698719', '_blank')">
@@ -329,6 +332,23 @@
                     <button class="btn-plantao" onclick="window.open('https://msribeiro2010.github.io/GestaodeTarefas/', '_blank')">Gestor de Tarefas</button>
                     <button class="btn-plantao" onclick="window.open('https://msribeiro2010.github.io/react-exercicio-4/', '_blank')">Gerador de Senhas</button>
                     <button class="btn-plantao" onclick="window.open('https://msribeiro2010.github.io/controle-ferias/', '_blank')">Gestor de Trabalho</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Modal do Bloco de Notas -->
+        <div id="notesModal" class="notes-modal">
+            <div class="notes-content">
+                <div class="notes-header">
+                    <h2><i class="bi bi-journal-text"></i> Bloco de Notas</h2>
+                    <button onclick="closeNotes()" class="close-notes"><i class="bi bi-x-lg"></i></button>
+                </div>
+                <div class="notes-list" id="notesList"></div>
+                <div class="notes-form">
+                    <textarea id="noteInput" placeholder="Digite sua nota aqui..."></textarea>
+                    <button onclick="addNote()" class="add-note-btn">
+                        <i class="bi bi-plus-lg"></i> Adicionar Nota
+                    </button>
                 </div>
             </div>
         </div>
