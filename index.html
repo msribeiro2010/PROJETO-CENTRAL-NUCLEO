@@ -58,27 +58,39 @@
     <div class="container">
         <!-- Header Principal -->
         <div class="header">
-            <h2><i class="bi bi-laptop"></i>   Atalhos-NAPJe <span class="version"></span></h2>
-            <div class="date-time-container">
-                <div class="calendar-wrapper">
-                    <div id="weekday" class="weekday"></div>
-                    <div id="current-date" class="current-date"></div>
-                </div>
-                <div id="clock" class="clock"></div>
-                <div id="weather" class="weather">
-                    <i class="bi bi-cloud-sun"></i>
-                    <span id="weather-temp"></span>
-                    <span id="weather-desc"></span>
-                </div>
-                <div id="birthdays">
-                    <div class="birthday-header">
-                        <i class="bi bi-balloon-fill"></i>
-                        Aniversariante(s) do Mês
-                        <i class="bi bi-balloon-fill"></i>
+            <div class="header-top">
+                <h2><i class="bi bi-laptop"></i>Atalhos-NAPJe</h2>
+            </div>
+            <div class="header-bottom">
+                <div class="header-left">
+                    <div class="clock-container">
+                        <div id="clock" class="clock"></div>
+                        <div class="calendar-wrapper">
+                            <div id="weekday" class="weekday"></div>
+                            <div id="current-date" class="current-date"></div>
+                        </div>
                     </div>
-                    <ul id="birthday-list">
-                        <!-- Lista de aniversariantes será gerada aqui pelo JavaScript -->
-                    </ul>
+                </div>
+                <div class="header-center">
+                    <div id="birthdays">
+                        <div class="birthday-header">
+                            <i class="bi bi-balloon-heart-fill"></i>
+                            Aniversariante(s)
+                        </div>
+                        <ul id="birthday-list"></ul>
+                    </div>
+                </div>
+                <div class="header-right">
+                    <div id="weather" class="weather">
+                        <div class="current-weather">
+                            <i class="bi bi-cloud-sun"></i>
+                            <div class="weather-info">
+                                <span id="weather-temp"></span>
+                                <span id="weather-desc"></span>
+                            </div>
+                        </div>
+                        <div id="weather-forecast" class="weather-forecast"></div>
+                    </div>
                 </div>
             </div>
         </div>

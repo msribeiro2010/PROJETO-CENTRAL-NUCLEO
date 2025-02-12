@@ -171,13 +171,12 @@ async function loadBirthdays() {
         { nome: 'Tatiana da Rocha Natale', aniversario: '28/09' }
     ];
 
-    const currentMonth = new Date().getMonth() + 1;
-    const currentDay = new Date().getDate();
+    const currentMonth = new Date().getMonth() + 1; // Mês atual (1-12)
     
     // Filtra aniversariantes do mês atual
     const birthdaysThisMonth = funcionarios.filter(funcionario => {
-        const [day, month] = funcionario.aniversario.split('/').map(num => parseInt(num));
-        return month === currentMonth;
+        const birthMonth = parseInt(funcionario.aniversario.split('/')[1]);
+        return birthMonth === currentMonth;
     });
 
     // Ordena por dia do mês
@@ -199,52 +198,15 @@ async function loadBirthdays() {
         const birthdayItem = document.createElement('div');
         birthdayItem.className = 'birthday-item';
         
-        const [day] = funcionario.aniversario.split('/').map(num => parseInt(num));
-        const nome = funcionario.nome.split(' ').slice(0, 2).join(' ');
-        
-        // Verifica se é aniversário hoje
-        const isToday = day === currentDay;
+        const [day] = funcionario.aniversario.split('/');
+        const nome = funcionario.nome.split(' ').slice(0, 2).join(' '); // Mostra apenas primeiro e segundo nome
         
         birthdayItem.innerHTML = `
-            ${nome} <span class="date">${day.toString().padStart(2, '0')}/${currentMonth.toString().padStart(2, '0')}</span>
-            ${isToday ? '<i class="bi bi-balloon-heart-fill birthday-icon"></i>' : ''}
+            ${nome} <span class="date">${day}/${currentMonth.toString().padStart(2, '0')}</span>
         `;
-        
-        if (isToday) {
-            birthdayItem.classList.add('birthday-today');
-            triggerConfetti();
-        }
         
         birthdayList.appendChild(birthdayItem);
     });
-}
-
-// Função para disparar o efeito de confetes
-function triggerConfetti() {
-    // Confetti em diferentes posições
-    const duration = 5 * 1000;
-    const end = Date.now() + duration;
-
-    (function frame() {
-        confetti({
-            particleCount: 2,
-            angle: 60,
-            spread: 55,
-            origin: { x: 0 },
-            colors: ['#ff0000', '#00ff00', '#0000ff', '#ffff00', '#ff00ff']
-        });
-        confetti({
-            particleCount: 2,
-            angle: 120,
-            spread: 55,
-            origin: { x: 1 },
-            colors: ['#ff0000', '#00ff00', '#0000ff', '#ffff00', '#ff00ff']
-        });
-
-        if (Date.now() < end) {
-            requestAnimationFrame(frame);
-        }
-    }());
 }
 
 // Carrega os aniversariantes quando a página é carregada
@@ -307,70 +269,93 @@ navbarLinks.forEach(link => {
 async function fetchWeather() {
     const city = 'Campinas';
     const apiKey = 'a5057b2b8909f6f1b65b912656d2beea';
-    const url = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric&lang=pt_br`;
+    const url = `https://api.openweathermap.org/data/2.5/forecast?q=${city}&appid=${apiKey}&units=metric&lang=pt_br`;
 
     try {
         const response = await fetch(url);
-        if (!response.ok) {
-            throw new Error(`HTTP error! status: ${response.status}`);
-        }
         const data = await response.json();
 
-        if (data.main && data.weather) {
-            const temp = Math.round(data.main.temp);
-            const desc = data.weather[0].description;
-            const icon = getWeatherIcon(data.weather[0].icon);
+        if (data.list && data.list.length > 0) {
+            // Processar clima atual
+            const currentWeather = data.list[0];
+            const temp = Math.round(currentWeather.main.temp);
+            const desc = currentWeather.weather[0].description;
+            const icon = getWeatherIcon(currentWeather.weather[0].icon);
 
-            // Atualizar elementos do DOM com verificação de existência
-            const tempElement = document.querySelector('#weather-temp');
-            const descElement = document.querySelector('#weather-desc');
-            const iconElement = document.querySelector('.weather i');
+            document.querySelector('#weather-temp').textContent = `${temp}°C`;
+            document.querySelector('#weather-desc').textContent = desc;
+            document.querySelector('.weather i').className = `bi ${icon}`;
 
-            if (tempElement) tempElement.textContent = `${temp}°C`;
-            if (descElement) descElement.textContent = desc;
-            if (iconElement) iconElement.className = `bi ${icon}`;
+            // Processar previsão para os próximos dias
+            const dailyForecasts = {};
+            data.list.forEach(forecast => {
+                const date = new Date(forecast.dt * 1000);
+                const day = date.toLocaleDateString('pt-BR', { weekday: 'short' });
+                
+                if (!dailyForecasts[day] || date.getHours() === 12) {
+                    dailyForecasts[day] = {
+                        temp_min: forecast.main.temp_min,
+                        temp_max: forecast.main.temp_max,
+                        icon: forecast.weather[0].icon,
+                        description: forecast.weather[0].description
+                    };
+                } else {
+                    dailyForecasts[day].temp_min = Math.min(dailyForecasts[day].temp_min, forecast.main.temp_min);
+                    dailyForecasts[day].temp_max = Math.max(dailyForecasts[day].temp_max, forecast.main.temp_max);
+                }
+            });
 
-            console.log('Clima atualizado:', { temperatura: temp, descricao: desc, icone: icon });
-        } else {
-            console.error('Dados do clima incompletos:', data);
+            // Renderizar previsão dos próximos dias
+            const forecastContainer = document.querySelector('#weather-forecast');
+            forecastContainer.innerHTML = '';
+            
+            Object.entries(dailyForecasts).slice(1, 6).forEach(([day, forecast]) => {
+                const forecastElement = document.createElement('div');
+                forecastElement.className = 'weather-day';
+                forecastElement.innerHTML = `
+                    <div class="weather-day-header">${day}</div>
+                    <i class="bi ${getWeatherIcon(forecast.icon)}"></i>
+                    <div class="weather-day-temp">
+                        <span class="max">${Math.round(forecast.temp_max)}°</span>
+                        <span class="min">${Math.round(forecast.temp_min)}°</span>
+                    </div>
+                `;
+                forecastContainer.appendChild(forecastElement);
+            });
         }
     } catch (error) {
         console.error('Erro ao buscar dados do clima:', error);
-        
-        // Mostrar mensagem de erro na interface
-        const tempElement = document.querySelector('#weather-temp');
-        const descElement = document.querySelector('#weather-desc');
-        if (tempElement) tempElement.textContent = '--°C';
-        if (descElement) descElement.textContent = 'Indisponível';
+        document.querySelector('#weather-temp').textContent = '--°C';
+        document.querySelector('#weather-desc').textContent = 'Indisponível';
     }
 }
 
 // Função para mapear ícones do OpenWeather para Bootstrap Icons
 function getWeatherIcon(weatherIcon) {
     const iconMap = {
-        '01d': 'bi-sun',
-        '01n': 'bi-moon-stars',
-        '02d': 'bi-cloud-sun',
-        '02n': 'bi-cloud-moon',
-        '03d': 'bi-cloud',
-        '03n': 'bi-cloud',
-        '04d': 'bi-clouds',
-        '04n': 'bi-clouds',
-        '09d': 'bi-cloud-drizzle',
-        '09n': 'bi-cloud-drizzle',
-        '10d': 'bi-cloud-rain',
-        '10n': 'bi-cloud-rain',
-        '11d': 'bi-cloud-lightning',
-        '11n': 'bi-cloud-lightning',
-        '13d': 'bi-snow',
-        '13n': 'bi-snow',
-        '50d': 'bi-cloud-haze',
-        '50n': 'bi-cloud-haze'
+        '01d': 'bi-sun-fill',
+        '01n': 'bi-moon-stars-fill',
+        '02d': 'bi-cloud-sun-fill',
+        '02n': 'bi-cloud-moon-fill',
+        '03d': 'bi-cloud-fill',
+        '03n': 'bi-cloud-fill',
+        '04d': 'bi-clouds-fill',
+        '04n': 'bi-clouds-fill',
+        '09d': 'bi-cloud-drizzle-fill',
+        '09n': 'bi-cloud-drizzle-fill',
+        '10d': 'bi-cloud-rain-fill',
+        '10n': 'bi-cloud-rain-fill',
+        '11d': 'bi-cloud-lightning-fill',
+        '11n': 'bi-cloud-lightning-fill',
+        '13d': 'bi-snow2',
+        '13n': 'bi-snow2',
+        '50d': 'bi-cloud-haze-fill',
+        '50n': 'bi-cloud-haze-fill'
     };
 
-    return iconMap[weatherIcon] || 'bi-cloud';
+    return iconMap[weatherIcon] || 'bi-cloud-fill';
 }
 
-// Buscar clima inicialmente e atualizar a cada 30 minutos
+// Atualizar o clima a cada 30 minutos
 fetchWeather();
 setInterval(fetchWeather, 30 * 60 * 1000);
