@@ -61,22 +61,38 @@
         <div class="header">
             <div class="header-top">
                 <h2><i class="bi bi-laptop"></i>Atalhos-NAPJe</h2>
+                <div class="header-utils">
+                    <div class="calendar-wrapper">
+                        <div class="time-container">
+                            <i class="bi bi-clock"></i>
+                            <span id="clock"></span>
+                        </div>
+                        <div class="date-container">
+                            <i class="bi bi-calendar-week"></i>
+                            <span id="weekday"></span>
+                            <span id="current-date"></span>
+                        </div>
+                    </div>
+                   <div class="weather-container"> 
+                        <div class="weather-info">
+                            <div class="weather-temp"></div>
+                            <div class="weather-desc"></div>
+                        </div>
+                        <div class="weather-day">
+                            <i></i>
+                            <span></span>
+                        </div>
+                    </div>
+                </div>
             </div>
             <div class="header-bottom">
                 <div class="header-left">
-                    <div class="clock-container">
-                        <div id="clock" class="clock"></div>
-                        <div class="calendar-wrapper">
-                            <div id="weekday" class="weekday"></div>
-                            <div id="current-date" class="current-date"></div>
-                        </div>
-                    </div>
                 </div>
                 <div class="header-center">
                     <div id="birthdays">
                         <div class="birthday-header">
                             <i class="bi bi-balloon-heart-fill"></i>
-                            Aniversariante(s)
+                            Aniversariante(s) do Mês:
                         </div>
                         <ul id="birthday-list"></ul>
                     </div>
