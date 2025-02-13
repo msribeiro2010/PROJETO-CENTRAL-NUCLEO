@@ -197,7 +197,9 @@ async function loadBirthdays() {
         const [day] = funcionario.aniversario.split('/');
         
         birthdayItem.innerHTML = `
-            ${funcionario.nome} <span class="date">${day}/${currentMonth.toString().padStart(2, '0')}</span>
+            <span class="date">${day}/${currentMonth.toString().padStart(2, '0')}</span>
+            <span class="separator">-</span>
+            <span class="name">${funcionario.nome}</span>
         `;
         
         birthdayList.appendChild(birthdayItem);
