@@ -171,16 +171,12 @@ async function loadBirthdays() {
         { nome: 'Tatiana da Rocha Natale', aniversario: '28/09' }
     ];
 
-    const currentMonth = new Date().getMonth() + 1; // Mês atual (1-12)
+    const currentMonth = new Date().getMonth() + 1;
     
-    // Filtra aniversariantes do mês atual
     const birthdaysThisMonth = funcionarios.filter(funcionario => {
         const birthMonth = parseInt(funcionario.aniversario.split('/')[1]);
         return birthMonth === currentMonth;
-    });
-
-    // Ordena por dia do mês
-    birthdaysThisMonth.sort((a, b) => {
+    }).sort((a, b) => {
         const dayA = parseInt(a.aniversario.split('/')[0]);
         const dayB = parseInt(b.aniversario.split('/')[0]);
         return dayA - dayB;
@@ -199,10 +195,9 @@ async function loadBirthdays() {
         birthdayItem.className = 'birthday-item';
         
         const [day] = funcionario.aniversario.split('/');
-        const nome = funcionario.nome.split(' ').slice(0, 2).join(' '); // Mostra apenas primeiro e segundo nome
         
         birthdayItem.innerHTML = `
-            ${nome} <span class="date">${day}/${currentMonth.toString().padStart(2, '0')}</span>
+            ${funcionario.nome} <span class="date">${day}/${currentMonth.toString().padStart(2, '0')}</span>
         `;
         
         birthdayList.appendChild(birthdayItem);
