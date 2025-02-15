@@ -65,45 +65,20 @@
     </nav>
 
     <div class="container">
-        <div class="header group">
-            <button class="accordion-header" aria-expanded="false" aria-controls="header-content">
-                <div class="header-content">
-                    <div class="header-top">
-                        <h2><i class="bi bi-building"></i> Central Núcleo</h2>
-                    </div>
+        <div class="header">
+            <div class="header-content">
+                <div class="header-title">
+                    <h2><i class="bi bi-building"></i> Central Núcleo</h2>
                 </div>
-                <i class="bi bi-chevron-down accordion-icon"></i>
-            </button>
-            <div class="accordion-content" id="header-content">
-                <div class="header-widgets">
-                    <div class="calendar-wrapper">
-                        <div class="time-container">
-                            <i class="bi bi-clock"></i>
-                            <span id="clock">--:--:--</span>
-                        </div>
-                        <div class="date-container">
-                            <i class="bi bi-calendar3"></i>
-                            <span id="weekday">--</span>
-                            <span id="current-date">--/--/----</span>
-                        </div>
+                <div class="calendar-wrapper">
+                    <div class="time-container">
+                        <i class="bi bi-clock"></i>
+                        <span id="clock">--:--:--</span>
                     </div>
-
-                    <div class="weather-container">
-                        <button class="weather-header" aria-expanded="false" aria-controls="weather-content">
-                            <div class="current-weather">
-                                <i class="bi bi-cloud-sun"></i>
-                                <div class="weather-info">
-                                    <span id="weather-temp">--°C</span>
-                                    <span id="weather-desc">Carregando...</span>
-                                </div>
-                            </div>
-                            <i class="bi bi-chevron-down accordion-icon"></i>
-                        </button>
-                        <div class="accordion-content" id="weather-content">
-                            <div class="weather-forecast">
-                                <!-- Weather forecast content -->
-                            </div>
-                        </div>
+                    <div class="date-container">
+                        <i class="bi bi-calendar3"></i>
+                        <span id="weekday">--</span>
+                        <span id="current-date">--/--/----</span>
                     </div>
                 </div>
             </div>
@@ -241,7 +216,7 @@
                     <div class="button-container grid-layout">
                         <button onclick="window.open('https://trt15.jus.br/intranet/sec-geral-judiciaria/relatorio-distribuicao', '_blank')">
                             <i class="bi bi-bar-chart-line-fill"></i>Relatório de Distribuição</button>
-                        <button onclick="window.open('https://autoatendimento.trt15.jus.br/autoatendimentoexterno/f/t/selecaorequerimentosel?fwPlc=fazerrequerimentoman', '_blank')">
+                       <button onclick="window.open('https://autoatendimento.trt15.jus.br/autoatendimentoexterno/f/t/selecaorequerimentosel?fwPlc=fazerrequerimentoman', '_blank')">
                             <i class="bi bi-person-raised-hand"></i> Requerimentos</button>
                         <button onclick="window.open('https://autoatendimento.trt15.jus.br/autoatendimentoexterno/f/t/fazerrequerimentoman?chPlc=89', '_blank')">
                             <i class="bi bi-person-raised-hand"></i>Averbação Trabalho/Plantão</button>

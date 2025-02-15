@@ -429,47 +429,6 @@ function getWeatherIcon(weatherIcon) {
 fetchWeather();
 setInterval(fetchWeather, 30 * 60 * 1000);
 
-// Inicializar acordeon do header
-document.addEventListener('DOMContentLoaded', function() {
-    const headerAccordion = document.querySelector('.header .accordion-header');
-    const headerContent = document.getElementById('header-content');
-    
-    if (headerAccordion && headerContent) {
-        console.log('Inicializando acordeon do header...');
-        
-        // Configurar estado inicial
-        let isExpanded = true;
-        headerContent.style.display = 'block';
-        headerAccordion.setAttribute('aria-expanded', 'true');
-        headerAccordion.querySelector('.accordion-icon').style.transform = 'rotate(180deg)';
-        
-        // Adicionar evento de clique
-        headerAccordion.addEventListener('click', function(e) {
-            console.log('Clique no header detectado');
-            e.preventDefault();
-            
-            // Inverter o estado
-            isExpanded = !isExpanded;
-            console.log('Novo estado do header:', isExpanded ? 'expandido' : 'recolhido');
-            
-            // Atualizar estado
-            this.setAttribute('aria-expanded', isExpanded);
-            headerContent.style.display = isExpanded ? 'block' : 'none';
-            
-            // Rotacionar o ícone
-            const icon = this.querySelector('.accordion-icon');
-            if (icon) {
-                icon.style.transform = isExpanded ? 'rotate(180deg)' : 'rotate(0deg)';
-            }
-            
-            // Carregar aniversariantes se estiver expandindo
-            if (isExpanded) {
-                carregarAniversariantes();
-            }
-        });
-    }
-});
-
 // Funções do Bloco de Notas
 function toggleNotes() {
     const notesSection = document.getElementById('notes-section');
