@@ -2590,7 +2590,7 @@ body.dark .sem-aniversariantes {
 .holiday-item.Nacional { border-left-color: #ef4444; }
 .holiday-item.Estadual { border-left-color: #3b82f6; }
 .holiday-item.Municipal { border-left-color: #10b981; }
-.holiday-item.FACULTATIVO { border-left-color: #f59e0b; }
+.holiday-item.Facultativo { border-left-color: #f59e0b; }
 .holiday-item.RECESSO { border-left-color: #8b5cf6; }
 
 .holiday-date {
@@ -2619,7 +2619,7 @@ body.dark .sem-aniversariantes {
 .holiday-type.Nacional { background: #fee2e2; color: #ef4444; }
 .holiday-type.Estadual { background: #dbeafe; color: #3b82f6; }
 .holiday-type.Municipal { background: #d1fae5; color: #10b981; }
-.holiday-type.FACULTATIVO { background: #fef3c7; color: #f59e0b; }
+.holiday-type.Facultativo { background: #fef3c7; color: #f59e0b; }
 .holiday-type.RECESSO { background: #ede9fe; color: #8b5cf6; }
 
 /* Dark mode */
@@ -2683,5 +2683,115 @@ body.dark .holiday-name {
     .holiday-name {
         width: 100%;
         min-width: auto;
+    }
+}
+
+/* Estilo dos Aniversariantes */
+.aniversariante-item {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    padding: 12px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 8px;
+    margin-bottom: 10px;
+    transition: all 0.3s ease;
+}
+
+.aniversariante-item:hover {
+    transform: translateY(-2px);
+    background: rgba(255, 255, 255, 0.15);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.aniversariante-icon {
+    width: 40px;
+    height: 40px;
+    min-width: 40px;
+    background: linear-gradient(135deg, #f472b6, #ec4899);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.aniversariante-icon i {
+    font-size: 1.4rem;
+    color: white;
+}
+
+.aniversariante-info {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.aniversariante-nome {
+    font-size: 1.1rem;
+    color: white;
+    font-style: italic;
+    font-weight: 500;
+}
+
+.aniversariante-data {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    color: rgba(255, 255, 255, 0.9);
+    font-weight: 600;
+    font-size: 0.95rem;
+}
+
+.aniversariante-data i {
+    color: #f472b6;
+    font-size: 1rem;
+}
+
+.sem-aniversariantes {
+    text-align: center;
+    padding: 20px;
+    color: rgba(255, 255, 255, 0.7);
+    font-style: italic;
+}
+
+/* Dark mode */
+body.dark .aniversariante-item {
+    background: rgba(255, 255, 255, 0.05);
+}
+
+body.dark .aniversariante-item:hover {
+    background: rgba(255, 255, 255, 0.08);
+}
+
+body.dark .aniversariante-icon {
+    background: linear-gradient(135deg, #db2777, #be185d);
+}
+
+body.dark .aniversariante-data i {
+    color: #db2777;
+}
+
+@media (max-width: 768px) {
+    .aniversariante-item {
+        padding: 10px;
+    }
+
+    .aniversariante-icon {
+        width: 35px;
+        height: 35px;
+        min-width: 35px;
+    }
+
+    .aniversariante-icon i {
+        font-size: 1.2rem;
+    }
+
+    .aniversariante-nome {
+        font-size: 1rem;
+    }
+
+    .aniversariante-data {
+        font-size: 0.9rem;
     }
 }

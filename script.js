@@ -235,16 +235,26 @@ async function carregarAniversariantes() {
             const item = document.createElement('div');
             item.className = 'aniversariante-item';
             
+            const iconContainer = document.createElement('div');
+            iconContainer.className = 'aniversariante-icon';
+            iconContainer.innerHTML = '<i class="bi bi-gift"></i>';
+            
+            const infoContainer = document.createElement('div');
+            infoContainer.className = 'aniversariante-info';
+            
             const nome = document.createElement('div');
             nome.className = 'aniversariante-nome';
             nome.textContent = pessoa.Servidores;
             
             const data = document.createElement('div');
             data.className = 'aniversariante-data';
-            data.textContent = `Dia ${parseInt(dia)}`; // Remove o zero à esquerda
+            data.innerHTML = `<i class="bi bi-calendar-heart"></i> Dia ${parseInt(dia)}`; // Remove o zero à esquerda
             
-            item.appendChild(nome);
-            item.appendChild(data);
+            infoContainer.appendChild(nome);
+            infoContainer.appendChild(data);
+            
+            item.appendChild(iconContainer);
+            item.appendChild(infoContainer);
             lista.appendChild(item);
         });
 
