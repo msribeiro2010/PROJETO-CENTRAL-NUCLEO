@@ -1818,16 +1818,17 @@ body.dark .weather-desc {
 /* Estilo base para os grupos */
 .group {
     background: rgba(255, 255, 255, 0.1);
-    border-radius: 12px;
+    border-radius: 8px;
     overflow: hidden;
     transition: all 0.3s ease;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     height: fit-content;
+    margin-bottom: 8px;
 }
 
 .group .accordion-header {
     width: 100%;
-    padding: 15px 20px;
+    padding: 8px 16px;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -1835,18 +1836,20 @@ body.dark .weather-desc {
     background: transparent;
     cursor: pointer;
     transition: all 0.3s ease;
+    font-size: 0.95rem;
+    font-weight: 500;
 }
 
 .group .accordion-header .header-content {
     display: flex;
     align-items: center;
-    gap: 10px;
-    font-size: 1.1rem;
+    gap: 8px;
+    font-size: 0.95rem;
     font-weight: 500;
 }
 
 .group .accordion-header i {
-    font-size: 1.2rem;
+    font-size: 1rem;
 }
 
 .group .accordion-content {
@@ -1854,15 +1857,11 @@ body.dark .weather-desc {
     overflow: hidden;
     transition: max-height 0.3s ease-out;
     background: rgba(255, 255, 255, 0.05);
-    max-height: 400px;
-    overflow-y: auto;
-    scrollbar-width: thin;
-    scrollbar-color: rgba(155, 155, 155, 0.5) transparent;
 }
 
 .group .accordion-content[style*="display: block"] {
     max-height: 500px;
-    padding: 20px;
+    padding: 8px;
 }
 
 .group .accordion-icon {
@@ -1873,13 +1872,25 @@ body.dark .weather-desc {
 .button-container.grid-layout {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
-    gap: 12px;
-    padding: 0;
+    gap: 8px;
+    padding: 8px;
     max-height: 350px;
     overflow-y: auto;
     scrollbar-width: thin;
     scrollbar-color: rgba(155, 155, 155, 0.5) transparent;
-    padding-right: 10px; /* Espaço para a barra de rolagem */
+}
+
+.button-container button {
+    padding: 6px 10px;
+    font-size: 0.85rem;
+    min-height: 32px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.button-container button i {
+    font-size: 0.9rem;
 }
 
 /* Estilos específicos para cada grupo */
