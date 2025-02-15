@@ -1251,64 +1251,48 @@ body.dark .footer a {
 }
 
 /* Calendário e Relógio */
-.calendar-wrapper {
+.clock-container {
     display: flex;
     flex-direction: column;
-    gap: 3px;
-    padding: 6px 10px;
-    background: rgba(255, 255, 255, 0.2);
-    border-radius: 8px;
-    backdrop-filter: blur(5px);
-    margin-left: 20px;
-    box-shadow: 0 2px 6px rgba(147, 197, 253, 0.15);
-}
-
-.time-container, .date-container {
-    display: flex;
     align-items: center;
-    gap: 8px;
-    color: #1e3a8a;
-    justify-content: flex-end;
-}
-
-.time-container i, .date-container i {
-    font-size: 0.9rem;
-    color: #3b82f6;
-}
-
-#clock {
-    font-size: 1.1rem;
-    font-weight: 500;
-    letter-spacing: 1px;
-    color: #1e3a8a;
-}
-
-#weekday, #current-date {
-    font-size: 0.85rem;
-    opacity: 0.9;
-    color: #1e3a8a;
-}
-
-#weekday {
-    font-weight: 500;
-    margin-right: 5px;
+    justify-content: center;
+    margin-bottom: 20px;
+    background: rgba(255, 255, 255, 0.1);
+    padding: 15px 25px;
+    border-radius: 12px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
 .clock {
-    font-size: 1.5rem;
-    font-weight: 600;
-    color: #ffd700;
-    background: rgba(0, 0, 0, 0.2);
-    padding: 5px 10px;
-    border-radius: 6px;
-    text-align: center;
+    font-size: 3.5rem;
+    font-weight: 700;
+    color: #1a237e;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    margin: 0;
+    line-height: 1.2;
 }
 
-.calendar-wrapper {
+.date {
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: #283593;
     margin-top: 5px;
-    font-size: 0.8rem;
-    color: rgba(255, 255, 255, 0.9);
-    text-align: center;
+    text-transform: uppercase;
+}
+
+/* Dark mode */
+body.dark .clock {
+    color: #e3f2fd;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+body.dark .date {
+    color: #90caf9;
+}
+
+body.dark .clock-container {
+    background: rgba(255, 255, 255, 0.05);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
 }
 
 /* Estilo para o botão Gmail */
