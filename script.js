@@ -157,129 +157,102 @@ document.querySelectorAll('.button-container button').forEach(button => {
     });
 });
 
-// Inicializar acordeon dos aniversariantes
-document.addEventListener('DOMContentLoaded', function() {
-    const aniversariantesHeader = document.querySelector('#aniversariantes .accordion-header');
-    const aniversariantesContent = document.getElementById('aniversariantes-content');
-    
-    if (aniversariantesHeader && aniversariantesContent) {
-        // Configurar estado inicial
-        let isExpanded = false;
-        aniversariantesContent.style.display = 'none';
-        aniversariantesHeader.setAttribute('aria-expanded', 'false');
-        
-        // Adicionar evento de clique
-        aniversariantesHeader.addEventListener('click', async function() {
-            console.log('Clique detectado no header dos aniversariantes');
-            
-            // Inverter estado
-            isExpanded = !isExpanded;
-            
-            // Atualizar UI
-            this.setAttribute('aria-expanded', isExpanded);
-            aniversariantesContent.style.display = isExpanded ? 'block' : 'none';
-            
-            // Rotacionar ícone
-            const icon = this.querySelector('.accordion-icon');
-            if (icon) {
-                icon.style.transform = isExpanded ? 'rotate(180deg)' : 'rotate(0deg)';
-            }
-            
-            // Carregar aniversariantes se estiver expandindo
-            if (isExpanded) {
-                await carregarAniversariantes();
-            }
-        });
-    }
-});
-
-// Função para carregar aniversariantes do arquivo JSON
+// Função para carregar aniversariantes
 async function carregarAniversariantes() {
+    const lista = document.getElementById('aniversariantes-lista');
+    if (!lista) {
+        console.error('Elemento aniversariantes-lista não encontrado');
+        return;
+    }
+
     try {
-        console.log('Carregando aniversariantes...');
         const response = await fetch('aniversarios.json');
         if (!response.ok) {
             throw new Error('Erro ao carregar arquivo JSON');
         }
-        
+
         const aniversariantes = await response.json();
-        const grid = document.getElementById('aniversariantes-grid');
         
-        if (!grid) {
-            console.error('Elemento aniversariantes-grid não encontrado');
+        // Limpa a lista atual
+        lista.innerHTML = '';
+        
+        const dataAtual = new Date();
+        const mesAtual = (dataAtual.getMonth() + 1).toString().padStart(2, '0');
+        
+        // Filtra aniversariantes do mês atual
+        const aniversariantesMes = aniversariantes.filter(pessoa => {
+            const mesAniversario = pessoa.data.split('/')[1];
+            return mesAniversario === mesAtual;
+        });
+        
+        if (aniversariantesMes.length === 0) {
+            lista.innerHTML = '<div class="sem-aniversariantes">Nenhum aniversariante este mês</div>';
             return;
         }
         
-        // Mês que queremos filtrar (02 para fevereiro)
-        const mesFiltro = "02";
-        console.log('Filtrando aniversariantes do mês:', mesFiltro);
-        
-        // Filtrar aniversariantes do mês atual
-        const aniversariantesMes = aniversariantes.filter(pessoa => {
-            const mesAniversario = pessoa.Niver.split('/')[1];
-            const ehFevereiro = mesAniversario === mesFiltro;
-            console.log(`Verificando ${pessoa.Servidores}: data ${pessoa.Niver}, mês ${mesAniversario}, é fevereiro? ${ehFevereiro}`);
-            return ehFevereiro;
+        // Ordena por dia do mês
+        aniversariantesMes.sort((a, b) => {
+            const diaA = parseInt(a.data.split('/')[0]);
+            const diaB = parseInt(b.data.split('/')[0]);
+            return diaA - diaB;
         });
         
-        console.log('Aniversariantes encontrados:', aniversariantesMes);
-        
-        // Limpar grid
-        grid.innerHTML = '';
-        
-        // Adicionar cards
-        if (aniversariantesMes.length > 0) {
-            aniversariantesMes.forEach(aniversariante => {
-                const card = document.createElement('div');
-                card.className = 'aniversariante-card';
-                
-                // Formatar a data para exibir o nome do mês
-                const [dia, mes] = aniversariante.Niver.split('/');
-                const meses = ['Janeiro', 'Fevereiro', 'Março', 'Abril', 'Maio', 'Junho', 
-                             'Julho', 'Agosto', 'Setembro', 'Outubro', 'Novembro', 'Dezembro'];
-                const dataBonita = `${parseInt(dia)} de ${meses[parseInt(mes) - 1]}`;
-                
-                card.innerHTML = `
-                    <div class="aniversariante-icon">
-                        <i class="bi bi-person-circle"></i>
-                    </div>
-                    <div class="aniversariante-info">
-                        <h3>${aniversariante.Servidores}</h3>
-                        <p>${dataBonita}</p>
-                    </div>
-                `;
-                grid.appendChild(card);
-            });
+        // Cria elementos para cada aniversariante
+        aniversariantesMes.forEach(pessoa => {
+            const dia = pessoa.data.split('/')[0];
             
-            // Atualizar o título com o número de aniversariantes
-            const titulo = document.querySelector('#aniversariantes .header-content');
-            if (titulo) {
-                const numAniversariantes = aniversariantesMes.length;
-                titulo.innerHTML = `
-                    <i class="bi bi-gift"></i>
-                    Aniversariantes do Mês (${numAniversariantes})
-                `;
-            }
-        } else {
-            grid.innerHTML = '<div class="sem-aniversariantes">Nenhum aniversariante este mês</div>';
+            const item = document.createElement('div');
+            item.className = 'aniversariante-item';
             
-            // Resetar o título
-            const titulo = document.querySelector('#aniversariantes .header-content');
-            if (titulo) {
-                titulo.innerHTML = `
-                    <i class="bi bi-gift"></i>
-                    Aniversariantes do Mês
-                `;
-            }
-        }
+            const nome = document.createElement('div');
+            nome.className = 'aniversariante-nome';
+            nome.textContent = pessoa.Servidores;
+            
+            const data = document.createElement('div');
+            data.className = 'aniversariante-data';
+            data.textContent = `Dia ${parseInt(dia)}`; // Remove o zero à esquerda
+            
+            item.appendChild(nome);
+            item.appendChild(data);
+            lista.appendChild(item);
+        });
+
+        console.log('Aniversariantes carregados com sucesso');
+        
     } catch (error) {
         console.error('Erro ao carregar aniversariantes:', error);
-        const grid = document.getElementById('aniversariantes-grid');
-        if (grid) {
-            grid.innerHTML = '<div class="sem-aniversariantes">Erro ao carregar aniversariantes</div>';
+        if (lista) {
+            lista.innerHTML = '<div class="sem-aniversariantes">Erro ao carregar aniversariantes</div>';
         }
     }
 }
+
+// Inicializa os acordeons e carrega os aniversariantes quando o documento estiver pronto
+document.addEventListener('DOMContentLoaded', function() {
+    const headers = document.querySelectorAll('.accordion-header');
+    
+    // Fecha todos os acordeons inicialmente
+    headers.forEach(header => {
+        header.setAttribute('aria-expanded', 'false');
+    });
+
+    // Adiciona evento de clique para cada header
+    headers.forEach(header => {
+        header.addEventListener('click', function() {
+            // Alterna o estado do acordeon clicado
+            const isExpanded = header.getAttribute('aria-expanded') === 'true';
+            header.setAttribute('aria-expanded', !isExpanded);
+
+            // Se o header clicado for do grupo de aniversariantes, recarrega os dados
+            if (header.closest('.aniversariantes')) {
+                carregarAniversariantes();
+            }
+        });
+    });
+
+    // Carrega os aniversariantes inicialmente
+    carregarAniversariantes();
+});
 
 // Nova Funcionalidade: Links da Navbar Abrindo Accordions
 const navbarLinks = document.querySelectorAll(".navbar-links a[data-target]");
@@ -456,6 +429,11 @@ document.addEventListener('DOMContentLoaded', function() {
             const icon = this.querySelector('.accordion-icon');
             if (icon) {
                 icon.style.transform = isExpanded ? 'rotate(180deg)' : 'rotate(0deg)';
+            }
+            
+            // Carregar aniversariantes se estiver expandindo
+            if (isExpanded) {
+                carregarAniversariantes();
             }
         });
     }

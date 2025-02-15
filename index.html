@@ -104,7 +104,23 @@
             </div>
         </div>
 
-        <div class="groups-container">
+        <div class="groups-row">
+            <!-- Grupo Aniversariantes -->
+            <div class="group aniversariantes">
+                <button class="accordion-header" aria-expanded="false">
+                    <div class="header-content">
+                        <i class="bi bi-gift"></i>
+                        <span>Aniversariantes do Mês</span>
+                    </div>
+                    <i class="bi bi-chevron-down accordion-icon"></i>
+                </button>
+                <div class="accordion-content">
+                    <div id="aniversariantes-lista">
+                        <!-- Lista de aniversariantes será inserida aqui via JavaScript -->
+                    </div>
+                </div>
+            </div>
+
             <!-- Grupos com Accordion -->
             <div class="group google-apps" id="google-apps">
                 <button class="accordion-header" aria-expanded="false" aria-controls="google-apps-content">
@@ -260,39 +276,6 @@
                             <i class="bi bi-ticket"></i> Registros-Chamados </button>
                         <button class="btn-plantao" onclick="window.open('https://msribeiro2010.github.io/GestaodeTarefas/', '_blank')">
                             <i class="bi bi-calendar-check"></i> Gestor de Tarefas</button>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Grupo Aniversariantes -->
-            <div class="group aniversariantes" id="aniversariantes">
-                <button class="accordion-header" aria-expanded="false" aria-controls="aniversariantes-content">
-                    <div class="header-content">
-                        <i class="bi bi-gift"></i>
-                        Aniversariantes do Mês
-                    </div>
-                    <i class="bi bi-chevron-down accordion-icon"></i>
-                </button>
-                <div class="accordion-content" id="aniversariantes-content">
-                    <div class="aniversariantes-grid">
-                        <div class="aniversariante-card">
-                            <div class="aniversariante-icon">
-                                <i class="bi bi-person-circle"></i>
-                            </div>
-                            <div class="aniversariante-info">
-                                <h3>Marcelo Ribeiro</h3>
-                                <p>15 de Fevereiro</p>
-                            </div>
-                        </div>
-                        <div class="aniversariante-card">
-                            <div class="aniversariante-icon">
-                                <i class="bi bi-person-circle"></i>
-                            </div>
-                            <div class="aniversariante-info">
-                                <h3>João Silva</h3>
-                                <p>20 de Fevereiro</p>
-                            </div>
-                        </div>
                     </div>
                 </div>
             </div>
