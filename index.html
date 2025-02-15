@@ -39,10 +39,15 @@
                 <a href="#info-funcionais" data-target="info-funcionais" title="Informações Funcionais">
                     <i class="bi bi-person-vcard-fill"></i> Info.Funcionais
                 </a>
-                <a href="#pje" data-target="pje" title="PJe">
-                    <i class="bi bi-briefcase-fill"></i> PJe
+                <a href="#pje-producao" data-target="pje-producao" title="PJe-Produção">
+                    <i class="bi bi-buildings"></i> PJe-Produção
                 </a>
-            
+                <a href="#pje-incidentes" data-target="pje-incidentes" title="PJe-Incidentes">
+                    <i class="bi bi-bug-fill"></i> PJe-Incidentes
+                </a>
+                <a href="#pje-homologacao" data-target="pje-homologacao" title="PJe-Homologação">
+                    <i class="bi bi-check-circle"></i> PJe-Homologação
+                </a>
                 <a href="#sistemas-satelites" data-target="sistemas-satelites" title="Sistemas Satélites">
                     <i class="bi bi-diagram-3-fill"></i> Satélites
                 </a>
@@ -281,69 +286,68 @@
             </div>
 
             <!-- Sistemas do PJe -->
-            <div class="group pje" id="pje">
-                <button class="accordion-header" aria-expanded="false" aria-controls="pje-content">
+            <div class="group pje" id="pje-producao">
+                <button class="accordion-header" aria-expanded="false" aria-controls="pje-producao-content">
                     <div class="header-content">
-                        <i class="bi bi-briefcase-fill"></i>
-                        Sistemas do PJe
+                        <i class="bi bi-buildings"></i>
+                        PJe-Produção
                     </div>
                     <i class="bi bi-chevron-down accordion-icon"></i>
                 </button>
-                <div class="accordion-content" id="pje-content">
-                    <div class="ambientes-container">
-                        <!-- Produção -->
-                        <div class="ambiente-section">
-                            <h3 class="ambiente-title">
-                                <i class="bi bi-buildings"></i>
-                                Produção (Acesso antigo)
-                            </h3>
-                            <div class="button-container">
-                                <button onclick="window.open('https://pje.trt15.jus.br/primeirograu/login.seam', '_blank')">
-                                    <i class="bi bi-1-circle"></i>
-                                    PJE 1º Grau - Produção
-                                </button>
-                                <button onclick="window.open('https://pje.trt15.jus.br/segundograu/login.seam', '_blank')">
-                                    <i class="bi bi-2-circle"></i>
-                                    PJE 2º Grau - Produção
-                                </button>
-                            </div>
-                        </div>
+                <div class="accordion-content" id="pje-producao-content">
+                    <div class="button-container grid-layout">
+                        <button onclick="window.open('https://pje.trt15.jus.br/primeirograu/login.seam', '_blank')">
+                            <i class="bi bi-1-circle"></i>
+                            PJe 1º Grau - Produção
+                        </button>
+                        <button onclick="window.open('https://pje.trt15.jus.br/segundograu/login.seam', '_blank')">
+                            <i class="bi bi-2-circle"></i>
+                            PJe 2º Grau - Produção
+                        </button>
+                    </div>
+                </div>
+            </div>
 
-                        <!-- Incidentes -->
-                        <div class="ambiente-section">
-                            <h3 class="ambiente-title">
-                                <i class="bi bi-bug-fill"></i>
-                                Incidentes
-                            </h3>
-                            <div class="button-container">
-                                <button onclick="window.open('https://pje-incidentes.trt15.jus.br/primeirograu/login.seam', '_blank')">
-                                    <i class="bi bi-1-circle"></i>
-                                    PJE 1º Grau - Incidentes
-                                </button>
-                                <button onclick="window.open('https://pje-incidentes.trt15.jus.br/segundograu/login.seam', '_blank')">
-                                    <i class="bi bi-2-circle"></i>
-                                    PJE 2º Grau - Incidentes
-                                </button>
-                            </div>
-                        </div>
+            <div class="group pje" id="pje-incidentes">
+                <button class="accordion-header" aria-expanded="false" aria-controls="pje-incidentes-content">
+                    <div class="header-content">
+                        <i class="bi bi-bug-fill"></i>
+                        PJe-Incidentes
+                    </div>
+                    <i class="bi bi-chevron-down accordion-icon"></i>
+                </button>
+                <div class="accordion-content" id="pje-incidentes-content">
+                    <div class="button-container grid-layout">
+                        <button onclick="window.open('https://pje-incidentes.trt15.jus.br/primeirograu/login.seam', '_blank')">
+                            <i class="bi bi-1-circle"></i>
+                            PJe 1º Grau - Incidentes
+                        </button>
+                        <button onclick="window.open('https://pje-incidentes.trt15.jus.br/segundograu/login.seam', '_blank')">
+                            <i class="bi bi-2-circle"></i>
+                            PJe 2º Grau - Incidentes
+                        </button>
+                    </div>
+                </div>
+            </div>
 
-                        <!-- Homologação -->
-                        <div class="ambiente-section">
-                            <h3 class="ambiente-title">
-                                <i class="bi bi-check-circle"></i>
-                                Homologação
-                            </h3>
-                            <div class="button-container">
-                                <button onclick="window.open('https://pje-web-hm.trt15.jus.br/primeirograu/', '_blank')">
-                                    <i class="bi bi-1-circle"></i>
-                                    PJE 1º Grau - Homologação
-                                </button>
-                                <button onclick="window.open('https://pje-web-hm.trt15.jus.br/segundograu/login.seam', '_blank')">
-                                    <i class="bi bi-2-circle"></i>
-                                    PJE 2º Grau - Homologação
-                                </button>
-                            </div>
-                        </div>
+            <div class="group pje" id="pje-homologacao">
+                <button class="accordion-header" aria-expanded="false" aria-controls="pje-homologacao-content">
+                    <div class="header-content">
+                        <i class="bi bi-check-circle"></i>
+                        PJe-Homologação
+                    </div>
+                    <i class="bi bi-chevron-down accordion-icon"></i>
+                </button>
+                <div class="accordion-content" id="pje-homologacao-content">
+                    <div class="button-container grid-layout">
+                        <button onclick="window.open('https://pje-web-hm.trt15.jus.br/primeirograu/', '_blank')">
+                            <i class="bi bi-1-circle"></i>
+                            PJe 1º Grau - Homologação
+                        </button>
+                        <button onclick="window.open('https://pje-web-hm.trt15.jus.br/segundograu/login.seam', '_blank')">
+                            <i class="bi bi-2-circle"></i>
+                            PJe 2º Grau - Homologação
+                        </button>
                     </div>
                 </div>
             </div>
