@@ -67,8 +67,14 @@
     <div class="container">
         <div class="header">
             <div class="header-content">
-                <div class="header-title">
-                    <h2><i class="bi bi-building"></i> Central Núcleo</h2>
+                <div class="header-top">
+                    <button class="holiday-btn" onclick="showHolidays()">
+                        <i class="bi bi-calendar2-heart"></i>
+                        <span>Feriados 2025</span>
+                    </button>
+                    <div class="header-title">
+                        <h2><i class="bi bi-building"></i> Central Núcleo</h2>
+                    </div>
                 </div>
                 <div class="calendar-wrapper">
                     <div class="time-container">
@@ -80,6 +86,34 @@
                         <span id="weekday">--</span>
                         <span id="current-date">--/--/----</span>
                     </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Modal de Feriados -->
+        <div id="holiday-modal" class="modal">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h3><i class="bi bi-calendar2-heart"></i> Feriados 2025</h3>
+                    <button class="close-btn" onclick="closeHolidayModal()">
+                        <i class="bi bi-x-lg"></i>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div class="next-holiday">
+                        <h4>Próximo Feriado:</h4>
+                        <div id="next-holiday-info"></div>
+                    </div>
+                    <div class="holiday-filters">
+                        <button class="month-btn" onclick="prevMonth()">
+                            <i class="bi bi-chevron-left"></i>
+                        </button>
+                        <h4 id="current-month">Fevereiro 2025</h4>
+                        <button class="month-btn" onclick="nextMonth()">
+                            <i class="bi bi-chevron-right"></i>
+                        </button>
+                    </div>
+                    <div id="holidays-list"></div>
                 </div>
             </div>
         </div>

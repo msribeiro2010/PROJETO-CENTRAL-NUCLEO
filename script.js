@@ -521,3 +521,139 @@ document.addEventListener('DOMContentLoaded', () => {
         document.body.style.opacity = '1';
     }, 100);
 });
+
+// Funções para o Modal de Feriados
+let holidays = [];
+let currentMonth = new Date().getMonth();
+let currentYear = 2025;
+
+async function loadHolidays() {
+    try {
+        const response = await fetch('feriados_2025.json');
+        holidays = await response.json();
+        
+        // Ordenar feriados por data
+        holidays.sort((a, b) => new Date(a.data.split('/').reverse().join('-')) - new Date(b.data.split('/').reverse().join('-')));
+        
+        // Encontrar o próximo feriado
+        const today = new Date();
+        const nextHoliday = holidays.find(h => {
+            const [day, month, year] = h.data.split('/');
+            const holidayDate = new Date(year, month - 1, day);
+            return holidayDate > today;
+        });
+
+        if (nextHoliday) {
+            const [day, month] = nextHoliday.data.split('/');
+            currentMonth = parseInt(month) - 1;
+        }
+        
+        updateCurrentMonth();
+        renderHolidays();
+        updateNextHolidayPreview();
+    } catch (error) {
+        console.error('Erro ao carregar feriados:', error);
+    }
+}
+
+function getWeekday(dateStr) {
+    const [day, month, year] = dateStr.split('/');
+    const date = new Date(year, month - 1, day);
+    const weekdays = ['Domingo', 'Segunda-feira', 'Terça-feira', 'Quarta-feira', 'Quinta-feira', 'Sexta-feira', 'Sábado'];
+    return weekdays[date.getDay()];
+}
+
+function formatDate(dateStr) {
+    const [day, month, year] = dateStr.split('/');
+    return `${day}/${month}/${year}`;
+}
+
+function updateCurrentMonth() {
+    const monthNames = [
+        'Janeiro', 'Fevereiro', 'Março', 'Abril', 'Maio', 'Junho',
+        'Julho', 'Agosto', 'Setembro', 'Outubro', 'Novembro', 'Dezembro'
+    ];
+    document.getElementById('current-month').textContent = `${monthNames[currentMonth]} ${currentYear}`;
+}
+
+function showHolidays() {
+    const modal = document.getElementById('holiday-modal');
+    modal.style.display = 'block';
+    if (holidays.length === 0) {
+        loadHolidays();
+    }
+}
+
+function closeHolidayModal() {
+    const modal = document.getElementById('holiday-modal');
+    modal.style.display = 'none';
+}
+
+function prevMonth() {
+    currentMonth = (currentMonth - 1 + 12) % 12;
+    updateCurrentMonth();
+    renderHolidays();
+}
+
+function nextMonth() {
+    currentMonth = (currentMonth + 1) % 12;
+    updateCurrentMonth();
+    renderHolidays();
+}
+
+function updateNextHolidayPreview() {
+    const today = new Date();
+    const nextHoliday = holidays.find(h => {
+        const [day, month, year] = h.data.split('/');
+        const holidayDate = new Date(year, month - 1, day);
+        return holidayDate > today;
+    });
+    
+    if (nextHoliday) {
+        const date = formatDate(nextHoliday.data);
+        const weekday = getWeekday(nextHoliday.data);
+        document.getElementById('next-holiday-info').innerHTML = `
+            <div class="holiday-item ${nextHoliday.tipo}">
+                <div class="holiday-date">${date}</div>
+                <div class="holiday-weekday">${weekday}</div>
+                <div class="holiday-name">${nextHoliday.nome}</div>
+                <div class="holiday-type ${nextHoliday.tipo}">${nextHoliday.tipo}</div>
+            </div>
+        `;
+    }
+}
+
+function renderHolidays() {
+    const container = document.getElementById('holidays-list');
+    const monthHolidays = holidays.filter(h => {
+        const [day, month, year] = h.data.split('/');
+        return parseInt(month) - 1 === currentMonth;
+    });
+    
+    container.innerHTML = monthHolidays.map(holiday => {
+        const date = formatDate(holiday.data);
+        const weekday = getWeekday(holiday.data);
+        return `
+            <div class="holiday-item ${holiday.tipo}">
+                <div class="holiday-date">${date}</div>
+                <div class="holiday-weekday">${weekday}</div>
+                <div class="holiday-name">${holiday.nome}</div>
+                <div class="holiday-type ${holiday.tipo}">${holiday.tipo}</div>
+            </div>
+        `;
+    }).join('');
+}
+
+// Event Listeners para os Feriados
+document.addEventListener('DOMContentLoaded', () => {
+    loadHolidays();
+    
+    const modal = document.getElementById('holiday-modal');
+    
+    // Fechar modal ao clicar fora
+    window.onclick = function(event) {
+        if (event.target === modal) {
+            closeHolidayModal();
+        }
+    }
+});
