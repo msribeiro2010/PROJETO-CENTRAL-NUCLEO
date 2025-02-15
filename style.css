@@ -2249,11 +2249,11 @@ body.dark .notes-section #noteInput:focus {
     font-style: italic;
 }
 
-body.dark .aniversariantes-nome {
+body.dark .aniversariante-nome {
     color: #e03131;
 }
 
-body.dark .aniversariantes-data {
+body.dark .aniversariante-data {
     color: #868e96;
 }
 
@@ -2794,4 +2794,30 @@ body.dark .aniversariante-data i {
     .aniversariante-data {
         font-size: 0.9rem;
     }
+}
+
+.holiday-countdown {
+    background-color: var(--primary-color);
+    color: white;
+    padding: 4px 8px;
+    border-radius: 4px;
+    font-size: 0.9em;
+    margin-top: 4px;
+    display: inline-block;
+}
+
+.holiday-item.Nacional .holiday-countdown {
+    background-color: var(--holiday-nacional);
+}
+
+.holiday-item.Estadual .holiday-countdown {
+    background-color: var(--holiday-estadual);
+}
+
+.holiday-item.Municipal .holiday-countdown {
+    background-color: var(--holiday-municipal);
+}
+
+.holiday-item.Facultativo .holiday-countdown {
+    background-color: var(--holiday-facultativo);
 }

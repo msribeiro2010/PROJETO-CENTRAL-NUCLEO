@@ -611,6 +611,29 @@ function nextMonth() {
     renderHolidays();
 }
 
+function calcularDiasRestantes(data) {
+    const [dia, mes, ano] = data.split('/');
+    const dataFeriado = new Date(ano, mes - 1, dia);
+    const hoje = new Date();
+    
+    // Zerar as horas para comparar apenas as datas
+    dataFeriado.setHours(0, 0, 0, 0);
+    hoje.setHours(0, 0, 0, 0);
+    
+    const diffTempo = dataFeriado - hoje;
+    const diffDias = Math.ceil(diffTempo / (1000 * 60 * 60 * 24));
+    
+    if (diffDias < 0) {
+        return 'Já passou';
+    } else if (diffDias === 0) {
+        return 'Hoje';
+    } else if (diffDias === 1) {
+        return 'Amanhã';
+    } else {
+        return `Faltam ${diffDias} dias`;
+    }
+}
+
 function updateNextHolidayPreview() {
     const today = new Date();
     const nextHoliday = holidays.find(h => {
@@ -622,12 +645,14 @@ function updateNextHolidayPreview() {
     if (nextHoliday) {
         const date = formatDate(nextHoliday.data);
         const weekday = getWeekday(nextHoliday.data);
+        const diasRestantes = calcularDiasRestantes(nextHoliday.data);
         document.getElementById('next-holiday-info').innerHTML = `
             <div class="holiday-item ${nextHoliday.tipo}">
                 <div class="holiday-date">${date}</div>
                 <div class="holiday-weekday">${weekday}</div>
                 <div class="holiday-name">${nextHoliday.nome}</div>
                 <div class="holiday-type ${nextHoliday.tipo}">${nextHoliday.tipo}</div>
+                <div class="holiday-countdown">${diasRestantes}</div>
             </div>
         `;
     }
@@ -643,12 +668,14 @@ function renderHolidays() {
     container.innerHTML = monthHolidays.map(holiday => {
         const date = formatDate(holiday.data);
         const weekday = getWeekday(holiday.data);
+        const diasRestantes = calcularDiasRestantes(holiday.data);
         return `
             <div class="holiday-item ${holiday.tipo}">
                 <div class="holiday-date">${date}</div>
                 <div class="holiday-weekday">${weekday}</div>
                 <div class="holiday-name">${holiday.nome}</div>
                 <div class="holiday-type ${holiday.tipo}">${holiday.tipo}</div>
+                <div class="holiday-countdown">${diasRestantes}</div>
             </div>
         `;
     }).join('');
