@@ -514,6 +514,42 @@ body.dark .group.sistema-pje .button-container button {
     padding: 20px;
     display: none;
     transition: all 0.3s ease;
+    max-height: 400px;
+    overflow-y: auto;
+    scrollbar-width: thin;
+    scrollbar-color: rgba(155, 155, 155, 0.5) transparent;
+}
+
+/* Estilização da barra de rolagem para Chrome/Safari/Edge */
+.accordion-content::-webkit-scrollbar {
+    width: 8px;
+}
+
+.accordion-content::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+.accordion-content::-webkit-scrollbar-thumb {
+    background-color: rgba(155, 155, 155, 0.5);
+    border-radius: 4px;
+    border: 2px solid transparent;
+}
+
+.accordion-content::-webkit-scrollbar-thumb:hover {
+    background-color: rgba(155, 155, 155, 0.8);
+}
+
+/* Ajuste para o modo escuro */
+body.dark .accordion-content {
+    scrollbar-color: rgba(255, 255, 255, 0.3) transparent;
+}
+
+body.dark .accordion-content::-webkit-scrollbar-thumb {
+    background-color: rgba(255, 255, 255, 0.3);
+}
+
+body.dark .accordion-content::-webkit-scrollbar-thumb:hover {
+    background-color: rgba(255, 255, 255, 0.5);
 }
 
 /* Grid de Botões */
@@ -523,6 +559,42 @@ body.dark .group.sistema-pje .button-container button {
     gap: 12px;
     padding: 12px;
     min-height: 50px;
+    max-height: 350px;
+    overflow-y: auto;
+    scrollbar-width: thin;
+    scrollbar-color: rgba(155, 155, 155, 0.5) transparent;
+    padding-right: 10px; /* Espaço para a barra de rolagem */
+}
+
+.button-container.grid-layout::-webkit-scrollbar {
+    width: 8px;
+}
+
+.button-container.grid-layout::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+.button-container.grid-layout::-webkit-scrollbar-thumb {
+    background-color: rgba(155, 155, 155, 0.5);
+    border-radius: 4px;
+    border: 2px solid transparent;
+}
+
+.button-container.grid-layout::-webkit-scrollbar-thumb:hover {
+    background-color: rgba(155, 155, 155, 0.8);
+}
+
+/* Ajuste para o modo escuro */
+body.dark .button-container.grid-layout {
+    scrollbar-color: rgba(255, 255, 255, 0.3) transparent;
+}
+
+body.dark .button-container.grid-layout::-webkit-scrollbar-thumb {
+    background-color: rgba(255, 255, 255, 0.3);
+}
+
+body.dark .button-container.grid-layout::-webkit-scrollbar-thumb:hover {
+    background-color: rgba(255, 255, 255, 0.5);
 }
 
 .button-container.grid-layout button {
@@ -1761,6 +1833,10 @@ body.dark .weather-desc {
     overflow: hidden;
     transition: max-height 0.3s ease-out;
     background: rgba(255, 255, 255, 0.05);
+    max-height: 400px;
+    overflow-y: auto;
+    scrollbar-width: thin;
+    scrollbar-color: rgba(155, 155, 155, 0.5) transparent;
 }
 
 .group .accordion-content[style*="display: block"] {
@@ -1778,6 +1854,11 @@ body.dark .weather-desc {
     grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
     gap: 12px;
     padding: 0;
+    max-height: 350px;
+    overflow-y: auto;
+    scrollbar-width: thin;
+    scrollbar-color: rgba(155, 155, 155, 0.5) transparent;
+    padding-right: 10px; /* Espaço para a barra de rolagem */
 }
 
 /* Estilos específicos para cada grupo */
@@ -1878,6 +1959,10 @@ body.dark .group .accordion-content {
     overflow: hidden;
     transition: max-height 0.3s ease-out;
     background: rgba(255, 255, 255, 0.05);
+    max-height: 400px;
+    overflow-y: auto;
+    scrollbar-width: thin;
+    scrollbar-color: rgba(155, 155, 155, 0.5) transparent;
 }
 
 .header .accordion-content[style*="display: block"] {
