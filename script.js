@@ -157,74 +157,129 @@ document.querySelectorAll('.button-container button').forEach(button => {
     });
 });
 
-// Função para carregar e exibir aniversariantes do mês
-async function loadBirthdays() {
-    const funcionarios = [
-        { nome: 'Marcelo Silva Ribeiro', aniversario: '29/12' },
-        { nome: 'Marta Maria de Souza Pinto Silva', aniversario: '28/02' },
-        { nome: 'Severino Caetano da Silva Filho', aniversario: '26/03' },
-        { nome: 'Natalia Pereira Morais', aniversario: '31/03' },
-        { nome: 'Wagner Waldir Leite', aniversario: '07/04' },
-        { nome: 'Lloyd Hildevert Beteille Sobrinho', aniversario: '12/04' },
-        { nome: 'Thais Helena Santos Camargo Simoes', aniversario: '11/05' },
-        { nome: 'Nathany Gazolli de Souza', aniversario: '23/09' },
-        { nome: 'Tatiana da Rocha Natale', aniversario: '28/09' }
-    ];
-
-    const currentMonth = new Date().getMonth() + 1;
+// Inicializar acordeon dos aniversariantes
+document.addEventListener('DOMContentLoaded', function() {
+    const aniversariantesHeader = document.querySelector('#aniversariantes .accordion-header');
+    const aniversariantesContent = document.getElementById('aniversariantes-content');
     
-    const birthdaysThisMonth = funcionarios.filter(funcionario => {
-        const birthMonth = parseInt(funcionario.aniversario.split('/')[1]);
-        return birthMonth === currentMonth;
-    }).sort((a, b) => {
-        const dayA = parseInt(a.aniversario.split('/')[0]);
-        const dayB = parseInt(b.aniversario.split('/')[0]);
-        return dayA - dayB;
-    });
-
-    const birthdayList = document.getElementById('birthday-list');
-    birthdayList.innerHTML = '';
-
-    if (birthdaysThisMonth.length === 0) {
-        birthdayList.innerHTML = '<div class="birthday-item">Nenhum aniversariante este mês</div>';
-        return;
+    if (aniversariantesHeader && aniversariantesContent) {
+        // Configurar estado inicial
+        let isExpanded = false;
+        aniversariantesContent.style.display = 'none';
+        aniversariantesHeader.setAttribute('aria-expanded', 'false');
+        
+        // Adicionar evento de clique
+        aniversariantesHeader.addEventListener('click', async function() {
+            console.log('Clique detectado no header dos aniversariantes');
+            
+            // Inverter estado
+            isExpanded = !isExpanded;
+            
+            // Atualizar UI
+            this.setAttribute('aria-expanded', isExpanded);
+            aniversariantesContent.style.display = isExpanded ? 'block' : 'none';
+            
+            // Rotacionar ícone
+            const icon = this.querySelector('.accordion-icon');
+            if (icon) {
+                icon.style.transform = isExpanded ? 'rotate(180deg)' : 'rotate(0deg)';
+            }
+            
+            // Carregar aniversariantes se estiver expandindo
+            if (isExpanded) {
+                await carregarAniversariantes();
+            }
+        });
     }
+});
 
-    birthdaysThisMonth.forEach(funcionario => {
-        const birthdayItem = document.createElement('div');
-        birthdayItem.className = 'birthday-item';
+// Função para carregar aniversariantes do arquivo JSON
+async function carregarAniversariantes() {
+    try {
+        console.log('Carregando aniversariantes...');
+        const response = await fetch('aniversarios.json');
+        if (!response.ok) {
+            throw new Error('Erro ao carregar arquivo JSON');
+        }
         
-        const [day] = funcionario.aniversario.split('/');
+        const aniversariantes = await response.json();
+        const grid = document.getElementById('aniversariantes-grid');
         
-        birthdayItem.innerHTML = `
-            <span class="date">${day}/${currentMonth.toString().padStart(2, '0')}</span>
-            <span class="separator">-</span>
-            <span class="name">${funcionario.nome}</span>
-        `;
+        if (!grid) {
+            console.error('Elemento aniversariantes-grid não encontrado');
+            return;
+        }
         
-        birthdayList.appendChild(birthdayItem);
-    });
+        // Mês que queremos filtrar (02 para fevereiro)
+        const mesFiltro = "02";
+        console.log('Filtrando aniversariantes do mês:', mesFiltro);
+        
+        // Filtrar aniversariantes do mês atual
+        const aniversariantesMes = aniversariantes.filter(pessoa => {
+            const mesAniversario = pessoa.Niver.split('/')[1];
+            const ehFevereiro = mesAniversario === mesFiltro;
+            console.log(`Verificando ${pessoa.Servidores}: data ${pessoa.Niver}, mês ${mesAniversario}, é fevereiro? ${ehFevereiro}`);
+            return ehFevereiro;
+        });
+        
+        console.log('Aniversariantes encontrados:', aniversariantesMes);
+        
+        // Limpar grid
+        grid.innerHTML = '';
+        
+        // Adicionar cards
+        if (aniversariantesMes.length > 0) {
+            aniversariantesMes.forEach(aniversariante => {
+                const card = document.createElement('div');
+                card.className = 'aniversariante-card';
+                
+                // Formatar a data para exibir o nome do mês
+                const [dia, mes] = aniversariante.Niver.split('/');
+                const meses = ['Janeiro', 'Fevereiro', 'Março', 'Abril', 'Maio', 'Junho', 
+                             'Julho', 'Agosto', 'Setembro', 'Outubro', 'Novembro', 'Dezembro'];
+                const dataBonita = `${parseInt(dia)} de ${meses[parseInt(mes) - 1]}`;
+                
+                card.innerHTML = `
+                    <div class="aniversariante-icon">
+                        <i class="bi bi-person-circle"></i>
+                    </div>
+                    <div class="aniversariante-info">
+                        <h3>${aniversariante.Servidores}</h3>
+                        <p>${dataBonita}</p>
+                    </div>
+                `;
+                grid.appendChild(card);
+            });
+            
+            // Atualizar o título com o número de aniversariantes
+            const titulo = document.querySelector('#aniversariantes .header-content');
+            if (titulo) {
+                const numAniversariantes = aniversariantesMes.length;
+                titulo.innerHTML = `
+                    <i class="bi bi-gift"></i>
+                    Aniversariantes do Mês (${numAniversariantes})
+                `;
+            }
+        } else {
+            grid.innerHTML = '<div class="sem-aniversariantes">Nenhum aniversariante este mês</div>';
+            
+            // Resetar o título
+            const titulo = document.querySelector('#aniversariantes .header-content');
+            if (titulo) {
+                titulo.innerHTML = `
+                    <i class="bi bi-gift"></i>
+                    Aniversariantes do Mês
+                `;
+            }
+        }
+    } catch (error) {
+        console.error('Erro ao carregar aniversariantes:', error);
+        const grid = document.getElementById('aniversariantes-grid');
+        if (grid) {
+            grid.innerHTML = '<div class="sem-aniversariantes">Erro ao carregar aniversariantes</div>';
+        }
+    }
 }
-
-// Carrega os aniversariantes quando a página é carregada
-document.addEventListener('DOMContentLoaded', () => {
-    loadBirthdays();
-});
-
-// Adicionar tooltips aos botões
-document.querySelectorAll('.button-container button').forEach(button => {
-    const originalText = button.textContent;
-    button.setAttribute('title', originalText);
-});
-
-// Animação suave ao carregar a página
-document.addEventListener('DOMContentLoaded', () => {
-    document.body.style.opacity = '0';
-    setTimeout(() => {
-        document.body.style.transition = 'opacity 0.5s ease-in';
-        document.body.style.opacity = '1';
-    }, 100);
-});
 
 // Nova Funcionalidade: Links da Navbar Abrindo Accordions
 const navbarLinks = document.querySelectorAll(".navbar-links a[data-target]");
@@ -369,3 +424,132 @@ function getWeatherIcon(weatherIcon) {
 // Atualizar o clima a cada 30 minutos
 fetchWeather();
 setInterval(fetchWeather, 30 * 60 * 1000);
+
+// Inicializar acordeon do header
+document.addEventListener('DOMContentLoaded', function() {
+    const headerAccordion = document.querySelector('.header .accordion-header');
+    const headerContent = document.getElementById('header-content');
+    
+    if (headerAccordion && headerContent) {
+        console.log('Inicializando acordeon do header...');
+        
+        // Configurar estado inicial
+        let isExpanded = true;
+        headerContent.style.display = 'block';
+        headerAccordion.setAttribute('aria-expanded', 'true');
+        headerAccordion.querySelector('.accordion-icon').style.transform = 'rotate(180deg)';
+        
+        // Adicionar evento de clique
+        headerAccordion.addEventListener('click', function(e) {
+            console.log('Clique no header detectado');
+            e.preventDefault();
+            
+            // Inverter o estado
+            isExpanded = !isExpanded;
+            console.log('Novo estado do header:', isExpanded ? 'expandido' : 'recolhido');
+            
+            // Atualizar estado
+            this.setAttribute('aria-expanded', isExpanded);
+            headerContent.style.display = isExpanded ? 'block' : 'none';
+            
+            // Rotacionar o ícone
+            const icon = this.querySelector('.accordion-icon');
+            if (icon) {
+                icon.style.transform = isExpanded ? 'rotate(180deg)' : 'rotate(0deg)';
+            }
+        });
+    }
+});
+
+// Funções do Bloco de Notas
+function toggleNotes() {
+    const notesSection = document.getElementById('notes-section');
+    const isVisible = notesSection.style.display === 'block';
+    
+    if (!isVisible) {
+        // Expandir o grupo de atendimento externo se necessário
+        const atendimentoContent = document.getElementById('atendimento-externo-content');
+        const atendimentoHeader = document.querySelector('#atendimento-externo .accordion-header');
+        if (atendimentoContent.style.display !== 'block') {
+            atendimentoHeader.click();
+        }
+    }
+    
+    // Toggle do bloco de notas
+    notesSection.style.display = isVisible ? 'none' : 'block';
+    
+    // Carregar notas se estiver abrindo
+    if (!isVisible) {
+        loadNotes();
+    }
+}
+
+function loadNotes() {
+    const notesList = document.getElementById('notesList');
+    const notes = JSON.parse(localStorage.getItem('notes') || '[]');
+    
+    notesList.innerHTML = notes.map((note, index) => `
+        <div class="note-item">
+            <div class="note-text">${note.text}</div>
+            <div class="note-actions">
+                <button onclick="editNote(${index})" class="edit-note">
+                    <i class="bi bi-pencil"></i>
+                </button>
+                <button onclick="deleteNote(${index})" class="delete-note">
+                    <i class="bi bi-trash"></i>
+                </button>
+            </div>
+        </div>
+    `).join('');
+}
+
+function addNote() {
+    const noteInput = document.getElementById('noteInput');
+    const text = noteInput.value.trim();
+    
+    if (text) {
+        const notes = JSON.parse(localStorage.getItem('notes') || '[]');
+        notes.push({ text, date: new Date().toISOString() });
+        localStorage.setItem('notes', JSON.stringify(notes));
+        
+        noteInput.value = '';
+        loadNotes();
+    }
+}
+
+function editNote(index) {
+    const notes = JSON.parse(localStorage.getItem('notes') || '[]');
+    const note = notes[index];
+    const noteInput = document.getElementById('noteInput');
+    
+    noteInput.value = note.text;
+    notes.splice(index, 1);
+    localStorage.setItem('notes', JSON.stringify(notes));
+    loadNotes();
+    
+    noteInput.focus();
+}
+
+function deleteNote(index) {
+    if (confirm('Tem certeza que deseja excluir esta nota?')) {
+        const notes = JSON.parse(localStorage.getItem('notes') || '[]');
+        notes.splice(index, 1);
+        localStorage.setItem('notes', JSON.stringify(notes));
+        loadNotes();
+    }
+}
+
+// Adicionar tooltips aos botões
+document.querySelectorAll('.button-container button').forEach(button => {
+    const originalText = button.textContent;
+    button.setAttribute('title', originalText);
+});
+
+// Animação suave ao carregar a página
+document.addEventListener('DOMContentLoaded', () => {
+    document.body.style.opacity = '0';
+    setTimeout(() => {
+        document.body.style.transition = 'opacity 0.5s ease-in';
+        document.body.style.opacity = '1';
+    }, 100);
+});
