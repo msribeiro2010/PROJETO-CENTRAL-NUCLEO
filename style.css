@@ -1836,18 +1836,28 @@ body.dark .weather-desc {
     transition: all 0.3s ease;
     font-size: 0.95rem;
     font-weight: 500;
+    position: relative;
 }
 
 .group .accordion-header .header-content {
     display: flex;
     align-items: center;
     gap: 8px;
-    font-size: 0.95rem;
-    font-weight: 500;
+    flex: 1;
+    justify-content: center; /* Centraliza o conteúdo */
+    margin-right: 24px; /* Espaço para o ícone de seta */
 }
 
 .group .accordion-header i {
     font-size: 1rem;
+}
+
+.group .accordion-header .accordion-icon {
+    position: absolute;
+    right: 16px;
+    top: 50%;
+    transform: translateY(-50%);
+    transition: transform 0.3s ease;
 }
 
 .group .accordion-content {
@@ -1863,7 +1873,13 @@ body.dark .weather-desc {
 }
 
 .group .accordion-icon {
+    color: white;
+    font-size: 1.2rem;
     transition: transform 0.3s ease;
+}
+
+.group .accordion-icon[aria-expanded="true"] {
+    transform: rotate(180deg);
 }
 
 /* Ajuste para o layout em grid dos botões */
