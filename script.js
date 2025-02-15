@@ -588,10 +588,8 @@ function updateCurrentMonth() {
 
 function showHolidays() {
     const modal = document.getElementById('holiday-modal');
+    loadHolidays(); // Carrega os feriados apenas quando o botão é clicado
     modal.style.display = 'block';
-    if (holidays.length === 0) {
-        loadHolidays();
-    }
 }
 
 function closeHolidayModal() {
@@ -683,14 +681,88 @@ function renderHolidays() {
 
 // Event Listeners para os Feriados
 document.addEventListener('DOMContentLoaded', () => {
-    loadHolidays();
-    
     const modal = document.getElementById('holiday-modal');
+    modal.style.display = 'none'; // Garante que o modal começa fechado
     
     // Fechar modal ao clicar fora
-    window.onclick = function(event) {
+    window.addEventListener('click', (event) => {
         if (event.target === modal) {
             closeHolidayModal();
         }
+    });
+
+    // Fechar modal com a tecla ESC
+    document.addEventListener('keydown', (event) => {
+        if (event.key === 'Escape' && modal.style.display === 'block') {
+            closeHolidayModal();
+        }
+    });
+});
+
+// Configuração do Sortable para os grupos
+document.addEventListener('DOMContentLoaded', () => {
+    const groupsContainer = document.querySelector('.groups-row');
+    
+    if (groupsContainer) {
+        // Garante que todos os grupos tenham IDs únicos
+        const groups = groupsContainer.querySelectorAll('.group');
+        groups.forEach((group, index) => {
+            if (!group.id) {
+                group.id = `group-${index}`;
+            }
+        });
+        
+        // Inicializa o Sortable
+        const sortable = new Sortable(groupsContainer, {
+            animation: 150,
+            handle: '.accordion-header',
+            ghostClass: 'sortable-ghost',
+            dragClass: 'sortable-drag',
+            onStart: function(evt) {
+                // Fecha todos os acordeões abertos durante o arrasto
+                const contents = document.querySelectorAll('.accordion-content');
+                contents.forEach(content => {
+                    content.style.display = 'none';
+                });
+                const headers = document.querySelectorAll('.accordion-header');
+                headers.forEach(header => {
+                    header.setAttribute('aria-expanded', 'false');
+                });
+            },
+            onEnd: function(evt) {
+                saveGroupOrder();
+            }
+        });
+
+        // Carrega a ordem salva anteriormente
+        loadGroupOrder();
     }
 });
+
+// Função para salvar a ordem dos grupos
+function saveGroupOrder() {
+    const groups = document.querySelectorAll('.groups-row .group');
+    const order = Array.from(groups).map(group => group.id);
+    localStorage.setItem('groupOrder', JSON.stringify(order));
+}
+
+// Função para carregar a ordem salva
+function loadGroupOrder() {
+    const savedOrder = localStorage.getItem('groupOrder');
+    if (savedOrder) {
+        const order = JSON.parse(savedOrder);
+        const container = document.querySelector('.groups-row');
+        
+        if (container) {
+            const currentGroups = Array.from(container.querySelectorAll('.group'));
+            
+            // Reordena os grupos de acordo com a ordem salva
+            order.forEach(groupId => {
+                const group = currentGroups.find(g => g.id === groupId);
+                if (group) {
+                    container.appendChild(group);
+                }
+            });
+        }
+    }
+}

@@ -1270,11 +1270,8 @@ body.dark .group .button-container button:hover {
 
 /* Elemento fantasma durante o arrasto */
 .sortable-ghost {
-    opacity: 0.3 !important;
-    border: 2px dashed #60A5FA !important;
-    background: rgba(96, 165, 250, 0.1) !important;
-    box-shadow: none !important;
-    transform: scale(0.98) !important;
+    opacity: 0.4;
+    background: #c8e6ff !important;
 }
 
 /* Elemento escolhido (quando começa o arrasto) */
@@ -1552,14 +1549,15 @@ body.dark .group.google-apps .button-container button[onclick*="document"]:hover
 
 .sortable-ghost {
     opacity: 0.4;
-    background: rgba(96, 165, 250, 0.2) !important;
+    background: rgba(255, 255, 255, 0.1) !important;
     border: 2px dashed #60A5FA !important;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
 }
 
 .sortable-drag {
     cursor: grabbing !important;
-    transform: scale(1.05);
-    box-shadow: 0 8px 20px rgba(59, 130, 246, 0.2) !important;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+    transform: scale(1.02);
 }
 
 .button-container button {
@@ -1575,7 +1573,7 @@ body.dark .group.google-apps .button-container button[onclick*="document"]:hover
 
 /* Modo escuro */
 body.dark .sortable-ghost {
-    background: rgba(59, 130, 246, 0.15) !important;
+    background: rgba(0, 0, 0, 0.2) !important;
     border: 2px dashed #3B82F6 !important;
 }
 
@@ -2433,7 +2431,7 @@ body.dark .sem-aniversariantes {
 
 /* Modal de Feriados */
 .modal {
-    display: none;
+    display: none; /* Garante que o modal começa oculto */
     position: fixed;
     top: 0;
     left: 0;
@@ -2766,69 +2764,112 @@ body.dark .holiday-name {
     font-style: italic;
 }
 
-/* Dark mode */
-body.dark .aniversariante-item {
-    background: rgba(255, 255, 255, 0.05);
+/* Estilos para drag and drop */
+.sortable-ghost {
+    opacity: 0.5;
+    background: rgba(255, 255, 255, 0.1) !important;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
 }
 
-body.dark .aniversariante-item:hover {
-    background: rgba(255, 255, 255, 0.08);
+.sortable-drag {
+    cursor: grabbing !important;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+    transform: scale(1.02);
 }
 
-body.dark .aniversariante-icon {
-    background: linear-gradient(135deg, #db2777, #be185d);
+.accordion-header {
+    cursor: grab;
+    user-select: none;
+    position: relative;
 }
 
-body.dark .aniversariante-data i {
-    color: #db2777;
+.accordion-header:active {
+    cursor: grabbing;
 }
 
-@media (max-width: 768px) {
-    .aniversariante-item {
-        padding: 10px;
-    }
-
-    .aniversariante-icon {
-        width: 35px;
-        height: 35px;
-        min-width: 35px;
-    }
-
-    .aniversariante-icon i {
-        font-size: 1.2rem;
-    }
-
-    .aniversariante-nome {
-        font-size: 1rem;
-    }
-
-    .aniversariante-data {
-        font-size: 0.9rem;
-    }
+/* Indicador de arrasto */
+.accordion-header::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 4px;
+    height: 20px;
+    background: rgba(255, 255, 255, 0.3);
+    border-radius: 2px;
 }
 
-.holiday-countdown {
-    background-color: var(--primary-color);
+.accordion-header:hover::before {
+    background: rgba(255, 255, 255, 0.5);
+}
+
+/* Impede seleção de texto durante o arrasto */
+.group * {
+    user-select: none;
+}
+
+/* Cores específicas para os grupos do PJe */
+.group#pje-producao {
+    background: linear-gradient(135deg, #22c55e, #16a34a);
+}
+
+.group#pje-incidentes {
+    background: linear-gradient(135deg, #fbbf24, #d97706);
+}
+
+.group#pje-homologacao {
+    background: linear-gradient(135deg, #ef4444, #dc2626);
+}
+
+/* Hover effects para os grupos do PJe */
+.group#pje-producao:hover {
+    box-shadow: 0 8px 12px rgba(34, 197, 94, 0.3);
+}
+
+.group#pje-incidentes:hover {
+    box-shadow: 0 8px 12px rgba(251, 191, 36, 0.3);
+}
+
+.group#pje-homologacao:hover {
+    box-shadow: 0 8px 12px rgba(239, 68, 68, 0.3);
+}
+
+/* Cores específicas para os headers dos grupos do PJe */
+.group#pje-producao .accordion-header {
+    background: linear-gradient(135deg, #22c55e, #16a34a);
+}
+
+.group#pje-incidentes .accordion-header {
+    background: linear-gradient(135deg, #fbbf24, #d97706);
+}
+
+.group#pje-homologacao .accordion-header {
+    background: linear-gradient(135deg, #ef4444, #dc2626);
+}
+
+/* Hover effects para os headers dos grupos do PJe */
+.group#pje-producao .accordion-header:hover {
+    background: linear-gradient(135deg, #16a34a, #15803d);
+}
+
+.group#pje-incidentes .accordion-header:hover {
+    background: linear-gradient(135deg, #d97706, #b45309);
+}
+
+.group#pje-homologacao .accordion-header:hover {
+    background: linear-gradient(135deg, #dc2626, #b91c1c);
+}
+
+/* Ajuste do texto para melhor contraste */
+.group#pje-producao .accordion-header,
+.group#pje-incidentes .accordion-header,
+.group#pje-homologacao .accordion-header {
     color: white;
-    padding: 4px 8px;
-    border-radius: 4px;
-    font-size: 0.9em;
-    margin-top: 4px;
-    display: inline-block;
 }
 
-.holiday-item.Nacional .holiday-countdown {
-    background-color: var(--holiday-nacional);
-}
-
-.holiday-item.Estadual .holiday-countdown {
-    background-color: var(--holiday-estadual);
-}
-
-.holiday-item.Municipal .holiday-countdown {
-    background-color: var(--holiday-municipal);
-}
-
-.holiday-item.Facultativo .holiday-countdown {
-    background-color: var(--holiday-facultativo);
+.group#pje-producao .accordion-header i,
+.group#pje-incidentes .accordion-header i,
+.group#pje-homologacao .accordion-header i {
+    color: rgba(255, 255, 255, 0.9);
 }
