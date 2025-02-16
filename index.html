@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>🔗 NAPJe Atalhos</title>
+    <title> NAPJe Atalhos</title>
     <link rel="icon" type="image/svg+xml" href="favicon.svg">
     <link rel="icon" type="image/png" href="favicon.png">
     <meta name="theme-color" content="#3182ce">
@@ -200,11 +200,9 @@
                 </button>
                 <div class="accordion-content" id="atendimento-externo-content">
                     <div class="button-container grid-layout">
-                        <button onclick="toggleNotes()" class="notes-button">
-                            <i class="bi bi-journal-text"></i> Bloco de Notas</button>
                         <button onclick="window.open('https://script.google.com/a/macros/trt15.jus.br/s/AKfycbxUd5ynkGM8vasVAQErnZ3wKoPTI-Z49OskprzVrdnTMX95ILbPJ-YyqrXJIO101eI0/exec', '_blank')">
                             <i class="bi bi-card-checklist"></i> (0800)Registros dos Atendimentos</button>
-                        <button onclick="window.open('https://script.google.com/a/macros/trt15.jus.br/s/AKfycbwMIKePp_TuMlE9eqVZKgLIXXQ1Y8kjiR2C6prcJQBM6vJ3F8tK97fe2Ng7SQ_HOKdj/exec', '_blank')">
+                        <button onclick="window.open('https://script.google.com/a/macros/trt15.jus.br/s/AKfycbynfZ_Xg1MBmAk3u7WsMdbOXMMthRrZBDrtTAWT-YiDcWPzrrFXn80AHFEw01VqLa-g/exec', '_blank')">
                             <i class="bi bi-card-checklist"></i> Planilha/Atendimentos Telefônicos
                         </button>
                         <button onclick="window.open('https://docs.google.com/spreadsheets/d/1g7pme1VNFhffy2zdbCyRfvdpNFqLjRku8hObrOwqXNY/edit?pli=1&gid=1693944372#gid=1693944372', '_blank')">
@@ -216,23 +214,6 @@
                         <button onclick="window.open('https://trt15.jus.br/pje/suporte-ao-pje', '_blank')">
                             <i class="bi bi-wrench-adjustable-circle"></i> PJe-Suporte
                         </button>
-                    </div>
-
-                    <!-- Bloco de Notas Integrado -->
-                    <div id="notes-section" class="notes-section" style="display: none;">
-                        <div class="notes-header">
-                            <h3><i class="bi bi-journal-text"></i> Bloco de Notas</h3>
-                            <button onclick="toggleNotes()" class="close-notes">
-                                <i class="bi bi-x-lg"></i>
-                            </button>
-                        </div>
-                        <div class="notes-list" id="notesList"></div>
-                        <div class="notes-form">
-                            <textarea id="noteInput" placeholder="Digite sua nota aqui..."></textarea>
-                            <button onclick="addNote()" class="add-note-btn">
-                                <i class="bi bi-plus-lg"></i> Adicionar Nota
-                            </button>
-                        </div>
                     </div>
                 </div>
             </div>

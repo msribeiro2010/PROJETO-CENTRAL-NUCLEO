@@ -439,84 +439,6 @@ function getWeatherIcon(weatherIcon) {
 fetchWeather();
 setInterval(fetchWeather, 30 * 60 * 1000);
 
-// Funções do Bloco de Notas
-function toggleNotes() {
-    const notesSection = document.getElementById('notes-section');
-    const isVisible = notesSection.style.display === 'block';
-    
-    if (!isVisible) {
-        // Expandir o grupo de atendimento externo se necessário
-        const atendimentoContent = document.getElementById('atendimento-externo-content');
-        const atendimentoHeader = document.querySelector('#atendimento-externo .accordion-header');
-        if (atendimentoContent.style.display !== 'block') {
-            atendimentoHeader.click();
-        }
-    }
-    
-    // Toggle do bloco de notas
-    notesSection.style.display = isVisible ? 'none' : 'block';
-    
-    // Carregar notas se estiver abrindo
-    if (!isVisible) {
-        loadNotes();
-    }
-}
-
-function loadNotes() {
-    const notesList = document.getElementById('notesList');
-    const notes = JSON.parse(localStorage.getItem('notes') || '[]');
-    
-    notesList.innerHTML = notes.map((note, index) => `
-        <div class="note-item">
-            <div class="note-text">${note.text}</div>
-            <div class="note-actions">
-                <button onclick="editNote(${index})" class="edit-note">
-                    <i class="bi bi-pencil"></i>
-                </button>
-                <button onclick="deleteNote(${index})" class="delete-note">
-                    <i class="bi bi-trash"></i>
-                </button>
-            </div>
-        </div>
-    `).join('');
-}
-
-function addNote() {
-    const noteInput = document.getElementById('noteInput');
-    const text = noteInput.value.trim();
-    
-    if (text) {
-        const notes = JSON.parse(localStorage.getItem('notes') || '[]');
-        notes.push({ text, date: new Date().toISOString() });
-        localStorage.setItem('notes', JSON.stringify(notes));
-        
-        noteInput.value = '';
-        loadNotes();
-    }
-}
-
-function editNote(index) {
-    const notes = JSON.parse(localStorage.getItem('notes') || '[]');
-    const note = notes[index];
-    const noteInput = document.getElementById('noteInput');
-    
-    noteInput.value = note.text;
-    notes.splice(index, 1);
-    localStorage.setItem('notes', JSON.stringify(notes));
-    loadNotes();
-    
-    noteInput.focus();
-}
-
-function deleteNote(index) {
-    if (confirm('Tem certeza que deseja excluir esta nota?')) {
-        const notes = JSON.parse(localStorage.getItem('notes') || '[]');
-        notes.splice(index, 1);
-        localStorage.setItem('notes', JSON.stringify(notes));
-        loadNotes();
-    }
-}
-
 // Adicionar tooltips aos botões
 document.querySelectorAll('.button-container button').forEach(button => {
     const originalText = button.textContent;
@@ -532,6 +454,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }, 100);
 });
 
+// Funções do Bloco de Notas
 // Funções para o Modal de Feriados
 let holidays = [];
 let currentMonth = new Date().getMonth();
