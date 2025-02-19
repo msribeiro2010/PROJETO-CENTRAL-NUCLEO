@@ -295,6 +295,49 @@ document.addEventListener('DOMContentLoaded', function() {
     carregarAniversariantes();
 });
 
+// Manipulação dos links da navbar
+document.addEventListener('DOMContentLoaded', function() {
+    // Adiciona evento de clique para todos os links da navbar
+    document.querySelectorAll('.navbar-links a').forEach(link => {
+        link.addEventListener('click', function(e) {
+            e.preventDefault();
+            const targetId = this.getAttribute('data-target');
+            const targetGroup = document.querySelector(`.group.${targetId}`);
+            
+            if (!targetGroup) return;
+
+            const header = targetGroup.querySelector('.accordion-header');
+            if (!header) return;
+
+            // Fecha todos os outros accordions
+            document.querySelectorAll('.accordion-header').forEach(otherHeader => {
+                if (otherHeader !== header) {
+                    const content = otherHeader.nextElementSibling;
+                    otherHeader.setAttribute('aria-expanded', 'false');
+                    if (content) content.style.display = 'none';
+                    const icon = otherHeader.querySelector('.accordion-icon');
+                    if (icon) icon.style.transform = 'rotate(0deg)';
+                }
+            });
+
+            // Abre o accordion clicado
+            const content = header.nextElementSibling;
+            header.setAttribute('aria-expanded', 'true');
+            if (content) content.style.display = 'block';
+            const icon = header.querySelector('.accordion-icon');
+            if (icon) icon.style.transform = 'rotate(180deg)';
+
+            // Se for a seção de aniversariantes, recarrega os dados
+            if (targetId === 'aniversariantes') {
+                carregarAniversariantes();
+            }
+
+            // Rola a página até a seção
+            targetGroup.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        });
+    });
+});
+
 // Nova Funcionalidade: Links da Navbar Abrindo Accordions
 const navbarLinks = document.querySelectorAll(".navbar-links a[data-target]");
 
@@ -689,3 +732,47 @@ function loadGroupOrder() {
         }
     }
 }
+
+// Função para abrir a seção de aniversariantes
+function abrirAniversariantes() {
+    const aniversariantesGroup = document.querySelector('.group.aniversariantes');
+    if (!aniversariantesGroup) return;
+
+    const header = aniversariantesGroup.querySelector('.accordion-header');
+    if (!header) return;
+
+    // Fecha todos os outros accordions
+    document.querySelectorAll('.accordion-header').forEach(otherHeader => {
+        if (otherHeader !== header) {
+            const content = otherHeader.nextElementSibling;
+            otherHeader.setAttribute('aria-expanded', 'false');
+            if (content) content.style.display = 'none';
+            const icon = otherHeader.querySelector('.accordion-icon');
+            if (icon) icon.style.transform = 'rotate(0deg)';
+        }
+    });
+
+    // Abre a seção de aniversariantes
+    const content = header.nextElementSibling;
+    header.setAttribute('aria-expanded', 'true');
+    if (content) content.style.display = 'block';
+    const icon = header.querySelector('.accordion-icon');
+    if (icon) icon.style.transform = 'rotate(180deg)';
+
+    // Recarrega os aniversariantes
+    carregarAniversariantes();
+
+    // Rola a página até a seção
+    aniversariantesGroup.scrollIntoView({ behavior: 'smooth', block: 'start' });
+}
+
+// Adiciona o evento de clique no link da navbar
+document.addEventListener('DOMContentLoaded', function() {
+    const navbarAniversariantesLink = document.querySelector('.navbar-links a[href="#aniversariantes"]');
+    if (navbarAniversariantesLink) {
+        navbarAniversariantesLink.addEventListener('click', function(e) {
+            e.preventDefault();
+            abrirAniversariantes();
+        });
+    }
+});
