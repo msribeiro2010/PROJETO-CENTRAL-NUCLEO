@@ -69,9 +69,19 @@
             <div class="header-content">
                 <div class="header-top">
                     <button class="holiday-btn" onclick="showHolidays()">
-                        <i class="bi bi-calendar2-heart"></i>
-                        <span>Feriados 2025</span>
+                        <i class="bi bi-calendar2-event"></i>
+                        <span>Feriados</span>
                     </button>
+                    <div class="duty-roster">
+                        <div class="next-duty">
+                            <span class="duty-label">Próximo Plantão:</span>
+                            <span id="next-duty-name">Carregando...</span>
+                        </div>
+                        <div class="weekend-duty">
+                            <span class="duty-label">Plantão Fim de Semana:</span>
+                            <span id="weekend-duty-names">Carregando...</span>
+                        </div>
+                    </div>
                     <div class="header-title">
                         <h2><i class="bi bi-building"></i> Central Núcleo</h2>
                     </div>
@@ -416,7 +426,8 @@
 <!-- Scripts -->
 <script src="https://cdn.jsdelivr.net/npm/sortablejs@1.15.0/Sortable.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/Sortable/1.15.0/Sortable.min.js"></script>
+<script src="https://apis.google.com/js/api.js"></script>
+<script src="https://accounts.google.com/gsi/client"></script>
 <script src="script.js"></script>
 <script src="button-customization.js"></script>
 </body>

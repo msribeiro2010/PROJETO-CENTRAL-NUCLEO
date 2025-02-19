@@ -776,3 +776,71 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 });
+
+// Configuração do Google Sheets
+const SPREADSHEET_ID = '1Mz5kOQEBC7qlDVP47i4RMWlZboLKLJWGSsRpgR7kMJk';
+const RANGE = 'Plantao/Escala 2025!A:E';  // Ajuste conforme necessário
+
+async function initGoogleSheets() {
+    try {
+        await gapi.client.init({
+            apiKey: 'YOUR_API_KEY',  // Você precisará criar uma chave de API no Google Cloud Console
+            discoveryDocs: ['https://sheets.googleapis.com/$discovery/rest?version=v4'],
+        });
+        carregarPlantao();
+    } catch (error) {
+        console.error('Erro ao inicializar Google Sheets:', error);
+    }
+}
+
+async function carregarPlantao() {
+    try {
+        const response = await gapi.client.sheets.spreadsheets.values.get({
+            spreadsheetId: SPREADSHEET_ID,
+            range: RANGE,
+        });
+
+        const rows = response.result.values;
+        if (rows.length) {
+            const hoje = new Date();
+            let proximoPlantao = null;
+            let plantonistasFinaisSemana = [];
+
+            // Encontrar o próximo plantão
+            for (let i = 1; i < rows.length; i++) {
+                const data = new Date(rows[i][0]);
+                if (data > hoje) {
+                    proximoPlantao = {
+                        data: data,
+                        nome: rows[i][2]  // Coluna PLANTÃO
+                    };
+                    break;
+                }
+            }
+
+            // Encontrar plantonistas do próximo fim de semana
+            const proximoSabado = new Date(hoje);
+            proximoSabado.setDate(hoje.getDate() + (6 - hoje.getDay()));
+            
+            for (let i = 1; i < rows.length; i++) {
+                const data = new Date(rows[i][0]);
+                if (data.getTime() === proximoSabado.getTime() || 
+                    data.getTime() === new Date(proximoSabado.getTime() + 86400000).getTime()) {
+                    plantonistasFinaisSemana.push(rows[i][2]);
+                }
+            }
+
+            // Atualizar a interface
+            document.getElementById('next-duty-name').textContent = proximoPlantao ? proximoPlantao.nome : 'Não encontrado';
+            document.getElementById('weekend-duty-names').textContent = plantonistasFinaisSemana.length ? 
+                plantonistasFinaisSemana.join(' e ') : 'Não encontrado';
+        }
+    } catch (error) {
+        console.error('Erro ao carregar plantão:', error);
+        document.getElementById('next-duty-name').textContent = 'Erro ao carregar';
+        document.getElementById('weekend-duty-names').textContent = 'Erro ao carregar';
+    }
+}
+
+// Inicializar Google Sheets API
+gapi.load('client', initGoogleSheets);
