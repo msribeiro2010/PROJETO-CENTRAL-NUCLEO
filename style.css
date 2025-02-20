@@ -438,11 +438,10 @@ body {
 
 .group.sistema-pje .accordion-header {
     background: linear-gradient(90deg,
-        #63b3ed 0%,
-        #4299e1 20%,
-        #3182ce 50%,
-        #2b6cb0 80%,
-        #2c5282 100%
+        #319795 0%,
+        #805ad5 30%,
+        #97266d 60%,
+        #822727 100%
     );
     color: white;
     padding: 15px 20px;
@@ -2837,30 +2836,4 @@ body.dark .holiday-name {
 .group#pje-incidentes .accordion-header i,
 .group#pje-homologacao .accordion-header i {
     color: rgba(255, 255, 255, 0.9);
-}
-
-.duty-roster {
-    display: flex;
-    flex-direction: column;
-    gap: 8px;
-    background: var(--bg-secondary);
-    padding: 12px;
-    border-radius: 8px;
-    margin: 0 16px;
-}
-
-.next-duty, .weekend-duty {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-}
-
-.duty-label {
-    font-weight: 500;
-    color: var(--text-primary);
-}
-
-#next-duty-name, #weekend-duty-names {
-    color: var(--accent-color);
-    font-weight: 600;
 }
