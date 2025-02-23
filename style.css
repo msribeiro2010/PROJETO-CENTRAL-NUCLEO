@@ -1,0 +1,2839 @@
+/* Reset de estilos */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Roboto', sans-serif;
+    background: linear-gradient(135deg, #f5f7fa, #c3cfe2);
+    color: #2d3748;
+    padding: 0;
+    transition: all 0.3s ease;
+    min-height: 100vh;
+}
+
+/* Navbar Superior */
+.navbar {
+    background: linear-gradient(90deg, 
+        #63b3ed 0%,
+        #4299e1 20%,
+        #3182ce 50%,
+        #2b6cb0 80%,
+        #2c5282 100%
+    );
+    padding: 15px 30px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    transition: all 0.3s ease;
+}
+
+.navbar::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(90deg,
+        rgba(255, 255, 255, 0.15) 0%,
+        rgba(255, 255, 255, 0.1) 50%,
+        rgba(255, 255, 255, 0.05) 100%
+    );
+    pointer-events: none;
+}
+
+.navbar-container {
+    max-width: 1400px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: relative;
+    z-index: 1;
+}
+
+.navbar-logo img {
+    height: 45px;
+    transition: transform 0.3s ease;
+}
+
+.navbar-logo img:hover {
+    transform: scale(1.05);
+}
+
+.navbar-links {
+    display: flex;
+    gap: 25px;
+    align-items: center;
+}
+
+.navbar-links a {
+    color: #ffffff;
+    text-decoration: none;
+    font-weight: 500;
+    font-size: 0.95rem;
+    padding: 8px 12px;
+    border-radius: 6px;
+    transition: all 0.3s ease;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
+}
+
+.navbar-links a:hover {
+    background: rgba(255, 255, 255, 0.15);
+    transform: translateY(-2px);
+}
+
+/* Botão de Alternância Tema */
+.theme-toggle {
+    background: rgba(255, 255, 255, 0.1);
+    border: none;
+    color: #ffffff;
+    font-size: 1.25rem;
+    cursor: pointer;
+    padding: 8px;
+    border-radius: 50%;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+}
+
+.theme-toggle:hover {
+    background: rgba(255, 255, 255, 0.2);
+    transform: rotate(360deg);
+}
+
+/* Container Principal */
+.container {
+    max-width: 1400px;
+    margin: 20px auto;
+    background-color: rgba(255, 255, 255, 0.95);
+    padding: 20px;
+    border-radius: 16px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+    backdrop-filter: blur(10px);
+}
+
+/* Header Principal */
+.header {
+    background: linear-gradient(135deg, #3b82f6, #1d4ed8);
+    border-radius: 12px;
+    margin-bottom: 20px;
+    padding: 20px;
+    box-shadow: 0 4px 12px rgba(59, 130, 246, 0.3);
+}
+
+.header-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+    position: relative;
+}
+
+.header-top {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    position: relative;
+    margin-bottom: 16px;
+}
+
+.holiday-btn {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 10px 20px;
+    border-radius: 12px;
+    border: none;
+    background: linear-gradient(135deg, #ff6b6b, #f03e3e);
+    color: white;
+    font-size: 0.95rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: 
+        0 4px 6px rgba(240, 62, 62, 0.2),
+        0 8px 12px rgba(240, 62, 62, 0.1),
+        inset 0 2px 4px rgba(255, 255, 255, 0.3);
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+    position: relative;
+    overflow: hidden;
+}
+
+.holiday-btn::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(
+        90deg,
+        transparent,
+        rgba(255, 255, 255, 0.2),
+        transparent
+    );
+    transition: 0.5s;
+}
+
+.holiday-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 
+        0 6px 8px rgba(240, 62, 62, 0.25),
+        0 10px 16px rgba(240, 62, 62, 0.15),
+        inset 0 2px 4px rgba(255, 255, 255, 0.4);
+    background: linear-gradient(135deg, #fa5252, #e03131);
+}
+
+.holiday-btn:hover::before {
+    left: 100%;
+}
+
+.holiday-btn:active {
+    transform: translateY(0);
+    box-shadow: 
+        0 2px 4px rgba(240, 62, 62, 0.2),
+        inset 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.holiday-btn i {
+    font-size: 1.1rem;
+    animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+    0% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.1);
+    }
+    100% {
+        transform: scale(1);
+    }
+}
+
+.header-title {
+    text-align: center;
+    margin: 0 60px;
+}
+
+.header-title h2 {
+    color: white;
+    font-size: 1.5rem;
+    margin: 0;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.header-title h2 i {
+    font-size: 1.5rem;
+    color: rgba(255, 255, 255, 0.9);
+}
+
+.calendar-wrapper {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    padding: 8px 15px;
+    background: rgba(255, 255, 255, 0.15);
+    border-radius: 8px;
+    backdrop-filter: blur(5px);
+}
+
+.time-container,
+.date-container {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    color: white;
+    white-space: nowrap;
+}
+
+.time-container i,
+.date-container i {
+    font-size: 1.1rem;
+    color: rgba(255, 255, 255, 0.9);
+}
+
+#clock {
+    font-weight: 600;
+    font-size: 1.2rem;
+    min-width: 80px;
+}
+
+#weekday {
+    font-size: 1rem;
+    min-width: 35px;
+    font-weight: 500;
+}
+
+#current-date {
+    font-size: 1rem;
+    min-width: 80px;
+}
+
+@media (max-width: 768px) {
+    .header-top {
+        flex-direction: column;
+        gap: 15px;
+    }
+
+    .holiday-btn {
+        position: static;
+        transform: none;
+        width: 100%;
+        justify-content: center;
+        margin-bottom: 10px;
+    }
+
+    .header-title {
+        margin: 0;
+    }
+
+    .calendar-wrapper {
+        flex-direction: column;
+        align-items: center;
+        width: 100%;
+    }
+
+    .time-container,
+    .date-container {
+        justify-content: center;
+        width: 100%;
+    }
+}
+
+.header-bottom {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 15px;
+    flex-wrap: wrap;
+}
+
+.header-left {
+    flex: 0 0 auto;
+    min-width: 150px;
+}
+
+.header-center {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    min-width: 200px;
+}
+
+.header-right {
+    flex: 0 1 380px;
+    min-width: 300px;
+}
+
+#birthdays {
+    background: rgba(0, 0, 0, 0.25);
+    padding: 12px;
+    border-radius: 8px;
+    width: 100%;
+}
+
+.birthday-header {
+    color: #ffd700;
+    font-size: 0.95rem;
+    font-weight: 600;
+    margin-bottom: 12px;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+}
+
+#birthday-list {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.birthday-item {
+    padding: 8px 12px;
+    font-family: 'Poppins', sans-serif;
+    font-size: 0.9rem;
+    background: #fff7b1;
+    border-radius: 2px;
+    box-shadow: 
+        0 1px 3px rgba(0,0,0,0.12),
+        0 1px 2px rgba(0,0,0,0.24),
+        2px 2px 2px rgba(0,0,0,0.1);
+    transform: rotate(-1deg);
+    transition: all 0.3s ease;
+    position: relative;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.birthday-item:nth-child(even) {
+    transform: rotate(1deg);
+    background: #ffeb3b;
+}
+
+.birthday-item:hover {
+    transform: rotate(0) scale(1.02);
+    box-shadow: 
+        0 3px 6px rgba(0,0,0,0.16),
+        0 3px 6px rgba(0,0,0,0.23);
+    z-index: 1;
+}
+
+.birthday-item::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 50%;
+    width: 30px;
+    height: 6px;
+    background: rgba(0,0,0,0.1);
+    transform: translateX(-50%);
+    border-radius: 0 0 3px 3px;
+}
+
+.birthday-item .date {
+    font-weight: 600;
+    color: #d32f2f;
+    margin-right: 6px;
+    font-size: 0.9rem;
+}
+
+.birthday-item .separator {
+    color: rgba(0, 0, 0, 0.5);
+    margin: 0 4px;
+}
+
+.birthday-item .name {
+    font-weight: 500;
+    color: #1a237e;
+}
+
+/* Grupo Sistema-PJe */
+.group.sistema-pje {
+    background: linear-gradient(135deg, 
+        rgba(49, 151, 149, 0.1),
+        rgba(136, 19, 55, 0.1)
+    );
+    border-radius: 12px;
+    padding: 20px;
+    margin-bottom: 20px;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.group.sistema-pje .accordion-header {
+    background: linear-gradient(90deg,
+        #319795 0%,
+        #805ad5 30%,
+        #97266d 60%,
+        #822727 100%
+    );
+    color: white;
+    padding: 15px 20px;
+    border-radius: 8px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.group.sistema-pje .accordion-header:hover {
+    background: linear-gradient(90deg,
+        #38B2AC 0%,
+        #9f7aea 30%,
+        #b83280 60%,
+        #9b2c2c 100%
+    );
+    transform: translateY(-1px);
+}
+
+.group.sistema-pje .button-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 15px;
+    padding: 20px 0;
+}
+
+.group.sistema-pje .button-container button {
+    background: linear-gradient(135deg, #319795, #805ad5) !important;
+    color: white !important;
+    padding: 12px 20px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-size: 0.95rem;
+    text-align: left;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    min-height: 44px;
+    line-height: 1.3;
+    white-space: normal;
+    word-wrap: break-word;
+    width: 100%;
+    border: none;
+}
+
+.group.sistema-pje .button-container button:hover {
+    background: linear-gradient(135deg, #38B2AC, #9f7aea) !important;
+    transform: translateX(5px);
+}
+
+.group.sistema-pje .button-container button i {
+    font-size: 1.1rem;
+    color: rgba(255, 255, 255, 0.9);
+    filter: drop-shadow(1px 1px 1px rgba(0, 0, 0, 0.2));
+    flex-shrink: 0;
+    width: 18px;
+    text-align: center;
+    margin-top: 2px;
+}
+
+/* Dark mode */
+body.dark .group.sistema-pje {
+    background: linear-gradient(135deg, 
+        rgba(49, 151, 149, 0.15),
+        rgba(136, 19, 55, 0.15)
+    );
+    border-color: rgba(255, 255, 255, 0.1);
+}
+
+body.dark .group.sistema-pje .accordion-header {
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+body.dark .group.sistema-pje .button-container button {
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+/* Grupo com Accordion */
+.group {
+    margin-bottom: 20px;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 8px;
+    overflow: hidden;
+    transition: all 0.3s ease;
+    box-shadow: 
+        0 2px 4px rgba(0, 0, 0, 0.1),
+        0 4px 8px rgba(0, 0, 0, 0.1),
+        0 8px 16px rgba(0, 0, 0, 0.1);
+    height: fit-content;
+    margin-bottom: 12px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    transform: translateZ(0);
+    backface-visibility: hidden;
+}
+
+.group:hover {
+    transform: translateY(-2px) translateZ(0);
+    box-shadow: 
+        0 4px 8px rgba(0, 0, 0, 0.2),
+        0 8px 16px rgba(0, 0, 0, 0.2),
+        0 16px 32px rgba(0, 0, 0, 0.1);
+}
+
+.group.google-apps {
+    border: 1px solid #DB4437;
+}
+
+.group.pje {
+    border: 1px solid #4A5568;
+}
+
+.group.sistema-pje {
+    border: 1px solid #319795;
+}
+
+.group.sistemas-satelites {
+    border: 1px solid #00838F;
+}
+
+.group.assyst-pje {
+    border: 1px solid #4CAF50;
+}
+
+.group.apps-externos {
+    border: 1px solid #64748B;
+}
+
+.accordion-header {
+    width: 100%;
+    padding: 12px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border: none;
+    background: linear-gradient(
+        to bottom,
+        rgba(255, 255, 255, 0.1),
+        rgba(255, 255, 255, 0.05)
+    );
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-size: 0.95rem;
+    position: relative;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+}
+
+.accordion-header::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background: linear-gradient(
+        to right,
+        transparent,
+        rgba(255, 255, 255, 0.1),
+        transparent
+    );
+}
+
+.accordion-content {
+    background: rgba(0, 0, 0, 0.2);
+    border-top: 1px solid rgba(255, 255, 255, 0.05);
+    box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* Estilização da barra de rolagem para Chrome/Safari/Edge */
+.accordion-content::-webkit-scrollbar {
+    width: 8px;
+}
+
+.accordion-content::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+.accordion-content::-webkit-scrollbar-thumb {
+    background-color: rgba(155, 155, 155, 0.5);
+    border-radius: 4px;
+    border: 2px solid transparent;
+}
+
+.accordion-content::-webkit-scrollbar-thumb:hover {
+    background-color: rgba(155, 155, 155, 0.8);
+}
+
+/* Ajuste para o modo escuro */
+body.dark .accordion-content {
+    scrollbar-color: rgba(255, 255, 255, 0.3) transparent;
+}
+
+body.dark .accordion-content::-webkit-scrollbar-thumb {
+    background-color: rgba(255, 255, 255, 0.3);
+}
+
+body.dark .accordion-content::-webkit-scrollbar-thumb:hover {
+    background-color: rgba(255, 255, 255, 0.5);
+}
+
+/* Grid de Botões */
+.button-container.grid-layout {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 12px;
+    padding: 12px;
+    min-height: 50px;
+    max-height: 350px;
+    overflow-y: auto;
+    scrollbar-width: thin;
+    scrollbar-color: rgba(155, 155, 155, 0.5) transparent;
+    padding-right: 10px; /* Espaço para a barra de rolagem */
+}
+
+.button-container.grid-layout::-webkit-scrollbar {
+    width: 8px;
+}
+
+.button-container.grid-layout::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+.button-container.grid-layout::-webkit-scrollbar-thumb {
+    background-color: rgba(155, 155, 155, 0.5);
+    border-radius: 4px;
+    border: 2px solid transparent;
+}
+
+.button-container.grid-layout::-webkit-scrollbar-thumb:hover {
+    background-color: rgba(155, 155, 155, 0.8);
+}
+
+/* Ajuste para o modo escuro */
+body.dark .button-container.grid-layout {
+    scrollbar-color: rgba(255, 255, 255, 0.3) transparent;
+}
+
+body.dark .button-container.grid-layout::-webkit-scrollbar-thumb {
+    background-color: rgba(255, 255, 255, 0.3);
+}
+
+body.dark .button-container.grid-layout::-webkit-scrollbar-thumb:hover {
+    background-color: rgba(255, 255, 255, 0.5);
+}
+
+.button-container.grid-layout button {
+    width: 100%;
+    height: 100%;
+    min-height: 48px;
+    margin: 0;
+}
+
+.button-container button,
+.group .button-container button {
+    background: var(--button-gradient, linear-gradient(135deg, #60A5FA, #3B82F6)) !important;
+    color: white;
+    font-weight: 500;
+    padding: 10px 14px;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-size: 0.85rem;
+    text-align: left;
+    display: flex;
+    align-items: flex-start;
+    gap: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    min-height: 44px;
+    line-height: 1.3;
+    white-space: normal;
+    word-wrap: break-word;
+    width: 100%;
+    border: none;
+}
+
+.button-container button:hover,
+.group .button-container button:hover {
+    transform: translateX(5px);
+    box-shadow: 0 4px 12px rgba(43, 108, 176, 0.2);
+}
+
+.button-container button i,
+.group .button-container button i {
+    font-size: 1rem;
+    color: rgba(255, 255, 255, 0.9);
+    filter: drop-shadow(1px 1px 1px rgba(0, 0, 0, 0.2));
+    flex-shrink: 0;
+    width: 18px;
+    text-align: center;
+    margin-top: 2px;
+}
+
+.button-container button {
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 
+        0 2px 4px rgba(0, 0, 0, 0.1),
+        inset 0 1px rgba(255, 255, 255, 0.1);
+    transition: all 0.3s ease;
+    padding: 12px 16px;
+    border-radius: 6px;
+}
+
+.button-container button:hover {
+    transform: translateY(-1px);
+    box-shadow: 
+        0 4px 8px rgba(0, 0, 0, 0.2),
+        inset 0 1px rgba(255, 255, 255, 0.2);
+    background: rgba(255, 255, 255, 0.15);
+}
+
+.button-container button:active {
+    transform: translateY(0);
+    box-shadow: 
+        0 2px 4px rgba(0, 0, 0, 0.1),
+        inset 0 1px rgba(255, 255, 255, 0.1);
+}
+
+/* Estilos específicos para o grupo Google Apps */
+.group.google-apps {
+    background: #ffffff;
+    border: 1px solid #ea4335;
+}
+
+.group.google-apps .accordion-header {
+    background: linear-gradient(135deg, #4285F4, #DB4437);
+    color: white;
+    border-left: 4px solid #4285F4;
+    transition: all 0.3s ease;
+}
+
+.group.google-apps .accordion-header:hover {
+    background: linear-gradient(135deg, #4285F4, #0F9D58);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(66, 133, 244, 0.4);
+}
+
+.group.google-apps .accordion-header i {
+    color: white;
+}
+
+.group.google-apps .button-container button:nth-child(4n+1) {
+    background: linear-gradient(135deg, #4285F4, #357ABD) !important; /* Google Blue */
+    color: white;
+}
+
+.group.google-apps .button-container button:nth-child(4n+2) {
+    background: linear-gradient(135deg, #DB4437, #C31C0D) !important; /* Google Red */
+    color: white;
+}
+
+.group.google-apps .button-container button:nth-child(4n+3) {
+    background: linear-gradient(135deg, #F4B400, #F4B400) !important; /* Google Yellow */
+    color: #1a1a1a;
+}
+
+.group.google-apps .button-container button:nth-child(4n+4) {
+    background: linear-gradient(135deg, #0F9D58, #0B7B44) !important; /* Google Green */
+    color: white;
+}
+
+.group.google-apps .button-container button:nth-child(4n+1):hover {
+    background: linear-gradient(135deg, #357ABD, #4285F4) !important;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(66, 133, 244, 0.4);
+}
+
+.group.google-apps .button-container button:nth-child(4n+2):hover {
+    background: linear-gradient(135deg, #C31C0D, #DB4437) !important;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(219, 68, 55, 0.4);
+}
+
+.group.google-apps .button-container button:nth-child(4n+3):hover {
+    background: linear-gradient(135deg, #F4B400, #F4B400) !important;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(244, 180, 0, 0.4);
+}
+
+.group.google-apps .button-container button:nth-child(4n+4):hover {
+    background: linear-gradient(135deg, #0B7B44, #0F9D58) !important;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(15, 157, 88, 0.4);
+}
+
+.group.google-apps .button-container button i {
+    color: rgba(255, 255, 255, 0.9);
+}
+
+.group.google-apps .button-container button:nth-child(4n+3) i {
+    color: #1a1a1a;
+}
+
+/* Versão dark mode */
+body.dark .group.google-apps .accordion-header {
+    background: linear-gradient(135deg, #357ABD, #C31C0D);
+}
+
+body.dark .group.google-apps .accordion-header:hover {
+    background: linear-gradient(135deg, #4285F4, #0F9D58);
+    box-shadow: 0 4px 12px rgba(66, 133, 244, 0.4);
+}
+
+/* Estilos específicos para sistemas PJe e outros grupos */
+.group.pje,
+.group.assyst,
+.group.sistemas-satelites {
+    background: #ffffff;
+    border-radius: 12px;
+    margin-bottom: 20px;
+    overflow: hidden;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.group.pje .button-container,
+.group.assyst .button-container,
+.group.sistemas-satelites .button-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+    gap: 12px;
+    padding: 20px 0;
+}
+
+.group.pje .accordion-content {
+    padding: 20px;
+}
+
+.group.pje .ambientes-container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+}
+
+.group.pje .ambiente-section {
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 8px;
+    padding: 20px;
+    border: 1px solid #2b6cb0;
+    margin-bottom: 15px;
+}
+
+.group.pje .ambiente-title {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 1.1rem;
+    color: #2b6cb0;
+    margin: 0 0 15px 0;
+    font-weight: 500;
+    padding-bottom: 10px;
+    border-bottom: 2px solid rgba(43, 108, 176, 0.2);
+}
+
+.group.pje .ambiente-title i {
+    font-size: 1.2rem;
+}
+
+.group.pje .button-container {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 10px;
+}
+
+.group.pje .button-container button {
+    background: linear-gradient(135deg, #64748b, #475569) !important;
+    color: white;
+    font-weight: 500;
+    padding: 12px 16px;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-size: 0.9rem;
+    text-align: left;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    min-height: 48px;
+    line-height: 1.3;
+    white-space: normal;
+    word-wrap: break-word;
+    width: 100%;
+    border: none;
+}
+
+.group.pje .button-container button i {
+    font-size: 1.1rem;
+    flex-shrink: 0;
+}
+
+.group.pje .button-container button:hover {
+    background: linear-gradient(135deg, #475569, #334155) !important;
+    transform: translateX(5px);
+    box-shadow: 0 4px 12px rgba(71, 85, 105, 0.2);
+}
+
+/* Dark mode */
+body.dark .group.pje .ambiente-section {
+    background: rgba(26, 32, 44, 0.3);
+    border-color: rgba(255, 255, 255, 0.1);
+}
+
+body.dark .group.pje .ambiente-title {
+    color: #63b3ed;
+    border-color: rgba(99, 179, 237, 0.2);
+}
+
+body.dark .group.pje .button-container button {
+    background: linear-gradient(135deg, #334155, #1e293b) !important;
+}
+
+body.dark .group.pje .button-container button:hover {
+    background: linear-gradient(135deg, #1e293b, #0f172a) !important;
+}
+
+/* Modo escuro para os grupos */
+body.dark .group.pje,
+body.dark .group.assyst-pje,
+body.dark .group.sistemas-satelites {
+    background: rgba(255, 255, 255, 0.05);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+}
+
+/* Grupo Assyst-PJe */
+.group.assyst-pje {
+    background: #ffffff;
+    border-radius: 12px;
+    margin-bottom: 20px;
+    overflow: hidden;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.group.assyst-pje .accordion-header {
+    background: linear-gradient(135deg, #bfdbfe, #93c5fd);
+    color: #1e3a8a;
+    border-left: 4px solid #93c5fd;
+    transition: all 0.3s ease;
+}
+
+.group.assyst-pje .accordion-header:hover {
+    background: linear-gradient(135deg, #93c5fd, #60a5fa);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(147, 197, 253, 0.4);
+}
+
+.group.assyst-pje .button-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 15px;
+    padding: 20px 0;
+}
+
+.group.assyst-pje .button-container button {
+    background: linear-gradient(135deg, #bfdbfe, #93c5fd);
+    color: #1e3a8a;
+    border: none;
+    transition: all 0.3s ease;
+}
+
+.group.assyst-pje .button-container button:hover {
+    background: linear-gradient(135deg, #93c5fd, #60a5fa);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(147, 197, 253, 0.4);
+}
+
+.group.assyst-pje .button-container button i {
+    color: rgba(255, 255, 255, 0.9) !important;
+}
+
+/* Dark mode */
+body.dark .group.assyst-pje {
+    background: rgba(255, 255, 255, 0.05);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+}
+
+body.dark .group.assyst-pje .accordion-header,
+body.dark .group.assyst-pje .button-container button {
+    background: linear-gradient(135deg, #1e40af, #3b82f6);
+    color: white;
+}
+
+body.dark .group.assyst-pje .accordion-header:hover,
+body.dark .group.assyst-pje .button-container button:hover {
+    background: linear-gradient(135deg, #3b82f6, #60a5fa);
+    box-shadow: 0 4px 12px rgba(59, 130, 246, 0.4);
+}
+
+.group.assyst-pje .button-container button[onclick*="queryProfileForm"] {
+    background: linear-gradient(135deg, #b91c1c, #991b1b);
+}
+
+.group.assyst-pje .button-container button[onclick*="queryProfileForm"]:hover {
+    background: linear-gradient(135deg, #dc2626, #b91c1c);
+}
+
+.group.assyst-pje .button-container button[onclick*="queryProfileForm"] i {
+    color: #fca5a5;
+}
+
+/* Apps Externos - Header Cinza Prateado */
+.group.apps-externos .accordion-header {
+    background: linear-gradient(135deg, #78909c, #455a64);
+    border-left: 4px solid #78909c;
+}
+
+.group.apps-externos .accordion-header:hover {
+    background: linear-gradient(135deg, #90a4ae, #546e7a);
+}
+
+.group.apps-externos .accordion-content {
+    background: rgba(69, 90, 100, 0.95);
+}
+
+/* Apps Externos - Botões com cores diferentes */
+/* Botão Azul Suave - Sistemas Judiciais */
+.group.apps-externos .button-container button[onclick*="pje"],
+.group.apps-externos .button-container button[onclick*="gestao"],
+.group.apps-externos .button-container button[onclick*="judicial"] {
+    background: linear-gradient(135deg, #64b5f6, #1e88e5);
+    border-left: 4px solid #64b5f6;
+    color: white;
+    font-weight: 500;
+}
+
+.group.apps-externos .button-container button[onclick*="pje"]:hover,
+.group.apps-externos .button-container button[onclick*="gestao"]:hover,
+.group.apps-externos .button-container button[onclick*="judicial"]:hover {
+    background: linear-gradient(135deg, #90caf9, #42a5f5);
+    transform: translateX(5px);
+}
+
+/* Botão Roxo Suave - Sistemas Administrativos */
+.group.apps-externos .button-container button[onclick*="admin"],
+.group.apps-externos .button-container button[onclick*="sigeo"],
+.group.apps-externos .button-container button[onclick*="folha"] {
+    background: linear-gradient(135deg, #9575cd, #5e35b1);
+    border-left: 4px solid #9575cd;
+    color: white;
+    font-weight: 500;
+}
+
+.group.apps-externos .button-container button[onclick*="admin"]:hover,
+.group.apps-externos .button-container button[onclick*="sigeo"]:hover,
+.group.apps-externos .button-container button[onclick*="folha"]:hover {
+    background: linear-gradient(135deg, #b39ddb, #7b1fa2);
+    transform: translateX(5px);
+}
+
+/* Botão Verde Suave - Sistemas de Segurança e Controle */
+.group.apps-externos .button-container button[onclick*="seguranca"],
+.group.apps-externos .button-container button[onclick*="controle"],
+.group.apps-externos .button-container button[onclick*="acesso"] {
+    background: linear-gradient(135deg, #81c784, #43a047);
+    border-left: 4px solid #81c784;
+    color: white;
+    font-weight: 500;
+}
+
+.group.apps-externos .button-container button[onclick*="seguranca"]:hover,
+.group.apps-externos .button-container button[onclick*="controle"]:hover,
+.group.apps-externos .button-container button[onclick*="acesso"]:hover {
+    background: linear-gradient(135deg, #a5d6a7, #66bb6a);
+    transform: translateX(5px);
+}
+
+/* Botão Âmbar Suave - Outros sistemas */
+.group.apps-externos .button-container button:not([onclick*="pje"]):not([onclick*="gestao"]):not([onclick*="judicial"]):not([onclick*="admin"]):not([onclick*="sigeo"]):not([onclick*="folha"]):not([onclick*="seguranca"]):not([onclick*="controle"]):not([onclick*="acesso"]) {
+    background: linear-gradient(135deg, #ffb74d, #ef6c00);
+    border-left: 4px solid #ffb74d;
+    color: white;
+    font-weight: 500;
+}
+
+.group.apps-externos .button-container button:not([onclick*="pje"]):not([onclick*="gestao"]):not([onclick*="judicial"]):not([onclick*="admin"]):not([onclick*="sigeo"]):not([onclick*="folha"]):not([onclick*="seguranca"]):not([onclick*="controle"]):not([onclick*="acesso"]):hover {
+    background: linear-gradient(135deg, #ffcc80, #ffa726);
+    transform: translateX(5px);
+}
+
+/* Dark mode */
+body.dark .group.apps-externos .accordion-header {
+    background: linear-gradient(135deg, #546e7a, #37474f);
+}
+
+body.dark .group.apps-externos .accordion-content {
+    background: rgba(55, 71, 79, 0.98);
+}
+
+/* Sistemas Satélites (Ciano) */
+.group.sistemas-satelites .accordion-header {
+    background: linear-gradient(135deg, #00bcd4, #006064);
+    border-left: 4px solid #00bcd4;
+}
+
+.group.sistemas-satelites .accordion-header:hover {
+    background: linear-gradient(135deg, #26c6da, #00838f);
+}
+
+.group.sistemas-satelites .accordion-content {
+    background: rgba(0, 96, 100, 0.95);
+}
+
+/* Sistemas Satélites - Botões Diversos */
+/* SIGS (Azul Royal) */
+.group.sistemas-satelites .button-container button[onclick*="sigs"] {
+    background: linear-gradient(135deg, #1976d2, #0d47a1);
+    border-left: 4px solid #1976d2;
+    color: white;
+    font-weight: 500;
+}
+
+.group.sistemas-satelites .button-container button[onclick*="sigs"]:hover {
+    background: linear-gradient(135deg, #2196f3, #1565c0);
+    transform: translateX(5px);
+}
+
+/* PROAD (Verde Esmeralda) */
+.group.sistemas-satelites .button-container button[onclick*="proad"] {
+    background: linear-gradient(135deg, #2e7d32, #1b5e20);
+    border-left: 4px solid #2e7d32;
+    color: white;
+    font-weight: 500;
+}
+
+.group.sistemas-satelites .button-container button[onclick*="proad"]:hover {
+    background: linear-gradient(135deg, #43a047, #388e3c);
+    transform: translateX(5px);
+}
+
+/* Sistemas de Gestão (Roxo) */
+.group.sistemas-satelites .button-container button[onclick*="gestao"],
+.group.sistemas-satelites .button-container button[onclick*="gest"] {
+    background: linear-gradient(135deg, #7b1fa2, #4a148c);
+    border-left: 4px solid #7b1fa2;
+    color: white;
+    font-weight: 500;
+}
+
+.group.sistemas-satelites .button-container button[onclick*="gestao"]:hover,
+.group.sistemas-satelites .button-container button[onclick*="gest"]:hover {
+    background: linear-gradient(135deg, #9c27b0, #6a1b9a);
+    transform: translateX(5px);
+}
+
+/* Sistemas Financeiros (Índigo) */
+.group.sistemas-satelites .button-container button[onclick*="financ"],
+.group.sistemas-satelites .button-container button[onclick*="pagamento"] {
+    background: linear-gradient(135deg, #3949ab, #1a237e);
+    border-left: 4px solid #3949ab;
+    color: white;
+    font-weight: 500;
+}
+
+.group.sistemas-satelites .button-container button[onclick*="financ"]:hover,
+.group.sistemas-satelites .button-container button[onclick*="pagamento"]:hover {
+    background: linear-gradient(135deg, #5c6bc0, #303f9f);
+    transform: translateX(5px);
+}
+
+/* Outros Sistemas (Teal) */
+.group.sistemas-satelites .button-container button:not([onclick*="sigs"]):not([onclick*="proad"]):not([onclick*="gestao"]):not([onclick*="gest"]):not([onclick*="financ"]):not([onclick*="pagamento"]) {
+    background: linear-gradient(135deg, #00897b, #004d40);
+    border-left: 4px solid #00897b;
+    color: white;
+    font-weight: 500;
+}
+
+.group.sistemas-satelites .button-container button:not([onclick*="sigs"]):not([onclick*="proad"]):not([onclick*="gestao"]):not([onclick*="gest"]):not([onclick*="financ"]):not([onclick*="pagamento"]):hover {
+    background: linear-gradient(135deg, #26a69a, #00796b);
+    transform: translateX(5px);
+}
+
+/* Efeitos comuns para os botões */
+.group.sistemas-satelites .button-container button {
+    position: relative;
+    overflow: hidden;
+    height: 48px;
+    padding: 0 20px;
+    border-radius: 8px;
+    font-size: 14px;
+    letter-spacing: 0.3px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    transition: all 0.3s ease;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+}
+
+/* Dark mode */
+body.dark .group.sistemas-satelites .accordion-header {
+    background: linear-gradient(135deg, #0097a7, #00838f);
+}
+
+body.dark .group.sistemas-satelites .accordion-content {
+    background: rgba(0, 131, 143, 0.98);
+}
+
+/* Melhorias gerais para todos os grupos */
+.group .accordion-header {
+    position: relative;
+    overflow: hidden;
+    transition: all 0.3s ease;
+}
+
+.group .accordion-header::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(255, 255, 255, 0.1);
+    transform: translateX(-100%);
+    transition: transform 0.3s ease;
+}
+
+.group .accordion-header:hover::before {
+    transform: translateX(0);
+}
+
+.group .button-container button {
+    position: relative;
+    overflow: hidden;
+    letter-spacing: 0.3px;
+}
+
+/* Dark mode adjustments */
+body.dark .group .accordion-content {
+    background: rgba(0, 0, 0, 0.85);
+}
+
+body.dark .group .button-container button {
+    background: rgba(0, 0, 0, 0.75);
+}
+
+body.dark .group .button-container button:hover {
+    background: rgba(0, 0, 0, 0.85);
+}
+
+/* Estilo padrão para todos os botões nos containers */
+.button-container button {
+    background: var(--button-gradient, linear-gradient(135deg, #60A5FA, #3B82F6)) !important;
+    color: white;
+    font-weight: 500;
+    padding: 12px 16px;
+    border-radius: 12px;
+    cursor: pointer;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    font-size: 0.9rem;
+    text-align: left;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    box-shadow: 0 4px 6px -1px rgba(59, 130, 246, 0.1), 0 2px 4px -1px rgba(59, 130, 246, 0.06);
+    min-height: 48px;
+    line-height: 1.3;
+    white-space: normal;
+    word-wrap: break-word;
+    width: 100%;
+    border: none;
+    position: relative;
+    overflow: hidden;
+    user-select: none;
+    -webkit-user-drag: none;
+    touch-action: none;
+}
+
+.button-container button a {
+    pointer-events: auto; /* Reabilita eventos apenas para os links dentro do botão */
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    width: 100%;
+    height: 100%;
+    text-decoration: none;
+    color: inherit;
+}
+
+.button-container button:hover {
+    background-color: transparent !important;
+    background-image: var(--button-hover-gradient, linear-gradient(135deg, #3B82F6, #2563EB)) !important;
+    transform: translateY(-2px);
+    box-shadow: 0 8px 15px -3px rgba(59, 130, 246, 0.2), 0 4px 6px -2px rgba(59, 130, 246, 0.1);
+}
+
+.button-container button a {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    width: 100%;
+    height: 100%;
+    text-decoration: none;
+    color: inherit;
+}
+
+/* Google Apps buttons */
+.group.google-apps .button-container button {
+    background: var(--button-gradient, linear-gradient(135deg, #fecaca, #f87171)) !important;
+}
+
+.group.google-apps .button-container button:hover {
+    background: var(--button-hover-gradient, linear-gradient(135deg, #f87171, #ef4444)) !important;
+}
+
+/* Assyst PJe buttons */
+.group.assyst-pje .button-container button {
+    background: var(--button-gradient, linear-gradient(135deg, #60A5FA, #3B82F6)) !important;
+}
+
+.group.assyst-pje .button-container button:hover {
+    background: var(--button-hover-gradient, linear-gradient(135deg, #3B82F6, #2563EB)) !important;
+}
+
+/* Elemento sendo arrastado */
+.sortable-drag {
+    cursor: grabbing !important;
+    transform: scale(1.02) !important;
+    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.15) !important;
+    opacity: 0.95 !important;
+    z-index: 1000 !important;
+}
+
+/* Elemento fantasma durante o arrasto */
+.sortable-ghost {
+    opacity: 0.4;
+    background: #c8e6ff !important;
+}
+
+/* Elemento escolhido (quando começa o arrasto) */
+.sortable-chosen {
+    cursor: grabbing !important;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1) !important;
+}
+
+/* Área de destino durante o arrasto */
+.button-container.drag-highlight {
+    background: rgba(96, 165, 250, 0.05);
+    border-radius: 8px;
+    transition: background 0.2s ease;
+}
+
+/* Modo escuro - área de destino */
+body.dark .button-container.drag-highlight {
+    background: rgba(59, 130, 246, 0.05);
+}
+
+/* Footer */
+.footer {
+    text-align: center;
+    padding: 20px 0;
+    color: #4a5568;
+    font-size: 0.9rem;
+}
+
+.footer a {
+    color: #3182ce;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.footer a:hover {
+    color: #2b6cb0;
+}
+
+/* Dark Mode */
+body.dark {
+    background: linear-gradient(135deg, #1a202c, #2d3748);
+    color: #e2e8f0;
+}
+
+body.dark .container {
+    background-color: rgba(26, 32, 44, 0.95);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+}
+
+body.dark .accordion-content {
+    background-color: #2d3748;
+}
+
+body.dark .button-container button {
+    background: linear-gradient(135deg, #3182ce, #2b6cb0);
+}
+
+body.dark .button-container button:hover {
+    background: linear-gradient(135deg, #2b6cb0, #1a365d);
+}
+
+body.dark .footer {
+    color: #a0aec0;
+}
+
+body.dark .footer a {
+    color: #4299e1;
+}
+
+/* Calendário e Relógio */
+.clock-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 20px;
+    background: rgba(255, 255, 255, 0.1);
+    padding: 15px 25px;
+    border-radius: 12px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.clock {
+    font-size: 3.5rem;
+    font-weight: 700;
+    color: #1a237e;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    margin: 0;
+    line-height: 1.2;
+}
+
+.date {
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: #283593;
+    margin-top: 5px;
+    text-transform: uppercase;
+}
+
+/* Dark mode */
+body.dark .clock {
+    color: #e3f2fd;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+body.dark .date {
+    color: #90caf9;
+}
+
+body.dark .clock-container {
+    background: rgba(255, 255, 255, 0.05);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+}
+
+/* Estilo para o botão Gmail */
+.group.google-apps .button-container button[onclick*="mail.google.com"] {
+    background: linear-gradient(135deg, #ef4444, #dc2626);
+    border-left: 4px solid #ef4444;
+    color: white;
+    font-weight: 500;
+    transition: all 0.3s ease;
+}
+
+.group.google-apps .button-container button[onclick*="mail.google.com"]:hover {
+    background: linear-gradient(135deg, #dc2626, #b91c1c);
+    box-shadow: 0 4px 12px rgba(220, 38, 38, 0.3);
+}
+
+.group.google-apps .button-container button[onclick*="mail.google.com"] i {
+    color: #fca5a5;
+}
+
+/* Estilo para o botão Consulta/Contracheque */
+.group.google-apps .button-container button[onclick*="contracheque"] {
+    background: linear-gradient(135deg, #22c55e, #16a34a);
+    border-left: 4px solid #22c55e;
+    color: white;
+    font-weight: 500;
+    transition: all 0.3s ease;
+}
+
+.group.google-apps .button-container button[onclick*="contracheque"]:hover {
+    background: linear-gradient(135deg, #16a34a, #15803d);
+    box-shadow: 0 4px 12px rgba(34, 197, 94, 0.3);
+}
+
+.group.google-apps .button-container button[onclick*="contracheque"] i {
+    color: #86efac;
+}
+
+/* Estilo para o botão Gestor de Trabalho */
+.group.google-apps .button-container button[onclick*="controle-ferias"] {
+    background: linear-gradient(135deg, #ef4444, #dc2626);
+    border-left: 4px solid #ef4444;
+    color: white;
+    font-weight: 500;
+    transition: all 0.3s ease;
+}
+
+.group.google-apps .button-container button[onclick*="controle-ferias"]:hover {
+    background: linear-gradient(135deg, #dc2626, #b91c1c);
+    box-shadow: 0 4px 12px rgba(220, 38, 38, 0.3);
+}
+
+.group.google-apps .button-container button[onclick*="controle-ferias"] i {
+    color: #fca5a5;
+}
+
+/* Dark mode */
+body.dark .group.google-apps .button-container button[onclick*="mail.google.com"] {
+    background: linear-gradient(135deg, #b91c1c, #991b1b);
+}
+
+body.dark .group.google-apps .button-container button[onclick*="mail.google.com"]:hover {
+    background: linear-gradient(135deg, #dc2626, #b91c1c);
+}
+
+body.dark .group.google-apps .button-container button[onclick*="contracheque"] {
+    background: linear-gradient(135deg, #15803d, #166534);
+}
+
+body.dark .group.google-apps .button-container button[onclick*="contracheque"]:hover {
+    background: linear-gradient(135deg, #16a34a, #15803d);
+}
+
+body.dark .group.google-apps .button-container button[onclick*="controle-ferias"] {
+    background: linear-gradient(135deg, #b91c1c, #991b1b);
+}
+
+body.dark .group.google-apps .button-container button[onclick*="controle-ferias"]:hover {
+    background: linear-gradient(135deg, #dc2626, #b91c1c);
+}
+
+body.dark .group.google-apps .button-container button[onclick*="controle-ferias"] i {
+    color: #fca5a5;
+}
+
+/* Estilo para o botão Google Planilhas */
+.group.google-apps .button-container button[onclick*="spreadsheets"] {
+    background: linear-gradient(135deg, #2563eb, #1d4ed8);
+    border-left: 4px solid #2563eb;
+    color: white;
+    font-weight: 500;
+    transition: all 0.3s ease;
+}
+
+.group.google-apps .button-container button[onclick*="spreadsheets"]:hover {
+    background: linear-gradient(135deg, #1d4ed8, #1e40af);
+    box-shadow: 0 4px 12px rgba(37, 99, 235, 0.3);
+}
+
+.group.google-apps .button-container button[onclick*="spreadsheets"] i {
+    color: #93c5fd;
+}
+
+/* Dark mode */
+body.dark .group.google-apps .button-container button[onclick*="spreadsheets"] {
+    background: linear-gradient(135deg, #1e40af, #1d4ed8);
+}
+
+body.dark .group.google-apps .button-container button[onclick*="spreadsheets"]:hover {
+    background: linear-gradient(135deg, #2563eb, #1d4ed8);
+}
+
+/* Estilo para o botão Google Documentos */
+.group.google-apps .button-container button[onclick*="document"] {
+    background: linear-gradient(135deg, #22c55e, #16a34a);
+    border-left: 4px solid #22c55e;
+    color: white;
+    font-weight: 500;
+    transition: all 0.3s ease;
+}
+
+.group.google-apps .button-container button[onclick*="document"]:hover {
+    background: linear-gradient(135deg, #16a34a, #15803d);
+    box-shadow: 0 4px 12px rgba(34, 197, 94, 0.3);
+}
+
+.group.google-apps .button-container button[onclick*="document"] i {
+    color: #86efac;
+}
+
+/* Dark mode */
+body.dark .group.google-apps .button-container button[onclick*="document"] {
+    background: linear-gradient(135deg, #15803d, #166534);
+}
+
+body.dark .group.google-apps .button-container button[onclick*="document"]:hover {
+    background: linear-gradient(135deg, #16a34a, #15803d);
+}
+
+/* Remover efeito hover padrão dos botões */
+.button-container button:hover {
+    background-color: transparent !important;
+    background-image: var(--button-hover-gradient) !important;
+}
+
+/* Garantir que os botões mantenham seus gradientes */
+.button-container button {
+    background-image: var(--button-gradient) !important;
+    background-color: transparent !important;
+}
+
+/* Ajuste para os botões do grupo Google Apps */
+.group.google-apps .button-container button:hover {
+    background-color: transparent !important;
+    background-image: var(--button-hover-gradient) !important;
+}
+
+/* Ajuste para os botões do grupo Assyst PJe */
+.group.assyst-pje .button-container button:hover {
+    background-color: transparent !important;
+    background-image: var(--button-hover-gradient) !important;
+}
+
+.sortable-ghost {
+    opacity: 0.4;
+    background: rgba(255, 255, 255, 0.1) !important;
+    border: 2px dashed #60A5FA !important;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+}
+
+.sortable-drag {
+    cursor: grabbing !important;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+    transform: scale(1.02);
+}
+
+.button-container button {
+    cursor: grab;
+    touch-action: none;
+    -webkit-user-drag: none;
+    user-select: none;
+}
+
+.button-container button:active {
+    cursor: grabbing;
+}
+
+/* Modo escuro */
+body.dark .sortable-ghost {
+    background: rgba(0, 0, 0, 0.2) !important;
+    border: 2px dashed #3B82F6 !important;
+}
+
+/* Estilos base para todos os botões nos containers */
+.button-container button,
+.group .button-container button {
+    width: 100%;
+    padding: 10px 14px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-size: 0.85rem;
+    text-align: left;
+    display: flex;
+    align-items: flex-start;
+    gap: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    min-height: 44px;
+    line-height: 1.3;
+    white-space: normal;
+    word-wrap: break-word;
+    width: 100%;
+    border: none;
+}
+
+.button-container button:hover,
+.group .button-container button:hover {
+    transform: translateX(5px);
+    box-shadow: 0 4px 12px rgba(43, 108, 176, 0.2);
+}
+
+.button-container button i,
+.group .button-container button i {
+    font-size: 1rem;
+    color: rgba(255, 255, 255, 0.9);
+    filter: drop-shadow(1px 1px 1px rgba(0, 0, 0, 0.2));
+    flex-shrink: 0;
+    width: 18px;
+    text-align: center;
+    margin-top: 2px;
+}
+
+/* Estilos específicos para cada grupo */
+.group.google-apps .button-container button {
+    background: linear-gradient(135deg, #fecaca, #f87171);
+}
+
+.group.pje .button-container button {
+    background: linear-gradient(135deg, #64748b, #475569);
+}
+
+.group.sistema-pje .button-container button {
+    background: linear-gradient(135deg, #319795, #2C7A7B);
+}
+
+.group.sistemas-satelites .button-container button {
+    background: linear-gradient(135deg, #00838F, #006064);
+}
+
+.group.assyst-pje .button-container button {
+    background: linear-gradient(135deg, #4CAF50, #388E3C);
+}
+
+.group.apps-externos .button-container button {
+    background: linear-gradient(135deg, #64748B, #475569);
+}
+
+/* Estilo para o botão Consulta de Informações Funcionais */
+.group.google-apps .button-container button[onclick*="informacoes-funcionais"] {
+    background: linear-gradient(135deg, #ff00ff, #ff69b4);
+    border-left: 4px solid #ff00ff;
+    color: white;
+    font-weight: 500;
+    transition: all 0.3s ease;
+}
+
+.group.google-apps .button-container button[onclick*="informacoes-funcionais"]:hover {
+    background: linear-gradient(135deg, #ff69b4, #ff00ff);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(255, 0, 255, 0.3);
+}
+
+.group.google-apps .button-container button[onclick*="informacoes-funcionais"] i {
+    color: #fff;
+}
+
+/* Versão dark mode */
+body.dark .group.google-apps .button-container button[onclick*="informacoes-funcionais"] {
+    background: linear-gradient(135deg, #800080, #c71585);
+    border-left: 4px solid #800080;
+}
+
+body.dark .group.google-apps .button-container button[onclick*="informacoes-funcionais"]:hover {
+    background: linear-gradient(135deg, #c71585, #800080);
+    box-shadow: 0 4px 12px rgba(128, 0, 128, 0.4);
+}
+
+/* Estilo para o header do PJe */
+.group.pje .accordion-header {
+    background: linear-gradient(135deg, #64748b, #475569);
+    color: white;
+    border-left: 4px solid #475569;
+    transition: all 0.3s ease;
+}
+
+.group.pje .accordion-header:hover {
+    background: linear-gradient(135deg, #475569, #334155);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(71, 85, 105, 0.4);
+}
+
+.group.pje .accordion-header i {
+    color: white;
+}
+
+/* Versão dark mode */
+body.dark .group.pje .accordion-header {
+    background: linear-gradient(135deg, #334155, #1e293b);
+    border-left: 4px solid #334155;
+}
+
+body.dark .group.pje .accordion-header:hover {
+    background: linear-gradient(135deg, #1e293b, #0f172a);
+    box-shadow: 0 4px 12px rgba(30, 41, 59, 0.5);
+}
+
+/* Estilo para o widget do clima */
+.weather {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    background: rgba(255, 255, 255, 0.1);
+    padding: 8px 15px;
+    border-radius: 8px;
+    margin: 0 15px;
+    backdrop-filter: blur(5px);
+    transition: all 0.3s ease;
+}
+
+.weather i {
+    font-size: 1.5rem;
+    color: #ffd700;
+}
+
+.weather span {
+    color: white;
+    font-weight: 500;
+}
+
+.weather #weather-temp {
+    font-size: 1.2rem;
+}
+
+.weather #weather-desc {
+    text-transform: capitalize;
+    font-size: 0.9rem;
+    opacity: 0.9;
+}
+
+body.dark .weather {
+    background: rgba(0, 0, 0, 0.2);
+}
+
+/* Estilo específico para o botão Bloco de Notas no grupo Atendimento Externo */
+.group.atendimento-externo .button-container .notes-button {
+    background: linear-gradient(135deg, #bbf7d0, #86efac) !important;
+    color: #166534;
+    font-weight: 500;
+    transition: all 0.3s ease;
+}
+
+.group.atendimento-externo .button-container .notes-button:hover {
+    background: linear-gradient(135deg, #86efac, #4ade80) !important;
+    transform: translateX(5px);
+    box-shadow: 0 4px 12px rgba(134, 239, 172, 0.4);
+}
+
+.group.atendimento-externo .button-container .notes-button i {
+    color: rgba(255, 255, 255, 0.9) !important;
+}
+
+/* Dark mode */
+body.dark .group.atendimento-externo .button-container .notes-button {
+    background: linear-gradient(135deg, #059669, #10b981) !important;
+}
+
+body.dark .group.atendimento-externo .button-container .notes-button:hover {
+    background: linear-gradient(135deg, #10b981, #34d399) !important;
+    box-shadow: 0 4px 12px rgba(16, 185, 129, 0.5);
+}
+
+body.dark .header {
+    background: linear-gradient(135deg, #1e40af, #3b82f6);
+    box-shadow: 0 4px 12px rgba(29, 78, 216, 0.3);
+}
+
+body.dark .header-top h2,
+body.dark .header-top h2 i {
+    color: rgba(255, 255, 255, 0.95);
+}
+
+/* Dark mode adjustments */
+body.dark .calendar-wrapper,
+body.dark .weather-container {
+    background: rgba(0, 0, 0, 0.2);
+}
+
+body.dark .time-container,
+body.dark .date-container,
+body.dark .weather-info,
+body.dark #clock,
+body.dark #weekday,
+body.dark #current-date,
+body.dark .weather-temp {
+    color: rgba(255, 255, 255, 0.95);
+}
+
+body.dark .time-container i,
+body.dark .date-container i,
+body.dark .weather-desc {
+    color: rgba(255, 255, 255, 0.8);
+}
+
+/* Container principal com grid */
+.container {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+/* Grid para os grupos */
+.container > div:not(.header):not(.footer) {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 20px;
+    margin-top: 20px;
+}
+
+/* Estilo base para os grupos */
+.group {
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 8px;
+    overflow: hidden;
+    transition: all 0.3s ease;
+    box-shadow: 
+        0 2px 4px rgba(0, 0, 0, 0.1),
+        0 4px 8px rgba(0, 0, 0, 0.1),
+        0 8px 16px rgba(0, 0, 0, 0.1);
+    height: fit-content;
+    margin-bottom: 12px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    transform: translateZ(0);
+    backface-visibility: hidden;
+}
+
+.group:hover {
+    transform: translateY(-2px) translateZ(0);
+    box-shadow: 
+        0 4px 8px rgba(0, 0, 0, 0.2),
+        0 8px 16px rgba(0, 0, 0, 0.2),
+        0 16px 32px rgba(0, 0, 0, 0.1);
+}
+
+.group .accordion-header {
+    width: 100%;
+    padding: 8px 16px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border: none;
+    background: transparent;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-size: 0.95rem;
+    font-weight: 500;
+    position: relative;
+}
+
+.group .accordion-header .header-content {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    flex: 1;
+    justify-content: center; /* Centraliza o conteúdo */
+    margin-right: 24px; /* Espaço para o ícone de seta */
+}
+
+.group .accordion-header i {
+    font-size: 1rem;
+}
+
+.group .accordion-content {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease-out;
+    background: rgba(255, 255, 255, 0.05);
+}
+
+.group .accordion-content[style*="display: block"] {
+    max-height: 500px;
+    padding: 8px;
+}
+
+.group .accordion-icon {
+    color: white;
+    font-size: 1.2rem;
+    transition: transform 0.3s ease;
+}
+
+.group .accordion-icon[aria-expanded="true"] {
+    transform: rotate(180deg);
+}
+
+/* Ajuste para o layout em grid dos botões */
+.button-container.grid-layout {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+    gap: 8px;
+    padding: 8px;
+    max-height: 350px;
+    overflow-y: auto;
+    scrollbar-width: thin;
+    scrollbar-color: rgba(155, 155, 155, 0.5) transparent;
+}
+
+.button-container button {
+    padding: 6px 10px;
+    font-size: 0.85rem;
+    min-height: 32px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.button-container button i {
+    font-size: 0.9rem;
+}
+
+/* Estilos específicos para cada grupo */
+.group.google-apps {
+    background: linear-gradient(135deg, #4285f4, #34a853);
+}
+
+.group.assyst {
+    background: linear-gradient(135deg, #7c3aed, #4f46e5);
+}
+
+.group.atendimento-externo {
+    background: linear-gradient(135deg, #10b981, #059669);
+}
+
+.group.info-funcionais {
+    background: linear-gradient(135deg, #f59e0b, #d97706);
+}
+
+.group.pje {
+    background: linear-gradient(135deg, #ef4444, #dc2626);
+}
+
+.group.sistemas-satelites {
+    background: linear-gradient(135deg, #6366f1, #4f46e5);
+}
+
+.group.apps-externos {
+    background: linear-gradient(135deg, #8b5cf6, #7c3aed);
+}
+
+/* Hover effects */
+.group:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 12px rgba(0, 0, 0, 0.15);
+}
+
+/* Dark mode */
+body.dark .group {
+    background: rgba(0, 0, 0, 0.2);
+}
+
+body.dark .group .accordion-content {
+    background: rgba(0, 0, 0, 0.1);
+}
+
+/* Header */
+.header.group {
+    background: linear-gradient(135deg, #3b82f6, #1d4ed8);
+    border-radius: 12px;
+    overflow: hidden;
+    margin-bottom: 20px;
+}
+
+.header .accordion-header {
+    width: 100%;
+    padding: 15px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border: none;
+    background: transparent;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.header .accordion-header:hover {
+    background: rgba(255, 255, 255, 0.1);
+}
+
+.header .header-content {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.header .header-top h2 {
+    color: white;
+    font-size: 1.5rem;
+    margin: 0;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.header .header-top h2 i {
+    font-size: 1.8rem;
+}
+
+.header .accordion-icon {
+    color: white;
+    font-size: 1.2rem;
+    transition: transform 0.3s ease;
+}
+
+.header .accordion-content {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease-out;
+    background: rgba(255, 255, 255, 0.05);
+    max-height: 400px;
+    overflow-y: auto;
+    scrollbar-width: thin;
+    scrollbar-color: rgba(155, 155, 155, 0.5) transparent;
+}
+
+.header .accordion-content[style*="display: block"] {
+    max-height: 500px;
+    padding: 20px;
+}
+
+.header-widgets {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+.calendar-wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    color: white;
+}
+
+.time-container,
+.date-container {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 1.1rem;
+}
+
+.time-container i,
+.date-container i {
+    font-size: 1.2rem;
+    opacity: 0.9;
+}
+
+/* Estilos para o Bloco de Notas */
+.notes-section {
+    display: none;
+}
+
+/* Dark mode */
+body.dark .notes-section {
+    display: none;
+}
+
+/* Estilos para Aniversariantes */
+.group.aniversariantes {
+    background: linear-gradient(135deg, #fff5f5, #fff);
+    border: 1px solid #ffd7d7;
+}
+
+.group.aniversariantes .accordion-header {
+    background: linear-gradient(135deg, #ff6b6b, #ff8787);
+    color: white;
+    font-weight: 500;
+    border-bottom: none;
+}
+
+.group.aniversariantes .accordion-header:hover {
+    background: linear-gradient(135deg, #ff5252, #ff6b6b);
+}
+
+.group.aniversariantes .accordion-icon {
+    color: rgba(255, 255, 255, 0.9);
+}
+
+.group.aniversariantes .aniversariante-item {
+    padding: 12px;
+    margin: 8px 0;
+    border-radius: 8px;
+    background: #fff;
+    border: 1px solid #ffe3e3;
+    transition: all 0.3s ease;
+}
+
+.group.aniversariantes .aniversariante-item:hover {
+    transform: translateX(5px);
+    background: #fff8f8;
+}
+
+.group.aniversariantes .aniversariante-nome {
+    color: #e03131;
+    font-weight: 500;
+    font-size: 1.1em;
+    margin-bottom: 4px;
+}
+
+.group.aniversariantes .aniversariante-data {
+    color: #868e96;
+    font-size: 0.9em;
+}
+
+.group.aniversariantes .accordion-content {
+    background: #fff5f5;
+}
+
+.group.aniversariantes .sem-aniversariantes {
+    color: #868e96;
+    text-align: center;
+    padding: 15px;
+    font-style: italic;
+}
+
+body.dark .aniversariante-nome {
+    color: #e03131;
+}
+
+body.dark .aniversariante-data {
+    color: #868e96;
+}
+
+body.dark .group.aniversariantes {
+    background: rgba(0, 0, 0, 0.2);
+    border: 1px solid #3b3f54;
+}
+
+body.dark .group.aniversariantes .accordion-header {
+    background: linear-gradient(135deg, #be185d, #9d174d);
+    border-left: 4px solid #9d174d;
+}
+
+body.dark .group.aniversariantes .accordion-header:hover {
+    background: linear-gradient(135deg, #9d174d, #831843);
+    box-shadow: 0 4px 12px rgba(157, 23, 77, 0.4);
+}
+
+body.dark .group.aniversariantes .accordion-icon {
+    color: rgba(255, 255, 255, 0.9);
+}
+
+body.dark .group.aniversariantes .aniversariante-item {
+    background: rgba(0, 0, 0, 0.2);
+    border: 1px solid #3b3f54;
+}
+
+body.dark .group.aniversariantes .aniversariante-item:hover {
+    background: rgba(0, 0, 0, 0.3);
+}
+
+body.dark .group.aniversariantes .accordion-content {
+    background: rgba(0, 0, 0, 0.2);
+}
+
+body.dark .group.aniversariantes .sem-aniversariantes {
+    color: rgba(255, 255, 255, 0.6);
+}
+
+.aniversariantes-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+    padding: 10px;
+}
+
+.aniversariante-card {
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 12px;
+    padding: 15px;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    transition: all 0.3s ease;
+}
+
+.aniversariante-card:hover {
+    transform: translateY(-5px);
+    background: rgba(255, 255, 255, 0.15);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.aniversariante-icon {
+    width: 50px;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 50%;
+}
+
+.aniversariante-icon i {
+    font-size: 1.8rem;
+}
+
+.aniversariante-info {
+    flex: 1;
+}
+
+.aniversariante-info h3 {
+    color: white;
+    margin: 0 0 5px 0;
+    font-size: 1.1rem;
+}
+
+.aniversariante-info p {
+    color: rgba(255, 255, 255, 0.9);
+    margin: 0;
+    font-size: 0.9rem;
+}
+
+.aniversariante-info small {
+    display: block;
+    color: rgba(255, 255, 255, 0.7);
+    font-size: 0.8rem;
+    margin-top: 2px;
+}
+
+body.dark .aniversariante-info small {
+    color: rgba(255, 255, 255, 0.5);
+}
+
+body.dark .aniversariante-card {
+    background: rgba(0, 0, 0, 0.2);
+}
+
+body.dark .aniversariante-card:hover {
+    background: rgba(0, 0, 0, 0.3);
+}
+
+body.dark .aniversariante-icon {
+    background: rgba(0, 0, 0, 0.2);
+}
+
+.sem-aniversariantes {
+    text-align: center;
+    padding: 20px;
+    color: rgba(255, 255, 255, 0.8);
+    font-style: italic;
+    width: 100%;
+    grid-column: 1 / -1;
+}
+
+body.dark .sem-aniversariantes {
+    color: rgba(255, 255, 255, 0.6);
+}
+
+/* Header Top com Botão de Feriados */
+.header-top {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    position: relative;
+    margin-bottom: 10px;
+}
+
+.holiday-btn {
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(255, 255, 255, 0.15);
+    border: none;
+    color: white;
+    padding: 8px 15px;
+    border-radius: 6px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    transition: all 0.3s ease;
+    font-size: 0.9rem;
+}
+
+.holiday-btn:hover {
+    background: rgba(255, 255, 255, 0.25);
+    transform: translateY(calc(-50% - 2px));
+}
+
+.holiday-btn i {
+    font-size: 1.1rem;
+}
+
+/* Modal de Feriados */
+.modal {
+    display: none; /* Garante que o modal começa oculto */
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 1000;
+    backdrop-filter: blur(5px);
+}
+
+.modal-content {
+    position: relative;
+    background: white;
+    margin: 50px auto;
+    max-width: 800px;
+    width: 90%;
+    border-radius: 12px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+}
+
+.modal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+    border-bottom: 1px solid #eee;
+}
+
+.modal-header h3 {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin: 0;
+    color: #333;
+}
+
+.modal-header h3 i {
+    color: #3b82f6;
+}
+
+.close-btn {
+    background: none;
+    border: none;
+    font-size: 1.2rem;
+    cursor: pointer;
+    color: #666;
+    padding: 5px;
+    border-radius: 50%;
+    transition: all 0.3s ease;
+    opacity: 0.8;
+}
+
+.close-btn:hover {
+    opacity: 1;
+    transform: rotate(90deg);
+    background: rgba(255, 255, 255, 0.1);
+}
+
+.modal-body {
+    padding: 20px;
+    max-height: 70vh;
+    overflow-y: auto;
+}
+
+.next-holiday {
+    background: linear-gradient(135deg, #3b82f6, #1d4ed8);
+    color: white;
+    padding: 20px;
+    border-radius: 10px;
+    margin-bottom: 20px;
+    box-shadow: 0 4px 15px rgba(59, 130, 246, 0.3);
+}
+
+.next-holiday h4 {
+    margin: 0 0 15px 0;
+    font-size: 1.2rem;
+    opacity: 0.9;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.next-holiday h4::before {
+    content: '';
+    display: block;
+    width: 8px;
+    height: 8px;
+    background: #fff;
+    border-radius: 50%;
+    animation: pulse 2s infinite;
+}
+
+.next-holiday .holiday-item {
+    background: rgba(255, 255, 255, 0.1);
+    border: none;
+    color: white;
+}
+
+.next-holiday .holiday-date,
+.next-holiday .holiday-weekday,
+.next-holiday .holiday-name {
+    color: white;
+}
+
+.next-holiday .holiday-type {
+    background: rgba(255, 255, 255, 0.2);
+    color: white;
+}
+
+@keyframes pulse {
+    0% {
+        box-shadow: 0 0 0 0 rgba(255, 255, 255, 0.7);
+    }
+    70% {
+        box-shadow: 0 0 0 10px rgba(255, 255, 255, 0);
+    }
+    100% {
+        box-shadow: 0 0 0 0 rgba(255, 255, 255, 0);
+    }
+}
+
+.holiday-filters {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+    margin-bottom: 20px;
+}
+
+.month-btn {
+    background: none;
+    border: none;
+    font-size: 1.2rem;
+    color: #666;
+    cursor: pointer;
+    padding: 5px;
+    border-radius: 50%;
+    transition: all 0.3s;
+}
+
+.month-btn:hover {
+    color: #3b82f6;
+    transform: scale(1.1);
+}
+
+#current-month {
+    font-size: 1.2rem;
+    color: #333;
+    margin: 0;
+    min-width: 150px;
+    text-align: center;
+}
+
+.holiday-item {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    padding: 15px;
+    background: #f9fafb;
+    border-radius: 8px;
+    border-left: 4px solid #3b82f6;
+    margin-bottom: 10px;
+}
+
+.holiday-item.Nacional { border-left-color: #ef4444; }
+.holiday-item.Estadual { border-left-color: #3b82f6; }
+.holiday-item.Municipal { border-left-color: #10b981; }
+.holiday-item.Facultativo { border-left-color: #f59e0b; }
+.holiday-item.RECESSO { border-left-color: #8b5cf6; }
+
+.holiday-date {
+    min-width: 100px;
+    font-weight: 500;
+    color: #4b5563;
+}
+
+.holiday-weekday {
+    min-width: 120px;
+    color: #6b7280;
+}
+
+.holiday-name {
+    flex: 1;
+    color: #1f2937;
+}
+
+.holiday-type {
+    padding: 4px 10px;
+    border-radius: 15px;
+    font-size: 0.875rem;
+    white-space: nowrap;
+}
+
+.holiday-type.Nacional { background: #fee2e2; color: #ef4444; }
+.holiday-type.Estadual { background: #dbeafe; color: #3b82f6; }
+.holiday-type.Municipal { background: #d1fae5; color: #10b981; }
+.holiday-type.Facultativo { background: #fef3c7; color: #f59e0b; }
+.holiday-type.RECESSO { background: #ede9fe; color: #8b5cf6; }
+
+/* Dark mode */
+body.dark .modal-content {
+    background: #1f2937;
+}
+
+body.dark .modal-header {
+    border-bottom-color: #374151;
+}
+
+body.dark .modal-header h3 {
+    color: #e5e7eb;
+}
+
+body.dark .close-btn {
+    color: #9ca3af;
+}
+
+body.dark .close-btn:hover {
+    color: #e5e7eb;
+}
+
+body.dark .holiday-item {
+    background: #374151;
+}
+
+body.dark .holiday-date {
+    color: #e5e7eb;
+}
+
+body.dark .holiday-weekday {
+    color: #9ca3af;
+}
+
+body.dark .holiday-name {
+    color: #f3f4f6;
+}
+
+@media (max-width: 768px) {
+    .header-top {
+        flex-direction: column;
+        gap: 15px;
+    }
+
+    .holiday-btn {
+        position: static;
+        transform: none;
+        width: 100%;
+        justify-content: center;
+        margin-bottom: 10px;
+    }
+
+    .holiday-item {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .holiday-date,
+    .holiday-weekday,
+    .holiday-name {
+        width: 100%;
+        min-width: auto;
+    }
+}
+
+/* Estilo dos Aniversariantes */
+.aniversariante-item {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    padding: 12px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 8px;
+    margin-bottom: 10px;
+    transition: all 0.3s ease;
+}
+
+.aniversariante-item:hover {
+    transform: translateY(-2px);
+    background: rgba(255, 255, 255, 0.15);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.aniversariante-icon {
+    width: 40px;
+    height: 40px;
+    min-width: 40px;
+    background: linear-gradient(135deg, #f472b6, #ec4899);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.aniversariante-icon i {
+    font-size: 1.4rem;
+    color: white;
+}
+
+.aniversariante-info {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.aniversariante-nome {
+    font-size: 1.1rem;
+    color: white;
+    font-style: italic;
+    font-weight: 500;
+}
+
+.aniversariante-data {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    color: rgba(255, 255, 255, 0.9);
+    font-weight: 600;
+    font-size: 0.95rem;
+}
+
+.aniversariante-data i {
+    color: #f472b6;
+    font-size: 1rem;
+}
+
+.sem-aniversariantes {
+    text-align: center;
+    padding: 20px;
+    color: rgba(255, 255, 255, 0.7);
+    font-style: italic;
+}
+
+/* Estilos para drag and drop */
+.sortable-ghost {
+    opacity: 0.5;
+    background: rgba(255, 255, 255, 0.1) !important;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+}
+
+.sortable-drag {
+    cursor: grabbing !important;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+    transform: scale(1.02);
+}
+
+.accordion-header {
+    cursor: grab;
+    user-select: none;
+    position: relative;
+}
+
+.accordion-header:active {
+    cursor: grabbing;
+}
+
+/* Indicador de arrasto */
+.accordion-header::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 4px;
+    height: 20px;
+    background: rgba(255, 255, 255, 0.3);
+    border-radius: 2px;
+}
+
+.accordion-header:hover::before {
+    background: rgba(255, 255, 255, 0.5);
+}
+
+/* Impede seleção de texto durante o arrasto */
+.group * {
+    user-select: none;
+}
+
+/* Cores específicas para os grupos do PJe */
+.group#pje-producao {
+    background: linear-gradient(135deg, #22c55e, #16a34a);
+}
+
+.group#pje-incidentes {
+    background: linear-gradient(135deg, #fbbf24, #d97706);
+}
+
+.group#pje-homologacao {
+    background: linear-gradient(135deg, #ef4444, #dc2626);
+}
+
+/* Hover effects para os grupos do PJe */
+.group#pje-producao:hover {
+    box-shadow: 0 8px 12px rgba(34, 197, 94, 0.3);
+}
+
+.group#pje-incidentes:hover {
+    box-shadow: 0 8px 12px rgba(251, 191, 36, 0.3);
+}
+
+.group#pje-homologacao:hover {
+    box-shadow: 0 8px 12px rgba(239, 68, 68, 0.3);
+}
+
+/* Cores específicas para os headers dos grupos do PJe */
+.group#pje-producao .accordion-header {
+    background: linear-gradient(135deg, #22c55e, #16a34a);
+}
+
+.group#pje-incidentes .accordion-header {
+    background: linear-gradient(135deg, #fbbf24, #d97706);
+}
+
+.group#pje-homologacao .accordion-header {
+    background: linear-gradient(135deg, #ef4444, #dc2626);
+}
+
+/* Hover effects para os headers dos grupos do PJe */
+.group#pje-producao .accordion-header:hover {
+    background: linear-gradient(135deg, #16a34a, #15803d);
+}
+
+.group#pje-incidentes .accordion-header:hover {
+    background: linear-gradient(135deg, #d97706, #b45309);
+}
+
+.group#pje-homologacao .accordion-header:hover {
+    background: linear-gradient(135deg, #dc2626, #b91c1c);
+}
+
+/* Ajuste do texto para melhor contraste */
+.group#pje-producao .accordion-header,
+.group#pje-incidentes .accordion-header,
+.group#pje-homologacao .accordion-header {
+    color: white;
+}
+
+.group#pje-producao .accordion-header i,
+.group#pje-incidentes .accordion-header i,
+.group#pje-homologacao .accordion-header i {
+    color: rgba(255, 255, 255, 0.9);
+}
