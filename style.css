@@ -135,37 +135,69 @@ body {
     align-items: center;
     gap: 15px;
     position: relative;
+    padding: 20px;
 }
 
 .header-top {
     display: flex;
     align-items: center;
-    justify-content: center;
+    justify-content: space-between;
     width: 100%;
-    position: relative;
-    margin-bottom: 16px;
+    gap: 20px;
 }
 
 .holiday-btn {
     display: flex;
     align-items: center;
     gap: 8px;
-    padding: 10px 20px;
+    padding: 12px 24px;
     border-radius: 12px;
     border: none;
-    background: linear-gradient(135deg, #ff6b6b, #f03e3e);
-    color: white;
     font-size: 0.95rem;
     font-weight: 500;
     cursor: pointer;
     transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    color: white;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+    position: relative;
+    overflow: hidden;
+    min-width: 180px;
+}
+
+.holiday-btn:has(.bi-calendar2-heart) {
+    background: linear-gradient(135deg, #ff6b6b, #f03e3e);
     box-shadow: 
         0 4px 6px rgba(240, 62, 62, 0.2),
         0 8px 12px rgba(240, 62, 62, 0.1),
         inset 0 2px 4px rgba(255, 255, 255, 0.3);
-    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
-    position: relative;
-    overflow: hidden;
+}
+
+.holiday-btn:has(.bi-calendar-check) {
+    background: linear-gradient(135deg, #38a169, #2f855a);
+    box-shadow: 
+        0 4px 6px rgba(56, 161, 105, 0.2),
+        0 8px 12px rgba(56, 161, 105, 0.1),
+        inset 0 2px 4px rgba(255, 255, 255, 0.3);
+}
+
+.holiday-btn:hover {
+    transform: translateY(-2px);
+}
+
+.holiday-btn:has(.bi-calendar2-heart):hover {
+    background: linear-gradient(135deg, #fa5252, #e03131);
+    box-shadow: 
+        0 6px 8px rgba(240, 62, 62, 0.25),
+        0 10px 16px rgba(240, 62, 62, 0.15),
+        inset 0 2px 4px rgba(255, 255, 255, 0.4);
+}
+
+.holiday-btn:has(.bi-calendar-check):hover {
+    background: linear-gradient(135deg, #48bb78, #38a169);
+    box-shadow: 
+        0 6px 8px rgba(56, 161, 105, 0.25),
+        0 10px 16px rgba(56, 161, 105, 0.15),
+        inset 0 2px 4px rgba(255, 255, 255, 0.4);
 }
 
 .holiday-btn::before {
@@ -184,15 +216,6 @@ body {
     transition: 0.5s;
 }
 
-.holiday-btn:hover {
-    transform: translateY(-2px);
-    box-shadow: 
-        0 6px 8px rgba(240, 62, 62, 0.25),
-        0 10px 16px rgba(240, 62, 62, 0.15),
-        inset 0 2px 4px rgba(255, 255, 255, 0.4);
-    background: linear-gradient(135deg, #fa5252, #e03131);
-}
-
 .holiday-btn:hover::before {
     left: 100%;
 }
@@ -200,25 +223,17 @@ body {
 .holiday-btn:active {
     transform: translateY(0);
     box-shadow: 
-        0 2px 4px rgba(240, 62, 62, 0.2),
+        0 2px 4px rgba(0, 0, 0, 0.2),
         inset 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
 .holiday-btn i {
     font-size: 1.1rem;
-    animation: pulse 2s infinite;
+    transition: transform 0.3s ease;
 }
 
-@keyframes pulse {
-    0% {
-        transform: scale(1);
-    }
-    50% {
-        transform: scale(1.1);
-    }
-    100% {
-        transform: scale(1);
-    }
+.holiday-btn:hover i {
+    transform: scale(1.1);
 }
 
 .header-title {
@@ -289,11 +304,9 @@ body {
     }
 
     .holiday-btn {
-        position: static;
-        transform: none;
         width: 100%;
         justify-content: center;
-        margin-bottom: 10px;
+        min-width: unset;
     }
 
     .header-title {
@@ -438,10 +451,11 @@ body {
 
 .group.sistema-pje .accordion-header {
     background: linear-gradient(90deg,
-        #319795 0%,
-        #805ad5 30%,
-        #97266d 60%,
-        #822727 100%
+        #63b3ed 0%,
+        #4299e1 20%,
+        #3182ce 50%,
+        #2b6cb0 80%,
+        #2c5282 100%
     );
     color: white;
     padding: 15px 20px;
@@ -1079,7 +1093,8 @@ body.dark .group.assyst-pje .button-container button:hover {
 .group.apps-externos .button-container button[onclick*="gestao"]:hover,
 .group.apps-externos .button-container button[onclick*="judicial"]:hover {
     background: linear-gradient(135deg, #90caf9, #42a5f5);
-    transform: translateX(5px);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(66, 133, 244, 0.4);
 }
 
 /* Botão Roxo Suave - Sistemas Administrativos */
@@ -1096,7 +1111,8 @@ body.dark .group.assyst-pje .button-container button:hover {
 .group.apps-externos .button-container button[onclick*="sigeo"]:hover,
 .group.apps-externos .button-container button[onclick*="folha"]:hover {
     background: linear-gradient(135deg, #b39ddb, #7b1fa2);
-    transform: translateX(5px);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(139, 157, 219, 0.4);
 }
 
 /* Botão Verde Suave - Sistemas de Segurança e Controle */
@@ -1113,7 +1129,8 @@ body.dark .group.assyst-pje .button-container button:hover {
 .group.apps-externos .button-container button[onclick*="controle"]:hover,
 .group.apps-externos .button-container button[onclick*="acesso"]:hover {
     background: linear-gradient(135deg, #a5d6a7, #66bb6a);
-    transform: translateX(5px);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(165, 214, 167, 0.4);
 }
 
 /* Botão Âmbar Suave - Outros sistemas */
@@ -1126,7 +1143,8 @@ body.dark .group.assyst-pje .button-container button:hover {
 
 .group.apps-externos .button-container button:not([onclick*="pje"]):not([onclick*="gestao"]):not([onclick*="judicial"]):not([onclick*="admin"]):not([onclick*="sigeo"]):not([onclick*="folha"]):not([onclick*="seguranca"]):not([onclick*="controle"]):not([onclick*="acesso"]):hover {
     background: linear-gradient(135deg, #ffcc80, #ffa726);
-    transform: translateX(5px);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(255, 204, 128, 0.4);
 }
 
 /* Dark mode */
@@ -1163,7 +1181,8 @@ body.dark .group.apps-externos .accordion-content {
 
 .group.sistemas-satelites .button-container button[onclick*="sigs"]:hover {
     background: linear-gradient(135deg, #2196f3, #1565c0);
-    transform: translateX(5px);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(33, 150, 243, 0.4);
 }
 
 /* PROAD (Verde Esmeralda) */
@@ -1176,7 +1195,8 @@ body.dark .group.apps-externos .accordion-content {
 
 .group.sistemas-satelites .button-container button[onclick*="proad"]:hover {
     background: linear-gradient(135deg, #43a047, #388e3c);
-    transform: translateX(5px);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(67, 160, 71, 0.4);
 }
 
 /* Sistemas de Gestão (Roxo) */
@@ -1191,7 +1211,8 @@ body.dark .group.apps-externos .accordion-content {
 .group.sistemas-satelites .button-container button[onclick*="gestao"]:hover,
 .group.sistemas-satelites .button-container button[onclick*="gest"]:hover {
     background: linear-gradient(135deg, #9c27b0, #6a1b9a);
-    transform: translateX(5px);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(156, 39, 176, 0.4);
 }
 
 /* Sistemas Financeiros (Índigo) */
@@ -1206,7 +1227,8 @@ body.dark .group.apps-externos .accordion-content {
 .group.sistemas-satelites .button-container button[onclick*="financ"]:hover,
 .group.sistemas-satelites .button-container button[onclick*="pagamento"]:hover {
     background: linear-gradient(135deg, #5c6bc0, #303f9f);
-    transform: translateX(5px);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(92, 107, 192, 0.4);
 }
 
 /* Outros Sistemas (Teal) */
@@ -1219,7 +1241,8 @@ body.dark .group.apps-externos .accordion-content {
 
 .group.sistemas-satelites .button-container button:not([onclick*="sigs"]):not([onclick*="proad"]):not([onclick*="gestao"]):not([onclick*="gest"]):not([onclick*="financ"]):not([onclick*="pagamento"]):hover {
     background: linear-gradient(135deg, #26a69a, #00796b);
-    transform: translateX(5px);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(38, 166, 154, 0.4);
 }
 
 /* Efeitos comuns para os botões */
@@ -2630,33 +2653,6 @@ body.dark .holiday-weekday {
 
 body.dark .holiday-name {
     color: #f3f4f6;
-}
-
-@media (max-width: 768px) {
-    .header-top {
-        flex-direction: column;
-        gap: 15px;
-    }
-
-    .holiday-btn {
-        position: static;
-        transform: none;
-        width: 100%;
-        justify-content: center;
-        margin-bottom: 10px;
-    }
-
-    .holiday-item {
-        flex-direction: column;
-        align-items: flex-start;
-    }
-
-    .holiday-date,
-    .holiday-weekday,
-    .holiday-name {
-        width: 100%;
-        min-width: auto;
-    }
 }
 
 /* Estilo dos Aniversariantes */
