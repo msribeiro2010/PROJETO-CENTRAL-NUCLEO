@@ -47,65 +47,115 @@ body {
 }
 
 .navbar-container {
-    max-width: 1400px;
-    margin: 0 auto;
     display: flex;
-    justify-content: space-between;
     align-items: center;
-    position: relative;
-    z-index: 1;
+    justify-content: space-between;
+    max-width: 100%;
+    margin: 0 auto;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: thin;
+    scrollbar-color: rgba(255, 255, 255, 0.3) transparent;
+}
+
+.navbar-container::-webkit-scrollbar {
+    height: 3px;
+}
+
+.navbar-container::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+.navbar-container::-webkit-scrollbar-thumb {
+    background-color: rgba(255, 255, 255, 0.3);
+    border-radius: 3px;
+}
+
+.navbar-logo {
+    flex-shrink: 0;
+    margin-right: 20px;
 }
 
 .navbar-logo img {
-    height: 45px;
-    transition: transform 0.3s ease;
-}
-
-.navbar-logo img:hover {
-    transform: scale(1.05);
+    height: 30px;
+    width: auto;
 }
 
 .navbar-links {
     display: flex;
-    gap: 25px;
+    gap: 15px;
     align-items: center;
+    flex-wrap: nowrap;
+    padding-bottom: 5px;
 }
 
 .navbar-links a {
     color: #ffffff;
     text-decoration: none;
     font-weight: 500;
-    font-size: 0.95rem;
-    padding: 8px 12px;
+    font-size: 0.9rem;
+    padding: 6px 10px;
     border-radius: 6px;
     transition: all 0.3s ease;
     text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
+    white-space: nowrap;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.navbar-links a i {
+    font-size: 1rem;
 }
 
 .navbar-links a:hover {
     background: rgba(255, 255, 255, 0.15);
-    transform: translateY(-2px);
+    transform: translateY(-1px);
+}
+
+@media screen and (max-width: 1200px) {
+    .navbar-links {
+        gap: 10px;
+    }
+
+    .navbar-links a {
+        font-size: 0.85rem;
+        padding: 5px 8px;
+    }
 }
 
 /* Botão de Alternância Tema */
 .theme-toggle {
-    background: rgba(255, 255, 255, 0.1);
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    z-index: 1000;
+    background: linear-gradient(135deg, #2d3748, #1a202c);
+    color: #fff;
     border: none;
-    color: #ffffff;
-    font-size: 1.25rem;
-    cursor: pointer;
-    padding: 8px;
     border-radius: 50%;
-    transition: all 0.3s ease;
+    width: 45px;
+    height: 45px;
+    cursor: pointer;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
     display: flex;
     align-items: center;
     justify-content: center;
-    gap: 10px;
+    transition: all 0.3s ease;
 }
 
 .theme-toggle:hover {
-    background: rgba(255, 255, 255, 0.2);
-    transform: rotate(360deg);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+}
+
+.theme-toggle i {
+    font-size: 1.2rem;
+}
+
+body.dark .theme-toggle {
+    background: linear-gradient(135deg, #4a5568, #2d3748);
+    color: #fbd38d;
 }
 
 /* Container Principal */
@@ -2832,4 +2882,190 @@ body.dark .holiday-name {
 .group#pje-incidentes .accordion-header i,
 .group#pje-homologacao .accordion-header i {
     color: rgba(255, 255, 255, 0.9);
+}
+
+/* Grupo Trabalho/Plantão */
+.group.trabalho-plantao .accordion-header {
+    background: linear-gradient(135deg, #4299e1, #2b6cb0);
+    color: white;
+}
+
+.group.trabalho-plantao .accordion-header:hover {
+    background: linear-gradient(135deg, #3182ce, #2c5282);
+}
+
+.group.trabalho-plantao .button-container button {
+    background: linear-gradient(135deg, #4299e1, #2b6cb0);
+    color: white;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.group.trabalho-plantao .button-container button:hover {
+    background: linear-gradient(135deg, #3182ce, #2c5282);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.15);
+}
+
+.group.trabalho-plantao .button-container button i {
+    color: #bde0fe;
+}
+
+/* Dark mode */
+body.dark .group.trabalho-plantao .accordion-header {
+    background: linear-gradient(135deg, #3182ce, #2c5282);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+body.dark .group.trabalho-plantao .accordion-header:hover {
+    background: linear-gradient(135deg, #2b6cb0, #2a4365);
+}
+
+body.dark .group.trabalho-plantao .button-container button {
+    background: linear-gradient(135deg, #3182ce, #2c5282);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    box-shadow: 
+        0 2px 4px rgba(0, 0, 0, 0.1),
+        inset 0 1px 3px rgba(255, 255, 255, 0.1);
+}
+
+body.dark .group.trabalho-plantao .button-container button:hover {
+    background: linear-gradient(135deg, #2b6cb0, #2a4365);
+    border-color: rgba(255, 255, 255, 0.3);
+    box-shadow: 
+        0 4px 12px rgba(0, 0, 0, 0.15),
+        inset 0 1px 3px rgba(255, 255, 255, 0.2);
+}
+
+body.dark .group.trabalho-plantao .button-container button i {
+    color: #90cdf4;
+}
+
+/* Grupo Informações Funcionais/Hollerite/Requerimentos */
+.group.info-holerite .accordion-header {
+    background: linear-gradient(135deg, #38a169, #2f855a);
+    color: white;
+}
+
+.group.info-holerite .accordion-header:hover {
+    background: linear-gradient(135deg, #2f855a, #276749);
+}
+
+.group.info-holerite .button-container button {
+    background: linear-gradient(135deg, #38a169, #2f855a);
+    color: white;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.group.info-holerite .button-container button:hover {
+    background: linear-gradient(135deg, #2f855a, #276749);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.15);
+}
+
+.group.info-holerite .button-container button i {
+    color: #c6f6d5;
+}
+
+/* Dark mode */
+body.dark .group.info-holerite .accordion-header {
+    background: linear-gradient(135deg, #2f855a, #276749);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+body.dark .group.info-holerite .accordion-header:hover {
+    background: linear-gradient(135deg, #276749, #22543d);
+}
+
+body.dark .group.info-holerite .button-container button {
+    background: linear-gradient(135deg, #2f855a, #276749);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    box-shadow: 
+        0 2px 4px rgba(0, 0, 0, 0.1),
+        inset 0 1px 3px rgba(255, 255, 255, 0.1);
+}
+
+body.dark .group.info-holerite .button-container button:hover {
+    background: linear-gradient(135deg, #276749, #22543d);
+    border-color: rgba(255, 255, 255, 0.3);
+    box-shadow: 
+        0 4px 12px rgba(0, 0, 0, 0.15),
+        inset 0 1px 3px rgba(255, 255, 255, 0.2);
+}
+
+body.dark .group.info-holerite .button-container button i {
+    color: #9ae6b4;
+}
+
+/* Grupo Email */
+.group.email .accordion-header {
+    background: linear-gradient(135deg, #805ad5, #6b46c1);
+    color: white;
+}
+
+.group.email .accordion-header:hover {
+    background: linear-gradient(135deg, #6b46c1, #553c9a);
+}
+
+.group.email .button-container button {
+    background: linear-gradient(135deg, #805ad5, #6b46c1);
+    color: white;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.group.email .button-container button:hover {
+    background: linear-gradient(135deg, #6b46c1, #553c9a);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.15);
+}
+
+.group.email .button-container button i {
+    color: #e9d8fd;
+}
+
+body.dark .group.email .accordion-header {
+    background: linear-gradient(135deg, #6b46c1, #553c9a);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+body.dark .group.email .accordion-header:hover {
+    background: linear-gradient(135deg, #553c9a, #44337a);
+}
+
+body.dark .group.email .button-container button {
+    background: linear-gradient(135deg, #6b46c1, #553c9a);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    box-shadow: 
+        0 2px 4px rgba(0, 0, 0, 0.1),
+        inset 0 1px 3px rgba(255, 255, 255, 0.1);
+}
+
+body.dark .group.email .button-container button:hover {
+    background: linear-gradient(135deg, #553c9a, #44337a);
+    border-color: rgba(255, 255, 255, 0.3);
+    box-shadow: 
+        0 4px 12px rgba(0, 0, 0, 0.15),
+        inset 0 1px 3px rgba(255, 255, 255, 0.2);
+}
+
+body.dark .group.email .button-container button i {
+    color: #d6bcfa;
+}
+    box-shadow: 
+        0 2px 4px rgba(0, 0, 0, 0.1),
+        inset 0 1px 3px rgba(255, 255, 255, 0.1);
+}
+
+body.dark .group.email .button-container button:hover {
+    background: linear-gradient(135deg, #553c9a, #44337a);
+    border-color: rgba(255, 255, 255, 0.3);
+    box-shadow: 
+        0 4px 12px rgba(0, 0, 0, 0.15),
+        inset 0 1px 3px rgba(255, 255, 255, 0.2);
+}
+
+body.dark .group.email .button-container button i {
+    color: #d6bcfa;
 }
