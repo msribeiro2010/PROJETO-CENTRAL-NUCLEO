@@ -872,7 +872,7 @@ body.dark .button-container.grid-layout::-webkit-scrollbar-thumb:hover {
 }
 
 .group.google-apps .button-container button:nth-child(4n+4) {
-    background: linear-gradient(135deg, #0F9D58, #0B7B44) !important; /* Google Green */
+    background: linear-gradient(135deg, #0F9D58, #2FBA8C) !important; /* Google Green */
     color: white;
 }
 
@@ -895,9 +895,9 @@ body.dark .button-container.grid-layout::-webkit-scrollbar-thumb:hover {
 }
 
 .group.google-apps .button-container button:nth-child(4n+4):hover {
-    background: linear-gradient(135deg, #0B7B44, #0F9D58) !important;
+    background: linear-gradient(135deg, #2FBA8C, #0F9D58) !important;
     transform: translateY(-2px);
-    box-shadow: 0 4px 12px rgba(15, 157, 88, 0.4);
+    box-shadow: 0 4px 12px rgba(47, 186, 140, 0.4);
 }
 
 .group.google-apps .button-container button i {
@@ -3053,19 +3053,123 @@ body.dark .group.email .button-container button:hover {
 body.dark .group.email .button-container button i {
     color: #d6bcfa;
 }
-    box-shadow: 
-        0 2px 4px rgba(0, 0, 0, 0.1),
-        inset 0 1px 3px rgba(255, 255, 255, 0.1);
+
+/* Mobile Responsiveness */
+@media screen and (max-width: 768px) {
+    .navbar {
+        padding: 8px 10px;
+    }
+
+    .navbar-container {
+        padding: 0;
+    }
+
+    .navbar-logo {
+        margin-right: 10px;
+    }
+
+    .navbar-logo img {
+        height: 25px;
+    }
+
+    .navbar-links {
+        gap: 8px;
+        padding-bottom: 3px;
+    }
+
+    .navbar-links a {
+        font-size: 0.8rem;
+        padding: 4px 8px;
+    }
+
+    .navbar-links a i {
+        font-size: 0.9rem;
+    }
+
+    .container {
+        padding: 10px;
+    }
+
+    .group {
+        margin-bottom: 15px;
+    }
+
+    .accordion-header {
+        padding: 12px 15px;
+        font-size: 0.9rem;
+    }
+
+    .button-container {
+        grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+        gap: 10px;
+        padding: 10px;
+    }
+
+    .button-container button {
+        font-size: 0.8rem;
+        padding: 8px 12px;
+    }
+
+    .button-container button i {
+        font-size: 0.9rem;
+    }
+
+    .theme-toggle {
+        bottom: 15px;
+        right: 15px;
+        width: 40px;
+        height: 40px;
+    }
+
+    .theme-toggle i {
+        font-size: 1rem;
+    }
 }
 
-body.dark .group.email .button-container button:hover {
-    background: linear-gradient(135deg, #553c9a, #44337a);
-    border-color: rgba(255, 255, 255, 0.3);
-    box-shadow: 
-        0 4px 12px rgba(0, 0, 0, 0.15),
-        inset 0 1px 3px rgba(255, 255, 255, 0.2);
+@media screen and (max-width: 480px) {
+    .navbar {
+        padding: 6px 8px;
+    }
+
+    .navbar-logo img {
+        height: 22px;
+    }
+
+    .navbar-links {
+        gap: 6px;
+    }
+
+    .navbar-links a {
+        font-size: 0.75rem;
+        padding: 4px 6px;
+    }
+
+    .button-container {
+        grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+        gap: 8px;
+    }
+
+    .button-container button {
+        font-size: 0.75rem;
+        padding: 6px 10px;
+    }
 }
 
-body.dark .group.email .button-container button i {
-    color: #d6bcfa;
+@media screen and (max-height: 480px) and (orientation: landscape) {
+    .container {
+        padding-top: 5px;
+    }
+
+    .group {
+        margin-bottom: 10px;
+    }
+
+    .button-container {
+        grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+    }
+
+    .theme-toggle {
+        bottom: 10px;
+        right: 10px;
+    }
 }
