@@ -3,8 +3,7 @@ function updateClock() {
     const now = new Date();
     const options = { 
         hour: '2-digit', 
-        minute: '2-digit', 
-        second: '2-digit',
+        minute: '2-digit',
         hour12: false 
     };
     document.getElementById('clock').textContent = now.toLocaleTimeString('pt-BR', options);
@@ -28,8 +27,8 @@ function updateDate() {
     document.querySelector('.calendar-wrapper').classList.toggle('weekend', isWeekend);
 }
 
-// Atualizar o relógio a cada segundo
-setInterval(updateClock, 1000);
+// Atualizar o relógio a cada minuto
+setInterval(updateClock, 60000);
 updateClock(); // Chamada inicial
 
 // Atualizar a data a cada minuto

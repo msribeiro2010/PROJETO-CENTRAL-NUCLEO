@@ -17,14 +17,16 @@ body {
 /* Navbar Superior */
 .navbar {
     background: linear-gradient(90deg, 
-        #63b3ed 0%,
-        #4299e1 20%,
-        #3182ce 50%,
-        #2b6cb0 80%,
-        #2c5282 100%
+        #3b82f6 0%,
+        #2563eb 20%,
+        #1d4ed8 50%,
+        #1e40af 80%,
+        #1e3a8a 100%
     );
     padding: 15px 30px;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    box-shadow: 
+        0 4px 12px rgba(37, 99, 235, 0.3),
+        inset 0 2px 4px rgba(255, 255, 255, 0.1);
     position: sticky;
     top: 0;
     z-index: 1000;
@@ -87,21 +89,25 @@ body {
     align-items: center;
     flex-wrap: nowrap;
     padding-bottom: 5px;
+    font-family: 'Architects Daughter', cursive;
 }
 
 .navbar-links a {
-    color: #ffffff;
+    color: rgba(255, 255, 255, 0.95);
     text-decoration: none;
     font-weight: 500;
-    font-size: 0.9rem;
+    font-size: 1.1rem;
     padding: 6px 10px;
     border-radius: 6px;
     transition: all 0.3s ease;
-    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
+    text-shadow: 
+        1px 1px 2px rgba(0, 0, 0, 0.2),
+        0 0 3px rgba(255, 255, 255, 0.1);
     white-space: nowrap;
     display: flex;
     align-items: center;
     gap: 5px;
+    letter-spacing: 0.5px;
 }
 
 .navbar-links a i {
@@ -109,8 +115,11 @@ body {
 }
 
 .navbar-links a:hover {
-    background: rgba(255, 255, 255, 0.15);
+    background: rgba(255, 255, 255, 0.1);
     transform: translateY(-1px);
+    text-shadow: 
+        1px 1px 2px rgba(0, 0, 0, 0.3),
+        0 0 5px rgba(255, 255, 255, 0.2);
 }
 
 @media screen and (max-width: 1200px) {
@@ -171,12 +180,17 @@ body.dark .theme-toggle {
 }
 
 /* Header Principal */
+@import url('https://fonts.googleapis.com/css2?family=Architects+Daughter&display=swap');
+
 .header {
-    background: linear-gradient(135deg, #3b82f6, #1d4ed8);
+    background: linear-gradient(135deg, #22c55e, #15803d);
     border-radius: 12px;
     margin-bottom: 15px;
     padding: 12px;
-    box-shadow: 0 4px 12px rgba(59, 130, 246, 0.3);
+    box-shadow: 
+        0 4px 12px rgba(34, 197, 94, 0.3),
+        inset 0 2px 4px rgba(255, 255, 255, 0.1);
+    position: relative;
 }
 
 .header-content {
@@ -215,11 +229,13 @@ body.dark .theme-toggle {
 }
 
 .holiday-btn:has(.bi-calendar2-heart) {
-    background: linear-gradient(135deg, #2563eb, #1d4ed8);
+    background: linear-gradient(135deg, #22c55e, #15803d);
     box-shadow: 
-        0 4px 6px rgba(37, 99, 235, 0.2),
-        0 8px 12px rgba(37, 99, 235, 0.1),
+        0 4px 6px rgba(34, 197, 94, 0.2),
+        0 8px 12px rgba(34, 197, 94, 0.1),
         inset 0 2px 4px rgba(255, 255, 255, 0.3);
+    font-family: 'Architects Daughter', cursive;
+    letter-spacing: 0.5px;
 }
 
 .holiday-btn:has(.bi-calendar-check) {
@@ -235,10 +251,10 @@ body.dark .theme-toggle {
 }
 
 .holiday-btn:has(.bi-calendar2-heart):hover {
-    background: linear-gradient(135deg, #3b82f6, #2563eb);
+    background: linear-gradient(135deg, #16a34a, #22c55e);
     box-shadow: 
-        0 6px 8px rgba(37, 99, 235, 0.25),
-        0 10px 16px rgba(37, 99, 235, 0.15),
+        0 6px 8px rgba(34, 197, 94, 0.25),
+        0 10px 16px rgba(34, 197, 94, 0.15),
         inset 0 2px 4px rgba(255, 255, 255, 0.4);
 }
 
@@ -292,12 +308,17 @@ body.dark .theme-toggle {
 }
 
 .header-title h2 {
-    color: white;
-    font-size: 1.5rem;
+    color: rgba(255, 255, 255, 0.95);
+    font-size: 1.8rem;
     margin: 0;
     display: flex;
     align-items: center;
     gap: 10px;
+    font-family: 'Architects Daughter', cursive;
+    text-shadow: 
+        2px 2px 2px rgba(0, 0, 0, 0.2),
+        0 0 5px rgba(255, 255, 255, 0.1);
+    letter-spacing: 1px;
 }
 
 .header-title h2 i {
@@ -2342,11 +2363,14 @@ body.dark .group .accordion-content {
     display: flex;
     flex-direction: column;
     gap: 6px;
-    color: white;
-    background: linear-gradient(135deg, #3b82f6, #1d4ed8);
-    padding: 8px 12px;
+    color: rgba(255, 255, 255, 0.9);
+    background: linear-gradient(135deg, #22c55e, #15803d);
+    padding: 12px;
     border-radius: 12px;
-    box-shadow: 0 4px 12px rgba(59, 130, 246, 0.3);
+    box-shadow: 
+        0 4px 12px rgba(34, 197, 94, 0.3),
+        inset 0 2px 4px rgba(255, 255, 255, 0.1);
+    letter-spacing: 0.5px;
 }
 
 .time-container,
@@ -2357,6 +2381,8 @@ body.dark .group .accordion-content {
     font-size: 1.1rem;
     background: transparent;
     border: none;
+    font-family: 'Roboto', sans-serif;
+    font-weight: 500;
 }
 
 .time-container i,
