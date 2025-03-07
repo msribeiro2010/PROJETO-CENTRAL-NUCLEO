@@ -1197,6 +1197,30 @@ body.dark .group.assyst-pje .button-container button:hover {
     box-shadow: 0 4px 12px rgba(255, 204, 128, 0.4);
 }
 
+/* Atendimento Externo - Verde Escuro */
+.group#atendimento-externo .accordion-header {
+    background: linear-gradient(135deg, #166534, #14532d);
+    border-left: 4px solid #166534;
+    color: white;
+}
+
+.group#atendimento-externo .accordion-header:hover {
+    background: linear-gradient(135deg, #15803d, #166534);
+    transform: translateY(-2px);
+}
+
+.group#atendimento-externo .button-container button {
+    background: linear-gradient(135deg, #166534, #14532d) !important;
+    color: white;
+    border-left: 4px solid #166534;
+}
+
+.group#atendimento-externo .button-container button:hover {
+    background: linear-gradient(135deg, #15803d, #166534) !important;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(22, 101, 52, 0.4);
+}
+
 /* Dark mode */
 body.dark .group.apps-externos .accordion-header {
     background: linear-gradient(135deg, #546e7a, #37474f);
