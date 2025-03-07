@@ -1221,6 +1221,103 @@ body.dark .group.assyst-pje .button-container button:hover {
     box-shadow: 0 4px 12px rgba(22, 101, 52, 0.4);
 }
 
+/* Relatórios/Distribuição/SecJud */
+.group.info-funcionais .accordion-header {
+    background: linear-gradient(135deg, #2563eb, #1d4ed8);
+    border-left: 4px solid #2563eb;
+    color: white;
+}
+
+.group.info-funcionais .accordion-content {
+    color: white;
+    background: rgba(37, 99, 235, 0.95);
+}
+
+.group.info-funcionais .accordion-content * {
+    color: white;
+}
+
+.group.info-funcionais .accordion-content a {
+    color: white;
+    text-decoration: underline;
+}
+
+.group.info-funcionais .accordion-content a:hover {
+    color: rgba(255, 255, 255, 0.9);
+}
+
+.group.info-funcionais .accordion-header i,
+.group.info-funcionais .accordion-header .header-content {
+    color: white;
+}
+
+.group.info-funcionais .button-container button {
+    background: linear-gradient(135deg, #2563eb, #1d4ed8) !important;
+    color: white;
+    border-left: 4px solid #2563eb;
+    font-weight: 500;
+}
+
+.group.info-funcionais .button-container button i {
+    color: rgba(255, 255, 255, 0.9);
+}
+
+.group.info-funcionais .button-container button span {
+    color: white;
+}
+
+.group.info-funcionais .button-container button:hover {
+    background: linear-gradient(135deg, #3b82f6, #2563eb) !important;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(37, 99, 235, 0.4);
+}
+
+.group.info-funcionais .accordion-header:hover {
+    background: linear-gradient(135deg, #3b82f6, #2563eb);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(37, 99, 235, 0.4);
+}
+
+/* Apps Externos */
+.group.apps-externos .accordion-header {
+    background: linear-gradient(135deg, #78909c, #546e7a);
+    border-left: 4px solid #78909c;
+    color: white;
+}
+
+.group.apps-externos .accordion-header i,
+.group.apps-externos .accordion-header .header-content {
+    color: white;
+}
+
+.group.apps-externos .button-container button {
+    background: linear-gradient(135deg, #78909c, #546e7a) !important;
+    color: white;
+    border-left: 4px solid #78909c;
+    font-weight: 500;
+}
+
+.group.apps-externos .button-container button:hover {
+    background: linear-gradient(135deg, #90a4ae, #607d8b) !important;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(120, 144, 156, 0.4);
+}
+
+.group.apps-externos .accordion-header:hover {
+    background: linear-gradient(135deg, #90a4ae, #607d8b);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(120, 144, 156, 0.4);
+}
+
+/* Dark mode */
+body.dark .group.info-funcionais .accordion-header {
+    background: linear-gradient(135deg, #1d4ed8, #1e40af);
+}
+
+body.dark .group.info-funcionais .accordion-content {
+    background: rgba(29, 78, 216, 0.98);
+}
+
 /* Dark mode */
 body.dark .group.apps-externos .accordion-header {
     background: linear-gradient(135deg, #546e7a, #37474f);
@@ -1234,6 +1331,16 @@ body.dark .group.apps-externos .accordion-content {
 .group.sistemas-satelites .accordion-header {
     background: linear-gradient(135deg, #00bcd4, #006064);
     border-left: 4px solid #00bcd4;
+    color: white;
+}
+
+.group.sistemas-satelites .accordion-header i,
+.group.sistemas-satelites .accordion-header .header-content {
+    color: white;
+}
+
+.group.sistemas-satelites .button-container button {
+    color: white;
 }
 
 .group.sistemas-satelites .accordion-header:hover {
