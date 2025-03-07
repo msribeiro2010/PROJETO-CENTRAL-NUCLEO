@@ -215,10 +215,10 @@ body.dark .theme-toggle {
 }
 
 .holiday-btn:has(.bi-calendar2-heart) {
-    background: linear-gradient(135deg, #ff6b6b, #f03e3e);
+    background: linear-gradient(135deg, #2563eb, #1d4ed8);
     box-shadow: 
-        0 4px 6px rgba(240, 62, 62, 0.2),
-        0 8px 12px rgba(240, 62, 62, 0.1),
+        0 4px 6px rgba(37, 99, 235, 0.2),
+        0 8px 12px rgba(37, 99, 235, 0.1),
         inset 0 2px 4px rgba(255, 255, 255, 0.3);
 }
 
@@ -235,10 +235,10 @@ body.dark .theme-toggle {
 }
 
 .holiday-btn:has(.bi-calendar2-heart):hover {
-    background: linear-gradient(135deg, #fa5252, #e03131);
+    background: linear-gradient(135deg, #3b82f6, #2563eb);
     box-shadow: 
-        0 6px 8px rgba(240, 62, 62, 0.25),
-        0 10px 16px rgba(240, 62, 62, 0.15),
+        0 6px 8px rgba(37, 99, 235, 0.25),
+        0 10px 16px rgba(37, 99, 235, 0.15),
         inset 0 2px 4px rgba(255, 255, 255, 0.4);
 }
 
@@ -2343,6 +2343,10 @@ body.dark .group .accordion-content {
     flex-direction: column;
     gap: 8px;
     color: white;
+    background: linear-gradient(135deg, #3b82f6, #1d4ed8);
+    padding: 12px;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(59, 130, 246, 0.3);
 }
 
 .time-container,
@@ -2351,6 +2355,8 @@ body.dark .group .accordion-content {
     align-items: center;
     gap: 8px;
     font-size: 1.1rem;
+    background: transparent;
+    border: none;
 }
 
 .time-container i,
