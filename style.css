@@ -183,12 +183,18 @@ body.dark .theme-toggle {
 @import url('https://fonts.googleapis.com/css2?family=Architects+Daughter&display=swap');
 
 .header {
-    background: linear-gradient(135deg, #22c55e, #15803d);
+    background: linear-gradient(90deg, 
+        #3b82f6 0%,
+        #2563eb 20%,
+        #1d4ed8 50%,
+        #1e40af 80%,
+        #1e3a8a 100%
+    );
     border-radius: 12px;
     margin-bottom: 12px;
     padding: 8px;
     box-shadow: 
-        0 4px 12px rgba(34, 197, 94, 0.3),
+        0 4px 12px rgba(37, 99, 235, 0.3),
         inset 0 2px 4px rgba(255, 255, 255, 0.1);
     position: relative;
 }
@@ -229,7 +235,7 @@ body.dark .theme-toggle {
 }
 
 .holiday-btn:has(.bi-calendar2-heart) {
-    background: linear-gradient(135deg, #22c55e, #15803d);
+    background: linear-gradient(90deg, #3b82f6, #1e40af);
     box-shadow: 
         0 4px 6px rgba(34, 197, 94, 0.2),
         0 8px 12px rgba(34, 197, 94, 0.1),
@@ -251,7 +257,7 @@ body.dark .theme-toggle {
 }
 
 .holiday-btn:has(.bi-calendar2-heart):hover {
-    background: linear-gradient(135deg, #16a34a, #22c55e);
+    background: linear-gradient(90deg, #2563eb, #3b82f6);
     box-shadow: 
         0 6px 8px rgba(34, 197, 94, 0.25),
         0 10px 16px rgba(34, 197, 94, 0.15),
@@ -2364,11 +2370,17 @@ body.dark .group .accordion-content {
     flex-direction: column;
     gap: 4px;
     color: rgba(255, 255, 255, 0.9);
-    background: linear-gradient(135deg, #22c55e, #15803d);
+    background: linear-gradient(90deg, 
+        #3b82f6 0%,
+        #2563eb 20%,
+        #1d4ed8 50%,
+        #1e40af 80%,
+        #1e3a8a 100%
+    );
     padding: 8px;
     border-radius: 8px;
     box-shadow: 
-        0 4px 12px rgba(34, 197, 94, 0.3),
+        0 4px 12px rgba(37, 99, 235, 0.3),
         inset 0 2px 4px rgba(255, 255, 255, 0.1);
     letter-spacing: 0.5px;
 }
