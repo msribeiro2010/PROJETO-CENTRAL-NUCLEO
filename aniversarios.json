@@ -1,9 +1,5 @@
 [
   {
-    "Servidores": "Marcelo Silva Ribeiro",
-    "data": "29/12"
-  },
-  {
     "Servidores": "Marta Maria de Souza Pinto Silva",
     "data": "28/02"
   },
@@ -12,7 +8,7 @@
     "data": "26/03"
   },
   {
-    "Servidores": "Silvio Tamacia",
+    "Servidores": "Silvio Tamácia da Silva",
     "data": "26/03"
   },
   {
@@ -22,5 +18,25 @@
   {
     "Servidores": "Wagner Waldir Leite",
     "data": "07/04"
+  },
+  {
+    "Servidores": "Lloyd Hildevert Beteille Sobrinho",
+    "data": "12/04"
+  },
+  {
+    "Servidores": "Thais Helena Santos Camargo Simoes",
+    "data": "11/05"
+  },
+  {
+    "Servidores": "Nathany Gazolli de Souza",
+    "data": "23/09"
+  },
+  {
+    "Servidores": "Tatiana da Rocha Natale",
+    "data": "28/09"
+  },
+  {
+    "Servidores": "Marcelo Silva Ribeiro",
+    "data": "29/12"
   }
 ]
