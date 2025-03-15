@@ -138,20 +138,58 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 });
 
-// Inicializar todos os accordions como fechados
-document.addEventListener('DOMContentLoaded', () => {
-    // Fechar todos os accordions principais
-    document.querySelectorAll('.accordion-header').forEach(header => {
-        header.setAttribute('aria-expanded', 'false');
-        header.nextElementSibling.style.display = 'none';
-    });
+// Inicializa os acordeons e carrega os aniversariantes quando o documento estiver pronto
+document.addEventListener('DOMContentLoaded', function() {
+    const headers = document.querySelectorAll('.accordion-header');
     
-    // Fechar todos os sub-accordions
-    document.querySelectorAll('.accordion-subheader').forEach(subheader => {
-        subheader.setAttribute('aria-expanded', 'false');
-        subheader.nextElementSibling.style.display = 'none';
+    // Fecha todos os acordeons inicialmente
+    headers.forEach(header => {
+        header.setAttribute('aria-expanded', 'false');
+        const content = header.nextElementSibling;
+        if (content) content.style.display = 'none';
     });
+
+    // Adiciona evento de clique para cada header
+    headers.forEach(header => {
+        header.addEventListener('click', function() {
+            // Alterna o estado do acordeon clicado
+            const isExpanded = header.getAttribute('aria-expanded') === 'true';
+            header.setAttribute('aria-expanded', !isExpanded);
+            
+            // Alterna a exibição do conteúdo
+            const content = header.nextElementSibling;
+            if (content) {
+                content.style.display = isExpanded ? 'none' : 'block';
+            }
+            
+            // Alterna a rotação do ícone
+            const icon = header.querySelector('.accordion-icon');
+            if (icon) {
+                icon.style.transform = isExpanded ? 'rotate(0deg)' : 'rotate(180deg)';
+            }
+
+            // Se o header clicado for do grupo de aniversariantes, recarrega os dados
+            if (header.closest('.aniversariantes') && !isExpanded) {
+                carregarAniversariantes();
+            }
+        });
+    });
+
+    // Carrega os aniversariantes inicialmente, mas sem mostrar o modal
+    carregarAniversariantes();
+    
+    // Corrige links nos acordeões para garantir que funcionem corretamente
+    corrigirLinks();
 });
+
+// Função para corrigir links nos acordeões
+function corrigirLinks() {
+    document.querySelectorAll('.accordion-content a, .accordion-content button').forEach(elemento => {
+        elemento.addEventListener('click', function(e) {
+            e.stopPropagation(); // Impede que o clique feche o acordeão
+        });
+    });
+}
 
 // Garantir que os botões dentro dos accordions funcionem
 document.querySelectorAll('.accordion-content button').forEach(button => {
@@ -255,6 +293,11 @@ async function carregarAniversariantes() {
             item.appendChild(iconContainer);
             item.appendChild(infoContainer);
             lista.appendChild(item);
+            
+            // Adiciona evento de clique para celebrar o aniversário
+            item.addEventListener('click', function() {
+                celebrarAniversario(pessoa.Servidores);
+            });
         });
 
         console.log('Aniversariantes carregados com sucesso');
@@ -266,33 +309,6 @@ async function carregarAniversariantes() {
         }
     }
 }
-
-// Inicializa os acordeons e carrega os aniversariantes quando o documento estiver pronto
-document.addEventListener('DOMContentLoaded', function() {
-    const headers = document.querySelectorAll('.accordion-header');
-    
-    // Fecha todos os acordeons inicialmente
-    headers.forEach(header => {
-        header.setAttribute('aria-expanded', 'false');
-    });
-
-    // Adiciona evento de clique para cada header
-    headers.forEach(header => {
-        header.addEventListener('click', function() {
-            // Alterna o estado do acordeon clicado
-            const isExpanded = header.getAttribute('aria-expanded') === 'true';
-            header.setAttribute('aria-expanded', !isExpanded);
-
-            // Se o header clicado for do grupo de aniversariantes, recarrega os dados
-            if (header.closest('.aniversariantes')) {
-                carregarAniversariantes();
-            }
-        });
-    });
-
-    // Carrega os aniversariantes inicialmente
-    carregarAniversariantes();
-});
 
 // Manipulação dos links da navbar
 document.addEventListener('DOMContentLoaded', function() {
@@ -604,7 +620,7 @@ function updateNextHolidayPreview() {
         const holidayDate = new Date(year, month - 1, day);
         return holidayDate > today;
     });
-    
+
     if (nextHoliday) {
         const date = formatDate(nextHoliday.data);
         const weekday = getWeekday(nextHoliday.data);
@@ -773,5 +789,141 @@ document.addEventListener('DOMContentLoaded', function() {
             e.preventDefault();
             abrirAniversariantes();
         });
+    }
+});
+
+// Função para celebrar aniversário
+function celebrarAniversario(nome) {
+    // Verifica se foi chamado por um evento de clique
+    if (!nome) return;
+    
+    // Seleciona uma mensagem aleatória personalizada
+    const mensagem = gerarMensagemAniversario(nome);
+    
+    // Configura o modal
+    document.getElementById('birthday-message').innerHTML = mensagem;
+    
+    // Exibe o modal
+    const modal = document.getElementById('birthday-modal');
+    modal.style.display = 'flex';
+    
+    // Inicia a animação de confete
+    criarConfete();
+    
+    // Adiciona classe de animação ao título
+    const titulo = document.getElementById('birthday-title');
+    if (titulo) {
+        titulo.classList.add('animate-title');
+    }
+}
+
+// Função para fechar o modal de aniversário
+function closeBirthdayModal() {
+    const modal = document.getElementById('birthday-modal');
+    modal.style.display = 'none';
+    
+    // Remove as animações
+    document.getElementById('birthday-title').classList.remove('animate-title');
+    document.getElementById('birthday-message').classList.remove('animate-title');
+    
+    // Limpa os confetes
+    document.getElementById('confetti-container').innerHTML = '';
+}
+
+// Função para gerar mensagens personalizadas de aniversário
+function gerarMensagemAniversario(nome) {
+    // Extrai o primeiro nome
+    const primeiroNome = nome.split(' ')[0];
+    
+    // Array de mensagens personalizadas
+    const mensagens = [
+        `<p>Parabéns, <strong>${primeiroNome}</strong>! 🎉</p>
+        <p>Que este novo ciclo seja repleto de realizações, saúde e muitas alegrias!</p>
+        <p>Desejamos um dia especial e um ano incrível pela frente.</p>`,
+        
+        `<p>Feliz Aniversário, <strong>${primeiroNome}</strong>! 🎂</p>
+        <p>Que a felicidade seja sua companheira constante e que todos os seus desejos se realizem!</p>
+        <p>Tenha um dia maravilhoso e um ano cheio de conquistas!</p>`,
+        
+        `<p>Parabéns, <strong>${primeiroNome}</strong>! 🥳</p>
+        <p>Desejamos que este novo ano de vida seja repleto de momentos inesquecíveis e muitas conquistas!</p>
+        <p>Aproveite seu dia especial!</p>`,
+        
+        `<p>Feliz Aniversário, <strong>${primeiroNome}</strong>! 🎈</p>
+        <p>Que este dia seja apenas o começo de um ano repleto de bênçãos, saúde e prosperidade!</p>
+        <p>Conte sempre com nossa amizade e carinho!</p>`,
+        
+        `<p>Parabéns, <strong>${primeiroNome}</strong>! 💫</p>
+        <p>Que seu caminho continue sendo iluminado e que a felicidade esteja sempre presente em sua vida!</p>
+        <p>Tenha um aniversário tão especial quanto você!</p>`
+    ];
+    
+    // Seleciona uma mensagem aleatória
+    return mensagens[Math.floor(Math.random() * mensagens.length)];
+}
+
+// Função para criar efeito de confete
+function criarConfete() {
+    const container = document.getElementById('confetti-container');
+    container.innerHTML = ''; // Limpa confetes anteriores
+    
+    // Cores para os confetes
+    const cores = [
+        '#ff0000', '#00ff00', '#0000ff', '#ffff00', 
+        '#ff00ff', '#00ffff', '#ff8000', '#8000ff'
+    ];
+    
+    // Duração máxima da animação (em segundos)
+    let duracaoMaxima = 0;
+    
+    // Cria 100 confetes
+    for (let i = 0; i < 100; i++) {
+        const confete = document.createElement('div');
+        confete.className = 'confete';
+        
+        // Posição inicial aleatória
+        const posX = Math.random() * 100;
+        const posY = -20 - Math.random() * 80; // Começa acima do container
+        
+        // Tamanho aleatório
+        const tamanho = 5 + Math.random() * 10;
+        
+        // Cor aleatória
+        const cor = cores[Math.floor(Math.random() * cores.length)];
+        
+        // Velocidade de queda aleatória
+        const velocidade = 2 + Math.random() * 5;
+        
+        // Atraso aleatório
+        const atraso = Math.random() * 5;
+        
+        // Atualiza a duração máxima
+        const duracaoTotal = velocidade + atraso;
+        if (duracaoTotal > duracaoMaxima) {
+            duracaoMaxima = duracaoTotal;
+        }
+        
+        // Aplica estilos
+        confete.style.left = `${posX}%`;
+        confete.style.top = `${posY}px`;
+        confete.style.width = `${tamanho}px`;
+        confete.style.height = `${tamanho}px`;
+        confete.style.backgroundColor = cor;
+        confete.style.animationDuration = `${velocidade}s`;
+        confete.style.animationDelay = `${atraso}s`;
+        
+        container.appendChild(confete);
+    }
+    
+    // Programa o fechamento automático do modal após os confetes terminarem de cair
+    // Adiciona 0.5 segundos para garantir que todos os confetes tenham terminado
+    setTimeout(closeBirthdayModal, (duracaoMaxima + 0.5) * 1000);
+}
+
+// Fecha o modal de aniversário ao clicar fora
+window.addEventListener('click', function(event) {
+    const modal = document.getElementById('birthday-modal');
+    if (event.target === modal) {
+        closeBirthdayModal();
     }
 });
