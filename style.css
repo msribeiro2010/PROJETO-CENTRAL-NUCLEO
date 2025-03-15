@@ -2537,3 +2537,57 @@ body.dark .footer-links a:hover {
         margin-bottom: 15px;
     }
 }
+
+/* Botão SecJud */
+.secjud-btn {
+    background: linear-gradient(135deg, #38a169 0%, #68d391 100%);  /* Gradiente verde */
+    border: none;
+    color: white;
+    padding: 10px 20px;
+    border-radius: 8px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    transition: all 0.3s ease;
+    font-size: 0.95rem;
+    font-family: 'Roboto', sans-serif;
+    font-weight: 500;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    white-space: nowrap;
+}
+
+.secjud-btn:hover {
+    background: linear-gradient(135deg, #2f855a 0%, #38a169 100%);  /* Hover verde escuro */
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(56, 161, 105, 0.3);  /* Sombra verde */
+}
+
+.secjud-btn i {
+    font-size: 1.1rem;
+    color: white;  /* Ícone branco */
+}
+
+.secjud-btn span {
+    white-space: nowrap;
+    color: white;  /* Texto branco */
+}
+
+/* Dark mode */
+body.dark .secjud-btn,
+html.dark .secjud-btn {
+    background: linear-gradient(135deg, #276749 0%, #38a169 100%);  /* Gradiente verde escuro para modo escuro */
+}
+
+body.dark .secjud-btn:hover,
+html.dark .secjud-btn:hover {
+    background: linear-gradient(135deg, #38a169 0%, #276749 100%);
+}
+
+/* Responsividade */
+@media screen and (max-width: 768px) {
+    .secjud-btn {
+        width: 100%;
+        justify-content: center;
+    }
+}
