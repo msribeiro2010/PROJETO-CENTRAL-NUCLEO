@@ -5,13 +5,89 @@
     box-sizing: border-box;
 }
 
+:root {
+    --primary-color: #f5f7fa;
+    --secondary-color: #c3cfe2;
+    --accent-color: #3182ce;
+    --text-color: #2d3748;
+    --border-color: #e2e8f0;
+    --shadow-color: rgba(0, 0, 0, 0.1);
+    
+    /* Variáveis para o modo escuro */
+    --dark-primary: #1a202c;
+    --dark-secondary: #2d3748;
+    --dark-accent: #63b3ed;
+    --dark-text: #e2e8f0;
+    --dark-border: #4a5568;
+    --dark-shadow: rgba(0, 0, 0, 0.3);
+}
+
+html, body {
+    min-height: 100vh;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
 body {
     font-family: 'Roboto', sans-serif;
-    background: linear-gradient(135deg, #f5f7fa, #c3cfe2);
-    color: #2d3748;
+    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+    color: var(--text-color);
     padding: 0;
-    transition: all 0.3s ease;
-    min-height: 100vh;
+}
+
+/* Estilo para o modo escuro */
+html.dark,
+body.dark {
+    background: linear-gradient(135deg, var(--dark-primary), var(--dark-secondary));
+    color: var(--dark-text);
+}
+
+/* Garantir que os links dentro dos acordeões sejam clicáveis */
+.accordion-content a,
+.accordion-content button {
+    position: relative;
+    z-index: 2;
+    pointer-events: auto;
+}
+
+/* Ajustes para o modo escuro */
+body.dark .navbar,
+html.dark .navbar {
+    background: linear-gradient(135deg, #2c5282 0%, #2b6cb0 100%);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+}
+
+body.dark .group,
+html.dark .group {
+    background-color: var(--dark-secondary);
+    border-color: var(--dark-border);
+    box-shadow: 0 4px 6px var(--dark-shadow);
+}
+
+body.dark .accordion-header,
+html.dark .accordion-header {
+    background-color: var(--dark-secondary);
+    color: var(--dark-text);
+    border-color: var(--dark-border);
+}
+
+body.dark .accordion-content,
+html.dark .accordion-content {
+    background-color: var(--dark-primary);
+    color: var(--dark-text);
+    border-color: var(--dark-border);
+}
+
+body.dark .button-container button,
+html.dark .button-container button {
+    background-color: var(--dark-secondary);
+    color: var(--dark-text);
+    border-color: var(--dark-border);
+}
+
+body.dark .button-container button:hover,
+html.dark .button-container button:hover {
+    background-color: var(--dark-accent);
+    color: var(--dark-primary);
 }
 
 /* Navbar Superior */
@@ -2355,5 +2431,109 @@ body.dark .plantao-btn:hover {
     
     #birthday-message {
         font-size: 1rem;
+    }
+}
+
+/* Estilos para o Footer */
+.footer {
+    background-color: var(--primary-color);
+    color: var(--text-color);
+    padding: 20px 0;
+    margin-top: 30px;
+    border-top: 3px solid var(--accent-color);
+    box-shadow: 0 -5px 15px rgba(0, 0, 0, 0.1);
+}
+
+.footer-content {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.footer-logo {
+    font-size: 2.5rem;
+    margin-right: 20px;
+    color: var(--accent-color);
+    animation: pulse 2s infinite;
+}
+
+.footer-info {
+    flex: 1;
+    min-width: 200px;
+}
+
+.footer-info p {
+    margin: 5px 0;
+    font-family: 'VT323', monospace;
+    font-size: 1.1rem;
+}
+
+.footer-links {
+    display: flex;
+    gap: 15px;
+}
+
+.footer-links a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background-color: var(--accent-color);
+    color: var(--primary-color);
+    font-size: 1.2rem;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    border: 2px solid transparent;
+}
+
+.footer-links a:hover {
+    transform: translateY(-3px);
+    background-color: var(--text-color);
+    border-color: var(--accent-color);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+/* Ajustes para o modo escuro */
+body.dark .footer {
+    background-color: var(--dark-primary);
+    border-top-color: var(--dark-accent);
+    box-shadow: 0 -5px 15px rgba(0, 0, 0, 0.3);
+}
+
+body.dark .footer-logo {
+    color: var(--dark-accent);
+}
+
+body.dark .footer-links a {
+    background-color: var(--dark-accent);
+    color: var(--dark-primary);
+}
+
+body.dark .footer-links a:hover {
+    background-color: var(--dark-text);
+    border-color: var(--dark-accent);
+}
+
+/* Responsividade do footer */
+@media (max-width: 768px) {
+    .footer-content {
+        flex-direction: column;
+        text-align: center;
+        gap: 15px;
+    }
+    
+    .footer-logo {
+        margin-right: 0;
+        margin-bottom: 10px;
+    }
+    
+    .footer-info {
+        margin-bottom: 15px;
     }
 }

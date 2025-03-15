@@ -40,102 +40,36 @@ const themeToggle = document.getElementById('theme-toggle');
 const themeIcon = document.getElementById('theme-icon');
 
 function setTheme(isDark) {
+    // Aplica a classe 'dark' tanto ao body quanto ao html
     document.body.classList.toggle('dark', isDark);
+    document.documentElement.classList.toggle('dark', isDark);
+    
+    // Atualiza o ícone
     themeIcon.className = isDark ? 'bi bi-sun-fill' : 'bi bi-moon-fill';
+    
+    // Salva a preferência
     localStorage.setItem('darkMode', isDark);
+    
+    // Força a atualização do estilo em todos os elementos principais
+    document.querySelectorAll('.group, .accordion-content, .button-container').forEach(el => {
+        el.style.transition = 'background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease';
+    });
 }
 
 // Verificar preferência salva
 const savedTheme = localStorage.getItem('darkMode');
 if (savedTheme !== null) {
     setTheme(savedTheme === 'true');
+} else {
+    // Verifica se o usuário prefere o tema escuro no sistema
+    const prefersDarkScheme = window.matchMedia('(prefers-color-scheme: dark)');
+    if (prefersDarkScheme.matches) {
+        setTheme(true);
+    }
 }
 
 themeToggle.addEventListener('click', () => {
     setTheme(!document.body.classList.contains('dark'));
-});
-
-// Manipulação dos accordions principais
-document.addEventListener('DOMContentLoaded', function() {
-    // Função auxiliar para fechar accordion
-    function closeAccordion(header) {
-        const content = header.nextElementSibling;
-        const icon = header.querySelector('.accordion-icon');
-        header.setAttribute('aria-expanded', 'false');
-        if (content) content.style.display = 'none';
-        if (icon) icon.style.transform = 'rotate(0deg)';
-    }
-
-    // Função auxiliar para abrir accordion
-    function openAccordion(header) {
-        const content = header.nextElementSibling;
-        const icon = header.querySelector('.accordion-icon');
-        header.setAttribute('aria-expanded', 'true');
-        if (content) content.style.display = 'block';
-        if (icon) icon.style.transform = 'rotate(180deg)';
-    }
-
-    // Inicializar todos os accordions como fechados
-    document.querySelectorAll('.accordion-header, .accordion-subheader').forEach(header => {
-        closeAccordion(header);
-    });
-
-    // Manipulação dos accordions principais
-    document.querySelectorAll('.group').forEach(group => {
-        const header = group.querySelector('.accordion-header');
-        if (!header) return;
-
-        // Evento de hover
-        group.addEventListener('mouseenter', function() {
-            // Fecha todos os outros grupos
-            document.querySelectorAll('.accordion-header').forEach(otherHeader => {
-                if (otherHeader !== header) {
-                    closeAccordion(otherHeader);
-                }
-            });
-            // Abre este grupo
-            openAccordion(header);
-        });
-
-        // Evento de clique ainda mantido para poder fechar manualmente
-        header.addEventListener('click', function(e) {
-            const isExpanded = this.getAttribute('aria-expanded') === 'true';
-            if (isExpanded) {
-                closeAccordion(this);
-            }
-        });
-    });
-
-    // Manipulação dos sub-accordions
-    document.querySelectorAll('.subgroup').forEach(subgroup => {
-        const subHeader = subgroup.querySelector('.accordion-subheader');
-        if (!subHeader) return;
-
-        // Evento de hover para sub-grupos
-        subgroup.addEventListener('mouseenter', function(e) {
-            e.stopPropagation(); // Impede que o evento propague para o grupo pai
-            const parentGroup = this.closest('.subgroup').parentElement;
-
-            // Fecha outros sub-accordions no mesmo grupo
-            parentGroup.querySelectorAll('.accordion-subheader').forEach(otherSubHeader => {
-                if (otherSubHeader !== subHeader) {
-                    closeAccordion(otherSubHeader);
-                }
-            });
-
-            // Abre este sub-grupo
-            openAccordion(subHeader);
-        });
-
-        // Evento de clique ainda mantido para poder fechar manualmente
-        subHeader.addEventListener('click', function(e) {
-            e.stopPropagation();
-            const isExpanded = this.getAttribute('aria-expanded') === 'true';
-            if (isExpanded) {
-                closeAccordion(this);
-            }
-        });
-    });
 });
 
 // Inicializa os acordeons e carrega os aniversariantes quando o documento estiver pronto
@@ -194,7 +128,7 @@ function corrigirLinks() {
 // Garantir que os botões dentro dos accordions funcionem
 document.querySelectorAll('.accordion-content button').forEach(button => {
     button.addEventListener('click', function(e) {
-        e.stopPropagation(); // Impedir que o clique do botão feche o accordion
+        e.stopPropagation(); // Impede que o clique se propague para o accordion
     });
 });
 
