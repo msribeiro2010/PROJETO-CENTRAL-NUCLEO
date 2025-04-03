@@ -350,6 +350,19 @@ function renderFavorites() {
     const favoritesList = document.getElementById('favorites-list');
     const favorites = JSON.parse(localStorage.getItem('favorites') || '[]');
     
+    // Definir quais favoritos são fixos (sem lixeira e não removíveis)
+    const fixedFavorites = ['Feriados 2025', 'Controle/Trabalho'];
+    
+    // Reordenar os favoritos para que os fixos fiquem no topo
+    const orderedFavorites = [...favorites].sort((a, b) => {
+        const aIsFixed = fixedFavorites.includes(a);
+        const bIsFixed = fixedFavorites.includes(b);
+        
+        if (aIsFixed && !bIsFixed) return -1;
+        if (!aIsFixed && bIsFixed) return 1;
+        return 0;
+    });
+    
     favoritesList.innerHTML = '';
     
     if (favorites.length === 0) {
@@ -362,18 +375,123 @@ function renderFavorites() {
         return;
     }
     
-    favorites.forEach(favorite => {
+    // Inverter a ordem para que os novos favoritos apareçam no topo
+    // (exceto os fixos que sempre ficam no topo)
+    const nonFixedFavorites = orderedFavorites.filter(fav => !fixedFavorites.includes(fav));
+    const reversedNonFixed = [...nonFixedFavorites].reverse();
+    const finalFavorites = [...fixedFavorites.filter(fav => favorites.includes(fav)), ...reversedNonFixed];
+    
+    finalFavorites.forEach(favorite => {
         const button = Array.from(document.querySelectorAll('.button-container button'))
             .find(btn => btn.textContent.trim() === favorite);
             
         if (button) {
-            const favoriteItem = document.createElement('button');
-            favoriteItem.className = 'favorite-item';
-            favoriteItem.innerHTML = `
-                <i class="${button.querySelector('i').className}"></i>
-                <span>${favorite}</span>
-            `;
-            favoriteItem.onclick = () => button.click();
+            const favoriteItem = document.createElement('div');
+            favoriteItem.className = 'favorite-item-container';
+            favoriteItem.style.position = 'relative';
+            favoriteItem.style.display = 'inline-block';
+            favoriteItem.style.width = '100%';
+            
+            const favoriteButton = document.createElement('button');
+            favoriteButton.className = 'favorite-item';
+            favoriteButton.style.position = 'relative'; // Importante para posicionamento da lixeira
+            
+            // Adicionar lixeira apenas se não for um favorito fixo
+            const isFixedFavorite = fixedFavorites.includes(favorite);
+            if (!isFixedFavorite) {
+                favoriteButton.innerHTML = `
+                    <i class="${button.querySelector('i').className}"></i>
+                    <span>${favorite}</span>
+                    <i class="bi bi-trash favorite-trash-icon" style="font-size:0.9rem;margin-left:8px;color:#e53e3e;opacity:0;transition:all 0.2s ease;cursor:pointer;"></i>
+                `;
+                
+                // Adicionar evento de hover para a lixeira
+                favoriteButton.addEventListener('mouseenter', () => {
+                    const trashIcon = favoriteButton.querySelector('.favorite-trash-icon');
+                    if (trashIcon) {
+                        trashIcon.style.opacity = '1';
+                    }
+                });
+                
+                favoriteButton.addEventListener('mouseleave', () => {
+                    const trashIcon = favoriteButton.querySelector('.favorite-trash-icon');
+                    if (trashIcon) {
+                        trashIcon.style.opacity = '0';
+                    }
+                });
+                
+                // Adicionar evento de clique na lixeira
+                favoriteButton.querySelector('.favorite-trash-icon').addEventListener('click', (e) => {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    
+                    // Remover dos favoritos
+                    const favorites = JSON.parse(localStorage.getItem('favorites') || '[]');
+                    const index = favorites.indexOf(favorite);
+                    if (index !== -1) {
+                        favorites.splice(index, 1);
+                        localStorage.setItem('favorites', JSON.stringify(favorites));
+                        
+                        // Atualizar a estrela no botão original
+                        const originalButton = Array.from(document.querySelectorAll('.button-container button'))
+                            .find(btn => btn.textContent.trim() === favorite);
+                            
+                        if (originalButton) {
+                            // Atualizar a estrela no botão original
+                            const starIcon = originalButton.querySelector('.bi-star-fill');
+                            if (starIcon) {
+                                starIcon.className = 'bi bi-star favorite-star';
+                                starIcon.style.color = 'white'; // Mudar para branca
+                                starIcon.style.opacity = '0.5';
+                                starIcon.title = 'Adicionar aos favoritos';
+                            }
+                            
+                            // Atualizar a estrela no container (se existir)
+                            const starContainer = originalButton.parentNode.querySelector('.star-container');
+                            if (starContainer) {
+                                const containerStarIcon = starContainer.querySelector('i');
+                                if (containerStarIcon) {
+                                    containerStarIcon.className = 'bi bi-star favorite-star';
+                                    containerStarIcon.style.color = 'white'; // Mudar para branca
+                                    containerStarIcon.style.opacity = '0.5';
+                                    containerStarIcon.title = 'Adicionar aos favoritos';
+                                }
+                            }
+                            
+                            // Remover a lixeira se existir
+                            const trashContainer = originalButton.parentNode.querySelector('.trash-container');
+                            if (trashContainer) {
+                                trashContainer.remove();
+                            }
+                        }
+                        
+                        // Renderizar novamente os favoritos
+                        renderFavorites();
+                        
+                        // Mostrar mensagem
+                        showToast('Removido dos favoritos');
+                    }
+                });
+            } else {
+                // Para favoritos fixos, sem lixeira
+                favoriteButton.innerHTML = `
+                    <i class="${button.querySelector('i').className}"></i>
+                    <span>${favorite}</span>
+                `;
+            }
+            
+            favoriteButton.onclick = (e) => {
+                // Se o clique for na lixeira, não abrir o link
+                if (e.target.classList.contains('favorite-trash-icon')) {
+                    return;
+                }
+                button.click();
+            };
+            
+            favoriteItem.appendChild(favoriteButton);
+            
+            // A lixeira agora está dentro do botão, não precisamos adicionar separadamente
+            
             favoritesList.appendChild(favoriteItem);
         }
     });
