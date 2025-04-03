@@ -23,6 +23,85 @@ function getUniqueColorIndex(name) {
     return Math.abs(hash) % solidColorPalettes.length;
 }
 
+// Função para mostrar mensagem de parabéns
+function showBirthdayMessage(name, department) {
+    const modal = document.getElementById('birthday-modal');
+    const messageContainer = document.getElementById('birthday-message');
+    
+    // Mensagens personalizadas e elegantes baseadas no departamento
+    const messages = {
+        'TI': `✨ Feliz Aniversário, ${name}! ✨\n\nQue seu dia seja tão excepcional quanto seu talento técnico! 🚀\nDesejamos que este novo ciclo traga códigos sem bugs, projetos inovadores e muito café de qualidade. 💻☕\n\nParabéns de toda a equipe!`,
+        
+        'RH': `✨ Feliz Aniversário, ${name}! ✨\n\nQue seu dia seja tão especial quanto o cuidado que você dedica às pessoas! 💫\nDesejamos que este novo ciclo traga muitas conquistas, sorrisos e realizações pessoais. 👥💝\n\nParabéns de toda a equipe!`,
+        
+        'Financeiro': `✨ Feliz Aniversário, ${name}! ✨\n\nQue seu dia seja próspero e abundante como seus talentos! 📊\nDesejamos que este novo ciclo traga investimentos certeiros, metas alcançadas e muito sucesso. 💰💼\n\nParabéns de toda a equipe!`,
+        
+        'Administrativo': `✨ Feliz Aniversário, ${name}! ✨\n\nQue seu dia seja tão bem organizado quanto seu trabalho! 📋\nDesejamos que este novo ciclo traga eficiência, conquistas e muitas realizações. 📊✨\n\nParabéns de toda a equipe!`,
+        
+        'Jurídico': `✨ Feliz Aniversário, ${name}! ✨\n\nQue seu dia seja tão brilhante quanto sua inteligência jurídica! ⚖️\nDesejamos que este novo ciclo traga sabedoria, justiça e grandes conquistas profissionais. 📜✨\n\nParabéns de toda a equipe!`,
+        
+        'Marketing': `✨ Feliz Aniversário, ${name}! ✨\n\nQue seu dia seja tão criativo e inspirador quanto suas ideias! 💡\nDesejamos que este novo ciclo traga inovação, projetos de sucesso e muita visibilidade. 🎨📱\n\nParabéns de toda a equipe!`,
+        
+        'Comercial': `✨ Feliz Aniversário, ${name}! ✨\n\nQue seu dia seja tão próspero quanto suas negociações! 📈\nDesejamos que este novo ciclo traga grandes parcerias, metas superadas e muito sucesso. 🤝💼\n\nParabéns de toda a equipe!`,
+        
+        'Operacional': `✨ Feliz Aniversário, ${name}! ✨\n\nQue seu dia seja tão eficiente quanto seu trabalho! 🔄\nDesejamos que este novo ciclo traga processos bem-sucedidos, conquistas e muita produtividade. 🔧⚙️\n\nParabéns de toda a equipe!`
+    };
+
+    const defaultMessage = `✨ Feliz Aniversário, ${name}! ✨\n\nQue este dia especial seja apenas o começo de um ano repleto de alegrias, conquistas e momentos inesquecíveis! 🎉\nDesejamos toda felicidade do mundo e que todos os seus sonhos se realizem neste novo ciclo de vida. 💫\n\nParabéns de toda a equipe!`;
+    
+    const message = messages[department] || defaultMessage;
+
+    messageContainer.innerHTML = `
+        <p class="birthday-greeting">${message}</p>
+        <div class="birthday-animation">
+            <i class="bi bi-gift-fill"></i>
+            <i class="bi bi-balloon-heart-fill"></i>
+            <i class="bi bi-cake2-fill"></i>
+        </div>
+    `;
+
+    modal.style.display = 'block';
+    
+    // Sequência de efeitos de confete
+    setTimeout(() => {
+        confetti({
+            particleCount: 100,
+            spread: 70,
+            origin: { y: 0.6 },
+            colors: ['#FF1493', '#FF69B4', '#FFB6C1', '#FFC0CB', '#DB7093'],
+            ticks: 200
+        });
+    }, 300);
+    
+    setTimeout(() => {
+        confetti({
+            particleCount: 50,
+            angle: 60,
+            spread: 55,
+            origin: { x: 0, y: 0.6 },
+            colors: ['#1abc9c', '#2ecc71', '#3498db', '#9b59b6', '#34495e'],
+            ticks: 200
+        });
+    }, 500);
+    
+    setTimeout(() => {
+        confetti({
+            particleCount: 50,
+            angle: 120,
+            spread: 55,
+            origin: { x: 1, y: 0.6 },
+            colors: ['#f1c40f', '#e67e22', '#e74c3c', '#ecf0f1', '#95a5a6'],
+            ticks: 200
+        });
+    }, 800);
+}
+
+// Função para fechar o modal de aniversário
+function closeBirthdayModal() {
+    const modal = document.getElementById('birthday-modal');
+    modal.style.display = 'none';
+}
+
 // Função para carregar aniversários com cores sólidas
 async function loadBirthdays() {
     const birthdaysList = document.getElementById('aniversariantes-lista');
@@ -60,12 +139,12 @@ async function loadBirthdays() {
         
         if (currentMonthBirthdays.length > 0) {
             currentMonthBirthdays.forEach((person, index) => {
-                // Gerar cor única baseada no nome
                 const colorIndex = getUniqueColorIndex(person.nome);
                 const colors = solidColorPalettes[colorIndex];
                 
                 const card = document.createElement('div');
                 card.className = 'birthday-card';
+                card.onclick = () => showBirthdayMessage(person.nome, person.setor);
                 card.style.setProperty('--card-index', index);
                 card.style.background = colors.bg;
                 card.style.borderColor = colors.border;
@@ -73,7 +152,6 @@ async function loadBirthdays() {
                 const day = person.data.split('/')[0];
                 const month = person.data.split('/')[1];
                 
-                // Emojis festivos baseados no setor
                 const deptEmojis = {
                     'TI': '💻',
                     'RH': '👥',
@@ -128,3 +206,6 @@ async function loadBirthdays() {
         `;
     }
 }
+
+// Carregar aniversários quando a página carregar
+document.addEventListener('DOMContentLoaded', loadBirthdays);

@@ -60,9 +60,28 @@
                 <a href="#pje-homologacao" data-target="pje-homologacao" title="PJe-Homologação">
                     <i class="bi bi-check-circle"></i> PJe-Homologação
                 </a>
+                <a href="https://msribeiro2010.github.io/controle-ferias/" target="_blank" rel="noopener" title="Plantão/Férias/Presencial">
+                    <i class="bi bi-calendar-check"></i> Plantão/Férias
+                </a>
+                <a href="#" onclick="showHolidays(); return false;" title="Feriados 2025">
+                    <i class="bi bi-calendar2-heart"></i> Feriados 2025
+                </a>
             </div>
         </div>
     </nav>
+
+    <!-- Relógio e Data -->
+    <div class="calendar-wrapper">
+        <div class="time-container">
+            <i class="bi bi-clock"></i>
+            <span id="clock">--:--:--</span>
+        </div>
+        <div class="date-container">
+            <i class="bi bi-calendar3"></i>
+            <span id="weekday">--</span>
+            <span id="current-date">--/--/----</span>
+        </div>
+    </div>
 
     <div class="dark-mode-toggle">
         <button id="theme-toggle" class="theme-toggle" aria-label="Alternar tema">
@@ -74,37 +93,23 @@
         <div class="header">
             <div class="header-content">
                 <h1 class="app-title"><i class="bi bi-grid-3x3-gap-fill"></i> Central NAPJe</h1>
-                <div class="header-top">
-                    <button class="secjud-btn" onclick="window.open('https://secjud.trt15.jus.br/login', '_blank')">
-                        <i class="bi bi-file-earmark-text"></i>
-                        <span>SecJud</span>
-                    </button>
-                    <button class="holiday-btn" onclick="showHolidays()">
-                        <i class="bi bi-calendar2-heart"></i>
-                        <span>Feriados 2025</span>
-                    </button>
-                    <div>
-                    <button class="plantao-btn" onclick="window.open('https://msribeiro2010.github.io/controle-ferias/', '_blank')">
-                        <i class="bi bi-calendar-check"></i>
-                        <span>Plantão/Férias/Presencial</span>
-                    </button>
-                    </div>
-                </div>
-                            
-                <div class="calendar-wrapper">
-                    <div class="time-container">
-                        <i class="bi bi-clock"></i>
-                        <span id="clock">--:--:--</span>
-                    </div>
-                    <div class="date-container">
-                        <i class="bi bi-calendar3"></i>
-                        <span id="weekday">--</span>
-                        <span id="current-date">--/--/----</span>
-                    </div>
-                    
-                </div>
                 
-               
+                <!-- Barra de Busca Global -->
+                <div class="search-container">
+                    <div class="search-box">
+                        <i class="bi bi-search"></i>
+                        <input type="text" id="global-search" placeholder="Buscar funcionalidades..." autocomplete="off" />
+                    </div>
+                    <div id="search-results" class="search-results"></div>
+                </div>
+
+                <!-- Seção de Favoritos -->
+                <div class="favorites-container">
+                    <h3><i class="bi bi-star-fill"></i> Meus Favoritos</h3>
+                    <div id="favorites-list" class="favorites-list">
+                        <!-- Os favoritos serão inseridos aqui dinamicamente -->
+                    </div>
+                </div>
             </div>
         </div>
 
@@ -120,7 +125,7 @@
                 <div class="modal-body">
                     <div class="next-holiday">
                         <h4>Próximo Feriado:</h4>
-                        <div id="next-holiday-info"></div>
+                        <div id="next-holiday"></div>
                     </div>
                     <div class="holiday-filters">
                         <button class="month-btn" onclick="prevMonth()" title="Mês anterior">
@@ -162,7 +167,7 @@
                     <i class="bi bi-chevron-down accordion-icon"></i>
                 </button>
                 <div class="accordion-content">
-                    <div id="aniversariantes-lista">
+                    <div class="aniversariantes-lista" id="aniversariantes-lista">
                         <!-- Lista de aniversariantes será inserida aqui via JavaScript -->
                     </div>
                 </div>
