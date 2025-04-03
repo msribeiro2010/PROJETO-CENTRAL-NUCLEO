@@ -353,21 +353,18 @@ function renderFavorites() {
     // Definir quais favoritos são fixos (sem lixeira e não removíveis)
     const fixedFavorites = ['Feriados 2025', 'Controle/Trabalho'];
     
-    // Reordenar os favoritos para que os fixos fiquem no topo
-    const orderedFavorites = [...favorites].sort((a, b) => {
-        const aIsFixed = fixedFavorites.includes(a);
-        const bIsFixed = fixedFavorites.includes(b);
-        
-        if (aIsFixed && !bIsFixed) return -1;
-        if (!aIsFixed && bIsFixed) return 1;
-        return 0;
-    });
+    // Estilizar o container de favoritos para exibição horizontal
+    favoritesList.style.display = 'flex';
+    favoritesList.style.flexDirection = 'row';
+    favoritesList.style.flexWrap = 'wrap';
+    favoritesList.style.gap = '8px';
+    favoritesList.style.padding = '10px';
     
     favoritesList.innerHTML = '';
     
     if (favorites.length === 0) {
         favoritesList.innerHTML = `
-            <div class="no-favorites">
+            <div class="no-favorites" style="width: 100%; text-align: center;">
                 <i class="bi bi-star"></i>
                 <p>Nenhum favorito adicionado</p>
             </div>
@@ -375,11 +372,10 @@ function renderFavorites() {
         return;
     }
     
-    // Inverter a ordem para que os novos favoritos apareçam no topo
-    // (exceto os fixos que sempre ficam no topo)
-    const nonFixedFavorites = orderedFavorites.filter(fav => !fixedFavorites.includes(fav));
-    const reversedNonFixed = [...nonFixedFavorites].reverse();
-    const finalFavorites = [...fixedFavorites.filter(fav => favorites.includes(fav)), ...reversedNonFixed];
+    // Ordenar os favoritos para que os fixos apareçam primeiro
+    const fixedFavoritesInList = fixedFavorites.filter(fav => favorites.includes(fav));
+    const otherFavorites = favorites.filter(fav => !fixedFavorites.includes(fav));
+    const finalFavorites = [...fixedFavoritesInList, ...otherFavorites];
     
     finalFavorites.forEach(favorite => {
         const button = Array.from(document.querySelectorAll('.button-container button'))
@@ -390,11 +386,19 @@ function renderFavorites() {
             favoriteItem.className = 'favorite-item-container';
             favoriteItem.style.position = 'relative';
             favoriteItem.style.display = 'inline-block';
-            favoriteItem.style.width = '100%';
+            favoriteItem.style.width = 'auto';
+            favoriteItem.style.margin = '4px';
             
             const favoriteButton = document.createElement('button');
             favoriteButton.className = 'favorite-item';
             favoriteButton.style.position = 'relative'; // Importante para posicionamento da lixeira
+            favoriteButton.style.whiteSpace = 'nowrap';
+            favoriteButton.style.padding = '8px 12px';
+            favoriteButton.style.borderRadius = '6px';
+            favoriteButton.style.backgroundColor = 'rgba(255, 255, 255, 0.1)';
+            favoriteButton.style.border = '1px solid #e2e8f0';
+            favoriteButton.style.cursor = 'pointer';
+            favoriteButton.style.transition = 'all 0.2s ease';
             
             // Adicionar lixeira apenas se não for um favorito fixo
             const isFixedFavorite = fixedFavorites.includes(favorite);
