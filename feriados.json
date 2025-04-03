@@ -1,0 +1,42 @@
+{
+  "2025": {
+    "01": [
+      {"data": "2025-01-01", "descricao": "Ano Novo", "tipo": "nacional"},
+      {"data": "2025-01-25", "descricao": "Aniversário de São Paulo", "tipo": "municipal"}
+    ],
+    "02": [
+      {"data": "2025-02-17", "descricao": "Carnaval", "tipo": "nacional"},
+      {"data": "2025-02-18", "descricao": "Carnaval", "tipo": "nacional"}
+    ],
+    "03": [
+      {"data": "2025-03-19", "descricao": "Dia de São José", "tipo": "municipal"}
+    ],
+    "04": [
+      {"data": "2025-04-18", "descricao": "Sexta-feira Santa", "tipo": "nacional"},
+      {"data": "2025-04-21", "descricao": "Tiradentes", "tipo": "nacional"}
+    ],
+    "05": [
+      {"data": "2025-05-01", "descricao": "Dia do Trabalho", "tipo": "nacional"}
+    ],
+    "06": [
+      {"data": "2025-06-12", "descricao": "Corpus Christi", "tipo": "nacional"}
+    ],
+    "07": [
+      {"data": "2025-07-09", "descricao": "Revolução Constitucionalista", "tipo": "estadual"}
+    ],
+    "09": [
+      {"data": "2025-09-07", "descricao": "Independência do Brasil", "tipo": "nacional"}
+    ],
+    "10": [
+      {"data": "2025-10-12", "descricao": "Nossa Senhora Aparecida", "tipo": "nacional"}
+    ],
+    "11": [
+      {"data": "2025-11-02", "descricao": "Finados", "tipo": "nacional"},
+      {"data": "2025-11-15", "descricao": "Proclamação da República", "tipo": "nacional"},
+      {"data": "2025-11-20", "descricao": "Dia da Consciência Negra", "tipo": "municipal"}
+    ],
+    "12": [
+      {"data": "2025-12-25", "descricao": "Natal", "tipo": "nacional"}
+    ]
+  }
+}
