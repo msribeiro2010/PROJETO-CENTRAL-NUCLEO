@@ -8,11 +8,7 @@
 :root {
     --primary-color: #f5f7fa;
     --secondary-color: #c3cfe2;
-<<<<<<< HEAD
     --accent-color: #f6f7f8;
-=======
-    --accent-color: #3182ce;
->>>>>>> c22f4046933c85b0cee32554ed949fa725f62b11
     --text-color: #2d3748;
     --border-color: #e2e8f0;
     --shadow-color: rgba(0, 0, 0, 0.1);
@@ -20,11 +16,7 @@
     /* Variáveis para o modo escuro */
     --dark-primary: #1a202c;
     --dark-secondary: #2d3748;
-<<<<<<< HEAD
     --dark-accent: #e6eaed;
-=======
-    --dark-accent: #63b3ed;
->>>>>>> c22f4046933c85b0cee32554ed949fa725f62b11
     --dark-text: #e2e8f0;
     --dark-border: #4a5568;
     --dark-shadow: rgba(0, 0, 0, 0.3);
@@ -32,35 +24,25 @@
 
 html, body {
     min-height: 100vh;
-<<<<<<< HEAD
     width: 100%;
     margin: 0;
     padding: 0;
     background-color: #ffffff;
-=======
->>>>>>> c22f4046933c85b0cee32554ed949fa725f62b11
     transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 body {
     font-family: 'Roboto', sans-serif;
-<<<<<<< HEAD
     background-color: #f8fafc;
     background: #f8fafc;
     color: var(--text-color);
     width: 100%;
     overflow-x: hidden;
-=======
-    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
-    color: var(--text-color);
-    padding: 0;
->>>>>>> c22f4046933c85b0cee32554ed949fa725f62b11
 }
 
 /* Estilo para o modo escuro */
 html.dark,
 body.dark {
-<<<<<<< HEAD
     background: #121620;
     color: #e2e8f0;
     transition: background-color 0.3s ease, color 0.3s ease;
@@ -71,10 +53,6 @@ body.dark .container {
     border-left-color: #2d3748;
     background: linear-gradient(135deg, #1a202c 0%, #2d3748 100%);
     box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
-=======
-    background: linear-gradient(135deg, var(--dark-primary), var(--dark-secondary));
-    color: var(--dark-text);
->>>>>>> c22f4046933c85b0cee32554ed949fa725f62b11
 }
 
 /* Garantir que os links dentro dos acordeões sejam clicáveis */
@@ -126,7 +104,6 @@ html.dark .button-container button:hover {
     color: var(--dark-primary);
 }
 
-<<<<<<< HEAD
 /* Navbar Lateral (oculta) */
 .navbar {
     display: none;
@@ -144,61 +121,6 @@ html.dark .button-container button:hover {
     padding: 0 20px;
     margin-bottom: 30px;
     text-align: center;
-=======
-/* Navbar Superior */
-.navbar {
-    background: linear-gradient(135deg, #3182ce 0%, #63b3ed 100%);
-    padding: 1rem 0;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    position: sticky;
-    top: 0;
-    z-index: 1000;
-    transition: all 0.3s ease;
-}
-
-.navbar::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: linear-gradient(90deg,
-        rgba(255, 255, 255, 0.15) 0%,
-        rgba(255, 255, 255, 0.1) 50%,
-        rgba(255, 255, 255, 0.05) 100%
-    );
-    pointer-events: none;
-}
-
-.navbar-container {
-    font-family: 'Roboto', sans-serif;
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 0 1rem;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-
-.navbar-container::-webkit-scrollbar {
-    height: 3px;
-}
-
-.navbar-container::-webkit-scrollbar-track {
-    background: transparent;
-}
-
-.navbar-container::-webkit-scrollbar-thumb {
-    background-color: rgba(255, 255, 255, 0.3);
-    border-radius: 3px;
-    border: 2px solid transparent;
-}
-
-.navbar-logo {
-    flex-shrink: 0;
-    margin-right: 20px;
->>>>>>> c22f4046933c85b0cee32554ed949fa725f62b11
 }
 
 .navbar-logo img {
@@ -208,19 +130,14 @@ html.dark .button-container button:hover {
 
 .navbar-links {
     display: flex;
-<<<<<<< HEAD
     flex-direction: column;
     gap: 5px;
     padding: 0 10px;
-=======
-    gap: 1.5rem;
->>>>>>> c22f4046933c85b0cee32554ed949fa725f62b11
 }
 
 .navbar-links a {
     color: white;
     text-decoration: none;
-<<<<<<< HEAD
     padding: 8px 15px;
     border-radius: 6px;
     font-size: 0.9rem;
@@ -313,52 +230,17 @@ html.dark .button-container button:hover {
     .navbar {
         display: none;
         width: 0;
-=======
-    font-weight: 500;
-    font-size: 0.95rem;
-    transition: opacity 0.2s ease;
-}
-
-.navbar-links a:hover {
-    opacity: 0.8;
-}
-
-.navbar-links a i {
-    font-size: 1rem;
-}
-
-@media screen and (max-width: 1200px) {
-    .navbar-links {
-        gap: 10px;
-    }
-
-    .navbar-links a {
-        font-size: 0.85rem;
-        padding: 5px 8px;
->>>>>>> c22f4046933c85b0cee32554ed949fa725f62b11
     }
 }
 
 /* Botão de Alternância Tema */
 .theme-toggle {
-<<<<<<< HEAD
-=======
-    position: fixed;
-    bottom: 20px;
-    right: 20px;
-    z-index: 1000;
->>>>>>> c22f4046933c85b0cee32554ed949fa725f62b11
     background: linear-gradient(135deg, #2d3748, #1a202c);
     color: #fff;
     border: none;
     border-radius: 50%;
-<<<<<<< HEAD
     width: 36px;
     height: 36px;
-=======
-    width: 45px;
-    height: 45px;
->>>>>>> c22f4046933c85b0cee32554ed949fa725f62b11
     cursor: pointer;
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
     display: flex;
@@ -367,7 +249,6 @@ html.dark .button-container button:hover {
     transition: all 0.3s ease;
 }
 
-<<<<<<< HEAD
 @media screen and (max-width: 768px) {
     .theme-toggle {
         left: 8px;
@@ -377,8 +258,6 @@ html.dark .button-container button:hover {
     }
 }
 
-=======
->>>>>>> c22f4046933c85b0cee32554ed949fa725f62b11
 .theme-toggle:hover {
     transform: translateY(-2px);
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
@@ -409,7 +288,6 @@ body.dark .theme-toggle {
 @import url('https://fonts.googleapis.com/css2?family=Architects+Daughter&display=swap');
 
 .header {
-<<<<<<< HEAD
     background: white;
     border-radius: 12px;
     margin-bottom: 12px;
@@ -417,14 +295,6 @@ body.dark .theme-toggle {
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
     position: relative;
     border: 1px solid #e2e8f0;
-=======
-    background: linear-gradient(135deg, #3182ce 0%, #63b3ed 100%);
-    border-radius: 12px;
-    margin-bottom: 12px;
-    padding: 15px;
-    box-shadow: 0 4px 12px rgba(49, 130, 206, 0.2);
-    position: relative;
->>>>>>> c22f4046933c85b0cee32554ed949fa725f62b11
 }
 
 .header-content {
@@ -440,7 +310,6 @@ body.dark .theme-toggle {
 .header-top {
     display: flex;
     align-items: center;
-<<<<<<< HEAD
     justify-content: center;
     width: 100%;
     position: relative;
@@ -481,12 +350,6 @@ body.dark .holiday-btn {
 
 body.dark .holiday-btn:hover {
     background: rgba(0, 0, 0, 0.3);
-=======
-    gap: 15px;
-    width: 100%;
-    margin-bottom: 10px;
-    padding: 0 15px;
->>>>>>> c22f4046933c85b0cee32554ed949fa725f62b11
 }
 
 /* Container para os botões */
@@ -586,7 +449,6 @@ body.dark .holiday-btn:hover {
 
 /* Calendário wrapper com fundo azul */
 .calendar-wrapper {
-<<<<<<< HEAD
     position: fixed;
     top: 20px;
     right: 20px;
@@ -603,41 +465,23 @@ body.dark .holiday-btn:hover {
     border: 1px solid #e2e8f0;
     max-width: calc(100% - 290px);
     margin-right: 20px;
-=======
-    display: flex;
-    align-items: center;
-    gap: 20px;
-    padding: 15px 20px;
-    background: linear-gradient(135deg, #3182ce 0%, #63b3ed 100%);
-    border-radius: 8px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    width: 100%;
-    justify-content: center;
->>>>>>> c22f4046933c85b0cee32554ed949fa725f62b11
 }
 
 .time-container,
 .date-container {
     display: flex;
     align-items: center;
-<<<<<<< HEAD
     gap: 0.75rem;
     color: #4a5568;
     font-size: 0.95rem;
     white-space: nowrap;
     padding: 0.5rem;
     border-radius: 8px;
-=======
-    gap: 8px;
-    color: white;  /* Cor branca para o texto */
-    white-space: nowrap;
->>>>>>> c22f4046933c85b0cee32554ed949fa725f62b11
 }
 
 .time-container i,
 .date-container i {
     font-size: 1.1rem;
-<<<<<<< HEAD
     color: #3182CE;
 }
 
@@ -702,33 +546,10 @@ body.dark #current-date {
         max-width: calc(100% - 140px);
         padding: 0.75rem 1rem;
         gap: 1rem;
-=======
-    color: rgba(255, 255, 255, 0.9);  /* Ícones em branco com leve transparência */
-}
-
-#clock {
-    font-weight: 600;
-    font-size: 1.2rem;
-    min-width: 80px;
-    color: white;  /* Cor branca para o relógio */
-}
-
-#weekday,
-#current-date {
-    color: white;  /* Cor branca para a data */
-    font-weight: 500;
-}
-
-@media (max-width: 768px) {
-    .calendar-wrapper {
-        flex-direction: column;
-        padding: 12px;
->>>>>>> c22f4046933c85b0cee32554ed949fa725f62b11
     }
 
     .time-container,
     .date-container {
-<<<<<<< HEAD
         font-size: 0.9rem;
     }
 
@@ -770,11 +591,6 @@ body.dark #clock {
 body.dark #weekday,
 body.dark #current-date {
     color: #e2e8f0;
-=======
-        justify-content: center;
-        width: 100%;
-    }
->>>>>>> c22f4046933c85b0cee32554ed949fa725f62b11
 }
 
 .header-bottom {
@@ -992,16 +808,11 @@ body.dark .group.sistema-pje .button-container button {
 
 /* Grupo com Accordion */
 .group {
-<<<<<<< HEAD
-=======
-    margin-bottom: 20px;
->>>>>>> c22f4046933c85b0cee32554ed949fa725f62b11
     border-radius: 8px;
     overflow: hidden;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     border: 1px solid rgba(0, 0, 0, 0.1);
     background: rgba(255, 255, 255, 0.1);
-<<<<<<< HEAD
     overflow: hidden;
     transition: all 0.3s ease;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
@@ -1011,20 +822,6 @@ body.dark .group.sistema-pje .button-container button {
     transform: translateZ(0);
     backface-visibility: hidden;
     width: 100%;
-=======
-    border-radius: 8px;
-    overflow: hidden;
-    transition: all 0.3s ease;
-    box-shadow: 
-        0 2px 4px rgba(0, 0, 0, 0.1),
-        0 4px 8px rgba(0, 0, 0, 0.1),
-        0 8px 16px rgba(0, 0, 0, 0.1);
-    height: fit-content;
-    margin-bottom: 12px;
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    transform: translateZ(0);
-    backface-visibility: hidden;
->>>>>>> c22f4046933c85b0cee32554ed949fa725f62b11
 }
 
 .group:hover {
@@ -1225,11 +1022,7 @@ body.dark .button-container.grid-layout::-webkit-scrollbar-thumb:hover {
 
 /* Estilos específicos para cada grupo */
 .group.google-apps {
-<<<<<<< HEAD
     background: linear-gradient(135deg, #f4f4f5, #34a853);
-=======
-    background: linear-gradient(135deg, #4285f4, #34a853);
->>>>>>> c22f4046933c85b0cee32554ed949fa725f62b11
 }
 
 .group.pje {
@@ -1377,33 +1170,20 @@ body.dark .group.atendimento-externo .button-container .notes-button:hover {
 }
 
 body.dark .header {
-<<<<<<< HEAD
     background: linear-gradient(135deg, #2d3748, #1e293b);
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
-=======
-    background: linear-gradient(135deg, #1e40af, #3b82f6);
-    box-shadow: 0 4px 12px rgba(29, 78, 216, 0.3);
->>>>>>> c22f4046933c85b0cee32554ed949fa725f62b11
 }
 
 body.dark .header-top h2,
 body.dark .header-top h2 i {
-<<<<<<< HEAD
     color: #e2e8f0;
-=======
-    color: rgba(255, 255, 255, 0.95);
->>>>>>> c22f4046933c85b0cee32554ed949fa725f62b11
 }
 
 /* Dark mode adjustments */
 body.dark .calendar-wrapper,
 body.dark .weather-container {
-<<<<<<< HEAD
     background: #2d3748;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
-=======
-    background: rgba(0, 0, 0, 0.2);
->>>>>>> c22f4046933c85b0cee32554ed949fa725f62b11
 }
 
 body.dark .time-container,
@@ -1413,17 +1193,12 @@ body.dark #clock,
 body.dark #weekday,
 body.dark #current-date,
 body.dark .weather-temp {
-<<<<<<< HEAD
     color: #e2e8f0;
-=======
-    color: rgba(255, 255, 255, 0.95);
->>>>>>> c22f4046933c85b0cee32554ed949fa725f62b11
 }
 
 body.dark .time-container i,
 body.dark .date-container i,
 body.dark .weather-desc {
-<<<<<<< HEAD
     color: #a0aec0;
 }
 
@@ -1449,9 +1224,6 @@ body.dark #weekday {
 
 body.dark #current-date {
     color: #e2e8f0;
-=======
-    color: rgba(255, 255, 255, 0.8);
->>>>>>> c22f4046933c85b0cee32554ed949fa725f62b11
 }
 
 /* Container principal com grid */
@@ -1615,11 +1387,7 @@ body.dark .group .accordion-content {
 
 /* Header */
 .header.group {
-<<<<<<< HEAD
     background: linear-gradient(135deg, #eeeff0, #eaeaed);
-=======
-    background: linear-gradient(135deg, #3b82f6, #1d4ed8);
->>>>>>> c22f4046933c85b0cee32554ed949fa725f62b11
     border-radius: 12px;
     overflow: hidden;
     margin-bottom: 20px;
@@ -1705,11 +1473,7 @@ body.dark .group .accordion-content {
     padding: 8px;
     border-radius: 8px;
     box-shadow: 
-<<<<<<< HEAD
         0 4px 12px rgba(244, 247, 251, 0.3),
-=======
-        0 4px 12px rgba(59, 130, 246, 0.3),
->>>>>>> c22f4046933c85b0cee32554ed949fa725f62b11
         inset 0 2px 4px rgba(255, 255, 255, 0.2);
     letter-spacing: 0.5px;
 }
@@ -1746,7 +1510,6 @@ body.dark .notes-section {
 .group.aniversariantes {
     background: linear-gradient(135deg, #fff5f5, #fff);
     border: 1px solid #ffd7d7;
-<<<<<<< HEAD
     box-shadow: 0 5px 15px rgba(255, 107, 107, 0.2);
     transition: all 0.3s ease;
 }
@@ -1754,8 +1517,6 @@ body.dark .notes-section {
 .group.aniversariantes:hover {
     transform: translateY(-3px);
     box-shadow: 0 8px 20px rgba(255, 107, 107, 0.3);
-=======
->>>>>>> c22f4046933c85b0cee32554ed949fa725f62b11
 }
 
 .group.aniversariantes .accordion-header {
@@ -1763,7 +1524,6 @@ body.dark .notes-section {
     color: white;
     font-weight: 500;
     border-bottom: none;
-<<<<<<< HEAD
     position: relative;
     overflow: hidden;
     z-index: 1;
@@ -1786,17 +1546,12 @@ body.dark .notes-section {
 .group.aniversariantes .accordion-header:hover::before {
     opacity: 1;
     animation: shine 1.5s infinite;
-=======
->>>>>>> c22f4046933c85b0cee32554ed949fa725f62b11
 }
 
 .group.aniversariantes .accordion-header:hover {
     background: linear-gradient(135deg, #ff5252, #ff6b6b);
-<<<<<<< HEAD
     transform: translateY(-2px);
     box-shadow: 0 5px 15px rgba(255, 82, 82, 0.3);
-=======
->>>>>>> c22f4046933c85b0cee32554ed949fa725f62b11
 }
 
 .group.aniversariantes .accordion-icon {
@@ -1806,7 +1561,6 @@ body.dark .notes-section {
 .group.aniversariantes .aniversariante-item {
     padding: 12px;
     margin: 8px 0;
-<<<<<<< HEAD
     border-radius: 12px;
     background: #fff;
     border: 1px solid #ffe3e3;
@@ -1882,22 +1636,10 @@ body.dark .notes-section {
 .group.aniversariantes .aniversariante-item.hoje .aniversariante-icon i {
     color: #ffc107;
     animation: bounce 1s infinite;
-=======
-    border-radius: 8px;
-    background: #fff;
-    border: 1px solid #ffe3e3;
-    transition: all 0.3s ease;
-}
-
-.group.aniversariantes .aniversariante-item:hover {
-    transform: translateX(5px);
-    background: #fff8f8;
->>>>>>> c22f4046933c85b0cee32554ed949fa725f62b11
 }
 
 .group.aniversariantes .aniversariante-nome {
     color: #e03131;
-<<<<<<< HEAD
     font-weight: 600;
     font-size: 1.1em;
     margin-bottom: 4px;
@@ -1919,17 +1661,11 @@ body.dark .notes-section {
 
 .group.aniversariantes .aniversariante-item:hover .aniversariante-nome::after {
     width: 100%;
-=======
-    font-weight: 500;
-    font-size: 1.1em;
-    margin-bottom: 4px;
->>>>>>> c22f4046933c85b0cee32554ed949fa725f62b11
 }
 
 .group.aniversariantes .aniversariante-data {
     color: #868e96;
     font-size: 0.9em;
-<<<<<<< HEAD
     display: flex;
     align-items: center;
     gap: 5px;
@@ -1938,8 +1674,6 @@ body.dark .notes-section {
 .group.aniversariantes .aniversariante-data i {
     color: #ff8787;
     animation: pulse 2s infinite;
-=======
->>>>>>> c22f4046933c85b0cee32554ed949fa725f62b11
 }
 
 .group.aniversariantes .accordion-content {
@@ -1949,7 +1683,6 @@ body.dark .notes-section {
 .group.aniversariantes .sem-aniversariantes {
     color: #868e96;
     text-align: center;
-<<<<<<< HEAD
     padding: 20px;
     font-style: italic;
     background: rgba(255, 235, 235, 0.5);
@@ -1967,10 +1700,6 @@ body.dark .notes-section {
     color: #ff8787;
     margin-bottom: 10px;
     animation: bounce 2s infinite;
-=======
-    padding: 15px;
-    font-style: italic;
->>>>>>> c22f4046933c85b0cee32554ed949fa725f62b11
 }
 
 body.dark .aniversariante-nome {
@@ -1982,7 +1711,6 @@ body.dark .aniversariante-data {
 }
 
 body.dark .group.aniversariantes {
-<<<<<<< HEAD
     background: linear-gradient(135deg, rgba(30, 30, 40, 0.8), rgba(20, 20, 30, 0.9));
     border: 1px solid #3b3f54;
     box-shadow: 0 5px 15px rgba(157, 23, 77, 0.2);
@@ -1991,10 +1719,6 @@ body.dark .group.aniversariantes {
 body.dark .group.aniversariantes:hover {
     transform: translateY(-3px);
     box-shadow: 0 8px 20px rgba(157, 23, 77, 0.3);
-=======
-    background: rgba(0, 0, 0, 0.2);
-    border: 1px solid #3b3f54;
->>>>>>> c22f4046933c85b0cee32554ed949fa725f62b11
 }
 
 body.dark .group.aniversariantes .accordion-header {
@@ -2012,7 +1736,6 @@ body.dark .group.aniversariantes .accordion-icon {
 }
 
 body.dark .group.aniversariantes .aniversariante-item {
-<<<<<<< HEAD
     background: rgba(30, 30, 40, 0.8);
     border: 1px solid #3b3f54;
     box-shadow: 0 3px 10px rgba(157, 23, 77, 0.15);
@@ -2022,14 +1745,6 @@ body.dark .group.aniversariantes .aniversariante-item:hover {
     background: rgba(40, 40, 50, 0.9);
     border-color: #be185d;
     box-shadow: 0 5px 15px rgba(157, 23, 77, 0.25);
-=======
-    background: rgba(0, 0, 0, 0.2);
-    border: 1px solid #3b3f54;
-}
-
-body.dark .group.aniversariantes .aniversariante-item:hover {
-    background: rgba(0, 0, 0, 0.3);
->>>>>>> c22f4046933c85b0cee32554ed949fa725f62b11
 }
 
 body.dark .group.aniversariantes .accordion-content {
@@ -2037,7 +1752,6 @@ body.dark .group.aniversariantes .accordion-content {
 }
 
 body.dark .group.aniversariantes .sem-aniversariantes {
-<<<<<<< HEAD
     color: rgba(255, 255, 255, 0.7);
     background: rgba(40, 40, 50, 0.5);
     border: 1px solid #3b3f54;
@@ -2097,9 +1811,6 @@ body.dark .group.aniversariantes .aniversariante-item.hoje .aniversariante-icon 
 
 .group.aniversariantes .aniversariante-item:hover .aniversariante-icon i {
     transform: scale(1.2);
-=======
-    color: rgba(255, 255, 255, 0.6);
->>>>>>> c22f4046933c85b0cee32554ed949fa725f62b11
 }
 
 .aniversariantes-grid {
@@ -2107,7 +1818,6 @@ body.dark .group.aniversariantes .aniversariante-item.hoje .aniversariante-icon 
     grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
     gap: 20px;
     padding: 10px;
-<<<<<<< HEAD
     animation: fadeIn 0.5s ease-out forwards;
 }
 
@@ -2147,8 +1857,6 @@ body.dark .group.aniversariantes .aniversariante-item.hoje .aniversariante-icon 
 @keyframes confetti {
     0% { transform: translateY(0) rotate(0); opacity: 1; }
     100% { transform: translateY(100px) rotate(720deg); opacity: 0; }
-=======
->>>>>>> c22f4046933c85b0cee32554ed949fa725f62b11
 }
 
 .aniversariante-card {
@@ -2229,15 +1937,10 @@ body.dark .aniversariante-icon {
     grid-column: 1 / -1;
 }
 
-<<<<<<< HEAD
 body.dark .no-favorites {
     color: #94a3b8;
     background-color: #1e293b;
     border-color: #4a5568;
-=======
-body.dark .sem-aniversariantes {
-    color: rgba(255, 255, 255, 0.6);
->>>>>>> c22f4046933c85b0cee32554ed949fa725f62b11
 }
 
 /* Header Top com Botão de Feriados */
@@ -2250,7 +1953,6 @@ body.dark .sem-aniversariantes {
     margin-bottom: 10px;
 }
 
-<<<<<<< HEAD
 .header-top-row {
     display: flex;
     justify-content: space-between;
@@ -2262,8 +1964,6 @@ body.dark .sem-aniversariantes {
     margin-right: auto;
 }
 
-=======
->>>>>>> c22f4046933c85b0cee32554ed949fa725f62b11
 .holiday-btn {
     position: absolute;
     left: 0;
@@ -2291,22 +1991,15 @@ body.dark .sem-aniversariantes {
     font-size: 1.1rem;
 }
 
-<<<<<<< HEAD
 /* Estilização do modal e próximo feriado */
 .modal {
     display: none;
-=======
-/* Modal de Feriados */
-.modal {
-    display: none; /* Garante que o modal começa oculto */
->>>>>>> c22f4046933c85b0cee32554ed949fa725f62b11
     position: fixed;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
     background: rgba(0, 0, 0, 0.5);
-<<<<<<< HEAD
     z-index: 9999;
     opacity: 0;
     transition: opacity 0.3s ease;
@@ -2316,10 +2009,6 @@ body.dark .sem-aniversariantes {
 
 .modal.show {
     opacity: 1;
-=======
-    z-index: 1000;
-    backdrop-filter: blur(5px);
->>>>>>> c22f4046933c85b0cee32554ed949fa725f62b11
 }
 
 .modal-content {
@@ -2328,7 +2017,6 @@ body.dark .sem-aniversariantes {
     margin: 50px auto;
     max-width: 800px;
     width: 90%;
-<<<<<<< HEAD
     border-radius: 16px;
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
     transform: translateY(-20px);
@@ -2355,26 +2043,6 @@ body.dark .sem-aniversariantes {
     display: flex;
     align-items: center;
     gap: 10px;
-=======
-    border-radius: 12px;
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
-}
-
-.modal-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 20px;
-    border-bottom: 1px solid #eee;
-}
-
-.modal-header h3 {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    margin: 0;
-    color: #333;
->>>>>>> c22f4046933c85b0cee32554ed949fa725f62b11
 }
 
 .modal-header h3 i {
@@ -2384,7 +2052,6 @@ body.dark .sem-aniversariantes {
 .close-btn {
     background: none;
     border: none;
-<<<<<<< HEAD
     color: #64748b;
     font-size: 1.5rem;
     cursor: pointer;
@@ -2400,26 +2067,10 @@ body.dark .sem-aniversariantes {
     background: #f1f5f9;
     color: #ef4444;
     transform: rotate(90deg);
-=======
-    font-size: 1.2rem;
-    cursor: pointer;
-    color: #666;
-    padding: 5px;
-    border-radius: 50%;
-    transition: all 0.3s ease;
-    opacity: 0.8;
-}
-
-.close-btn:hover {
-    opacity: 1;
-    transform: rotate(90deg);
-    background: rgba(255, 255, 255, 0.1);
->>>>>>> c22f4046933c85b0cee32554ed949fa725f62b11
 }
 
 .modal-body {
     padding: 20px;
-<<<<<<< HEAD
 }
 
 /* Estilização do próximo feriado */
@@ -2485,58 +2136,10 @@ body.dark .sem-aniversariantes {
     font-size: 0.9rem;
     padding: 6px 15px;
     border-radius: 20px;
-=======
-    max-height: 70vh;
-    overflow-y: auto;
-}
-
-.next-holiday {
-    background: linear-gradient(135deg, #3b82f6, #1d4ed8);
-    color: white;
-    padding: 20px;
-    border-radius: 10px;
-    margin-bottom: 20px;
-    box-shadow: 0 4px 15px rgba(59, 130, 246, 0.3);
-}
-
-.next-holiday h4 {
-    margin: 0 0 15px 0;
-    font-size: 1.2rem;
-    opacity: 0.9;
-    display: flex;
-    align-items: center;
-    gap: 8px;
-}
-
-.next-holiday h4::before {
-    content: '';
-    display: block;
-    width: 8px;
-    height: 8px;
-    background: #fff;
-    border-radius: 50%;
-    animation: pulse 2s infinite;
-}
-
-.next-holiday .holiday-item {
-    background: rgba(255, 255, 255, 0.1);
-    border: none;
-    color: white;
-}
-
-.next-holiday .holiday-date,
-.next-holiday .holiday-weekday,
-.next-holiday .holiday-name {
-    color: white;
-}
-
-.next-holiday .holiday-type {
->>>>>>> c22f4046933c85b0cee32554ed949fa725f62b11
     background: rgba(255, 255, 255, 0.2);
     color: white;
 }
 
-<<<<<<< HEAD
 /* Dark mode */
 body.dark .modal-content {
     background: #1e293b;
@@ -2668,54 +2271,19 @@ body.dark .month-btn:hover i {
 }
 
 /* Estilização do container dos botões de navegação */
-=======
-@keyframes pulse {
-    0% {
-        box-shadow: 0 0 0 0 rgba(255, 255, 255, 0.7);
-    }
-    70% {
-        box-shadow: 0 0 0 10px rgba(255, 255, 255, 0);
-    }
-    100% {
-        box-shadow: 0 0 0 0 rgba(255, 255, 255, 0);
-    }
-}
-
->>>>>>> c22f4046933c85b0cee32554ed949fa725f62b11
 .holiday-filters {
     display: flex;
     align-items: center;
     justify-content: center;
     gap: 20px;
-<<<<<<< HEAD
     margin: 20px 0;
     padding: 10px;
     background: rgba(59, 130, 246, 0.05);
     border-radius: 12px;
-=======
-    margin-bottom: 20px;
-}
-
-.month-btn {
-    background: none;
-    border: none;
-    font-size: 1.2rem;
-    color: #666;
-    cursor: pointer;
-    padding: 5px;
-    border-radius: 50%;
-    transition: all 0.3s;
-}
-
-.month-btn:hover {
-    color: #3b82f6;
-    transform: scale(1.1);
->>>>>>> c22f4046933c85b0cee32554ed949fa725f62b11
 }
 
 #current-month {
     font-size: 1.2rem;
-<<<<<<< HEAD
     font-weight: 600;
     color: #3b82f6;
     min-width: 180px;
@@ -3169,125 +2737,10 @@ body.dark .retry-button:hover {
     color: #050505;
     font-size: 0.9rem;
     padding: 4px;
-=======
-    color: #333;
-    margin: 0;
-    min-width: 150px;
-    text-align: center;
-}
-
-.holiday-item {
-    display: flex;
-    align-items: center;
-    gap: 15px;
-    padding: 15px;
-    background: #f9fafb;
-    border-radius: 8px;
-    border-left: 4px solid #3b82f6;
-    margin-bottom: 10px;
-}
-
-.holiday-item.Nacional { border-left-color: #ef4444; }
-.holiday-item.Estadual { border-left-color: #3b82f6; }
-.holiday-item.Municipal { border-left-color: #10b981; }
-.holiday-item.Facultativo { border-left-color: #f59e0b; }
-.holiday-item.RECESSO { border-left-color: #8b5cf6; }
-
-.holiday-date {
-    min-width: 100px;
-    font-weight: 500;
-    color: #4b5563;
-}
-
-.holiday-weekday {
-    min-width: 120px;
-    color: #6b7280;
-}
-
-.holiday-name {
-    flex: 1;
-    color: #1f2937;
-}
-
-.holiday-type {
-    padding: 4px 10px;
-    border-radius: 15px;
-    font-size: 0.875rem;
-    white-space: nowrap;
-}
-
-.holiday-type.Nacional { background: #fee2e2; color: #ef4444; }
-.holiday-type.Estadual { background: #dbeafe; color: #3b82f6; }
-.holiday-type.Municipal { background: #d1fae5; color: #10b981; }
-.holiday-type.Facultativo { background: #fef3c7; color: #f59e0b; }
-.holiday-type.RECESSO { background: #ede9fe; color: #8b5cf6; }
-
-/* Dark mode */
-body.dark .modal-content {
-    background: #1f2937;
-}
-
-body.dark .modal-header {
-    border-bottom-color: #374151;
-}
-
-body.dark .modal-header h3 {
-    color: #e5e7eb;
-}
-
-body.dark .close-btn {
-    color: #9ca3af;
-}
-
-body.dark .close-btn:hover {
-    color: #e5e7eb;
-}
-
-body.dark .holiday-item {
-    background: #374151;
-}
-
-body.dark .holiday-date {
-    color: #e5e7eb;
-}
-
-body.dark .holiday-weekday {
-    color: #9ca3af;
-}
-
-body.dark .holiday-name {
-    color: #f3f4f6;
-}
-
-/* Estilo dos Aniversariantes */
-.aniversariante-item {
-    display: flex;
-    align-items: center;
-    gap: 15px;
-    padding: 12px;
-    background: rgba(255, 255, 255, 0.1);
-    border-radius: 8px;
-    margin-bottom: 10px;
-    transition: all 0.3s ease;
-}
-
-.aniversariante-item:hover {
-    transform: translateY(-2px);
-    background: rgba(255, 255, 255, 0.15);
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-}
-
-.aniversariante-icon {
-    width: 40px;
-    height: 40px;
-    min-width: 40px;
-    background: linear-gradient(135deg, #f472b6, #ec4899);
->>>>>>> c22f4046933c85b0cee32554ed949fa725f62b11
     border-radius: 50%;
     display: flex;
     align-items: center;
     justify-content: center;
-<<<<<<< HEAD
     transition: all 0.2s ease;
     background-color: rgba(0, 0, 0, 0.1);
 }
@@ -3403,661 +2856,10 @@ body.dark .favorite-item .remove-favorite:hover {
     font-size: 1.2rem;
     z-index: 900;
     box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.1);
-=======
-}
-
-.aniversariante-icon i {
-    font-size: 1.4rem;
-    color: white;
-}
-
-.aniversariante-info {
-    flex: 1;
-    display: flex;
-    flex-direction: column;
-    gap: 4px;
-}
-
-.aniversariante-nome {
-    font-size: 1.1rem;
-    color: white;
-    font-style: italic;
-    font-weight: 500;
-}
-
-.aniversariante-data {
-    display: flex;
-    align-items: center;
-    gap: 6px;
-    color: rgba(255, 255, 255, 0.9);
-    font-weight: 600;
-    font-size: 0.95rem;
-}
-
-.aniversariante-data i {
-    color: #f472b6;
-    font-size: 1rem;
-}
-
-.sem-aniversariantes {
-    text-align: center;
-    padding: 20px;
-    color: rgba(255, 255, 255, 0.7);
-    font-style: italic;
-}
-
-/* Estilos para drag and drop */
-.sortable-ghost {
-    opacity: 0.5;
-    background: rgba(255, 255, 255, 0.1) !important;
-    box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
-}
-
-.sortable-drag {
-    cursor: grabbing !important;
-    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
-    transform: scale(1.02);
-}
-
-.accordion-header {
-    cursor: grab;
-    user-select: none;
-    position: relative;
-}
-
-.accordion-header:active {
-    cursor: grabbing;
-}
-
-/* Indicador de arrasto */
-.accordion-header::before {
-    content: '';
-    position: absolute;
-    left: 0;
-    top: 50%;
-    transform: translateY(-50%);
-    width: 4px;
-    height: 20px;
-    background: rgba(255, 255, 255, 0.3);
-    border-radius: 2px;
-}
-
-.accordion-header:hover::before {
-    background: rgba(255, 255, 255, 0.5);
-}
-
-/* Impede seleção de texto durante o arrasto */
-.group * {
-    user-select: none;
-}
-
-/* Cores específicas para os grupos do PJe */
-.group#pje-producao {
-    background: linear-gradient(135deg, #22c55e, #16a34a);
-}
-
-.group#pje-incidentes {
-    background: linear-gradient(135deg, #fbbf24, #d97706);
-}
-
-.group#pje-homologacao {
-    background: linear-gradient(135deg, #ef4444, #dc2626);
-}
-
-/* Hover effects para os grupos do PJe */
-.group#pje-producao:hover {
-    box-shadow: 0 8px 12px rgba(34, 197, 94, 0.3);
-}
-
-.group#pje-incidentes:hover {
-    box-shadow: 0 8px 12px rgba(251, 191, 36, 0.3);
-}
-
-.group#pje-homologacao:hover {
-    box-shadow: 0 8px 12px rgba(239, 68, 68, 0.3);
-}
-
-/* Cores específicas para os headers dos grupos do PJe */
-.group#pje-producao .accordion-header {
-    background: linear-gradient(135deg, #22c55e, #16a34a);
-}
-
-.group#pje-incidentes .accordion-header {
-    background: linear-gradient(135deg, #fbbf24, #d97706);
-}
-
-.group#pje-homologacao .accordion-header {
-    background: linear-gradient(135deg, #ef4444, #dc2626);
-}
-
-/* Hover effects para os headers dos grupos do PJe */
-.group#pje-producao .accordion-header:hover {
-    background: linear-gradient(135deg, #16a34a, #15803d);
-}
-
-.group#pje-incidentes .accordion-header:hover {
-    background: linear-gradient(135deg, #d97706, #b45309);
-}
-
-.group#pje-homologacao .accordion-header:hover {
-    background: linear-gradient(135deg, #dc2626, #b91c1c);
-}
-
-/* Ajuste do texto para melhor contraste */
-.group#pje-producao .accordion-header,
-.group#pje-incidentes .accordion-header,
-.group#pje-homologacao .accordion-header {
-    color: white;
-}
-
-.group#pje-producao .accordion-header i,
-.group#pje-incidentes .accordion-header i,
-.group#pje-homologacao .accordion-header i {
-    color: rgba(255, 255, 255, 0.9);
-}
-
-/* Grupo Trabalho/Plantão */
-.group.trabalho-plantao .accordion-header {
-    background: linear-gradient(135deg, #4299e1, #2b6cb0);
-    color: white;
-}
-
-.group.trabalho-plantao .accordion-header:hover {
-    background: linear-gradient(135deg, #3182ce, #2c5282);
-}
-
-.group.trabalho-plantao .button-container button {
-    background: linear-gradient(135deg, #4299e1, #2b6cb0);
-    color: white;
-    border: 1px solid rgba(255, 255, 255, 0.2);
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-}
-
-.group.trabalho-plantao .button-container button:hover {
-    background: linear-gradient(135deg, #3182ce, #2c5282);
-    transform: translateY(-2px);
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.15);
-}
-
-.group.trabalho-plantao .button-container button i {
-    color: #bde0fe;
-}
-
-/* Dark mode */
-body.dark .group.trabalho-plantao .accordion-header {
-    background: linear-gradient(135deg, #3182ce, #2c5282);
-    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-}
-
-body.dark .group.trabalho-plantao .accordion-header:hover {
-    background: linear-gradient(135deg, #2b6cb0, #2a4365);
-}
-
-body.dark .group.trabalho-plantao .button-container button {
-    background: linear-gradient(135deg, #3182ce, #2c5282);
-    border: 1px solid rgba(255, 255, 255, 0.2);
-    box-shadow: 
-        0 2px 4px rgba(0, 0, 0, 0.1),
-        inset 0 1px 3px rgba(255, 255, 255, 0.1);
-}
-
-body.dark .group.trabalho-plantao .button-container button:hover {
-    background: linear-gradient(135deg, #2b6cb0, #2a4365);
-    border-color: rgba(255, 255, 255, 0.3);
-    box-shadow: 
-        0 4px 12px rgba(0, 0, 0, 0.15),
-        inset 0 1px 3px rgba(255, 255, 255, 0.2);
-}
-
-body.dark .group.trabalho-plantao .button-container button i {
-    color: #90cdf4;
-}
-
-/* Grupo Informações Funcionais/Hollerite/Requerimentos */
-.group.info-holerite .accordion-header {
-    background: linear-gradient(135deg, #38a169, #2f855a);
-    color: white;
-}
-
-.group.info-holerite .accordion-header:hover {
-    background: linear-gradient(135deg, #2f855a, #276749);
-}
-
-.group.info-holerite .button-container button {
-    background: linear-gradient(135deg, #38a169, #2f855a);
-    color: white;
-    border: 1px solid rgba(255, 255, 255, 0.2);
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-}
-
-.group.info-holerite .button-container button:hover {
-    background: linear-gradient(135deg, #2f855a, #276749);
-    transform: translateY(-2px);
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.15);
-}
-
-.group.info-holerite .button-container button i {
-    color: #c6f6d5;
-}
-
-/* Dark mode */
-body.dark .group.info-holerite .accordion-header {
-    background: linear-gradient(135deg, #2f855a, #276749);
-    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-}
-
-body.dark .group.info-holerite .accordion-header:hover {
-    background: linear-gradient(135deg, #276749, #22543d);
-}
-
-body.dark .group.info-holerite .button-container button {
-    background: linear-gradient(135deg, #2f855a, #276749);
-    border: 1px solid rgba(255, 255, 255, 0.2);
-    box-shadow: 
-        0 2px 4px rgba(0, 0, 0, 0.1),
-        inset 0 1px 3px rgba(255, 255, 255, 0.1);
-}
-
-body.dark .group.info-holerite .button-container button:hover {
-    background: linear-gradient(135deg, #276749, #22543d);
-    border-color: rgba(255, 255, 255, 0.3);
-    box-shadow: 
-        0 4px 12px rgba(0, 0, 0, 0.15),
-        inset 0 1px 3px rgba(255, 255, 255, 0.2);
-}
-
-body.dark .group.info-holerite .button-container button i {
-    color: #9ae6b4;
-}
-
-/* Grupo Email */
-.group.email .accordion-header {
-    background: linear-gradient(135deg, #805ad5, #6b46c1);
-    color: white;
-}
-
-.group.email .accordion-header:hover {
-    background: linear-gradient(135deg, #6b46c1, #553c9a);
-}
-
-.group.email .button-container button {
-    background: linear-gradient(135deg, #805ad5, #6b46c1);
-    color: white;
-    border: 1px solid rgba(255, 255, 255, 0.2);
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-}
-
-.group.email .button-container button:hover {
-    background: linear-gradient(135deg, #6b46c1, #553c9a);
-    transform: translateY(-2px);
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.15);
-}
-
-.group.email .button-container button i {
-    color: #e9d8fd;
-}
-
-body.dark .group.email .accordion-header {
-    background: linear-gradient(135deg, #6b46c1, #553c9a);
-    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-}
-
-body.dark .group.email .accordion-header:hover {
-    background: linear-gradient(135deg, #553c9a, #44337a);
-}
-
-body.dark .group.email .button-container button {
-    background: linear-gradient(135deg, #6b46c1, #553c9a);
-    border: 1px solid rgba(255, 255, 255, 0.2);
-    box-shadow: 
-        0 2px 4px rgba(0, 0, 0, 0.1),
-        inset 0 1px 3px rgba(255, 255, 255, 0.1);
-}
-
-body.dark .group.email .button-container button:hover {
-    background: linear-gradient(135deg, #553c9a, #44337a);
-    border-color: rgba(255, 255, 255, 0.3);
-    box-shadow: 
-        0 4px 12px rgba(0, 0, 0, 0.15),
-        inset 0 1px 3px rgba(255, 255, 255, 0.2);
-}
-
-body.dark .group.email .button-container button i {
-    color: #d6bcfa;
-}
-
-/* Mobile Responsiveness */
-@media screen and (max-width: 768px) {
-    .navbar {
-        padding: 8px 10px;
-    }
-
-    .navbar-container {
-        padding: 0;
-    }
-
-    .navbar-logo {
-        margin-right: 10px;
-    }
-
-    .navbar-logo img {
-        height: 25px;
-    }
-
-    .navbar-links {
-        gap: 8px;
-        padding-bottom: 3px;
-    }
-
-    .navbar-links a {
-        font-size: 0.8rem;
-        padding: 4px 8px;
-    }
-
-    .navbar-links a i {
-        font-size: 0.9rem;
-    }
-
-    .container {
-        padding: 10px;
-    }
-
-    .group {
-        margin-bottom: 15px;
-    }
-
-    .accordion-header {
-        padding: 12px 15px;
-        font-size: 0.9rem;
-    }
-
-    .button-container {
-        grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
-        gap: 10px;
-        padding: 10px;
-    }
-
-    .button-container button {
-        font-size: 0.8rem;
-        padding: 8px 12px;
-    }
-
-    .button-container button i {
-        font-size: 0.9rem;
-    }
-
-    .theme-toggle {
-        bottom: 15px;
-        right: 15px;
-        width: 40px;
-        height: 40px;
-    }
-
-    .theme-toggle i {
-        font-size: 1rem;
-    }
-}
-
-@media screen and (max-width: 480px) {
-    .navbar {
-        padding: 6px 8px;
-    }
-
-    .navbar-logo img {
-        height: 22px;
-    }
-
-    .navbar-links {
-        gap: 6px;
-    }
-
-    .navbar-links a {
-        font-size: 0.75rem;
-        padding: 4px 6px;
-    }
-
-    .button-container {
-        grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
-        gap: 8px;
-    }
-
-    .button-container button {
-        font-size: 0.75rem;
-        padding: 6px 10px;
-    }
-}
-
-@media screen and (max-height: 480px) and (orientation: landscape) {
-    .container {
-        padding-top: 5px;
-    }
-
-    .group {
-        margin-bottom: 10px;
-    }
-
-    .button-container {
-        grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
-    }
-
-    .theme-toggle {
-        bottom: 10px;
-        right: 10px;
-    }
-}
-
-/* Estilo para o botão de plantão */
-.plantao-btn {
-    background: linear-gradient(135deg, #3182ce 0%, #63b3ed 100%);  /* Mesmo gradiente azul */
-    border: none;
-    color: white;
-    padding: 10px 20px;
-    border-radius: 8px;
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    transition: all 0.3s ease;
-    font-size: 0.95rem;
-    font-family: 'Roboto', sans-serif;
-    font-weight: 500;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    white-space: nowrap;
-}
-
-.plantao-btn:hover {
-    background: linear-gradient(135deg, #2c5282 0%, #3182ce 100%);  /* Mesmo hover azul escuro */
-    transform: translateY(-2px);
-    box-shadow: 0 4px 8px rgba(49, 130, 206, 0.3);  /* Sombra azul */
-}
-
-.plantao-btn i {
-    font-size: 1.1rem;
-    color: white;  /* Ícone branco */
-}
-
-.plantao-btn span {
-    white-space: nowrap;
-    color: white;  /* Texto branco */
-}
-
-/* Dark mode */
-body.dark .plantao-btn {
-    background: linear-gradient(135deg, #2d3748 0%, #4a5568 100%);  /* Mesmo gradiente do modo escuro */
-}
-
-body.dark .plantao-btn:hover {
-    background: linear-gradient(135deg, #4a5568 0%, #2d3748 100%);
-}
-
-/* Responsividade */
-@media screen and (max-width: 768px) {
-    .plantao-btn {
-        width: 100%;
-        justify-content: center;
-    }
-}
-
-/* Estilos para o modal de aniversário */
-.birthday-modal-content {
-    max-width: 500px;
-    background: linear-gradient(135deg, var(--primary-color-light), var(--primary-color));
-    border-radius: 15px;
-    padding: 30px;
-    position: relative;
-    overflow: hidden;
-    text-align: center;
-    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
-    border: 2px solid var(--accent-color);
-}
-
-.birthday-message-container {
-    position: relative;
-    z-index: 10;
-    color: var(--text-color-light);
-}
-
-#birthday-title {
-    font-size: 2.5rem;
-    margin-bottom: 20px;
-    color: #fff;
-    text-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
-    transition: all 0.5s ease;
-}
-
-#birthday-title.animated {
-    animation: pulse 2s infinite;
-}
-
-#birthday-message {
-    font-size: 1.2rem;
-    line-height: 1.6;
-    margin-bottom: 20px;
-    background-color: rgba(255, 255, 255, 0.2);
-    padding: 15px;
-    border-radius: 10px;
-    transition: all 0.5s ease;
-}
-
-#birthday-message.animated {
-    animation: fadeIn 1s ease-in;
-}
-
-.birthday-image {
-    margin-top: 20px;
-}
-
-.birthday-image i {
-    font-size: 4rem;
-    color: #ff5a87;
-    animation: float 3s ease-in-out infinite;
-}
-
-/* Confete */
-#confetti-container {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    overflow: hidden;
-    pointer-events: none;
-}
-
-.confete {
-    position: absolute;
-    width: 10px;
-    height: 10px;
-    background-color: #f00;
-    border-radius: 2px;
-    animation: fall 5s linear forwards;
-}
-
-/* Animações */
-@keyframes pulse {
-    0% { transform: scale(1); }
-    50% { transform: scale(1.05); }
-    100% { transform: scale(1); }
-}
-
-@keyframes fadeIn {
-    from { opacity: 0; transform: translateY(20px); }
-    to { opacity: 1; transform: translateY(0); }
-}
-
-@keyframes float {
-    0% { transform: translateY(0); }
-    50% { transform: translateY(-15px); }
-    100% { transform: translateY(0); }
-}
-
-@keyframes fall {
-    0% { transform: translateY(0) rotate(0deg); }
-    100% { transform: translateY(1000px) rotate(360deg); }
-}
-
-/* Estilos para os itens de aniversariante */
-.aniversariante-item {
-    transition: all 0.3s ease;
-    cursor: pointer;
-    position: relative;
-    overflow: hidden;
-}
-
-.aniversariante-item:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-}
-
-.aniversariante-item:active {
-    transform: scale(0.98);
-}
-
-.aniversariante-item::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: -100%;
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
-    transition: all 0.5s ease;
-}
-
-.aniversariante-item:hover::before {
-    left: 100%;
-}
-
-/* Responsividade para o modal de aniversário */
-@media (max-width: 600px) {
-    .birthday-modal-content {
-        width: 90%;
-        padding: 20px;
-    }
-    
-    #birthday-title {
-        font-size: 2rem;
-    }
-    
-    #birthday-message {
-        font-size: 1rem;
-    }
-}
-
-/* Estilos para o Footer */
-.footer {
-    background-color: var(--primary-color);
-    color: var(--text-color);
-    padding: 20px 0;
-    margin-top: 30px;
-    border-top: 3px solid var(--accent-color);
-    box-shadow: 0 -5px 15px rgba(0, 0, 0, 0.1);
->>>>>>> c22f4046933c85b0cee32554ed949fa725f62b11
 }
 
 .footer-content {
     display: flex;
-<<<<<<< HEAD
     align-items: center;
     justify-content: space-between;
     max-width: 1200px;
@@ -4093,38 +2895,11 @@ body.dark .plantao-btn:hover {
     font-weight: 500;
     margin-bottom: 4px;
     color: #1e293b;
-=======
-    flex-wrap: wrap;
-    justify-content: space-between;
-    align-items: center;
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 0 20px;
-}
-
-.footer-logo {
-    font-size: 2.5rem;
-    margin-right: 20px;
-    color: var(--accent-color);
-    animation: pulse 2s infinite;
-}
-
-.footer-info {
-    flex: 1;
-    min-width: 200px;
-}
-
-.footer-info p {
-    margin: 5px 0;
-    font-family: 'VT323', monospace;
-    font-size: 1.1rem;
->>>>>>> c22f4046933c85b0cee32554ed949fa725f62b11
 }
 
 .footer-links {
     display: flex;
     gap: 15px;
-<<<<<<< HEAD
     align-items: center;
     justify-content: center;
 }
@@ -4298,17 +3073,11 @@ body.dark .btn-controle:hover {
 }
 
 .trt15-link {
-=======
-}
-
-.footer-links a {
->>>>>>> c22f4046933c85b0cee32554ed949fa725f62b11
     display: flex;
     align-items: center;
     justify-content: center;
     width: 40px;
     height: 40px;
-<<<<<<< HEAD
     background: linear-gradient(135deg, #e53e3e 0%, #f56565 100%);
     color: white;
     border-radius: 50%;
@@ -4403,113 +3172,3 @@ body.dark .group.trabalho-plantao .button-container button:hover {
     background: linear-gradient(135deg, #0369a1, #075985) !important;
 }
 */
-=======
-    border-radius: 50%;
-    background-color: var(--accent-color);
-    color: var(--primary-color);
-    font-size: 1.2rem;
-    text-decoration: none;
-    transition: all 0.3s ease;
-    border: 2px solid transparent;
-}
-
-.footer-links a:hover {
-    transform: translateY(-3px);
-    background-color: var(--text-color);
-    border-color: var(--accent-color);
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
-}
-
-/* Ajustes para o modo escuro */
-body.dark .footer {
-    background-color: var(--dark-primary);
-    border-top-color: var(--dark-accent);
-    box-shadow: 0 -5px 15px rgba(0, 0, 0, 0.3);
-}
-
-body.dark .footer-logo {
-    color: var(--dark-accent);
-}
-
-body.dark .footer-links a {
-    background-color: var(--dark-accent);
-    color: var(--dark-primary);
-}
-
-body.dark .footer-links a:hover {
-    background-color: var(--dark-text);
-    border-color: var(--dark-accent);
-}
-
-/* Responsividade do footer */
-@media (max-width: 768px) {
-    .footer-content {
-        flex-direction: column;
-        text-align: center;
-        gap: 15px;
-    }
-    
-    .footer-logo {
-        margin-right: 0;
-        margin-bottom: 10px;
-    }
-    
-    .footer-info {
-        margin-bottom: 15px;
-    }
-}
-
-/* Botão SecJud */
-.secjud-btn {
-    background: linear-gradient(135deg, #38a169 0%, #68d391 100%);  /* Gradiente verde */
-    border: none;
-    color: white;
-    padding: 10px 20px;
-    border-radius: 8px;
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    transition: all 0.3s ease;
-    font-size: 0.95rem;
-    font-family: 'Roboto', sans-serif;
-    font-weight: 500;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    white-space: nowrap;
-}
-
-.secjud-btn:hover {
-    background: linear-gradient(135deg, #2f855a 0%, #38a169 100%);  /* Hover verde escuro */
-    transform: translateY(-2px);
-    box-shadow: 0 4px 8px rgba(56, 161, 105, 0.3);  /* Sombra verde */
-}
-
-.secjud-btn i {
-    font-size: 1.1rem;
-    color: white;  /* Ícone branco */
-}
-
-.secjud-btn span {
-    white-space: nowrap;
-    color: white;  /* Texto branco */
-}
-
-/* Dark mode */
-body.dark .secjud-btn,
-html.dark .secjud-btn {
-    background: linear-gradient(135deg, #276749 0%, #38a169 100%);  /* Gradiente verde escuro para modo escuro */
-}
-
-body.dark .secjud-btn:hover,
-html.dark .secjud-btn:hover {
-    background: linear-gradient(135deg, #38a169 0%, #276749 100%);
-}
-
-/* Responsividade */
-@media screen and (max-width: 768px) {
-    .secjud-btn {
-        width: 100%;
-        justify-content: center;
-    }
-}
->>>>>>> c22f4046933c85b0cee32554ed949fa725f62b11

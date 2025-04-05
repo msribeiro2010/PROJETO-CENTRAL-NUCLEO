@@ -9,13 +9,10 @@
     <link rel="icon" type="image/png" href="favicon.png">
     <meta name="theme-color" content="#3182ce">
     <link rel="stylesheet" href="style.css">
-<<<<<<< HEAD
     <link rel="stylesheet" href="card-styles.css">
     <link rel="stylesheet" href="aniversario-styles.css">
     <link rel="stylesheet" href="modal-compact.css">
     <link rel="stylesheet" href="card-customizer.css">
-=======
->>>>>>> c22f4046933c85b0cee32554ed949fa725f62b11
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
     <!-- Fonte Google -->
@@ -27,7 +24,6 @@
 </head>
 
 <body>
-<<<<<<< HEAD
     <!-- Relógio e Data (Oculto) -->
     <div class="calendar-wrapper" style="display: none;">
         <div class="time-container">
@@ -72,93 +68,6 @@
                         <!-- Os favoritos serão inseridos aqui dinamicamente -->
                     </div>
                 </div>
-=======
-    <!-- Navbar Superior -->
-    <nav class="navbar">
-        <div class="navbar-container">
-            <a href="https://trt15.jus.br/" class="navbar-logo" target="_blank" title="TRT15" rel="noopener">
-                <img src="logo-trt15.png" alt="Logo TRT15">
-            </a>
-            <div class="navbar-links">
-                <a href="#aniversariantes" data-target="aniversariantes" title="Aniversariantes">
-                    <i class="bi bi-gift"></i> Aniversários
-                </a>
-                <a href="#info-funcionais" data-target="info-funcionais" title="Relatórios/Distribuição">
-                    <i class="bi bi-graph-up"></i> Relatórios
-                </a>
-                <a href="#info-holerite" data-target="info-holerite" title="Informações Funcionais/Hollerite">
-                    <i class="bi bi-person-vcard"></i> Inf. Funcionais
-                </a>
-                <a href="#trabalho-plantao" data-target="trabalho-plantao" title="Trabalho/Plantão">
-                    <i class="bi bi-calendar2-check"></i> Trabalho/Plantão
-                </a>
-                <a href="#apps-externos" data-target="apps-externos" title="Apps Externos">
-                    <i class="bi bi-box-arrow-up-right"></i> Externos
-                </a>
-                <a href="#google-apps" data-target="google-apps" title="Google Apps">
-                    <i class="bi bi-google"></i> Google
-                </a>
-                <a href="#assyst" data-target="assyst" title="ASSYST">
-                    <i class="bi bi-headset"></i> ASSYST
-                </a>
-                <a href="#atendimento-externo" data-target="atendimento-externo" title="Atendimento Externo">
-                    <i class="bi bi-headset"></i> Atendimento
-                </a>
-                <a href="#pje-producao" data-target="pje-producao" title="PJe-Produção">
-                    <i class="bi bi-buildings"></i> PJe-Produção
-                </a>
-                <a href="#pje-incidentes" data-target="pje-incidentes" title="PJe-Incidentes">
-                    <i class="bi bi-bug-fill"></i> PJe-Incidentes
-                </a>
-                <a href="#pje-homologacao" data-target="pje-homologacao" title="PJe-Homologação">
-                    <i class="bi bi-check-circle"></i> PJe-Homologação
-                </a>
-            </div>
-        </div>
-    </nav>
-
-    <div class="dark-mode-toggle">
-        <button id="theme-toggle" class="theme-toggle" aria-label="Alternar tema">
-            <i class="bi bi-moon-fill" id="theme-icon"></i>
-        </button>
-    </div>
-
-    <div class="container">
-        <div class="header">
-            <div class="header-content">
-                <h1 class="app-title"><i class="bi bi-grid-3x3-gap-fill"></i> Central NAPJe</h1>
-                <div class="header-top">
-                    <button class="secjud-btn" onclick="window.open('https://secjud.trt15.jus.br/login', '_blank')">
-                        <i class="bi bi-file-earmark-text"></i>
-                        <span>SecJud</span>
-                    </button>
-                    <button class="holiday-btn" onclick="showHolidays()">
-                        <i class="bi bi-calendar2-heart"></i>
-                        <span>Feriados 2025</span>
-                    </button>
-                    <div>
-                    <button class="plantao-btn" onclick="window.open('https://msribeiro2010.github.io/controle-ferias/', '_blank')">
-                        <i class="bi bi-calendar-check"></i>
-                        <span>Plantão/Férias/Presencial</span>
-                    </button>
-                    </div>
-                </div>
-                            
-                <div class="calendar-wrapper">
-                    <div class="time-container">
-                        <i class="bi bi-clock"></i>
-                        <span id="clock">--:--:--</span>
-                    </div>
-                    <div class="date-container">
-                        <i class="bi bi-calendar3"></i>
-                        <span id="weekday">--</span>
-                        <span id="current-date">--/--/----</span>
-                    </div>
-                    
-                </div>
-                
-               
->>>>>>> c22f4046933c85b0cee32554ed949fa725f62b11
             </div>
         </div>
 
@@ -174,11 +83,7 @@
                 <div class="modal-body">
                     <div class="next-holiday">
                         <h4>Próximo Feriado:</h4>
-<<<<<<< HEAD
                         <div id="next-holiday"></div>
-=======
-                        <div id="next-holiday-info"></div>
->>>>>>> c22f4046933c85b0cee32554ed949fa725f62b11
                     </div>
                     <div class="holiday-filters">
                         <button class="month-btn" onclick="prevMonth()" title="Mês anterior">
@@ -220,11 +125,7 @@
                     <i class="bi bi-chevron-down accordion-icon"></i>
                 </button>
                 <div class="accordion-content">
-<<<<<<< HEAD
                     <div class="aniversariantes-lista" id="aniversariantes-lista">
-=======
-                    <div id="aniversariantes-lista">
->>>>>>> c22f4046933c85b0cee32554ed949fa725f62b11
                         <!-- Lista de aniversariantes será inserida aqui via JavaScript -->
                     </div>
                 </div>
@@ -503,11 +404,8 @@
                         <button class="btn-plantao" onclick="window.open('https://msribeiro2010.github.io/GestaodeTarefas/', '_blank')">Gestor de Tarefas</button>
                         <button class="btn-plantao" onclick="window.open('https://msribeiro2010.github.io/react-exercicio-4/', '_blank')">Gerador de Senhas</button>
                         <button class="btn-plantao" onclick="window.open('https://msribeiro2010.github.io/controle-ferias/', '_blank')">Gestor de Trabalho</button>
-<<<<<<< HEAD
                         <button class="btn-feriados" onclick="showHolidays()"><i class="bi bi-calendar2-heart"></i> Feriados-2025</button>
                         <button class="btn-controle" onclick="window.open('https://msribeiro2010.github.io/controle-ferias/', '_blank')"><i class="bi bi-calendar-check"></i> Controle/Trabalho</button>
-=======
->>>>>>> c22f4046933c85b0cee32554ed949fa725f62b11
                     </div>
                 </div>
             </div>
@@ -555,12 +453,9 @@
         </div>
     </div> -->
 
-<<<<<<< HEAD
     </div>
     </div>
 
-=======
->>>>>>> c22f4046933c85b0cee32554ed949fa725f62b11
     <footer class="footer">
         <div class="footer-content">
             <div class="footer-logo">
@@ -570,10 +465,6 @@
                 <p>Central Núcleo - Sistema Matrix</p>
                 <p><i class="bi bi-person-circle"></i> @msribeiro | 2025</p>
             </div>
-<<<<<<< HEAD
-
-=======
->>>>>>> c22f4046933c85b0cee32554ed949fa725f62b11
             <div class="footer-links">
                 <a href="https://accounts.google.com/v3/signin/identifier?continue=https%3A%2F%2Fmail.google.com%2Fmail%2F&ifkv=AcMMx-fJZqEhabl9HDEfW2R7SrGxQKLfCcVCZrbfUkrYapnrKOuYor_ptr3gP8dRypgOM6siUZ--&rip=1&sacu=1&service=mail&flowName=GlifWebSignIn&flowEntry=ServiceLogin&dsh=S-1241181511%3A1732804609017929&ddm=1" target="_blank" rel="noopener">
                     <i class="bi bi-google"></i>
@@ -581,11 +472,7 @@
                 <a href="https://github.com/login" target="_blank" rel="noopener">
                     <i class="bi bi-github"></i>
                 </a>
-<<<<<<< HEAD
             </div>
-=======
-                  </div>
->>>>>>> c22f4046933c85b0cee32554ed949fa725f62b11
         </div>
     </footer>
 
@@ -595,14 +482,11 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Sortable/1.15.0/Sortable.min.js"></script>
     <script src="script.js"></script>
     <script src="button-customization.js"></script>
-<<<<<<< HEAD
     <script src="recuperar-apps-fixos.js"></script>
     <script src="header-clock.js"></script>
     <script src="add-default-favoritos.js"></script>
     <script src="card-customizer.js"></script>
     <!-- Scripts de animação de aniversário removidos -->
-=======
->>>>>>> c22f4046933c85b0cee32554ed949fa725f62b11
 </body>
 
 </html>
