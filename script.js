@@ -18,13 +18,13 @@ function initializeFavorites() {
         // Configura o estilo da estrela
         Object.assign(starBtn.style, {
             position: 'absolute',
-            top: '5px',
-            right: '5px',
-            fontSize: '1rem',
+            top: '8px',
+            right: '8px',
+            fontSize: '1.4rem',
             cursor: 'pointer',
             zIndex: '10',
             color: isFavorite(button) ? '#fbbf24' : '#6b7280',
-            opacity: isFavorite(button) ? '1' : '0.5',
+            opacity: isFavorite(button) ? '1' : '0.7',
             transition: 'all 0.2s ease'
         });
 
@@ -40,19 +40,19 @@ function initializeFavorites() {
             const isFav = isFavorite(button);
             starBtn.className = `bi bi-star${isFav ? '-fill favorite-star-fill' : ' favorite-star'}`;
             starBtn.style.color = isFav ? '#fbbf24' : '#6b7280';
-            starBtn.style.opacity = isFav ? '1' : '0.5';
+            starBtn.style.opacity = isFav ? '1' : '0.7';
             starBtn.title = isFav ? 'Remover dos favoritos' : 'Adicionar aos favoritos';
         });
 
         // Adiciona evento de hover
         starBtn.addEventListener('mouseover', () => {
             starBtn.style.opacity = '1';
-            starBtn.style.transform = 'scale(1.2)';
+            starBtn.style.transform = 'scale(1.3)';
         });
 
         starBtn.addEventListener('mouseout', () => {
             if (!isFavorite(button)) {
-                starBtn.style.opacity = '0.5';
+                starBtn.style.opacity = '0.7';
             }
             starBtn.style.transform = 'scale(1)';
         });
