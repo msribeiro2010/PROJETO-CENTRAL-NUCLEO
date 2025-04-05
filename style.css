@@ -1510,6 +1510,13 @@ body.dark .notes-section {
 .group.aniversariantes {
     background: linear-gradient(135deg, #fff5f5, #fff);
     border: 1px solid #ffd7d7;
+    box-shadow: 0 5px 15px rgba(255, 107, 107, 0.2);
+    transition: all 0.3s ease;
+}
+
+.group.aniversariantes:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 20px rgba(255, 107, 107, 0.3);
 }
 
 .group.aniversariantes .accordion-header {
@@ -1517,10 +1524,34 @@ body.dark .notes-section {
     color: white;
     font-weight: 500;
     border-bottom: none;
+    position: relative;
+    overflow: hidden;
+    z-index: 1;
+}
+
+.group.aniversariantes .accordion-header::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(circle, rgba(255,255,255,0.3) 0%, rgba(255,255,255,0) 70%);
+    transform: rotate(45deg);
+    z-index: -1;
+    opacity: 0;
+    transition: opacity 0.5s ease;
+}
+
+.group.aniversariantes .accordion-header:hover::before {
+    opacity: 1;
+    animation: shine 1.5s infinite;
 }
 
 .group.aniversariantes .accordion-header:hover {
     background: linear-gradient(135deg, #ff5252, #ff6b6b);
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(255, 82, 82, 0.3);
 }
 
 .group.aniversariantes .accordion-icon {
@@ -1530,27 +1561,119 @@ body.dark .notes-section {
 .group.aniversariantes .aniversariante-item {
     padding: 12px;
     margin: 8px 0;
-    border-radius: 8px;
+    border-radius: 12px;
     background: #fff;
     border: 1px solid #ffe3e3;
     transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    box-shadow: 0 3px 10px rgba(255, 107, 107, 0.1);
+    position: relative;
+    overflow: hidden;
+    animation: fadeInRight 0.5s ease-out forwards;
+    opacity: 0;
+    transform: translateX(20px);
+}
+
+.group.aniversariantes .aniversariante-item:nth-child(1) { animation-delay: 0.1s; }
+.group.aniversariantes .aniversariante-item:nth-child(2) { animation-delay: 0.2s; }
+.group.aniversariantes .aniversariante-item:nth-child(3) { animation-delay: 0.3s; }
+.group.aniversariantes .aniversariante-item:nth-child(4) { animation-delay: 0.4s; }
+.group.aniversariantes .aniversariante-item:nth-child(5) { animation-delay: 0.5s; }
+
+.group.aniversariantes .aniversariante-item::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, rgba(255,255,255,0.2) 0%, rgba(255,255,255,0) 60%);
+    z-index: 1;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.group.aniversariantes .aniversariante-item:hover::after {
+    opacity: 1;
 }
 
 .group.aniversariantes .aniversariante-item:hover {
-    transform: translateX(5px);
+    transform: translateX(8px);
     background: #fff8f8;
+    box-shadow: 0 5px 15px rgba(255, 107, 107, 0.2);
+    border-color: #ffb3b3;
+}
+
+.group.aniversariantes .aniversariante-item.hoje {
+    border: 2px solid #ffc107;
+    background: #fffbeb;
+    position: relative;
+    overflow: hidden;
+    animation: pulse 2s infinite;
+    box-shadow: 0 5px 15px rgba(255, 193, 7, 0.3);
+}
+
+.group.aniversariantes .aniversariante-item.hoje::before {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(45deg, rgba(255, 193, 7, 0.1) 25%, transparent 25%, transparent 50%, rgba(255, 193, 7, 0.1) 50%, rgba(255, 193, 7, 0.1) 75%, transparent 75%);
+    background-size: 20px 20px;
+    top: 0;
+    left: 0;
+    z-index: 0;
+    animation: shine 3s linear infinite;
+    opacity: 0.5;
+}
+
+.group.aniversariantes .aniversariante-item.hoje .aniversariante-nome {
+    color: #b45309;
+    font-weight: 700;
+}
+
+.group.aniversariantes .aniversariante-item.hoje .aniversariante-icon i {
+    color: #ffc107;
+    animation: bounce 1s infinite;
 }
 
 .group.aniversariantes .aniversariante-nome {
     color: #e03131;
-    font-weight: 500;
+    font-weight: 600;
     font-size: 1.1em;
     margin-bottom: 4px;
+    text-shadow: 0 1px 1px rgba(0,0,0,0.05);
+    position: relative;
+    display: inline-block;
+}
+
+.group.aniversariantes .aniversariante-nome::after {
+    content: '';
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: linear-gradient(90deg, #ff6b6b, transparent);
+    transition: width 0.3s ease;
+}
+
+.group.aniversariantes .aniversariante-item:hover .aniversariante-nome::after {
+    width: 100%;
 }
 
 .group.aniversariantes .aniversariante-data {
     color: #868e96;
     font-size: 0.9em;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.group.aniversariantes .aniversariante-data i {
+    color: #ff8787;
+    animation: pulse 2s infinite;
 }
 
 .group.aniversariantes .accordion-content {
@@ -1560,8 +1683,23 @@ body.dark .notes-section {
 .group.aniversariantes .sem-aniversariantes {
     color: #868e96;
     text-align: center;
-    padding: 15px;
+    padding: 20px;
     font-style: italic;
+    background: rgba(255, 235, 235, 0.5);
+    border-radius: 12px;
+    margin: 10px 0;
+    animation: fadeIn 0.5s ease-out forwards;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+}
+
+.group.aniversariantes .sem-aniversariantes i {
+    font-size: 2rem;
+    color: #ff8787;
+    margin-bottom: 10px;
+    animation: bounce 2s infinite;
 }
 
 body.dark .aniversariante-nome {
@@ -1573,8 +1711,14 @@ body.dark .aniversariante-data {
 }
 
 body.dark .group.aniversariantes {
-    background: rgba(0, 0, 0, 0.2);
+    background: linear-gradient(135deg, rgba(30, 30, 40, 0.8), rgba(20, 20, 30, 0.9));
     border: 1px solid #3b3f54;
+    box-shadow: 0 5px 15px rgba(157, 23, 77, 0.2);
+}
+
+body.dark .group.aniversariantes:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 20px rgba(157, 23, 77, 0.3);
 }
 
 body.dark .group.aniversariantes .accordion-header {
@@ -1592,12 +1736,15 @@ body.dark .group.aniversariantes .accordion-icon {
 }
 
 body.dark .group.aniversariantes .aniversariante-item {
-    background: rgba(0, 0, 0, 0.2);
+    background: rgba(30, 30, 40, 0.8);
     border: 1px solid #3b3f54;
+    box-shadow: 0 3px 10px rgba(157, 23, 77, 0.15);
 }
 
 body.dark .group.aniversariantes .aniversariante-item:hover {
-    background: rgba(0, 0, 0, 0.3);
+    background: rgba(40, 40, 50, 0.9);
+    border-color: #be185d;
+    box-shadow: 0 5px 15px rgba(157, 23, 77, 0.25);
 }
 
 body.dark .group.aniversariantes .accordion-content {
@@ -1605,7 +1752,65 @@ body.dark .group.aniversariantes .accordion-content {
 }
 
 body.dark .group.aniversariantes .sem-aniversariantes {
-    color: rgba(255, 255, 255, 0.6);
+    color: rgba(255, 255, 255, 0.7);
+    background: rgba(40, 40, 50, 0.5);
+    border: 1px solid #3b3f54;
+}
+
+body.dark .group.aniversariantes .sem-aniversariantes i {
+    color: #be185d;
+}
+
+body.dark .group.aniversariantes .aniversariante-icon {
+    color: #be185d;
+    background: rgba(190, 24, 93, 0.15);
+}
+
+body.dark .group.aniversariantes .aniversariante-item:hover .aniversariante-icon {
+    background: rgba(190, 24, 93, 0.25);
+}
+
+body.dark .group.aniversariantes .aniversariante-item.hoje {
+    background: rgba(30, 30, 40, 0.9);
+    border: 2px solid #ffc107;
+    box-shadow: 0 5px 15px rgba(255, 193, 7, 0.2);
+}
+
+body.dark .group.aniversariantes .aniversariante-item.hoje .aniversariante-nome {
+    color: #ffc107;
+}
+
+body.dark .group.aniversariantes .aniversariante-item.hoje .aniversariante-icon i {
+    color: #ffc107;
+}
+
+.group.aniversariantes .aniversariante-icon {
+    margin-right: 12px;
+    font-size: 1.5em;
+    color: #ff6b6b;
+    position: relative;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(255, 107, 107, 0.1);
+    border-radius: 50%;
+    transition: all 0.3s ease;
+}
+
+.group.aniversariantes .aniversariante-item:hover .aniversariante-icon {
+    transform: rotate(15deg) scale(1.1);
+    background: rgba(255, 107, 107, 0.2);
+}
+
+.group.aniversariantes .aniversariante-icon i {
+    font-size: 1.2em;
+    transition: all 0.3s ease;
+}
+
+.group.aniversariantes .aniversariante-item:hover .aniversariante-icon i {
+    transform: scale(1.2);
 }
 
 .aniversariantes-grid {
@@ -1613,6 +1818,45 @@ body.dark .group.aniversariantes .sem-aniversariantes {
     grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
     gap: 20px;
     padding: 10px;
+    animation: fadeIn 0.5s ease-out forwards;
+}
+
+/* Animações para a seção de aniversariantes */
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+@keyframes fadeInRight {
+    from {
+        opacity: 0;
+        transform: translateX(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes pulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.1); }
+    100% { transform: scale(1); }
+}
+
+@keyframes bounce {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-10px); }
+}
+
+@keyframes shine {
+    0% { transform: rotate(45deg) translateY(0); opacity: 0.7; }
+    100% { transform: rotate(45deg) translateY(-200%); opacity: 0; }
+}
+
+@keyframes confetti {
+    0% { transform: translateY(0) rotate(0); opacity: 1; }
+    100% { transform: translateY(100px) rotate(720deg); opacity: 0; }
 }
 
 .aniversariante-card {
@@ -2086,7 +2330,7 @@ body.dark #current-month {
 .holiday-date {
     font-size: 1.1rem;
     font-weight: 600;
-    color: #f2f4f6;
+    color: #0877e6;
     min-width: 80px;
 }
 
@@ -2552,7 +2796,7 @@ body.dark .favorite-item .remove-favorite:hover {
 .footer {
     position: fixed;
     bottom: 0;
-    left: 250px;
+    left: 0;
     right: 0;
     background: rgba(255, 255, 255, 0.1);
     backdrop-filter: blur(10px);
@@ -2812,3 +3056,70 @@ body.dark .trt15-link:hover {
     background: linear-gradient(135deg, #822727 0%, #9b2c2c 100%);
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
 }
+/* Estilos para o grupo Trabalho/Plantão foram movidos para o arquivo trabalho-plantao.css */
+/*
+.group.trabalho-plantao {
+    background: linear-gradient(135deg, #0ea5e9, #0369a1);
+    border: 1px solid #0369a1;
+}
+
+.group.trabalho-plantao .accordion-header {
+    background: linear-gradient(135deg, #0284c7, #0369a1);
+    color: white;
+    border-left: 4px solid #0369a1;
+    transition: all 0.3s ease;
+}
+
+.group.trabalho-plantao .accordion-header:hover {
+    background: linear-gradient(135deg, #0369a1, #075985);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(3, 105, 161, 0.4);
+}
+
+.group.trabalho-plantao .button-container button {
+    background: linear-gradient(135deg, #0ea5e9, #0369a1) !important;
+    color: white !important;
+    padding: 12px 20px !important;
+    border-radius: 6px !important;
+    cursor: pointer !important;
+    transition: all 0.3s ease !important;
+    font-size: 0.95rem !important;
+    display: flex !important;
+    align-items: center !important;
+    gap: 10px !important;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1) !important;
+    border-left: none !important;
+}
+
+.group.trabalho-plantao .button-container button:hover {
+    background: linear-gradient(135deg, #0369a1, #075985) !important;
+    transform: translateX(5px) !important;
+}
+
+.group.trabalho-plantao .button-container button i {
+    color: white !important;
+}
+
+body.dark .group.trabalho-plantao {
+    background: linear-gradient(135deg, #075985, #0369a1);
+    border-color: #075985;
+}
+
+body.dark .group.trabalho-plantao .accordion-header {
+    background: linear-gradient(135deg, #075985, #0c4a6e);
+    border-left-color: #075985;
+}
+
+body.dark .group.trabalho-plantao .accordion-header:hover {
+    background: linear-gradient(135deg, #0c4a6e, #083344);
+    box-shadow: 0 4px 12px rgba(7, 89, 133, 0.5);
+}
+
+body.dark .group.trabalho-plantao .button-container button {
+    background: linear-gradient(135deg, #075985, #0369a1) !important;
+}
+
+body.dark .group.trabalho-plantao .button-container button:hover {
+    background: linear-gradient(135deg, #0369a1, #075985) !important;
+}
+*/

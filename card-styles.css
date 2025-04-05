@@ -1,14 +1,15 @@
 /* Card Styles CSS - Centralized styles for cards and groups */
 
-/* Base group styles - Estilo Contra-cheque em branco */
+/* Base group styles - Estilo padronizado azul com fontes brancas */
 .group {
-    background-color: white;
+    background: linear-gradient(135deg, #3b82f6, #2563eb);
     border-radius: 8px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     overflow: hidden;
     transition: all 0.3s ease;
     margin-bottom: 20px;
-    border: 1px solid #e2e8f0;
+    border: 1px solid #2563eb;
+    color: white;
 }
 
 .group:hover {

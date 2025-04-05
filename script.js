@@ -743,11 +743,11 @@ async function carregarAniversariantes() {
                     <i class="bi bi-gift${isToday ? '-fill' : ''}"></i>
                 </div>
                 <div class="aniversariante-info">
-                    <div class="aniversariante-nome">${aniversariante.Servidores}</div>
                     <div class="aniversariante-data">
                         <i class="bi bi-calendar-event"></i>
                         ${aniversariante.data}
                     </div>
+                    <div class="aniversariante-nome">${aniversariante.Servidores}</div>
                 </div>
             `;
             
@@ -756,6 +756,8 @@ async function carregarAniversariantes() {
             }
             
             lista.appendChild(aniversarianteElement);
+            
+            // Nenhum evento de clique necessário
         });
         
     } catch (error) {
