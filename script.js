@@ -195,6 +195,12 @@ document.addEventListener('DOMContentLoaded', function() {
         
         console.log('Sistema de busca e favoritos inicializado');
     }, 100);
+
+    // Inicializar o relógio do Windows
+    updateWindowsClock();
+    
+    // Atualizar o relógio a cada minuto
+    setInterval(updateWindowsClock, 60000);
 });
 
 // Funções para o modal de feriados
@@ -922,4 +928,32 @@ function exibirAniversariantes(aniversariantes) {
         
         lista.appendChild(item);
     });
+}
+
+// Função para atualizar o relógio e data no footer (estilo Windows)
+function updateWindowsClock() {
+    const now = new Date();
+    
+    // Formatar hora (formato 24h) - HH:MM
+    const hours = String(now.getHours()).padStart(2, '0');
+    const minutes = String(now.getMinutes()).padStart(2, '0');
+    const timeString = `${hours}:${minutes}`;
+    
+    // Atualizar o relógio
+    const footerClock = document.getElementById('footer-clock');
+    if (footerClock) {
+        footerClock.textContent = timeString;
+    }
+    
+    // Formatar data - DD/MM/YYYY (estilo Windows)
+    const day = String(now.getDate()).padStart(2, '0');
+    const month = String(now.getMonth() + 1).padStart(2, '0');
+    const year = now.getFullYear();
+    const dateString = `${day}/${month}/${year}`;
+    
+    // Atualizar a data
+    const footerDate = document.getElementById('footer-date');
+    if (footerDate) {
+        footerDate.textContent = dateString;
+    }
 }
