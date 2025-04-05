@@ -23,6 +23,7 @@ function getUniqueColorIndex(name) {
     return Math.abs(hash) % solidColorPalettes.length;
 }
 
+<<<<<<< HEAD
 // Função para mostrar mensagem de parabéns
 function showBirthdayMessage(name, department) {
     const modal = document.getElementById('birthday-modal');
@@ -102,6 +103,8 @@ function closeBirthdayModal() {
     modal.style.display = 'none';
 }
 
+=======
+>>>>>>> c22f4046933c85b0cee32554ed949fa725f62b11
 // Função para carregar aniversários com cores sólidas
 async function loadBirthdays() {
     const birthdaysList = document.getElementById('aniversariantes-lista');
@@ -139,12 +142,19 @@ async function loadBirthdays() {
         
         if (currentMonthBirthdays.length > 0) {
             currentMonthBirthdays.forEach((person, index) => {
+<<<<<<< HEAD
+=======
+                // Gerar cor única baseada no nome
+>>>>>>> c22f4046933c85b0cee32554ed949fa725f62b11
                 const colorIndex = getUniqueColorIndex(person.nome);
                 const colors = solidColorPalettes[colorIndex];
                 
                 const card = document.createElement('div');
                 card.className = 'birthday-card';
+<<<<<<< HEAD
                 card.onclick = () => showBirthdayMessage(person.nome, person.setor);
+=======
+>>>>>>> c22f4046933c85b0cee32554ed949fa725f62b11
                 card.style.setProperty('--card-index', index);
                 card.style.background = colors.bg;
                 card.style.borderColor = colors.border;
@@ -152,6 +162,10 @@ async function loadBirthdays() {
                 const day = person.data.split('/')[0];
                 const month = person.data.split('/')[1];
                 
+<<<<<<< HEAD
+=======
+                // Emojis festivos baseados no setor
+>>>>>>> c22f4046933c85b0cee32554ed949fa725f62b11
                 const deptEmojis = {
                     'TI': '💻',
                     'RH': '👥',
@@ -206,6 +220,9 @@ async function loadBirthdays() {
         `;
     }
 }
+<<<<<<< HEAD
 
 // Carregar aniversários quando a página carregar
 document.addEventListener('DOMContentLoaded', loadBirthdays);
+=======
+>>>>>>> c22f4046933c85b0cee32554ed949fa725f62b11
