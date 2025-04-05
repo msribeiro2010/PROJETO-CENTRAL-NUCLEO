@@ -192,13 +192,37 @@ async function loadHolidays() {
             holidayElement.className = `holiday-item ${holiday.tipo}`;
             
             const date = holiday.data.split('/');
-            const weekday = new Date(2025, parseInt(date[1])-1, parseInt(date[0])).toLocaleDateString('pt-BR', { weekday: 'long' });
+            const holidayDate = new Date(2025, parseInt(date[1])-1, parseInt(date[0]));
+            const weekday = holidayDate.toLocaleDateString('pt-BR', { weekday: 'long' });
+            
+            // Calcular dias restantes
+            const today = new Date();
+            const diffTime = holidayDate - today;
+            const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
+            
+            // Texto para exibir os dias restantes
+            let daysRemainingText = '';
+            let countdownClass = '';
+            
+            if (diffDays < 0) {
+                daysRemainingText = 'Já passou';
+                countdownClass = 'passed';
+            } else if (diffDays === 0) {
+                daysRemainingText = 'Hoje!';
+                countdownClass = 'today';
+            } else if (diffDays === 1) {
+                daysRemainingText = 'Amanhã!';
+                countdownClass = 'tomorrow';
+            } else {
+                daysRemainingText = `Faltam ${diffDays} dias`;
+            }
             
             holidayElement.innerHTML = `
                 <span class="holiday-date">${holiday.data}</span>
                 <span class="holiday-weekday">${weekday}</span>
                 <span class="holiday-name">${holiday.nome}</span>
                 <span class="holiday-type ${holiday.tipo}">${holiday.tipo}</span>
+                <span class="holiday-countdown">${daysRemainingText}</span>
             `;
             
             holidaysList.appendChild(holidayElement);

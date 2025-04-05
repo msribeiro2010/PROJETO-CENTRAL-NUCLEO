@@ -2314,7 +2314,7 @@ body.dark #current-month {
     border-radius: 10px;
     padding: 15px;
     display: grid;
-    grid-template-columns: auto 1fr auto;
+    grid-template-columns: auto 1fr auto auto;
     gap: 15px;
     align-items: center;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
@@ -2373,6 +2373,34 @@ body.dark #current-month {
 .holiday-type.Facultativo {
     background: #fae8ff;
     color: #86198f;
+}
+
+/* Estilo para a contagem de dias restantes */
+.holiday-countdown {
+    font-size: 0.9rem;
+    font-weight: 600;
+    padding: 4px 12px;
+    border-radius: 20px;
+    background: #f1f5f9;
+    color: #0f172a;
+    white-space: nowrap;
+    text-align: center;
+    min-width: 100px;
+}
+
+.holiday-countdown.today {
+    background: #fef3c7;
+    color: #92400e;
+}
+
+.holiday-countdown.tomorrow {
+    background: #e0f2fe;
+    color: #0369a1;
+}
+
+.holiday-countdown.passed {
+    background: #f1f5f9;
+    color: #64748b;
 }
 
 /* Estado de loading */
