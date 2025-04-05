@@ -20,6 +20,22 @@ document.addEventListener('DOMContentLoaded', function() {
                 e.stopPropagation();
             });
         });
+
+        // Verificar se há um novo accordion para inicializar
+        const linksRapidosAccordion = document.querySelector('#links-rapidos .accordion-header');
+        if (linksRapidosAccordion) {
+            console.log('Inicializando accordion de Links Rápidos');
+            // Garantir que tenha o listener correto
+            linksRapidosAccordion.addEventListener('click', function(e) {
+                e.stopPropagation(); 
+                e.preventDefault();
+                
+                // Verificar se o click foi no header e não em um elemento interno
+                if (e.target.closest('.accordion-header') === this) {
+                    handleAccordionClick.call(this, e);
+                }
+            });
+        }
     }, 100);
 });
 

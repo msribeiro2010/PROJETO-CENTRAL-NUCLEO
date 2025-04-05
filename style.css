@@ -3278,3 +3278,80 @@ body.dark .favorite-star {
 body.dark .favorite-star-fill {
     color: #fbbf24 !important;
 }
+
+/* Estilo para o grupo Links Rápidos */
+.group.links-rapidos {
+    background: linear-gradient(135deg, #3498db, #2980b9);
+    border-color: #2980b9;
+    box-shadow: 0 4px 12px rgba(41, 128, 185, 0.2);
+}
+
+.group.links-rapidos:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 6px 15px rgba(41, 128, 185, 0.3);
+}
+
+.group.links-rapidos .accordion-header {
+    background: linear-gradient(135deg, #3498db, #2980b9);
+    color: white;
+    border-bottom: none;
+}
+
+.group.links-rapidos .accordion-header:hover {
+    background: linear-gradient(135deg, #3498db, #2574a9);
+}
+
+.group.links-rapidos .accordion-header .header-content i {
+    color: #b3e5fc;
+}
+
+.group.links-rapidos .button-container button {
+    background-color: #f8fdff;
+    border-left: 3px solid #3498db;
+}
+
+.group.links-rapidos .button-container button:hover {
+    background-color: #e1f5fe;
+    transform: translateX(5px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.group.links-rapidos .button-container button i {
+    color: #3498db;
+}
+
+/* Modo escuro */
+body.dark .group.links-rapidos {
+    background: linear-gradient(135deg, #1a5276, #154360);
+    border-color: #154360;
+}
+
+body.dark .group.links-rapidos:hover {
+    box-shadow: 0 6px 15px rgba(26, 82, 118, 0.3);
+}
+
+body.dark .group.links-rapidos .accordion-header {
+    background: linear-gradient(135deg, #1a5276, #154360);
+}
+
+body.dark .group.links-rapidos .accordion-header:hover {
+    background: linear-gradient(135deg, #1a5276, #11364d);
+}
+
+body.dark .group.links-rapidos .accordion-header .header-content i {
+    color: #81d4fa;
+}
+
+body.dark .group.links-rapidos .button-container button {
+    background-color: #1e2a38;
+    border-left: 3px solid #3498db;
+    color: #e1f5fe;
+}
+
+body.dark .group.links-rapidos .button-container button:hover {
+    background-color: #263747;
+}
+
+body.dark .group.links-rapidos .button-container button i {
+    color: #4fc3f7;
+}

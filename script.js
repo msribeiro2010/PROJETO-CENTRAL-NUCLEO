@@ -129,6 +129,70 @@ document.addEventListener('DOMContentLoaded', function() {
     setTimeout(() => {
         initializeSearch();
         initializeFavorites();
+        
+        // Verifica se há um novo grupo de Links Rápidos para inicializar favoritos
+        const linksRapidosButtons = document.querySelectorAll('#links-rapidos-content .button-container button');
+        if (linksRapidosButtons.length > 0) {
+            console.log('Inicializando favoritos para Links Rápidos');
+            linksRapidosButtons.forEach(button => {
+                // Verifica se o botão já tem uma estrela
+                const existingStar = button.querySelector('.favorite-star, .favorite-star-fill');
+                if (existingStar) {
+                    existingStar.remove();
+                }
+
+                // Cria o botão de estrela
+                const starBtn = document.createElement('i');
+                starBtn.className = `bi bi-star${isFavorite(button) ? '-fill favorite-star-fill' : ' favorite-star'}`;
+                
+                // Configura o estilo da estrela
+                Object.assign(starBtn.style, {
+                    position: 'absolute',
+                    top: '8px',
+                    right: '8px',
+                    fontSize: '1.4rem',
+                    cursor: 'pointer',
+                    zIndex: '10',
+                    color: isFavorite(button) ? '#fbbf24' : '#6b7280',
+                    opacity: isFavorite(button) ? '1' : '0.7',
+                    transition: 'all 0.2s ease'
+                });
+
+                starBtn.title = isFavorite(button) ? 'Remover dos favoritos' : 'Adicionar aos favoritos';
+
+                // Adiciona evento de clique na estrela
+                starBtn.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    toggleFavorite(button);
+                    
+                    // Atualiza a aparência da estrela
+                    const isFav = isFavorite(button);
+                    starBtn.className = `bi bi-star${isFav ? '-fill favorite-star-fill' : ' favorite-star'}`;
+                    starBtn.style.color = isFav ? '#fbbf24' : '#6b7280';
+                    starBtn.style.opacity = isFav ? '1' : '0.7';
+                    starBtn.title = isFav ? 'Remover dos favoritos' : 'Adicionar aos favoritos';
+                });
+
+                // Adiciona evento de hover
+                starBtn.addEventListener('mouseover', () => {
+                    starBtn.style.opacity = '1';
+                    starBtn.style.transform = 'scale(1.3)';
+                });
+
+                starBtn.addEventListener('mouseout', () => {
+                    if (!isFavorite(button)) {
+                        starBtn.style.opacity = '0.7';
+                    }
+                    starBtn.style.transform = 'scale(1)';
+                });
+
+                // Garante que o botão tenha posição relativa para o posicionamento absoluto da estrela
+                button.style.position = 'relative';
+                button.appendChild(starBtn);
+            });
+        }
+        
         console.log('Sistema de busca e favoritos inicializado');
     }, 100);
 });
