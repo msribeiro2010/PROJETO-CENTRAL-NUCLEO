@@ -2500,6 +2500,27 @@ body.dark .holiday-type.Facultativo {
     color: #f0abfc;
 }
 
+/* Estilo para a contagem de dias restantes no modo escuro */
+body.dark .holiday-countdown {
+    background: rgba(30, 41, 59, 0.5);
+    color: #e2e8f0;
+}
+
+body.dark .holiday-countdown.today {
+    background: rgba(146, 64, 14, 0.3);
+    color: #fcd34d;
+}
+
+body.dark .holiday-countdown.tomorrow {
+    background: rgba(3, 105, 161, 0.3);
+    color: #7dd3fc;
+}
+
+body.dark .holiday-countdown.passed {
+    background: rgba(30, 41, 59, 0.3);
+    color: #94a3b8;
+}
+
 body.dark .loading-state {
     color: #94a3b8;
 }

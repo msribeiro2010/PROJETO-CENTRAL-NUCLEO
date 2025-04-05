@@ -222,7 +222,7 @@ async function loadHolidays() {
                 <span class="holiday-weekday">${weekday}</span>
                 <span class="holiday-name">${holiday.nome}</span>
                 <span class="holiday-type ${holiday.tipo}">${holiday.tipo}</span>
-                <span class="holiday-countdown">${daysRemainingText}</span>
+                <span class="holiday-countdown ${countdownClass}">${daysRemainingText}</span>
             `;
             
             holidaysList.appendChild(holidayElement);
