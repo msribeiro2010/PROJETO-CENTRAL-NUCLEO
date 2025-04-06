@@ -2641,8 +2641,8 @@ body.dark .retry-button:hover {
 .search-box i {
     color: #3182ce;
     font-size: 1.2rem;
-    margin-right: 10px;
-}
+        margin-right: 10px;
+    }
 
 .search-box input {
     width: 100%;

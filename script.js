@@ -162,7 +162,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
                 // Adiciona evento de clique na estrela
                 starBtn.addEventListener('click', (e) => {
-                    e.preventDefault();
+        e.preventDefault();
                     e.stopPropagation();
                     toggleFavorite(button);
                     
@@ -431,7 +431,7 @@ function toggleFavorite(button) {
     if (index === -1) {
         favorites.push(buttonText);
         showToast('Adicionado aos favoritos');
-    } else {
+                } else {
         favorites.splice(index, 1);
         showToast('Removido dos favoritos');
     }
@@ -630,9 +630,9 @@ function initializeSearch() {
             icon,
             element: button,
             searchTerms: `${text.toLowerCase()} ${url.toLowerCase()}`
-        });
     });
-    
+});
+
     // Eventos do input de busca
     searchInput.addEventListener('input', () => {
         const query = searchInput.value.toLowerCase();
