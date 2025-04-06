@@ -914,23 +914,30 @@ function updateWindowsClock() {
     }
 }
 
-function createFavoriteItem(text, icon, url) {
-    const favoriteItem = document.createElement('div');
-    favoriteItem.className = 'favorite-item';
-    favoriteItem.innerHTML = `
-        <i class="bi ${icon}"></i>
-        <span>${text}</span>
-        ${canBeRemoved(text) ? '<button class="remove-favorite" title="Remover dos favoritos"><i class="bi bi-trash"></i></button>' : ''}
-    `;
-    favoriteItem.onclick = (e) => {
-        if (e.target.closest('.remove-favorite')) {
-            e.preventDefault();
-            removeFavorite(text);
-            return;
-        }
-        window.open(url, '_blank');
+function createFavoriteItem(text, url) {
+    const item = document.createElement('div');
+    item.className = 'favorite-item';
+    item.setAttribute('data-url', url);
+
+    const icon = document.createElement('i');
+    icon.className = 'bi bi-link-45deg';
+    
+    const span = document.createElement('span');
+    span.textContent = text;
+    
+    const removeButton = document.createElement('div');
+    removeButton.className = 'remove-favorite';
+    removeButton.innerHTML = '<i class="bi bi-trash3-fill"></i>';
+    removeButton.onclick = function(e) {
+        e.stopPropagation();
+        removeFavorite(text);
     };
-    return favoriteItem;
+
+    item.appendChild(icon);
+    item.appendChild(span);
+    item.appendChild(removeButton);
+    
+    return item;
 }
 
 function canBeRemoved(text) {

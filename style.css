@@ -2819,103 +2819,51 @@ body.dark .sortable-chosen {
 .favorite-item {
     display: flex;
     align-items: center;
-    padding: 14px 18px;
+    gap: 8px;
+    padding: 10px 16px;
     background: linear-gradient(135deg, #60a5fa, #3b82f6);
-    border-radius: 16px;
+    border-radius: 12px;
+    color: white;
     cursor: pointer;
     position: relative;
     transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    -webkit-user-select: none;
+    user-select: none;
+    width: auto;
+    min-width: 180px;
     box-shadow: 
         0 4px 6px rgba(59, 130, 246, 0.2),
-        0 8px 12px rgba(59, 130, 246, 0.1),
-        0 2px 4px rgba(59, 130, 246, 0.1),
-        inset 0 2px 4px rgba(255, 255, 255, 0.1);
-    border: 1px solid rgba(96, 165, 250, 0.4);
-    gap: 10px;
-    max-width: 230px;
-    min-width: 160px;
-    animation: favoriteAppear 0.4s ease-out forwards;
-    overflow: hidden;
-    cursor: grab;
-    padding-right: 40px; /* Espaço para o botão de remover */
+        0 2px 4px rgba(59, 130, 246, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.2);
 }
 
 .favorite-item:hover {
     background: linear-gradient(135deg, #3b82f6, #2563eb);
-    transform: translateY(-3px);
+    transform: translateY(-2px);
+    padding-right: 42px;
     box-shadow: 
-        0 8px 16px rgba(59, 130, 246, 0.25),
-        0 12px 24px rgba(59, 130, 246, 0.15),
-        0 4px 8px rgba(59, 130, 246, 0.1),
-        inset 0 2px 4px rgba(255, 255, 255, 0.2);
-}
-
-.favorite-item i {
-    font-size: 1.1rem;
-    color: #ffffff;
-    transition: all 0.3s ease;
-    flex-shrink: 0;
-    position: relative;
-    z-index: 2;
-}
-
-.favorite-item:hover i {
-    transform: scale(1.1);
-    color: #ffffff;
-}
-
-.favorite-item span {
-    font-weight: 500;
-    color: #ffffff;
-    font-size: 0.95rem;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    white-space: nowrap;
-    flex: 1;
-    position: relative;
-    z-index: 2;
-    letter-spacing: 0.2px;
-    text-shadow: 0 1px 1px rgba(0, 0, 0, 0.1);
-}
-
-/* Dark mode styles para favoritos */
-body.dark .favorite-item {
-    background: linear-gradient(135deg, #3b82f6, #2563eb);
-    border-color: rgba(59, 130, 246, 0.4);
-    box-shadow: 
-        0 4px 6px rgba(37, 99, 235, 0.3),
-        0 8px 12px rgba(37, 99, 235, 0.2),
-        0 2px 4px rgba(37, 99, 235, 0.1),
-        inset 0 2px 4px rgba(255, 255, 255, 0.05);
-}
-
-body.dark .favorite-item:hover {
-    background: linear-gradient(135deg, #2563eb, #1d4ed8);
-    box-shadow: 
-        0 8px 16px rgba(37, 99, 235, 0.35),
-        0 12px 24px rgba(37, 99, 235, 0.25),
-        0 4px 8px rgba(37, 99, 235, 0.15),
-        inset 0 2px 4px rgba(255, 255, 255, 0.1);
+        0 6px 12px rgba(59, 130, 246, 0.25),
+        0 4px 8px rgba(59, 130, 246, 0.15);
 }
 
 .favorite-item .remove-favorite {
     position: absolute;
-    right: 8px;
+    right: -20px;
     top: 50%;
     transform: translateY(-50%);
-    background: rgba(239, 68, 68, 0.9);
-    color: white;
-    width: 24px;
-    height: 24px;
-    border-radius: 12px;
     display: flex;
     align-items: center;
     justify-content: center;
-    cursor: pointer;
+    padding: 4px;
+    font-size: 1rem;
+    color: rgba(255, 255, 255, 0.8);
     opacity: 0;
-    transition: all 0.3s ease;
-    z-index: 3;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    cursor: pointer;
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.1);
 }
 
 .favorite-item:hover .remove-favorite {
@@ -2924,9 +2872,30 @@ body.dark .favorite-item:hover {
 }
 
 .favorite-item .remove-favorite:hover {
-    background: #dc2626;
+    color: #ef4444;
     transform: translateY(-50%) scale(1.1);
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    background: rgba(255, 255, 255, 0.2);
+}
+
+.favorite-item .remove-favorite i {
+    font-size: 1rem;
+    color: inherit;
+}
+
+.favorite-item i {
+    font-size: 1rem;
+    color: #ffffff;
+    transition: all 0.3s ease;
+}
+
+.favorite-item span {
+    color: #ffffff;
+    font-size: 0.95rem;
+    font-weight: 500;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
 }
 
 .no-favorites {
@@ -3310,6 +3279,37 @@ body.dark .windows-clock .date i {
     background: linear-gradient(135deg, #3b82f6, #2563eb);
     transform: scale(1.05);
     box-shadow: 0 8px 16px rgba(59, 130, 246, 0.3);
+}
+
+/* Dark mode styles para favoritos */
+body.dark .favorite-item {
+    background: linear-gradient(135deg, #3b82f6, #2563eb);
+    border-color: rgba(59, 130, 246, 0.4);
+    box-shadow: 
+        0 4px 6px rgba(37, 99, 235, 0.3),
+        0 2px 4px rgba(37, 99, 235, 0.1);
+}
+
+body.dark .favorite-item:hover {
+    background: linear-gradient(135deg, #2563eb, #1d4ed8);
+    box-shadow: 
+        0 6px 12px rgba(37, 99, 235, 0.35),
+        0 4px 8px rgba(37, 99, 235, 0.15);
+}
+
+body.dark .favorite-item .remove-favorite {
+    color: rgba(255, 255, 255, 0.9);
+}
+
+body.dark .favorite-item .remove-favorite:hover {
+    color: #f87171;
+}
+
+/* Animação suave para o botão expandir */
+.favorite-item {
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1), 
+                padding-right 0.3s cubic-bezier(0.4, 0, 0.2, 1), 
+                width 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 
