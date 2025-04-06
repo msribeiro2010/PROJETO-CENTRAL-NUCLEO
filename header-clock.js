@@ -1,14 +1,18 @@
 /**
  * Header Clock and Date Functionality
- * Provides real-time clock and date display for the application header
+ * Provides real-time clock and date display for the application header and footer
  */
 
 document.addEventListener('DOMContentLoaded', function() {
-    // Get DOM elements
+    // Get DOM elements for header
     const clockElement = document.getElementById('clock');
     const weekdayElement = document.getElementById('weekday');
     const currentDateElement = document.getElementById('current-date');
     const calendarWrapper = document.querySelector('.calendar-wrapper');
+    
+    // Get DOM elements for footer
+    const footerClockElement = document.getElementById('footer-clock');
+    const footerDateElement = document.getElementById('footer-date');
     
     // Manter o calendário oculto
     if (calendarWrapper) {
@@ -19,15 +23,20 @@ document.addEventListener('DOMContentLoaded', function() {
     function updateClock() {
         const now = new Date();
         
-        // Format time as HH:MM:SS
+        // Format time as HH:MM:SS for header
         const hours = String(now.getHours()).padStart(2, '0');
         const minutes = String(now.getMinutes()).padStart(2, '0');
         const seconds = String(now.getSeconds()).padStart(2, '0');
         const timeString = `${hours}:${minutes}:${seconds}`;
         
-        // Update clock element
+        // Update header clock element
         if (clockElement) {
             clockElement.textContent = timeString;
+        }
+        
+        // Update footer clock element (without seconds)
+        if (footerClockElement) {
+            footerClockElement.textContent = `${hours}:${minutes}`;
         }
         
         // Get weekday in Portuguese
@@ -45,9 +54,14 @@ document.addEventListener('DOMContentLoaded', function() {
         const year = now.getFullYear();
         const dateString = `${day}/${month}/${year}`;
         
-        // Update date element
+        // Update header date element
         if (currentDateElement) {
             currentDateElement.textContent = dateString;
+        }
+        
+        // Update footer date element with weekday
+        if (footerDateElement) {
+            footerDateElement.textContent = `${weekday}, ${day}/${month}/${year}`;
         }
     }
     

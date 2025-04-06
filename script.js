@@ -482,6 +482,7 @@ function renderFavorites() {
             favoriteItem.style.display = 'inline-block';
             favoriteItem.style.width = 'auto';
             favoriteItem.style.margin = '4px';
+            favoriteItem.setAttribute('data-favorite', favorite); // Atributo para identificar o favorito
             
             const favoriteButton = document.createElement('button');
             favoriteButton.className = 'favorite-item';
@@ -592,6 +593,48 @@ function renderFavorites() {
             
             favoritesList.appendChild(favoriteItem);
         }
+    });
+    
+    // Inicializar o Sortable para a lista de favoritos
+    if (favorites.length > 0) {
+        initializeFavoritesSortable();
+    }
+}
+
+// Função para inicializar o Sortable na lista de favoritos
+function initializeFavoritesSortable() {
+    const favoritesList = document.getElementById('favorites-list');
+    if (!favoritesList) return;
+    
+    // Verificar se o Sortable já foi inicializado
+    if (favoritesList.sortableInstance) {
+        favoritesList.sortableInstance.destroy();
+    }
+    
+    // Inicializar o Sortable
+    favoritesList.sortableInstance = new Sortable(favoritesList, {
+        animation: 150,
+        ghostClass: 'sortable-ghost',
+        chosenClass: 'sortable-chosen',
+        dragClass: 'sortable-drag',
+        handle: '.favorite-item',
+        onEnd: function(evt) {
+            // Atualizar a ordem dos favoritos no localStorage
+            const newOrder = Array.from(favoritesList.querySelectorAll('.favorite-item-container'))
+                .map(item => item.getAttribute('data-favorite'));
+            
+            if (newOrder.length > 0) {
+                localStorage.setItem('favorites', JSON.stringify(newOrder));
+                showToast('Ordem dos favoritos atualizada');
+            }
+        }
+    });
+    
+    // Adicionar tooltip para informar que os favoritos podem ser arrastados
+    const favoriteItems = favoritesList.querySelectorAll('.favorite-item');
+    favoriteItems.forEach(item => {
+        item.title = item.title || '';
+        item.title += ' (Arraste para reordenar)';
     });
 }
 
