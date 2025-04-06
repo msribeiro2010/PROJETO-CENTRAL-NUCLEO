@@ -1079,19 +1079,30 @@ function showBirthdayMessage(nome, isToday) {
             <div class="aniversario-balao aniversario-balao-grande">
                 <div class="aniversario-balao-header">
                     <i class="bi bi-stars"></i>
-                    <span>Feliz Aniversário!</span>
+                    <span>✨ Feliz Aniversário! ✨</span>
                     <i class="bi bi-stars"></i>
                 </div>
                 <div class="aniversario-balao-nome">${nome}</div>
                 <div class="aniversario-balao-mensagem">
-                    Que seu dia seja repleto de alegria, sorrisos e momentos inesquecíveis! 
-                    Desejamos a você um ano cheio de conquistas e realizações!
+                    <p>Hoje é o seu dia especial, e queremos celebrar com você! 🎉</p>
+                    <p>Que este novo ano de vida seja repleto de:</p>
+                    <div class="mensagem-desejos">
+                        <span>💫 Momentos inesquecíveis</span>
+                        <span>💝 Muito amor e carinho</span>
+                        <span>🌟 Realizações extraordinárias</span>
+                        <span>😊 Sorrisos infinitos</span>
+                        <span>🎯 Conquistas brilhantes</span>
+                        <span>✨ Sonhos realizados</span>
+                    </div>
+                    <p class="mensagem-especial">Que cada minuto seja preenchido com alegria, cada hora com satisfação, e cada dia com sucesso!</p>
+                    <p class="assinatura">Com carinho, sua equipe NAPJe 💖</p>
                 </div>
                 <div class="aniversario-balao-icons">
                     <i class="bi bi-balloon-heart-fill"></i>
                     <i class="bi bi-cake2-fill"></i>
                     <i class="bi bi-gift-fill"></i>
                     <i class="bi bi-stars"></i>
+                    <i class="bi bi-emoji-laughing-fill"></i>
                 </div>
             </div>
         `;
@@ -1107,7 +1118,7 @@ function showBirthdayMessage(nome, isToday) {
         messageElement.innerHTML = `
             <div class="aniversario-balao">
                 <i class="bi bi-calendar-heart"></i>
-                <span>Aniversário de ${nome}!</span>
+                <span>Em breve será o aniversário de ${nome}! 🎂</span>
                 <i class="bi bi-balloon-heart"></i>
             </div>
         `;
@@ -1122,5 +1133,5 @@ function showBirthdayMessage(nome, isToday) {
         setTimeout(() => {
             messageElement.remove();
         }, 1000);
-    }, isToday ? 4000 : 2000);
+    }, isToday ? 6000 : 3000); // Aumentei o tempo para a mensagem de hoje
 }
