@@ -4,19 +4,25 @@
 .aniversariante-brilho {
     position: relative;
     z-index: 2;
-    box-shadow: 0 0 15px rgba(255, 193, 7, 0.7) !important;
+    box-shadow: 0 0 25px rgba(255, 193, 7, 0.8) !important;
     animation: pulse-brilho 2s infinite !important;
+    background: linear-gradient(135deg, rgba(255, 107, 107, 0.2) 0%, rgba(255, 193, 7, 0.15) 100%) !important;
+    border: 2px solid rgba(255, 193, 7, 0.5) !important;
+    backdrop-filter: blur(5px);
 }
 
 @keyframes pulse-brilho {
     0% {
-        box-shadow: 0 0 15px rgba(255, 193, 7, 0.7);
+        box-shadow: 0 0 25px rgba(255, 193, 7, 0.8);
+        transform: scale(1);
     }
     50% {
-        box-shadow: 0 0 25px rgba(255, 193, 7, 0.9);
+        box-shadow: 0 0 35px rgba(255, 193, 7, 1);
+        transform: scale(1.02);
     }
     100% {
-        box-shadow: 0 0 15px rgba(255, 193, 7, 0.7);
+        box-shadow: 0 0 25px rgba(255, 193, 7, 0.8);
+        transform: scale(1);
     }
 }
 
@@ -369,21 +375,119 @@ body.dark .aniversariante-nome-clicavel:hover {
 }
 
 .aniversariante-item.hoje {
-    background: linear-gradient(135deg, rgba(var(--primary-rgb), 0.1) 0%, rgba(var(--primary-rgb), 0.05) 100%);
-    border: 2px solid var(--primary-color);
+    background: linear-gradient(135deg, rgba(255, 107, 107, 0.15) 0%, rgba(255, 193, 7, 0.1) 100%);
+    border: 2px solid #ffd700;
     transform: scale(1.02);
-    box-shadow: 0 8px 24px rgba(var(--primary-rgb), 0.15);
+    box-shadow: 
+        0 8px 24px rgba(255, 107, 107, 0.2),
+        inset 0 0 20px rgba(255, 193, 7, 0.1);
+    position: relative;
+    overflow: hidden;
+}
+
+.aniversariante-item.hoje::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(45deg, 
+        rgba(255, 255, 255, 0) 0%,
+        rgba(255, 255, 255, 0.2) 50%,
+        rgba(255, 255, 255, 0) 100%);
+    animation: shine 3s infinite;
+    z-index: 1;
 }
 
 .badge-hoje {
-    background: linear-gradient(135deg, #ff6b6b 0%, #ff8787 100%);
+    background: linear-gradient(135deg, #ffd700 0%, #ff8787 100%);
     color: white;
-    padding: 4px 16px;
+    padding: 6px 18px;
     border-radius: 20px;
-    font-size: 0.85em;
-    font-weight: 600;
+    font-size: 0.9em;
+    font-weight: 700;
     animation: pulse 2s infinite;
-    box-shadow: 0 2px 8px rgba(255, 107, 107, 0.3);
+    box-shadow: 
+        0 2px 10px rgba(255, 107, 107, 0.4),
+        0 0 20px rgba(255, 193, 7, 0.3);
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+    letter-spacing: 0.5px;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+/* Ajuste para o ícone do aniversariante do dia */
+.aniversariante-item.hoje .aniversariante-icon {
+    background: linear-gradient(135deg, #ffd700 0%, #ff8787 100%);
+    box-shadow: 0 0 15px rgba(255, 193, 7, 0.5);
+    animation: rotate-shine 3s infinite linear;
+}
+
+@keyframes rotate-shine {
+    0% {
+        transform: rotate(0deg);
+        box-shadow: 0 0 15px rgba(255, 193, 7, 0.5);
+    }
+    50% {
+        transform: rotate(180deg);
+        box-shadow: 0 0 25px rgba(255, 193, 7, 0.8);
+    }
+    100% {
+        transform: rotate(360deg);
+        box-shadow: 0 0 15px rgba(255, 193, 7, 0.5);
+    }
+}
+
+/* Sparkles mais vibrantes */
+.sparkle {
+    position: absolute;
+    width: 25px;
+    height: 25px;
+    background: radial-gradient(circle, 
+        rgba(255, 215, 0, 0.9) 0%, 
+        rgba(255, 215, 0, 0.5) 30%,
+        transparent 70%);
+    animation: sparkle 2s infinite;
+    pointer-events: none;
+    z-index: 2;
+}
+
+@keyframes sparkle {
+    0% { 
+        transform: scale(0) rotate(0deg); 
+        opacity: 0; 
+    }
+    50% { 
+        transform: scale(1.2) rotate(180deg); 
+        opacity: 1; 
+    }
+    100% { 
+        transform: scale(0) rotate(360deg); 
+        opacity: 0; 
+    }
+}
+
+/* Ajustes para modo escuro */
+body.dark .aniversariante-item.hoje {
+    background: linear-gradient(135deg, 
+        rgba(255, 107, 107, 0.2) 0%, 
+        rgba(255, 193, 7, 0.15) 100%);
+    border-color: rgba(255, 215, 0, 0.5);
+    box-shadow: 
+        0 8px 24px rgba(255, 107, 107, 0.25),
+        inset 0 0 20px rgba(255, 193, 7, 0.15);
+}
+
+body.dark .badge-hoje {
+    background: linear-gradient(135deg, #ffd700 0%, #ff6b6b 100%);
+    box-shadow: 
+        0 2px 10px rgba(255, 107, 107, 0.5),
+        0 0 20px rgba(255, 193, 7, 0.4);
+}
+
+body.dark .aniversariante-item.hoje .aniversariante-icon {
+    background: linear-gradient(135deg, #ffd700 0%, #ff6b6b 100%);
+    box-shadow: 0 0 20px rgba(255, 193, 7, 0.6);
 }
 
 .mensagem-parabens {
@@ -464,15 +568,6 @@ body.dark .aniversariante-nome-clicavel:hover {
     opacity: 1;
 }
 
-.sparkle {
-    position: absolute;
-    width: 20px;
-    height: 20px;
-    background: radial-gradient(circle, #ffd700 0%, transparent 70%);
-    animation: sparkle 1.5s infinite;
-    pointer-events: none;
-}
-
 .sem-aniversariantes {
     text-align: center;
     padding: 32px 16px;
@@ -534,12 +629,6 @@ body.dark .aniversariante-nome-clicavel:hover {
     50% { transform: translateY(-5px); }
 }
 
-@keyframes sparkle {
-    0% { transform: scale(0) rotate(0deg); opacity: 0; }
-    50% { transform: scale(1) rotate(180deg); opacity: 1; }
-    100% { transform: scale(0) rotate(360deg); opacity: 0; }
-}
-
 @keyframes fadeIn {
     from { opacity: 0; transform: translateY(10px); }
     to { opacity: 1; transform: translateY(0); }
@@ -549,10 +638,6 @@ body.dark .aniversariante-nome-clicavel:hover {
 .dark .aniversariante-item {
     background: var(--dark-card-bg);
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
-}
-
-.dark .aniversariante-item.hoje {
-    background: linear-gradient(135deg, rgba(255, 255, 255, 0.1) 0%, rgba(255, 255, 255, 0.05) 100%);
 }
 
 .dark .mensagem-parabens {
