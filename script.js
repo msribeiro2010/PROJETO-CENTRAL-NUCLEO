@@ -444,198 +444,111 @@ function renderFavorites() {
     const favoritesList = document.getElementById('favorites-list');
     const favorites = JSON.parse(localStorage.getItem('favorites') || '[]');
     
-    // Definir quais favoritos são fixos (sem lixeira e não removíveis)
-    const fixedFavorites = ['Feriados 2025', 'Controle/Trabalho'];
-    
-    // Estilizar o container de favoritos para exibição horizontal
-    favoritesList.style.display = 'flex';
-    favoritesList.style.flexDirection = 'row';
-    favoritesList.style.flexWrap = 'wrap';
-    favoritesList.style.gap = '8px';
-    favoritesList.style.padding = '10px';
+    // Destruir instância anterior do Sortable se existir
+    if (favoritesList.sortableInstance) {
+        favoritesList.sortableInstance.destroy();
+    }
     
     favoritesList.innerHTML = '';
     
     if (favorites.length === 0) {
         favoritesList.innerHTML = `
-            <div class="no-favorites" style="width: 100%; text-align: center;">
+            <div class="no-favorites">
                 <i class="bi bi-star"></i>
-                <p>Nenhum favorito adicionado</p>
+                <p class="message-primary">Seus atalhos favoritos aparecerão aqui!</p>
+                <p class="message-secondary">
+                    Para começar, procure o ícone <span class="highlight"><i class="bi bi-star"></i> Favoritar</span> 
+                    nos botões e clique para adicionar aos seus favoritos.
+                </p>
+                <p class="message-secondary">
+                    Organize seus atalhos mais usados aqui para ter acesso rápido às suas ferramentas preferidas.
+                </p>
             </div>
         `;
         return;
     }
     
-    // Ordenar os favoritos para que os fixos apareçam primeiro
-    const fixedFavoritesInList = fixedFavorites.filter(fav => favorites.includes(fav));
-    const otherFavorites = favorites.filter(fav => !fixedFavorites.includes(fav));
-    const finalFavorites = [...fixedFavoritesInList, ...otherFavorites];
+    // Criar um container para os itens favoritos
+    const favoritesContainer = document.createElement('div');
+    favoritesContainer.className = 'favorites-items-container';
+    favoritesList.appendChild(favoritesContainer);
     
-    finalFavorites.forEach(favorite => {
+    favorites.forEach(favorite => {
         const button = Array.from(document.querySelectorAll('.button-container button'))
             .find(btn => btn.textContent.trim() === favorite);
             
         if (button) {
             const favoriteItem = document.createElement('div');
-            favoriteItem.className = 'favorite-item-container';
-            favoriteItem.style.position = 'relative';
-            favoriteItem.style.display = 'inline-block';
-            favoriteItem.style.width = 'auto';
-            favoriteItem.style.margin = '4px';
-            favoriteItem.setAttribute('data-favorite', favorite); // Atributo para identificar o favorito
+            favoriteItem.className = 'favorite-item';
+            favoriteItem.draggable = true;
             
-            const favoriteButton = document.createElement('button');
-            favoriteButton.className = 'favorite-item';
-            favoriteButton.style.position = 'relative'; // Importante para posicionamento da lixeira
-            favoriteButton.style.whiteSpace = 'nowrap';
-            favoriteButton.style.padding = '8px 12px';
-            favoriteButton.style.borderRadius = '6px';
-            favoriteButton.style.backgroundColor = 'rgba(255, 255, 255, 0.1)';
-            favoriteButton.style.border = '1px solid #e2e8f0';
-            favoriteButton.style.cursor = 'pointer';
-            favoriteButton.style.transition = 'all 0.2s ease';
+            const icon = button.querySelector('i')?.className || '';
+            let url = button.getAttribute('onclick')?.match(/window\.open\('([^']+)'/)?.[1] || '';
+            let clickHandler;
+
+            // Tratamento especial para o botão de Feriados
+            if (favorite.includes('Feriados-2025')) {
+                clickHandler = (e) => {
+                    if (!e.target.closest('.remove-favorite')) {
+                        showHolidays();
+                    }
+                };
+            } else {
+                clickHandler = (e) => {
+                    if (!e.target.closest('.remove-favorite') && url) {
+                        window.open(url, '_blank');
+                    }
+                };
+            }
             
-            // Adicionar lixeira apenas se não for um favorito fixo
-            const isFixedFavorite = fixedFavorites.includes(favorite);
-            if (!isFixedFavorite) {
-                favoriteButton.innerHTML = `
-                    <i class="${button.querySelector('i').className}"></i>
-                    <span>${favorite}</span>
-                    <i class="bi bi-trash favorite-trash-icon" style="font-size:0.9rem;margin-left:8px;color:#e53e3e;opacity:0;transition:all 0.2s ease;cursor:pointer;"></i>
-                `;
-                
-                // Adicionar evento de hover para a lixeira
-                favoriteButton.addEventListener('mouseenter', () => {
-                    const trashIcon = favoriteButton.querySelector('.favorite-trash-icon');
-                    if (trashIcon) {
-                        trashIcon.style.opacity = '1';
-                    }
-                });
-                
-                favoriteButton.addEventListener('mouseleave', () => {
-                    const trashIcon = favoriteButton.querySelector('.favorite-trash-icon');
-                    if (trashIcon) {
-                        trashIcon.style.opacity = '0';
-                    }
-                });
-                
-                // Adicionar evento de clique na lixeira
-                favoriteButton.querySelector('.favorite-trash-icon').addEventListener('click', (e) => {
+            favoriteItem.innerHTML = `
+                <i class="${icon}"></i>
+                <span>${favorite}</span>
+                <button class="remove-favorite" title="Remover dos favoritos">
+                    <i class="bi bi-trash"></i>
+                </button>
+            `;
+            
+            favoriteItem.onclick = (e) => {
+                if (e.target.closest('.remove-favorite')) {
                     e.preventDefault();
                     e.stopPropagation();
-                    
-                    // Remover dos favoritos
                     const favorites = JSON.parse(localStorage.getItem('favorites') || '[]');
                     const index = favorites.indexOf(favorite);
                     if (index !== -1) {
                         favorites.splice(index, 1);
                         localStorage.setItem('favorites', JSON.stringify(favorites));
-                        
-                        // Atualizar a estrela no botão original
-                        const originalButton = Array.from(document.querySelectorAll('.button-container button'))
-                            .find(btn => btn.textContent.trim() === favorite);
-                            
-                        if (originalButton) {
-                            // Atualizar a estrela no botão original
-                            const starIcon = originalButton.querySelector('.bi-star-fill');
-                            if (starIcon) {
-                                starIcon.className = 'bi bi-star favorite-star';
-                                starIcon.style.color = 'white'; // Mudar para branca
-                                starIcon.style.opacity = '0.5';
-                                starIcon.title = 'Adicionar aos favoritos';
-                            }
-                            
-                            // Atualizar a estrela no container (se existir)
-                            const starContainer = originalButton.parentNode.querySelector('.star-container');
-                            if (starContainer) {
-                                const containerStarIcon = starContainer.querySelector('i');
-                                if (containerStarIcon) {
-                                    containerStarIcon.className = 'bi bi-star favorite-star';
-                                    containerStarIcon.style.color = 'white'; // Mudar para branca
-                                    containerStarIcon.style.opacity = '0.5';
-                                    containerStarIcon.title = 'Adicionar aos favoritos';
-                                }
-                            }
-                            
-                            // Remover a lixeira se existir
-                            const trashContainer = originalButton.parentNode.querySelector('.trash-container');
-                            if (trashContainer) {
-                                trashContainer.remove();
-                            }
-                        }
-                        
-                        // Renderizar novamente os favoritos
                         renderFavorites();
-                        
-                        // Mostrar mensagem
                         showToast('Removido dos favoritos');
                     }
-                });
-            } else {
-                // Para favoritos fixos, sem lixeira
-                favoriteButton.innerHTML = `
-                    <i class="${button.querySelector('i').className}"></i>
-                    <span>${favorite}</span>
-                `;
-            }
-            
-            favoriteButton.onclick = (e) => {
-                // Se o clique for na lixeira, não abrir o link
-                if (e.target.classList.contains('favorite-trash-icon')) {
                     return;
                 }
-                button.click();
+                clickHandler(e);
             };
             
-            favoriteItem.appendChild(favoriteButton);
-            
-            // A lixeira agora está dentro do botão, não precisamos adicionar separadamente
-            
-            favoritesList.appendChild(favoriteItem);
+            favoritesContainer.appendChild(favoriteItem);
         }
     });
     
-    // Inicializar o Sortable para a lista de favoritos
+    // Inicializar Sortable na nova lista
     if (favorites.length > 0) {
-        initializeFavoritesSortable();
-    }
-}
-
-// Função para inicializar o Sortable na lista de favoritos
-function initializeFavoritesSortable() {
-    const favoritesList = document.getElementById('favorites-list');
-    if (!favoritesList) return;
-    
-    // Verificar se o Sortable já foi inicializado
-    if (favoritesList.sortableInstance) {
-        favoritesList.sortableInstance.destroy();
-    }
-    
-    // Inicializar o Sortable
-    favoritesList.sortableInstance = new Sortable(favoritesList, {
-        animation: 150,
-        ghostClass: 'sortable-ghost',
-        chosenClass: 'sortable-chosen',
-        dragClass: 'sortable-drag',
-        handle: '.favorite-item',
-        onEnd: function(evt) {
-            // Atualizar a ordem dos favoritos no localStorage
-            const newOrder = Array.from(favoritesList.querySelectorAll('.favorite-item-container'))
-                .map(item => item.getAttribute('data-favorite'));
-            
-            if (newOrder.length > 0) {
-                localStorage.setItem('favorites', JSON.stringify(newOrder));
-                showToast('Ordem dos favoritos atualizada');
+        favoritesList.sortableInstance = new Sortable(favoritesContainer, {
+            animation: 150,
+            ghostClass: 'sortable-ghost',
+            chosenClass: 'sortable-chosen',
+            dragClass: 'sortable-drag',
+            handle: '.favorite-item',
+            onEnd: function(evt) {
+                const newOrder = Array.from(favoritesContainer.querySelectorAll('.favorite-item span'))
+                    .map(span => span.textContent.trim());
+                
+                if (newOrder.length > 0) {
+                    localStorage.setItem('favorites', JSON.stringify(newOrder));
+                    showToast('Ordem dos favoritos atualizada');
+                }
             }
-        }
-    });
-    
-    // Adicionar tooltip para informar que os favoritos podem ser arrastados
-    const favoriteItems = favoritesList.querySelectorAll('.favorite-item');
-    favoriteItems.forEach(item => {
-        item.title = item.title || '';
-        item.title += ' (Arraste para reordenar)';
-    });
+        });
+    }
 }
 
 // Funções para os accordions
@@ -998,5 +911,47 @@ function updateWindowsClock() {
     const footerDate = document.getElementById('footer-date');
     if (footerDate) {
         footerDate.textContent = dateString;
+    }
+}
+
+function createFavoriteItem(text, icon, url) {
+    const favoriteItem = document.createElement('div');
+    favoriteItem.className = 'favorite-item';
+    favoriteItem.innerHTML = `
+        <i class="bi ${icon}"></i>
+        <span>${text}</span>
+        ${canBeRemoved(text) ? '<button class="remove-favorite" title="Remover dos favoritos"><i class="bi bi-trash"></i></button>' : ''}
+    `;
+    favoriteItem.onclick = (e) => {
+        if (e.target.closest('.remove-favorite')) {
+            e.preventDefault();
+            removeFavorite(text);
+            return;
+        }
+        window.open(url, '_blank');
+    };
+    return favoriteItem;
+}
+
+function canBeRemoved(text) {
+    const removableItems = [
+        'SecJud',
+        'Feriados-2025',
+        'Controle/Trabalho',
+        'Controle/trabalho',
+        'Controle trabalho',
+        'Controle/Trabalho'
+    ];
+    return removableItems.some(item => text.trim().includes(item));
+}
+
+function checkEmptyFavorites() {
+    const favoritesList = document.getElementById('favorites-list');
+    const noFavoritesMessage = document.getElementById('no-favorites');
+    
+    if (favoritesList.children.length === 1 && favoritesList.children[0].id === 'no-favorites') {
+        noFavoritesMessage.style.display = 'flex';
+    } else {
+        noFavoritesMessage.style.display = 'none';
     }
 }
