@@ -748,16 +748,28 @@ function showToast(message) {
 async function carregarAniversariantes() {
     try {
         const response = await fetch('aniversariantes.json');
-        const aniversariantes = await response.json();
+        if (!response.ok) {
+            throw new Error('Falha ao carregar o arquivo de aniversariantes');
+        }
         
+        const data = await response.json();
+        if (!data || !Array.isArray(data.Servidores)) {
+            throw new Error('Formato de dados inválido');
+        }
+
         const hoje = new Date();
         const mesAtual = hoje.getMonth() + 1;
         const diaAtual = hoje.getDate();
         
         // Filtra aniversariantes do mês atual
-        const aniversariantesMes = aniversariantes.filter(aniversariante => {
-            const [dia, mes] = aniversariante.data.split('/');
-            return parseInt(mes) === mesAtual;
+        const aniversariantesMes = data.Servidores.filter(aniversariante => {
+            try {
+                const [dia, mes] = (aniversariante.data || '').split('/');
+                return parseInt(mes) === mesAtual;
+            } catch (e) {
+                console.error('Erro ao processar data:', aniversariante);
+                return false;
+            }
         });
         
         // Ordena por dia
@@ -768,6 +780,9 @@ async function carregarAniversariantes() {
         });
         
         const lista = document.getElementById('aniversariantes-lista');
+        if (!lista) {
+            throw new Error('Elemento da lista não encontrado');
+        }
         
         if (aniversariantesMes.length === 0) {
             lista.innerHTML = `
@@ -781,44 +796,128 @@ async function carregarAniversariantes() {
         
         lista.innerHTML = '';
         
-        aniversariantesMes.forEach(aniversariante => {
+        aniversariantesMes.forEach((aniversariante, index) => {
+            if (!aniversariante.data || !aniversariante.nome) {
+                console.error('Dados de aniversariante inválidos:', aniversariante);
+                return;
+            }
+
             const [dia] = aniversariante.data.split('/');
             const isToday = parseInt(dia) === diaAtual;
             
             const aniversarianteElement = document.createElement('div');
-            aniversarianteElement.className = `aniversariante-item${isToday ? ' hoje' : ''}`;
+            aniversarianteElement.className = `aniversariante-item${isToday ? ' hoje aniversariante-brilho' : ''}`;
+            aniversarianteElement.style.animationDelay = `${index * 0.1}s`;
+            
+            // Adiciona elementos de decoração para aniversariantes do dia
+            if (isToday) {
+                for (let i = 0; i < 5; i++) {
+                    const sparkle = document.createElement('div');
+                    sparkle.className = 'sparkle';
+                    sparkle.style.left = `${Math.random() * 100}%`;
+                    sparkle.style.top = `${Math.random() * 100}%`;
+                    sparkle.style.animationDelay = `${Math.random() * 2}s`;
+                    aniversarianteElement.appendChild(sparkle);
+                }
+            }
+            
+            const mensagemParabens = isToday ? `
+                <div class="mensagem-parabens">
+                    <div class="parabens-header">
+                        <i class="bi bi-stars"></i>
+                        <span>🎉 Feliz Aniversário! 🎉</span>
+                        <i class="bi bi-stars"></i>
+                    </div>
+                    <p class="parabens-texto">
+                        Hoje é um dia muito especial! Que seja repleto de alegria, 
+                        sorrisos e momentos inesquecíveis. Desejamos a você um ano 
+                        cheio de conquistas e realizações! 🌟
+                    </p>
+                    <div class="parabens-icons">
+                        <i class="bi bi-balloon-heart-fill"></i>
+                        <i class="bi bi-cake2-fill"></i>
+                        <i class="bi bi-gift-fill"></i>
+                        <i class="bi bi-stars"></i>
+                        <i class="bi bi-emoji-laughing-fill"></i>
+                    </div>
+                </div>
+            ` : '';
             
             aniversarianteElement.innerHTML = `
-                <div class="aniversariante-icon">
-                    <i class="bi bi-gift${isToday ? '-fill' : ''}"></i>
-                </div>
-                <div class="aniversariante-info">
-                    <div class="aniversariante-data">
-                        <i class="bi bi-calendar-event"></i>
-                        ${aniversariante.data}
+                <div class="aniversariante-content">
+                    <div class="aniversariante-icon">
+                        <i class="bi bi-gift${isToday ? '-fill animated pulse' : ''}"></i>
                     </div>
-                    <div class="aniversariante-nome">${aniversariante.Servidores}</div>
+                    <div class="aniversariante-info">
+                        <div class="aniversariante-data">
+                            <i class="bi bi-calendar-event"></i>
+                            ${aniversariante.data}
+                        </div>
+                        <div class="aniversariante-nome aniversariante-nome-clicavel">
+                            ${aniversariante.nome}
+                            ${isToday ? '<span class="badge-hoje">🎂 Hoje!</span>' : ''}
+                        </div>
+                    </div>
+                    ${isToday ? `
+                        <div class="icone-festivo">🎈</div>
+                        <div class="icone-festivo">🎁</div>
+                        <div class="icone-festivo">🎊</div>
+                        <div class="icone-festivo">✨</div>
+                    ` : ''}
                 </div>
+                ${mensagemParabens}
             `;
             
+            // Adiciona evento de clique no nome
+            const nomeElement = aniversarianteElement.querySelector('.aniversariante-nome');
+            nomeElement.addEventListener('click', () => {
+                aniversarianteElement.classList.add('aniversariante-clicado');
+                showBirthdayMessage(aniversariante.nome, isToday);
+                setTimeout(() => {
+                    aniversarianteElement.classList.remove('aniversariante-clicado');
+                }, 2000);
+            });
+            
             if (isToday) {
-                showBirthdayModal(aniversariante.Servidores);
+                // Adiciona confetti ao passar o mouse
+                aniversarianteElement.addEventListener('mouseenter', () => {
+                    confetti({
+                        particleCount: 50,
+                        spread: 60,
+                        origin: { y: 0.8 },
+                        colors: ['#ff6b6b', '#ffd93d', '#6c5ce7', '#a8e6cf', '#ff8787']
+                    });
+                });
+                
+                // Dispara confetti imediatamente quando o card é criado
+                setTimeout(() => {
+                    confetti({
+                        particleCount: 30,
+                        spread: 50,
+                        origin: { y: 0.8 },
+                        colors: ['#ff6b6b', '#ffd93d', '#6c5ce7', '#a8e6cf', '#ff8787']
+                    });
+                }, index * 100 + 500);
             }
             
             lista.appendChild(aniversarianteElement);
-            
-            // Nenhum evento de clique necessário
         });
         
     } catch (error) {
         console.error('Erro ao carregar aniversariantes:', error);
         const lista = document.getElementById('aniversariantes-lista');
-        lista.innerHTML = `
-            <div class="sem-aniversariantes">
-                <i class="bi bi-emoji-frown"></i>
-                <p>Erro ao carregar aniversariantes</p>
-            </div>
-        `;
+        if (lista) {
+            lista.innerHTML = `
+                <div class="erro-aniversariantes">
+                    <i class="bi bi-emoji-frown"></i>
+                    <p>Erro ao carregar aniversariantes: ${error.message}</p>
+                    <button onclick="carregarAniversariantes()" class="retry-button">
+                        <i class="bi bi-arrow-clockwise"></i>
+                        Tentar novamente
+                    </button>
+                </div>
+            `;
+        }
     }
 }
 
@@ -961,4 +1060,67 @@ function checkEmptyFavorites() {
     } else {
         noFavoritesMessage.style.display = 'none';
     }
+}
+
+function showBirthdayMessage(nome, isToday) {
+    // Remove qualquer mensagem existente
+    const existingMessage = document.querySelector('.aniversario-mensagem');
+    if (existingMessage) {
+        existingMessage.remove();
+    }
+
+    // Cria o elemento da mensagem
+    const messageElement = document.createElement('div');
+    messageElement.className = 'aniversario-mensagem';
+    
+    // Define o conteúdo baseado se é aniversário hoje ou não
+    if (isToday) {
+        messageElement.innerHTML = `
+            <div class="aniversario-balao aniversario-balao-grande">
+                <div class="aniversario-balao-header">
+                    <i class="bi bi-stars"></i>
+                    <span>Feliz Aniversário!</span>
+                    <i class="bi bi-stars"></i>
+                </div>
+                <div class="aniversario-balao-nome">${nome}</div>
+                <div class="aniversario-balao-mensagem">
+                    Que seu dia seja repleto de alegria, sorrisos e momentos inesquecíveis! 
+                    Desejamos a você um ano cheio de conquistas e realizações!
+                </div>
+                <div class="aniversario-balao-icons">
+                    <i class="bi bi-balloon-heart-fill"></i>
+                    <i class="bi bi-cake2-fill"></i>
+                    <i class="bi bi-gift-fill"></i>
+                    <i class="bi bi-stars"></i>
+                </div>
+            </div>
+        `;
+        
+        // Dispara confetti para aniversariantes do dia
+        confetti({
+            particleCount: 150,
+            spread: 80,
+            origin: { y: 0.6 },
+            colors: ['#ff6b6b', '#ffd93d', '#6c5ce7', '#a8e6cf', '#ff8787']
+        });
+    } else {
+        messageElement.innerHTML = `
+            <div class="aniversario-balao">
+                <i class="bi bi-calendar-heart"></i>
+                <span>Aniversário de ${nome}!</span>
+                <i class="bi bi-balloon-heart"></i>
+            </div>
+        `;
+    }
+
+    // Adiciona a mensagem ao corpo do documento
+    document.body.appendChild(messageElement);
+
+    // Remove a mensagem após alguns segundos
+    setTimeout(() => {
+        messageElement.classList.add('fadeOut');
+        setTimeout(() => {
+            messageElement.remove();
+        }, 1000);
+    }, isToday ? 4000 : 2000);
 }
