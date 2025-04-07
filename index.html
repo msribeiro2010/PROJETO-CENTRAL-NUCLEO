@@ -4,10 +4,15 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
     <title>⚖️ NAPJe</title>
+    
+    <!-- Favicon moderno -->
     <link rel="icon" type="image/svg+xml" href="favicon.svg">
     <link rel="icon" type="image/png" href="favicon.png">
     <meta name="theme-color" content="#3182ce">
+  
+    <!-- Estilos principais -->
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="card-styles.css">
     <link rel="stylesheet" href="aniversario-styles.css">
@@ -15,16 +20,20 @@
     <link rel="stylesheet" href="modal-compact.css">
     <link rel="stylesheet" href="card-customizer.css">
     <link rel="stylesheet" href="favorites-customizer.css">
+  
+    <!-- Bibliotecas externas -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
-    <!-- Fonte Google -->
+  
+    <!-- Fontes Google -->
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
-    <!-- Favicon -->
-    <link rel="icon" href="logo.svg" type="image/x-icon">
-    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+  
+    <!-- Scripts deferidos -->
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js" defer></script>
     <script src="notes.js" defer></script>
     <script src="aniversario-click.js" defer></script>
-</head>
+  </head>
+  
 
 <body>
     <!-- Relógio e Data (Oculto) -->
@@ -47,7 +56,7 @@
             <div class="header-content">
                 <div class="header-top-row">
 
-                    <h1 class="app-title"><i class="bi bi-grid-3x3-gap-fill"></i> Atalhos - NAPJe</h1>
+                    <h1 class="app-title"><i class="bi bi-grid-3x3-gap-fill"></i> Atalhos NAPJe</h1>
                     <div class="dark-mode-toggle">
                         <button id="theme-toggle" class="theme-toggle" aria-label="Alternar tema" title="Alternar tema claro/escuro">
                             <i class="bi bi-moon-fill" id="theme-icon"></i>
@@ -152,11 +161,11 @@
                         <button onclick="window.open('https://accounts.google.com/v3/signin/identifier?continue=https%3A%2F%2Fmail.google.com%2Fmail%2F&ifkv=AcMMx-fJZqEhabl9HDEfW2R7SrGxQKLfCcVCZrbfUkrYapnrKOuYor_ptr3gP8dRypgOM6siUZ--&rip=1&sacu=1&service=mail&flowName=GlifWebSignIn&flowEntry=ServiceLogin&dsh=S-1241181511%3A1732804609017929&ddm=1', '_blank')">
                             <i class="bi bi-google"></i> Gmail</button>
                         <button onclick="window.open('https://drive.google.com/drive/my-drive?hl=pt-br', '_blank')">
-                            <i class="bi bi-google"></i> Google Drive</button>
+                            <i class="bi bi-google"></i> Drive</button>
                         <button onclick="window.open('https://docs.google.com/spreadsheets/u/0/?tgif=d', '_blank')">
-                            <i class="bi bi-google"></i> Google Planilhas</button>
+                            <i class="bi bi-google"></i> Sheets</button>
                         <button onclick="window.open('https://docs.google.com/document/u/0/?tgif=d', '_blank')">
-                            <i class="bi bi-google"></i> Google Documentos</button>
+                            <i class="bi bi-google"></i> Docs</button>
                     </div>
                 </div>
             </div>
@@ -166,7 +175,7 @@
                 <button class="accordion-header" aria-expanded="false" aria-controls="assyst-content">
                     <div class="header-content">
                         <i class="bi bi-headset"></i>
-                        ASSYST-PJe
+                        Assyst-PJe
                     </div>
                     <i class="                                        "></i>
                 </button>
@@ -174,17 +183,13 @@
                     <div class="button-container grid-layout">
                         <button onclick="window.open('https://centraldetic.trt15.jus.br/assystweb/application.do', '_blank')">
                             <i class="bi bi-headset"></i>
-                            ASSYSTWEB
+                            AssystWeb
                         </button>
                         <button onclick="window.open('https://assyst.trt15.jus.br/assystweb/application.do#eventsearch', '_blank')">
                             <i class="bi bi-search"></i>
-                            ASSYST-Consulta
+                            Consulta
                         </button>
-                        <button onclick="window.open('https://drive.google.com/file/d/1-6R-ZzSC3dSTGXh9NZLWeP25CY8MZ9DG/view?ths=true', '_blank')">
-                            <i class="bi bi-book"></i>
-                            KB-Conhecimento
-                        </button>
-                        <button onclick="window.open('https://assyst.trt15.jus.br/assystweb/application.do#eventsearch%2FEventSearchDelegatingDispatchAction.do?dispatch=loadQuery&showInMonitor=true&context=select&queryProfileForm.queryProfileId=996&queryProfileForm.columnProfileId=67', '_blank')">
+                           <button onclick="window.open('https://assyst.trt15.jus.br/assystweb/application.do#eventsearch%2FEventSearchDelegatingDispatchAction.do?dispatch=loadQuery&showInMonitor=true&context=select&queryProfileForm.queryProfileId=996&queryProfileForm.columnProfileId=67', '_blank')">
                             <i class="bi bi-ticket-detailed"></i>
                             Assyst's/Abertos
                         </button>
@@ -194,7 +199,11 @@
                         </button>
                         <button onclick="window.open('https://chatbot.trt15.jus.br/lhc/home.php', '_blank')">
                             <i class="bi bi-chat-dots"></i>
-                            ASSYSTNET
+                            AssytNet
+                        </button>
+                        <button onclick="window.open('https://drive.google.com/file/d/1-6R-ZzSC3dSTGXh9NZLWeP25CY8MZ9DG/view?ths=true', '_blank')">
+                            <i class="bi bi-book"></i>
+                            Banco de Conhecimento
                         </button>
                     </div>
                 </div>
@@ -205,10 +214,9 @@
                 <button class="accordion-header" aria-expanded="false" aria-controls="atendimento-externo-content">
                     <div class="header-content">
                         <i class="bi bi-headset"></i>
-                        (0800)/Tawk.to
+                        (0800) e Tawk.to
                     </div>
-                    <i class="                                        "></i>
-                </button>
+                         </button>
                 <div class="accordion-content" id="atendimento-externo-content">
                     <div class="button-container grid-layout">
                         <button onclick="window.open('https://script.google.com/a/macros/trt15.jus.br/s/AKfycbyZc3lywRgqNftHWdbBkCTYWEChxDk5OI6ijUD3XlsUBWgGulwzJIJpfdim-XRJ_NQ8/exec', '_blank')">
@@ -239,7 +247,7 @@
                 <div class="accordion-content" id="info-funcionais-content">
                     <div class="button-container grid-layout">
                         <button onclick="window.open('https://trt15.jus.br/intranet/sec-geral-judiciaria/relatorio-distribuicao', '_blank')">
-                            <i class="bi bi-bar-chart-line-fill"></i>Relatório de Distribuição</button>
+                            <i class="bi bi-bar-chart-line-fill"></i>Relatórios de Distribuição</button>
                         </div>
                 </div>
             </div>
@@ -251,8 +259,7 @@
                         <i class="bi bi-person-vcard"></i>
                         Contra-Cheque/SISAD...
                     </div>
-                    <i class="                                        "></i>
-                </button>
+                               </button>
                 <div class="accordion-content" id="info-holerite-content">
                     <div class="button-container grid-layout">
                         <button onclick="window.open('https://autoatendimento.trt15.jus.br/consultainformacoesfuncionais/contracheque', '_blank')">
@@ -286,12 +293,12 @@
                 <div class="accordion-content" id="trabalho-plantao-content">
                     <div class="button-container grid-layout">
                         <button onclick="window.open('https://autoatendimento.trt15.jus.br/autoatendimentoexterno/f/t/fazerrequerimentoman?chPlc=89', '_blank')">
-                            <i class="bi bi-calendar-check"></i>Averbação Trabalho/Plantão
+                            <i class="bi bi-calendar-check"></i>Averbação Trabalho no Plantão
                         </button>
                         <button onclick="window.open('https://autoatendimento.trt15.jus.br/autoatendimentoexterno/f/t/fazerrequerimentoman?chPlc=30411', '_blank')">
                             <i class="bi bi-calendar-plus"></i>Solicitar Folga
                         <button onclick="window.open('https://autoatendimento.trt15.jus.br/autoatendimentoexterno/f/t/feriasperiodoman?chPlc=157', '_blank')">
-                            <i class="bi bi-sun-fill"></i>Requerimento/Férias
+                            <i class="bi bi-sun-fill"></i>Requerimento de Férias
                         </button>
                     </div>
                 </div>
@@ -302,7 +309,7 @@
                 <button class="accordion-header" aria-expanded="false" aria-controls="pje-producao-content">
                     <div class="header-content">
                         <i class="bi bi-buildings"></i>
-                        PJe-Produção-2.13.6-JATOBA
+                        PJe-Produção 2.13.6-JATOBA
                     </div>
                     <i class="                                        "></i>
                 </button>
@@ -377,8 +384,8 @@
                     <div class="button-container grid-layout">
                        
                         <button onclick="window.open('https://aj.sigeo.jt.jus.br/aj/comum/menu_sistema.jsf?conversationId=62575', '_blank')">AJ-JT | SIGEO</button>
-                        <button onclick="window.open('https://www-hm.trt15.jus.br/mailhog/', '_blank')">MAILHOG</button>
-                        <button onclick="window.open('https://ecarta.trt15.jus.br/eCarta-web/admin/perfil.xhtml', '_blank')">E-CARTA</button>
+                        <button onclick="window.open('https://www-hm.trt15.jus.br/mailhog/', '_blank')">MailHog</button>
+                        <button onclick="window.open('https://ecarta.trt15.jus.br/eCarta-web/admin/perfil.xhtml', '_blank')">E-Carta</button>
                         <button onclick="window.open('https://sisdov.trt15.jus.br/main/home', '_blank')">SISDOV</button>
                         <button onclick="window.open('https://www.gov.br/esocial/pt-br', '_blank')">
                             <i class="bi bi-file-earmark-text"></i> eSocial</button>
@@ -475,15 +482,16 @@
                 </button>
                 <div class="accordion-content" id="planilha-presencial-content">
                     <div class="button-container grid-layout">
-                        <button onclick="window.open('https://docs.google.com/spreadsheets/d/1Mz5kOQEBC7qlDVP47i4RMWlZboLKLJWGSsRpgR7kMJk/edit?gid=1500644500#gid=1500644500', '_blank')">
-                            <i class="bi bi-file-earmark-spreadsheet"></i>
-                            Presencial/Remoto
-                        </button>
                         <button onclick="window.open('https://script.google.com/a/macros/trt15.jus.br/s/AKfycbycPVDIPuYTe7ds-l09iu_ghLRwzUOo6pnJVOX-A-uQUOFQyX1I8lbWxt517fadhzT4/exec', '_blank')">
                             <i class="bi bi-calendar-week"></i>
-                            App-Trabalho
+                            Aplicativo/Presencial/Plantão/2025
                         </button>
-                        <button class="btn-controle" onclick="window.open('https://msribeiro2010.github.io/controle-ferias/', '_blank')"><i class="bi bi-calendar-check"></i> Controle/Trabalho</button>
+                        <button onclick="window.open('https://docs.google.com/spreadsheets/d/1Mz5kOQEBC7qlDVP47i4RMWlZboLKLJWGSsRpgR7kMJk/edit?gid=1500644500#gid=1500644500', '_blank')">
+                            <i class="bi bi-file-earmark-spreadsheet"></i>
+                            Planilha/Núcleo/Plantão/Folga/Férias/2025
+                        </button>
+                <button class="btn-controle" onclick="window.open('https://msribeiro2010.github.io/controle-ferias/', '_blank')"><i class="bi bi-calendar-check">
+                        </i> Aplicativo/Controle/Trabalho</button>
 
                     </div>
                 </div>
@@ -533,5 +541,4 @@
     <script src="favorites-customizer.js"></script>
     <!-- Scripts de animação de aniversário removidos -->
 </body>
-
 </html>
