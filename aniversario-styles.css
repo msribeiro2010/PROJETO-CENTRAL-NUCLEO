@@ -184,6 +184,22 @@
     }
 }
 
+/* Animação para desaparecer a mensagem */
+.aniversario-mensagem.fadeOut {
+    animation: desaparecer 1s ease-out forwards;
+}
+
+@keyframes desaparecer {
+    from {
+        opacity: 1;
+        transform: translate(-50%, -50%);
+    }
+    to {
+        opacity: 0;
+        transform: translate(-50%, -70%);
+    }
+}
+
 @keyframes rotate {
     from { transform: rotate(0deg); }
     to { transform: rotate(360deg); }
@@ -267,6 +283,15 @@ body.dark .aniversario-balao-header i {
     position: relative;
 }
 
+/* Mostra a mensagem de parabéns quando o aniversariante é clicado */
+.aniversariante-clicado .mensagem-parabens {
+    display: block !important;
+    opacity: 1 !important;
+    visibility: visible !important;
+    transform: translateY(0) !important;
+    max-height: 1000px !important;
+}
+
 @keyframes pulse-click {
     0% { transform: scale(1); box-shadow: 0 0 0 0 rgba(255, 107, 107, 0.7); }
     50% { transform: scale(1.05); box-shadow: 0 0 0 10px rgba(255, 107, 107, 0); }
@@ -312,21 +337,27 @@ body.dark .aniversariante-nome-clicavel:hover {
 
 .aniversariante-item {
     background: var(--card-bg);
-    border-radius: 12px;
-    padding: 16px;
-    margin-bottom: 12px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+    border-radius: 16px;
+    padding: 15px;
+    margin-bottom: 15px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
     transition: all 0.3s ease;
     position: relative;
     overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    animation: fade-in-up 0.5s ease forwards;
     opacity: 0;
     transform: translateY(20px);
-    animation: slideIn 0.5s ease forwards;
 }
 
-.aniversariante-item:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+.aniversariante-item.hoje,
+.aniversariante-item.aniversariante-hoje {
+    display: flex !important;
+    opacity: 1 !important;
+    visibility: visible !important;
+    transform: translateY(0) !important;
+    z-index: 10 !important;
 }
 
 .aniversariante-content {
@@ -493,13 +524,23 @@ body.dark .aniversariante-item.hoje .aniversariante-icon {
 .mensagem-parabens {
     margin-top: 16px;
     padding: 20px;
-    background: linear-gradient(135deg, rgba(255, 107, 107, 0.1) 0%, rgba(255, 135, 135, 0.05) 100%);
+    background: linear-gradient(135deg, rgba(255, 107, 107, 0.9) 0%, rgba(255, 135, 135, 0.8) 100%);
     border-radius: 16px;
     text-align: center;
     animation: fadeIn 0.5s ease;
-    border: 2px solid rgba(var(--primary-rgb), 0.1);
+    border: 2px solid rgba(255, 215, 0, 0.5);
     position: relative;
     overflow: hidden;
+    display: none; /* Esconde por padrão */
+    transition: all 0.3s ease-in-out;
+    color: white;
+    box-shadow: 0 8px 24px rgba(255, 107, 107, 0.3);
+}
+
+.aniversariante-clicado .mensagem-parabens {
+    display: block !important; /* Mostra quando o aniversariante é clicado */
+    opacity: 1 !important;
+    visibility: visible !important;
 }
 
 .mensagem-parabens::before {
@@ -535,6 +576,7 @@ body.dark .aniversariante-item.hoje .aniversariante-icon {
 .parabens-header span {
     background: linear-gradient(135deg, #ff6b6b 0%, #ff8787 100%);
     -webkit-background-clip: text;
+    background-clip: text;
     -webkit-text-fill-color: transparent;
     font-weight: 700;
 }
@@ -648,6 +690,7 @@ body.dark .aniversariante-item.hoje .aniversariante-icon {
 .dark .parabens-header span {
     background: linear-gradient(135deg, #ff8787 0%, #ff6b6b 100%);
     -webkit-background-clip: text;
+    background-clip: text;
     -webkit-text-fill-color: transparent;
 }
 

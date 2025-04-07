@@ -747,25 +747,67 @@ function showToast(message) {
 // Função para carregar aniversariantes
 async function carregarAniversariantes() {
     try {
-        const response = await fetch('aniversariantes.json');
-        if (!response.ok) {
-            throw new Error('Falha ao carregar o arquivo de aniversariantes');
-        }
+        // Dados de fallback para caso o fetch falhe (importante para protocolo file://)
+        const dadosFallback = {
+            "Servidores": [
+                { "nome": "Marta", "data": "28/02" },
+                { "nome": "Caetano", "data": "26/03" },
+                { "nome": "Silvio", "data": "26/03" },
+                { "nome": "Natália", "data": "31/03" },
+                { "nome": "Wagner", "data": "07/04" },
+                { "nome": "Lloyd", "data": "12/04" },
+                { "nome": "Thaís", "data": "11/05" },
+                { "nome": "Nathany", "data": "23/09" },
+                { "nome": "Tatiana", "data": "28/09" },
+                { "nome": "Marcelo", "data": "29/12" }
+            ]
+        };
         
-        const data = await response.json();
-        if (!data || !Array.isArray(data.Servidores)) {
-            throw new Error('Formato de dados inválido');
+        let data;
+        
+        // Verifica se estamos usando o protocolo file://
+        if (window.location.protocol === 'file:') {
+            console.log('Usando protocolo file://, carregando dados embutidos');
+            data = dadosFallback;
+        } else {
+            // Tenta carregar do arquivo JSON
+            try {
+                const response = await fetch('aniversariantes.json');
+                if (!response.ok) {
+                    throw new Error('Falha ao carregar o arquivo de aniversariantes');
+                }
+                
+                data = await response.json();
+                if (!data || !Array.isArray(data.Servidores)) {
+                    throw new Error('Formato de dados inválido');
+                }
+            } catch (fetchError) {
+                console.warn('Erro ao carregar JSON, usando dados de fallback:', fetchError);
+                data = dadosFallback;
+            }
         }
 
         const hoje = new Date();
         const mesAtual = hoje.getMonth() + 1;
         const diaAtual = hoje.getDate();
         
+        console.log('Data atual:', diaAtual, '/', mesAtual, '/', hoje.getFullYear());
+        
         // Filtra aniversariantes do mês atual
+        console.log('Aniversariantes no arquivo:', data.Servidores);
+        
         const aniversariantesMes = data.Servidores.filter(aniversariante => {
             try {
                 const [dia, mes] = (aniversariante.data || '').split('/');
-                return parseInt(mes) === mesAtual;
+                const isThisMonth = parseInt(mes) === mesAtual;
+                if (isThisMonth) {
+                    console.log(`Aniversariante do mês atual: ${aniversariante.nome} - ${aniversariante.data}`);
+                    const isToday = parseInt(dia) === diaAtual;
+                    if (isToday) {
+                        console.log(`*** ANIVERSARIANTE DE HOJE: ${aniversariante.nome} - ${aniversariante.data} ***`);
+                    }
+                }
+                return isThisMonth;
             } catch (e) {
                 console.error('Erro ao processar data:', aniversariante);
                 return false;
@@ -806,11 +848,13 @@ async function carregarAniversariantes() {
             const isToday = parseInt(dia) === diaAtual;
             
             const aniversarianteElement = document.createElement('div');
-            aniversarianteElement.className = `aniversariante-item${isToday ? ' hoje aniversariante-brilho' : ''}`;
+            aniversarianteElement.className = `aniversariante-item${isToday ? ' hoje' : ''}`;
             aniversarianteElement.style.animationDelay = `${index * 0.1}s`;
             
-            // Adiciona elementos de decoração para aniversariantes do dia
+            // Adiciona elementos de decoração para aniversariantes do dia, mas sem o brilho automático
             if (isToday) {
+                // Adicionamos apenas os sparkles, mas sem a classe aniversariante-brilho
+                // para evitar a animação automática
                 for (let i = 0; i < 5; i++) {
                     const sparkle = document.createElement('div');
                     sparkle.className = 'sparkle';
@@ -871,11 +915,26 @@ async function carregarAniversariantes() {
             // Adiciona evento de clique no nome
             const nomeElement = aniversarianteElement.querySelector('.aniversariante-nome');
             nomeElement.addEventListener('click', () => {
+                // Remove a classe de todos os outros itens
+                document.querySelectorAll('.aniversariante-clicado').forEach(item => {
+                    if (item !== aniversarianteElement) {
+                        item.classList.remove('aniversariante-clicado');
+                    }
+                });
+                
+                // Adiciona a classe ao item clicado
                 aniversarianteElement.classList.add('aniversariante-clicado');
+                
+                // Garante que a mensagem de parabéns esteja visível
+                const mensagemParabens = aniversarianteElement.querySelector('.mensagem-parabens');
+                if (mensagemParabens) {
+                    mensagemParabens.style.display = 'block';
+                }
+                
+                // Mostra a mensagem de aniversário
                 showBirthdayMessage(aniversariante.nome, isToday);
-                setTimeout(() => {
-                    aniversarianteElement.classList.remove('aniversariante-clicado');
-                }, 2000);
+                
+                // Não remove automaticamente a classe - será removida ao clicar em outro lugar
             });
             
             if (isToday) {
@@ -901,23 +960,32 @@ async function carregarAniversariantes() {
             }
             
             lista.appendChild(aniversarianteElement);
+            
+            // Se for aniversariante de hoje, destaca automaticamente
+            if (isToday) {
+                console.log(`Destacando aniversariante de hoje: ${aniversariante.nome}`);
+                // Adiciona a classe para destacar o aniversariante de hoje
+                aniversarianteElement.classList.add('aniversariante-hoje');
+            }
         });
         
+        // Verifica se há aniversariantes hoje e exibe uma mensagem se houver
+        const aniversariantesHoje = aniversariantesMes.filter(aniv => {
+            const [dia] = aniv.data.split('/');
+            return parseInt(dia) === diaAtual;
+        });
+        
+        if (aniversariantesHoje.length > 0) {
+            console.log(`Hoje é aniversário de: ${aniversariantesHoje.map(a => a.nome).join(', ')}`);
+        }
     } catch (error) {
         console.error('Erro ao carregar aniversariantes:', error);
-        const lista = document.getElementById('aniversariantes-lista');
-        if (lista) {
-            lista.innerHTML = `
-                <div class="erro-aniversariantes">
-                    <i class="bi bi-emoji-frown"></i>
-                    <p>Erro ao carregar aniversariantes: ${error.message}</p>
-                    <button onclick="carregarAniversariantes()" class="retry-button">
-                        <i class="bi bi-arrow-clockwise"></i>
-                        Tentar novamente
-                    </button>
-                </div>
-            `;
-        }
+        document.getElementById('aniversariantes-lista').innerHTML = `
+            <div class="sem-aniversariantes">
+                <i class="bi bi-emoji-frown"></i>
+                <p>Erro ao carregar aniversariantes</p>
+            </div>
+        `;
     }
 }
 
