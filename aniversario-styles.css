@@ -349,6 +349,8 @@ body.dark .aniversariante-nome-clicavel:hover {
     animation: fade-in-up 0.5s ease forwards;
     opacity: 0;
     transform: translateY(20px);
+    width: 100%;
+    max-width: 100%;
 }
 
 .aniversariante-item.hoje,
@@ -535,6 +537,9 @@ body.dark .aniversariante-item.hoje .aniversariante-icon {
     transition: all 0.3s ease-in-out;
     color: white;
     box-shadow: 0 8px 24px rgba(255, 107, 107, 0.3);
+    width: 100%;
+    max-width: 100%;
+    box-sizing: border-box;
 }
 
 .aniversariante-clicado .mensagem-parabens {

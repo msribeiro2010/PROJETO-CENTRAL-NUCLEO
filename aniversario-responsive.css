@@ -1,0 +1,154 @@
+/* Media Queries para Responsividade dos Aniversariantes */
+
+/* Tablets (768px - 1024px) */
+@media screen and (max-width: 1024px) {
+    .aniversariantes {
+        padding: 15px;
+    }
+    
+    .aniversariante-item {
+        padding: 12px;
+        margin-bottom: 12px;
+    }
+    
+    .aniversariante-content {
+        flex-direction: row;
+        align-items: center;
+    }
+    
+    .aniversariante-icon {
+        width: 40px;
+        height: 40px;
+        min-width: 40px;
+    }
+    
+    .aniversariante-nome {
+        font-size: 1rem;
+    }
+    
+    .aniversariante-data {
+        font-size: 0.85rem;
+    }
+    
+    .badge-hoje {
+        padding: 4px 12px;
+        font-size: 0.8em;
+    }
+    
+    .mensagem-parabens {
+        padding: 15px;
+    }
+    
+    .parabens-header {
+        font-size: 1.2rem;
+    }
+    
+    .parabens-texto {
+        font-size: 0.9rem;
+        line-height: 1.4;
+    }
+}
+
+/* Celulares (até 767px) */
+@media screen and (max-width: 767px) {
+    .aniversariantes {
+        padding: 12px;
+    }
+    
+    .aniversariante-item {
+        padding: 10px;
+        margin-bottom: 10px;
+    }
+    
+    .aniversariante-content {
+        flex-direction: row;
+        flex-wrap: wrap;
+    }
+    
+    .aniversariante-icon {
+        width: 35px;
+        height: 35px;
+        min-width: 35px;
+        margin-right: 10px;
+    }
+    
+    .aniversariante-info {
+        flex: 1;
+        min-width: 0;
+    }
+    
+    .aniversariante-nome {
+        font-size: 0.95rem;
+        word-break: break-word;
+    }
+    
+    .aniversariante-data {
+        font-size: 0.8rem;
+    }
+    
+    .badge-hoje {
+        padding: 3px 8px;
+        font-size: 0.75em;
+        display: inline-block;
+        margin-top: 5px;
+    }
+    
+    .mensagem-parabens {
+        padding: 12px;
+        margin-top: 12px;
+    }
+    
+    .parabens-header {
+        font-size: 1.1rem;
+    }
+    
+    .parabens-texto {
+        font-size: 0.85rem;
+        line-height: 1.3;
+        padding: 8px;
+    }
+    
+    .parabens-icons {
+        font-size: 1rem;
+        margin-top: 8px;
+    }
+    
+    .parabens-icons i {
+        margin: 0 5px;
+    }
+}
+
+/* Ajustes para celulares muito pequenos */
+@media screen and (max-width: 375px) {
+    .aniversariante-nome {
+        font-size: 0.9rem;
+    }
+    
+    .aniversariante-data {
+        font-size: 0.75rem;
+    }
+    
+    .badge-hoje {
+        padding: 2px 6px;
+        font-size: 0.7em;
+    }
+    
+    .parabens-header {
+        font-size: 1rem;
+    }
+    
+    .parabens-texto {
+        font-size: 0.8rem;
+        line-height: 1.2;
+    }
+    
+    .aniversariante-icon {
+        width: 30px;
+        height: 30px;
+        min-width: 30px;
+    }
+    
+    .aniversariante-icon i {
+        font-size: 16px;
+    }
+}
