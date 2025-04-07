@@ -30,105 +30,20 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     };
     
-    // Função para criar animação de aniversário
+    // Função para celebrar o aniversário
     function celebrarAniversario(nome) {
         console.log('Celebrando aniversário de:', nome);
         
-        // Dispara confete
-        if (typeof confetti === 'function') {
-            // Configuração principal de confete
-            confetti({
-                particleCount: 200,
-                spread: 100,
-                origin: { y: 0.6 },
-                colors: ['#ffc107', '#ff6b6b', '#4dabf7', '#51cf66', '#be4bdb']
-            });
-            
-            // Foguetes laterais
-            setTimeout(() => {
-                // Foguete da esquerda
-                confetti({
-                    particleCount: 40,
-                    angle: 60,
-                    spread: 20,
-                    origin: { x: 0.2, y: 0.9 },
-                    colors: ['#ff6b6b', '#ffc107', '#fff'],
-                    gravity: 0.8,
-                    scalar: 1.5,
-                    ticks: 300
-                });
-                
-                // Foguete da direita
-                confetti({
-                    particleCount: 40,
-                    angle: 120,
-                    spread: 20,
-                    origin: { x: 0.8, y: 0.9 },
-                    colors: ['#4dabf7', '#51cf66', '#fff'],
-                    gravity: 0.8,
-                    scalar: 1.5,
-                    ticks: 300
-                });
-            }, 800);
-            
-            // Mais confetes após um tempo
-            setTimeout(() => {
-                confetti({
-                    particleCount: 100,
-                    spread: 120,
-                    origin: { y: 0.5 },
-                    startVelocity: 30
-                });
-            }, 1500);
-        } else {
-            console.error('Biblioteca confetti não encontrada!');
-        }
+        // Cria efeito de confete
+        confetti({
+            particleCount: 200,
+            spread: 100,
+            origin: { y: 0.6 },
+            colors: ['#ffc107', '#ff6b6b', '#4dabf7', '#51cf66', '#be4bdb']
+        });
         
-        // Cria mensagem de parabéns
-        const mensagem = document.createElement('div');
-        mensagem.className = 'aniversario-mensagem';
-        mensagem.innerHTML = `
-            <div class="aniversario-balao aniversario-balao-grande">
-                <div class="aniversario-balao-header">
-                    <i class="bi bi-stars"></i>
-                    <span>FELIZ ANIVERSÁRIO!</span>
-                    <i class="bi bi-stars"></i>
-                </div>
-                <div class="aniversario-balao-nome">${nome}</div>
-                <div class="aniversario-balao-icons">
-                    <i class="bi bi-balloon-heart-fill"></i>
-                    <i class="bi bi-gift-fill"></i>
-                    <i class="bi bi-cake2-fill"></i>
-                    <i class="bi bi-balloon-fill"></i>
-                </div>
-                <div class="aniversario-balao-mensagem">
-                    Desejamos um dia maravilhoso cheio de alegria e realizações!
-                </div>
-            </div>
-        `;
-        
-        // Adiciona a mensagem ao DOM
-        document.body.appendChild(mensagem);
-        
-        // Reproduz som de festa
-        try {
-            const audio = new Audio();
-            audio.src = 'https://assets.mixkit.co/active_storage/sfx/2005/2005-preview.mp3';
-            audio.volume = 0.5;
-            audio.play().catch(e => console.log('Erro ao reproduzir som:', e));
-        } catch (error) {
-            console.log('Erro ao criar elemento de áudio:', error);
-        }
-        
-        // Remove a mensagem após alguns segundos
-        setTimeout(() => {
-            mensagem.classList.add('fadeOut');
-            setTimeout(() => {
-                if (document.body.contains(mensagem)) {
-                    document.body.removeChild(mensagem);
-                }
-            }, 1000);
-        }, 8000);
+        // Não cria mais a mensagem externa nem reproduz som
+        // Apenas mostra o confete e destaca o card do aniversariante
     }
     
     // Função para adicionar eventos de clique aos nomes dos aniversariantes

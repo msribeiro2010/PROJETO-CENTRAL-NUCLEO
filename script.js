@@ -1131,75 +1131,23 @@ function checkEmptyFavorites() {
 }
 
 function showBirthdayMessage(nome, isToday) {
-    // Remove qualquer mensagem existente
-    const existingMessage = document.querySelector('.aniversario-mensagem');
-    if (existingMessage) {
-        existingMessage.remove();
-    }
-
-    // Cria o elemento da mensagem
-    const messageElement = document.createElement('div');
-    messageElement.className = 'aniversario-mensagem';
+    // Não cria mais mensagem externa nem reproduz som
+    // Apenas mostra o confete e destaca o card do aniversariante
     
-    // Define o conteúdo baseado se é aniversário hoje ou não
     if (isToday) {
-        messageElement.innerHTML = `
-            <div class="aniversario-balao aniversario-balao-grande">
-                <div class="aniversario-balao-header">
-                    <i class="bi bi-stars"></i>
-                    <span>✨ Feliz Aniversário! ✨</span>
-                    <i class="bi bi-stars"></i>
-                </div>
-                <div class="aniversario-balao-nome">${nome}</div>
-                <div class="aniversario-balao-mensagem">
-                    <p>Hoje é o seu dia especial, e queremos celebrar com você! 🎉</p>
-                    <p>Que este novo ano de vida seja repleto de:</p>
-                    <div class="mensagem-desejos">
-                        <span>💫 Momentos inesquecíveis</span>
-                        <span>💝 Muito amor e carinho</span>
-                        <span>🌟 Realizações extraordinárias</span>
-                        <span>😊 Sorrisos infinitos</span>
-                        <span>🎯 Conquistas brilhantes</span>
-                        <span>✨ Sonhos realizados</span>
-                    </div>
-                    <p class="mensagem-especial">Que cada minuto seja preenchido com alegria, cada hora com satisfação, e cada dia com sucesso!</p>
-                    <p class="assinatura">Com carinho, sua equipe NAPJe 💖</p>
-                </div>
-                <div class="aniversario-balao-icons">
-                    <i class="bi bi-balloon-heart-fill"></i>
-                    <i class="bi bi-cake2-fill"></i>
-                    <i class="bi bi-gift-fill"></i>
-                    <i class="bi bi-stars"></i>
-                    <i class="bi bi-emoji-laughing-fill"></i>
-                </div>
-            </div>
-        `;
-        
-        // Dispara confetti para aniversariantes do dia
+        // Apenas mostra o confete
         confetti({
-            particleCount: 150,
-            spread: 80,
+            particleCount: 100,
+            spread: 70,
             origin: { y: 0.6 },
-            colors: ['#ff6b6b', '#ffd93d', '#6c5ce7', '#a8e6cf', '#ff8787']
+            colors: ['#ffc107', '#ff6b6b', '#4dabf7', '#51cf66', '#be4bdb']
         });
+        
+        console.log('Mostrando mensagem de aniversário no card para:', nome);
     } else {
-        messageElement.innerHTML = `
-            <div class="aniversario-balao">
-                <i class="bi bi-calendar-heart"></i>
-                <span>Em breve será o aniversário de ${nome}! 🎂</span>
-                <i class="bi bi-balloon-heart"></i>
-            </div>
-        `;
+        // Para aniversariantes futuros, não faz nada especial
+        console.log('Aniversariante futuro:', nome);
     }
-
-    // Adiciona a mensagem ao corpo do documento
-    document.body.appendChild(messageElement);
-
-    // Remove a mensagem após alguns segundos
-    setTimeout(() => {
-        messageElement.classList.add('fadeOut');
-        setTimeout(() => {
-            messageElement.remove();
-        }, 1000);
-    }, isToday ? 6000 : 3000); // Aumentei o tempo para a mensagem de hoje
+    
+    // Não cria nem adiciona mensagem externa ao corpo do documento
 }
