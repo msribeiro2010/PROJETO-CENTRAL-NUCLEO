@@ -202,11 +202,15 @@ document.addEventListener('DOMContentLoaded', function() {
     // Atualizar o relógio a cada minuto
     setInterval(updateWindowsClock, 60000);
 
-    // Carrega os usuários do GitHub
-    loadGitHubUsers();
+    // Inicializa o sistema de usuários web
+    const { userId, username } = registerWebUser();
+    updateActiveUsers();
+    registerUserActivity();
     
-    // Atualiza a lista a cada 5 minutos
-    setInterval(loadGitHubUsers, 300000);
+    // Atualiza a lista de usuários web a cada 30 segundos
+    setInterval(updateActiveUsers, 30000);
+    
+    console.log(`Usuário web registrado: ${username} (${userId})`);
 });
 
 // Funções para o modal de feriados
@@ -1158,69 +1162,132 @@ function showBirthdayMessage(nome, isToday) {
     // Não cria nem adiciona mensagem externa ao corpo do documento
 }
 
-// Função para carregar usuários do GitHub
-async function loadGitHubUsers() {
-    const usersList = document.getElementById('github-users-list');
-    const repoOwner = 'msribeiro2010'; // Seu usuário do GitHub
-    const repoName = 'PROJETO-CENTRAL-NUCLEO'; // Nome do seu repositório
+// Função para gerar um ID único para o usuário
+function generateUserId() {
+    return 'user_' + Math.random().toString(36).substr(2, 9);
+}
 
-    try {
-        // Mostra loading
-        usersList.innerHTML = `
-            <div class="github-users-loading">
-                <i class="bi bi-arrow-repeat"></i>
-                <span>Carregando...</span>
-            </div>
-        `;
-
-        // Busca os stargazers do repositório
-        const response = await fetch(`https://api.github.com/repos/${repoOwner}/${repoName}/stargazers`);
-        const watchers = await fetch(`https://api.github.com/repos/${repoOwner}/${repoName}/subscribers`);
-        
-        if (!response.ok || !watchers.ok) {
-            throw new Error('Falha ao carregar dados do GitHub');
-        }
-
-        const stargazers = await response.json();
-        const subscribers = await watchers.json();
-
-        // Combina e remove duplicatas
-        const allUsers = [...new Set([...stargazers, ...subscribers])];
-
-        if (allUsers.length === 0) {
-            usersList.innerHTML = `
-                <div class="github-users-loading">
-                    <i class="bi bi-people"></i>
-                    <span>Nenhum usuário ainda</span>
-                </div>
-            `;
-            return;
-        }
-
-        // Limpa a lista
-        usersList.innerHTML = '';
-
-        // Adiciona cada usuário
-        allUsers.forEach(user => {
-            const userElement = document.createElement('a');
-            userElement.href = user.html_url;
-            userElement.target = '_blank';
-            userElement.rel = 'noopener';
-            userElement.className = 'github-user';
-            userElement.innerHTML = `
-                <img src="${user.avatar_url}" alt="${user.login}" />
-                <span>@${user.login}</span>
-            `;
-            usersList.appendChild(userElement);
-        });
-
-    } catch (error) {
-        console.error('Erro ao carregar usuários do GitHub:', error);
-        usersList.innerHTML = `
-            <div class="github-users-loading">
-                <i class="bi bi-exclamation-circle"></i>
-                <span>Erro ao carregar usuários</span>
-            </div>
-        `;
+// Função para registrar usuário web
+function registerWebUser() {
+    const userId = localStorage.getItem('userId') || generateUserId();
+    let username = localStorage.getItem('username');
+    
+    // Se não houver um nome de usuário salvo, usa o nome do usuário da máquina
+    if (!username) {
+        // Tenta obter o nome do usuário da máquina
+        fetch('/api/username')
+            .then(response => response.text())
+            .then(machineUsername => {
+                username = machineUsername || `Usuário ${userId.slice(5, 9)}`;
+                localStorage.setItem('username', username);
+                
+                // Registra o usuário na lista de usuários ativos
+                const activeUsers = JSON.parse(localStorage.getItem('activeUsers') || '{}');
+                activeUsers[userId] = {
+                    username: username,
+                    lastActive: Date.now()
+                };
+                localStorage.setItem('activeUsers', JSON.stringify(activeUsers));
+            })
+            .catch(error => {
+                console.error('Erro ao obter nome do usuário:', error);
+                username = `Usuário ${userId.slice(5, 9)}`;
+                localStorage.setItem('username', username);
+                
+                // Registra o usuário na lista de usuários ativos mesmo com erro
+                const activeUsers = JSON.parse(localStorage.getItem('activeUsers') || '{}');
+                activeUsers[userId] = {
+                    username: username,
+                    lastActive: Date.now()
+                };
+                localStorage.setItem('activeUsers', JSON.stringify(activeUsers));
+            });
+    } else {
+        // Se já tem username, apenas atualiza os usuários ativos
+        const activeUsers = JSON.parse(localStorage.getItem('activeUsers') || '{}');
+        activeUsers[userId] = {
+            username: username,
+            lastActive: Date.now()
+        };
+        localStorage.setItem('activeUsers', JSON.stringify(activeUsers));
     }
+    
+    localStorage.setItem('userId', userId);
+    localStorage.setItem('lastActive', Date.now());
+    
+    return { userId, username };
+}
+
+// Função para atualizar usuários ativos
+function updateActiveUsers() {
+    const now = Date.now();
+    const activeUsers = JSON.parse(localStorage.getItem('activeUsers') || '{}');
+    const currentUser = localStorage.getItem('userId');
+    
+    // Remove usuários inativos (5 minutos sem atividade)
+    Object.keys(activeUsers).forEach(userId => {
+        if (now - activeUsers[userId].lastActive > 5 * 60 * 1000) {
+            delete activeUsers[userId];
+        }
+    });
+    
+    // Atualiza timestamp do usuário atual
+    if (activeUsers[currentUser]) {
+        activeUsers[currentUser].lastActive = now;
+    }
+    
+    localStorage.setItem('activeUsers', JSON.stringify(activeUsers));
+    displayWebUsers(activeUsers);
+}
+
+// Função para exibir usuários web
+function displayWebUsers(activeUsers) {
+    const webUsersList = document.getElementById('web-users-list');
+    if (!webUsersList) return;
+    
+    const users = Object.entries(activeUsers);
+    
+    if (users.length === 0) {
+        webUsersList.innerHTML = `
+            <div class="web-users-loading">
+                <i class="bi bi-people"></i>
+                <span>Nenhum usuário online</span>
+            </div>
+        `;
+        return;
+    }
+    
+    webUsersList.innerHTML = '';
+    users.forEach(([userId, user]) => {
+        const userElement = document.createElement('div');
+        userElement.className = 'web-user';
+        userElement.innerHTML = `
+            <i class="bi bi-person-circle"></i>
+            <span>${user.username}</span>
+            <span class="user-status"></span>
+        `;
+        webUsersList.appendChild(userElement);
+    });
+    
+    // Atualiza o contador de usuários
+    const userCount = users.length;
+    const title = document.querySelector('.github-users-title span');
+    if (title) {
+        title.textContent = `Usuários Online (${userCount})`;
+    }
+}
+
+// Registra eventos de atividade do usuário
+function registerUserActivity() {
+    const events = ['mousemove', 'keydown', 'click', 'scroll'];
+    events.forEach(event => {
+        document.addEventListener(event, () => {
+            const activeUsers = JSON.parse(localStorage.getItem('activeUsers') || '{}');
+            const userId = localStorage.getItem('userId');
+            if (activeUsers[userId]) {
+                activeUsers[userId].lastActive = Date.now();
+                localStorage.setItem('activeUsers', JSON.stringify(activeUsers));
+            }
+        });
+    });
 }
