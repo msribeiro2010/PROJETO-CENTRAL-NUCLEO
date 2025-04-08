@@ -3435,4 +3435,56 @@ body.dark .github-users-loading {
     display: none;
 }
 
+/* Estilos para o grupo de consulta de documentos */
+.group.consulta-documentos {
+    background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+    border-left: 4px solid #4dabf7;
+}
+
+.group.consulta-documentos:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.group.consulta-documentos .accordion-header {
+    color: #495057;
+}
+
+.group.consulta-documentos .button-container button {
+    background: linear-gradient(135deg, #4dabf7 0%, #3b8ce7 100%);
+    color: white;
+    transition: all 0.3s ease;
+}
+
+.group.consulta-documentos .button-container button:hover {
+    background: linear-gradient(135deg, #3b8ce7 0%, #2b7bd7 100%);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(77, 171, 247, 0.2);
+}
+
+.group.consulta-documentos .button-container button i {
+    color: white;
+    font-size: 1.2em;
+    margin-right: 8px;
+}
+
+/* Dark mode styles */
+body.dark .group.consulta-documentos {
+    background: linear-gradient(135deg, #212529 0%, #343a40 100%);
+    border-left: 4px solid #4dabf7;
+}
+
+body.dark .group.consulta-documentos .accordion-header {
+    color: #e9ecef;
+}
+
+body.dark .group.consulta-documentos .button-container button {
+    background: linear-gradient(135deg, #3b8ce7 0%, #2b7bd7 100%);
+    color: white;
+}
+
+body.dark .group.consulta-documentos .button-container button:hover {
+    background: linear-gradient(135deg, #2b7bd7 0%, #1a6ac6 100%);
+}
+
 
