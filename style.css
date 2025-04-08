@@ -3312,4 +3312,109 @@ body.dark .favorite-item .remove-favorite:hover {
                 width 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
+/* Estilos para o componente de usuários do GitHub */
+.github-users {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    min-width: 200px;
+    padding: 8px;
+    border-radius: 8px;
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+}
+
+.github-users-title {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    color: #666666;
+    font-size: 0.9rem;
+}
+
+.github-users-title i {
+    font-size: 1rem;
+}
+
+.github-users-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+
+.github-user {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    padding: 4px 8px;
+    border-radius: 16px;
+    background: rgba(255, 255, 255, 0.2);
+    transition: all 0.2s ease;
+}
+
+.github-user:hover {
+    background: rgba(255, 255, 255, 0.3);
+    transform: translateY(-2px);
+}
+
+.github-user img {
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+}
+
+.github-user span {
+    font-size: 0.85rem;
+    color: #333333;
+}
+
+.github-users-loading {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    color: #666666;
+    font-size: 0.85rem;
+}
+
+.github-users-loading i {
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+}
+
+/* Dark mode */
+body.dark .github-users {
+    background: rgba(0, 0, 0, 0.2);
+}
+
+body.dark .github-users-title,
+body.dark .github-users-loading {
+    color: #a1a1a6;
+}
+
+body.dark .github-user {
+    background: rgba(255, 255, 255, 0.1);
+}
+
+body.dark .github-user:hover {
+    background: rgba(255, 255, 255, 0.15);
+}
+
+body.dark .github-user span {
+    color: #e1e1e1;
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+    .github-users {
+        width: 100%;
+        order: -1;
+        margin-bottom: 12px;
+    }
+}
+
 

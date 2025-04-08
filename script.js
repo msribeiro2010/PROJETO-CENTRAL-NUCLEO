@@ -201,6 +201,12 @@ document.addEventListener('DOMContentLoaded', function() {
     
     // Atualizar o relógio a cada minuto
     setInterval(updateWindowsClock, 60000);
+
+    // Carrega os usuários do GitHub
+    loadGitHubUsers();
+    
+    // Atualiza a lista a cada 5 minutos
+    setInterval(loadGitHubUsers, 300000);
 });
 
 // Funções para o modal de feriados
@@ -1150,4 +1156,71 @@ function showBirthdayMessage(nome, isToday) {
     }
     
     // Não cria nem adiciona mensagem externa ao corpo do documento
+}
+
+// Função para carregar usuários do GitHub
+async function loadGitHubUsers() {
+    const usersList = document.getElementById('github-users-list');
+    const repoOwner = 'msribeiro2010'; // Seu usuário do GitHub
+    const repoName = 'PROJETO-CENTRAL-NUCLEO'; // Nome do seu repositório
+
+    try {
+        // Mostra loading
+        usersList.innerHTML = `
+            <div class="github-users-loading">
+                <i class="bi bi-arrow-repeat"></i>
+                <span>Carregando...</span>
+            </div>
+        `;
+
+        // Busca os stargazers do repositório
+        const response = await fetch(`https://api.github.com/repos/${repoOwner}/${repoName}/stargazers`);
+        const watchers = await fetch(`https://api.github.com/repos/${repoOwner}/${repoName}/subscribers`);
+        
+        if (!response.ok || !watchers.ok) {
+            throw new Error('Falha ao carregar dados do GitHub');
+        }
+
+        const stargazers = await response.json();
+        const subscribers = await watchers.json();
+
+        // Combina e remove duplicatas
+        const allUsers = [...new Set([...stargazers, ...subscribers])];
+
+        if (allUsers.length === 0) {
+            usersList.innerHTML = `
+                <div class="github-users-loading">
+                    <i class="bi bi-people"></i>
+                    <span>Nenhum usuário ainda</span>
+                </div>
+            `;
+            return;
+        }
+
+        // Limpa a lista
+        usersList.innerHTML = '';
+
+        // Adiciona cada usuário
+        allUsers.forEach(user => {
+            const userElement = document.createElement('a');
+            userElement.href = user.html_url;
+            userElement.target = '_blank';
+            userElement.rel = 'noopener';
+            userElement.className = 'github-user';
+            userElement.innerHTML = `
+                <img src="${user.avatar_url}" alt="${user.login}" />
+                <span>@${user.login}</span>
+            `;
+            usersList.appendChild(userElement);
+        });
+
+    } catch (error) {
+        console.error('Erro ao carregar usuários do GitHub:', error);
+        usersList.innerHTML = `
+            <div class="github-users-loading">
+                <i class="bi bi-exclamation-circle"></i>
+                <span>Erro ao carregar usuários</span>
+            </div>
+        `;
+    }
 }
