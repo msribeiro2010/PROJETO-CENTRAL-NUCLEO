@@ -529,5 +529,33 @@
     <script src="card-customizer.js"></script>
     <script src="favorites-customizer.js"></script>
     <!-- Scripts de animação de aniversário removidos -->
+
+    <!-- Modal de Feriados -->
+    <div id="holiday-modal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3><i class="bi bi-calendar2-heart"></i> Feriados 2025</h3>
+                <button class="close-btn" onclick="closeHolidayModal()" title="Fechar modal">
+                    <i class="bi bi-x-lg"></i>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="next-holiday">
+                    <h4>Próximo Feriado:</h4>
+                    <div id="next-holiday"></div>
+                </div>
+                <div class="holiday-filters">
+                    <button class="month-btn" onclick="prevMonth()" title="Mês anterior">
+                        <i class="bi bi-chevron-left"></i>
+                    </button>
+                    <h4 id="current-month">Fevereiro 2025</h4>
+                    <button class="month-btn" onclick="nextMonth()" title="Próximo mês">
+                        <i class="bi bi-chevron-right"></i>
+                    </button>
+                </div>
+                <div id="holidays-list"></div>
+            </div>
+        </div>
+    </div>
 </body>
 </html>
