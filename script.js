@@ -211,6 +211,32 @@ document.addEventListener('DOMContentLoaded', function() {
     setInterval(updateActiveUsers, 30000);
     
     console.log(`Usuário web registrado: ${username} (${userId})`);
+
+    // Funcionalidade de toggle para o container de grupos
+    const toggleButton = document.getElementById('toggle-groups');
+    const groupsContainer = document.getElementById('groups-container');
+    
+    if (toggleButton && groupsContainer) {
+        toggleButton.addEventListener('click', function() {
+            const isExpanded = toggleButton.getAttribute('aria-expanded') === 'true';
+            
+            // Atualiza o estado do botão
+            toggleButton.setAttribute('aria-expanded', !isExpanded);
+            
+            // Toggle da classe no container
+            groupsContainer.classList.toggle('collapsed');
+            
+            // Salva o estado no localStorage
+            localStorage.setItem('groupsContainerState', !isExpanded ? 'expanded' : 'collapsed');
+        });
+        
+        // Restaura o estado salvo
+        const savedState = localStorage.getItem('groupsContainerState');
+        if (savedState === 'collapsed') {
+            toggleButton.setAttribute('aria-expanded', 'false');
+            groupsContainer.classList.add('collapsed');
+        }
+    }
 });
 
 // Funções para o modal de feriados
