@@ -3075,22 +3075,29 @@ body.dark .windows-clock .date i {
 
 /* Responsividade para telas menores */
 @media (max-width: 768px) {
-    .footer-content {
+    .footer-container {
         flex-direction: column;
-        gap: 12px;
+        gap: 15px;
         padding: 15px;
     }
     
     .windows-clock {
         width: 100%;
-        margin-bottom: 8px;
+        display: flex;
         justify-content: center;
+        margin-bottom: 10px;
     }
     
-    .footer-info, 
-    .footer-links {
+    .footer-info {
         width: 100%;
-        justify-content: center;
+        text-align: center;
+        margin-top: 10px;
+    }
+    
+    .footer .greeting-message {
+        width: 100%;
+        margin: 5px 0;
+        font-size: 1.3em;
     }
 }
 
@@ -3611,22 +3618,47 @@ body.dark .search-box:focus-within input::placeholder {
     font-family: 'Dancing Script', cursive; /* Manter o estilo cursivo */
 }
 
-/* Ajustar a ordem dos elementos no rodapé */
+/* Estilo do footer */
 .footer {
+    width: 100%;
+    background: rgba(250, 250, 250, 0.9);
+    border-top: 1px solid rgba(0, 0, 0, 0.05);
+    padding: 10px 0;
+    margin-top: 30px;
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    position: relative;
+    z-index: 10;
+    font-family: 'SF Pro Display', 'Helvetica Neue', 'Roboto', sans-serif;
+}
+
+.footer-container {
+    max-width: 1200px;
+    width: 100%;
+    margin: 0 auto;
+    padding: 0 20px;
     display: flex;
-    flex-direction: row;
-    align-items: center;
     justify-content: space-between;
+    align-items: center;
 }
 
 .footer .greeting-message {
-    order: 3; /* Colocar a mensagem de saudação na frente */
-    font-size: 1.5em; /* Fonte maior */
-    font-family: 'Dancing Script', cursive; /* Fonte mais bonita */
+    font-size: 1.5em;
+    font-family: 'Dancing Script', cursive;
+    text-align: center;
+    color: hwb(152deg 0% 58% / 70%);
+    flex: 1;
+    margin: 0 15px;
 }
 
 .footer .windows-clock {
-    order: 1; /* Colocar o relógio após a mensagem de saudação */
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.footer-info {
+    text-align: right;
 }
 
 /* Melhorar a fluidez ao clicar na estrela para favoritar um link */
