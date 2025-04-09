@@ -252,7 +252,7 @@ document.addEventListener('DOMContentLoaded', function() {
         greeting = 'Boa noite';
     }
 
-    greetingElement.textContent = `${greeting}, tenha um bom trabalho!`;
+    greetingElement.textContent = `${greeting}, tenha um ótimo trabalho!`;
 });
 
 // Funções para o modal de feriados

@@ -33,7 +33,7 @@ html, body {
 
 body {
     font-family: 'Roboto', sans-serif;
-    background: linear-gradient(135deg, #1a202c, #2d3748);
+    background: linear-gradient(135deg, #9ca2a8, #2d3748);
     transition: background 0.3s ease;
     background-size: 400% 400%;
     animation: gradientBG 15s ease infinite;
@@ -59,7 +59,7 @@ body.dark {
 }
 
 body.dark .container {
-    background: linear-gradient(135deg, #60a5fa, #3b82f6, #2563eb);
+    background: linear-gradient(135deg, #a4aab1, #646d7c, #2563eb);
     background-size: 400% 400%;
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25),
                 inset 0 0 80px rgba(0, 0, 0, 0.1),
@@ -72,7 +72,7 @@ body.dark .container {
 .container {
     max-width: 1400px;
     margin: 20px auto;
-    background: linear-gradient(135deg, #e5e9ee, #97bae4, #0f387b);
+    background: linear-gradient(135deg, #e5e9ee, #4f6580, #0f387b);
     background-size: 400% 400%;
     padding: 20px;
     border-radius: 16px;
@@ -3606,6 +3606,7 @@ body.dark .search-box:focus-within input::placeholder {
 
 /* Estilos para a mensagem de saudação no rodapé */
 .footer .greeting-message {
+    color: hsl(30deg 82% 43%);
     font-size: 1em; /* Tamanho de fonte padronizado */
     font-family: 'Dancing Script', cursive; /* Manter o estilo cursivo */
 }
@@ -3674,6 +3675,64 @@ body.dark .search-box:focus-within input::placeholder {
 
 .theme-toggle i {
     font-size: 1.5rem;
+}
+
+/* Ajustar as cores dos cards no modo escuro */
+body.dark .card {
+    background-color: #2d3748; /* Fundo escuro */
+    color: #ffffff; /* Texto branco */
+}
+
+body.dark .card:hover {
+    background-color: #4a5568; /* Fundo um pouco mais claro ao passar o mouse */
+}
+
+/* Ajustar as cores dos cards do grupo no modo escuro */
+body.dark .group {
+    background-color: #2d3748; /* Fundo escuro */
+    color: #ffffff; /* Texto claro */
+}
+
+body.dark .group:hover {
+    background-color: #4a5568; /* Fundo um pouco mais claro ao passar o mouse */
+}
+
+/* Melhorar o ícone de paletas de cores do grupo 'Meus Atalhos Favoritos' */
+.favorites-color-button i {
+    font-size: 1.5rem; /* Aumentar o tamanho do ícone */
+    color: #3182ce; /* Cor azul para destaque */
+    transition: transform 0.3s ease, color 0.3s ease;
+}
+
+.favorites-color-button:hover i {
+    transform: scale(1.2);
+    color: #63b3ed; /* Cor mais clara ao passar o mouse */
+}
+
+/* Adicionar mais cores escuras e sólidas ao ícone de paletas de cores */
+.favorites-color-button i {
+    background: linear-gradient(135deg, #2d3748, #1a202c); /* Fundo escuro com gradiente */
+    border-radius: 50%;
+    padding: 5px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+}
+
+.favorites-color-button:hover i {
+    background: linear-gradient(135deg, #4a5568, #2d3748); /* Fundo mais claro ao passar o mouse */
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
+}
+
+/* Adicionar mais opções de cores sólidas e padrões ao botão de cores */
+.favorites-color-button i {
+    background: linear-gradient(135deg, #2d3748, #1a202c), url('pattern.png'); /* Fundo escuro com padrão */
+    border-radius: 50%;
+    padding: 5px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+}
+
+.favorites-color-button:hover i {
+    background: linear-gradient(135deg, #4a5568, #2d3748), url('pattern-hover.png'); /* Fundo mais claro com padrão ao passar o mouse */
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
 }
 
 
