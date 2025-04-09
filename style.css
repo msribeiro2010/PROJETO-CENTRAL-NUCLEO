@@ -3735,4 +3735,36 @@ body.dark .group:hover {
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
 }
 
+/* Adicionar mais opções de cores sólidas e padrões ao componente de alteração de cores */
+.container-favorite .color-option {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    margin: 5px;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+}
+
+.container-favorite .color-option.solid-dark {
+    background-color: #2d3748; /* Cor sólida escura */
+}
+
+.container-favorite .color-option.solid-blue {
+    background-color: #3182ce; /* Cor sólida azul */
+}
+
+.container-favorite .color-option.pattern-stripes {
+    background-image: linear-gradient(45deg, #2d3748 25%, transparent 25%, transparent 50%, #2d3748 50%, #2d3748 75%, transparent 75%, transparent);
+    background-size: 10px 10px;
+}
+
+.container-favorite .color-option.pattern-dots {
+    background-image: radial-gradient(#3182ce 15%, transparent 16%);
+    background-size: 10px 10px;
+}
+
+.container-favorite .color-option:hover {
+    transform: scale(1.1);
+}
+
 
