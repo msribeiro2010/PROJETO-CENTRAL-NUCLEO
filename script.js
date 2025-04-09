@@ -237,6 +237,22 @@ document.addEventListener('DOMContentLoaded', function() {
             groupsContainer.classList.add('collapsed');
         }
     }
+
+    // Função para exibir uma saudação com base na hora do dia
+    const greetingElement = document.getElementById('greeting-message');
+    const now = new Date();
+    const hours = now.getHours();
+    let greeting = '';
+
+    if (hours >= 5 && hours < 12) {
+        greeting = 'Bom dia';
+    } else if (hours >= 12 && hours < 18) {
+        greeting = 'Boa tarde';
+    } else {
+        greeting = 'Boa noite';
+    }
+
+    greetingElement.textContent = `${greeting}, tenha um bom trabalho!`;
 });
 
 // Funções para o modal de feriados
