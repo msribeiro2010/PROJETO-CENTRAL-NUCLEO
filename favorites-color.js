@@ -133,4 +133,26 @@ document.addEventListener('DOMContentLoaded', function() {
 
         colorPalette.appendChild(colorOption);
     });
+
+    // Adicionar botão "Abrir Todos"
+    const openAllBtn = document.createElement('button');
+    openAllBtn.className = 'favorites-open-all-btn';
+    openAllBtn.innerHTML = '<i class="bi bi-box-arrow-up-right"></i>';
+    openAllBtn.title = 'Abrir todos os favoritos';
+    
+    // Adicionar evento de clique para abrir todos os favoritos
+    openAllBtn.addEventListener('click', function() {
+        const favoriteLinks = document.querySelectorAll('.favorite-item');
+        favoriteLinks.forEach(link => {
+            const url = link.getAttribute('href') || link.getAttribute('data-url');
+            if (url) {
+                window.open(url, '_blank');
+            }
+        });
+    });
+
+    // Adicionar o botão ao container de favoritos
+    if (favoritesContainer) {
+        favoritesContainer.appendChild(openAllBtn);
+    }
 });

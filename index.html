@@ -20,6 +20,7 @@
     <link rel="stylesheet" href="modal-compact.css">
     <link rel="stylesheet" href="card-customizer.css">
     <link rel="stylesheet" href="favorites-customizer.css">
+    <link rel="stylesheet" href="notes-styles.css">
   
     <!-- Bibliotecas externas -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
@@ -74,7 +75,9 @@
 
                     <!-- Seção de Favoritos -->
                     <div class="favorites-container">
-                        <h3><i class="bi bi-star-fill"></i> Meus Atalhos Favoritos</h3>
+                        <div class="favorites-header">
+                            <h3><i class="bi bi-star-fill"></i> Meus Atalhos Favoritos</h3>
+                        </div>
                         <div id="favorites-list" class="favorites-list">
                             <div class="no-favorites" id="no-favorites" style="display: none;">
                                 <i class="bi bi-star"></i>
@@ -501,54 +504,4 @@
                 </div>
             </div>
             
-            <div class="greeting-message" id="greeting-message"></div>
-            
-            <div class="footer-info">
-                <p>Central Núcleo - V.1.0.1</p>
-                <p><i class="bi bi-person-circle"></i> @msribeiro | 2025</p>
-            </div>
-        </div>
-    </footer>
-
-    <!-- Scripts -->
-    <script src="https://cdn.jsdelivr.net/npm/sortablejs@1.15.0/Sortable.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/Sortable/1.15.0/Sortable.min.js"></script>
-    <script src="script.js"></script>
-    <script src="button-customization.js"></script>
-    <script src="recuperar-apps-fixos.js"></script>
-    <script src="header-clock.js"></script>
-    <script src="add-default-favoritos.js"></script>
-    <script src="card-customizer.js"></script>
-    <script src="favorites-customizer.js"></script>
-    <!-- Scripts de animação de aniversário removidos -->
-
-    <!-- Modal de Feriados -->
-    <div id="holiday-modal" class="modal">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h3><i class="bi bi-calendar2-heart"></i> Feriados 2025</h3>
-                <button class="close-btn" onclick="closeHolidayModal()" title="Fechar modal">
-                    <i class="bi bi-x-lg"></i>
-                </button>
-            </div>
-            <div class="modal-body">
-                <div class="next-holiday">
-                    <h4>Próximo Feriado:</h4>
-                    <div id="next-holiday"></div>
-                </div>
-                <div class="holiday-filters">
-                    <button class="month-btn" onclick="prevMonth()" title="Mês anterior">
-                        <i class="bi bi-chevron-left"></i>
-                    </button>
-                    <h4 id="current-month">Fevereiro 2025</h4>
-                    <button class="month-btn" onclick="nextMonth()" title="Próximo mês">
-                        <i class="bi bi-chevron-right"></i>
-                    </button>
-                </div>
-                <div id="holidays-list"></div>
-            </div>
-        </div>
-    </div>
-</body>
-</html>
+            <div class="greeting-message" id="greeting-message"></div>                        <div class="footer-info">                <p>Central Núcleo - V.1.0.1</p>                <p><i class="bi bi-person-circle"></i> @msribeiro | 2025</p>            </div>        </div>    </footer>    <!-- Scripts -->    <script src="https://cdn.jsdelivr.net/npm/sortablejs@1.15.0/Sortable.min.js"></script>    <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>    <script src="https://cdnjs.cloudflare.com/ajax/libs/Sortable/1.15.0/Sortable.min.js"></script>    <script src="script.js"></script>    <script src="button-customization.js"></script>    <script src="recuperar-apps-fixos.js"></script>    <script src="header-clock.js"></script>    <script src="add-default-favoritos.js"></script>    <script src="card-customizer.js"></script>    <script src="favorites-customizer.js"></script>    <!-- Scripts de animação de aniversário removidos -->    <!-- Modal de Feriados -->    <div id="holiday-modal" class="modal">        <div class="modal-content">            <div class="modal-header">                <h3><i class="bi bi-calendar2-heart"></i> Feriados 2025</h3>                <button class="close-btn" onclick="closeHolidayModal()" title="Fechar modal">                    <i class="bi bi-x-lg"></i>                </button>            </div>            <div class="modal-body">                <div class="next-holiday">                    <h4>Próximo Feriado:</h4>                    <div id="next-holiday"></div>                </div>                <div class="holiday-filters">                    <button class="month-btn" onclick="prevMonth()" title="Mês anterior">                        <i class="bi bi-chevron-left"></i>                    </button>                    <h4 id="current-month">Fevereiro 2025</h4>                    <button class="month-btn" onclick="nextMonth()" title="Próximo mês">                        <i class="bi bi-chevron-right"></i>                    </button>                </div>                <div id="holidays-list"></div>            </div>        </div>    </div></body></html>

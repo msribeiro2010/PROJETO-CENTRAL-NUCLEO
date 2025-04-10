@@ -703,3 +703,7 @@ body.dark .close-btn {
 body.dark .close-btn:hover {
     color: #FC8181;
 }
+
+.open-all-btn {
+    display: none !important;
+}
