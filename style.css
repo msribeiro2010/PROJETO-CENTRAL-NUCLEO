@@ -3769,6 +3769,7 @@ body.dark .group:hover {
 
 /* Adicionar mais opções de cores sólidas e padrões ao componente de alteração de cores */
 .container-favorite .color-option {
+    display: inline-block;
     width: 30px;
     height: 30px;
     border-radius: 50%;
@@ -3785,6 +3786,14 @@ body.dark .group:hover {
     background-color: #3182ce; /* Cor sólida azul */
 }
 
+.container-favorite .color-option.solid-red {
+    background-color: #e53e3e; /* Cor sólida vermelha */
+}
+
+.container-favorite .color-option.solid-green {
+    background-color: #38a169; /* Cor sólida verde */
+}
+
 .container-favorite .color-option.pattern-stripes {
     background-image: linear-gradient(45deg, #2d3748 25%, transparent 25%, transparent 50%, #2d3748 50%, #2d3748 75%, transparent 75%, transparent);
     background-size: 10px 10px;
@@ -3792,6 +3801,11 @@ body.dark .group:hover {
 
 .container-favorite .color-option.pattern-dots {
     background-image: radial-gradient(#3182ce 15%, transparent 16%);
+    background-size: 10px 10px;
+}
+
+.container-favorite .color-option.pattern-checkered {
+    background-image: linear-gradient(45deg, #e53e3e 25%, transparent 25%, transparent 50%, #e53e3e 50%, #e53e3e 75%, transparent 75%, transparent);
     background-size: 10px 10px;
 }
 

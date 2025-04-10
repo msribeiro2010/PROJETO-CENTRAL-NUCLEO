@@ -97,4 +97,40 @@ document.addEventListener('DOMContentLoaded', function() {
             }, 500);
         });
     });
+
+    // Adicionar novas opções de cores sólidas e padrões
+    const newColorOptions = [
+        { className: 'solid-dark', color: '#2d3748', name: 'Escuro Sólido' },
+        { className: 'solid-blue', color: '#3182ce', name: 'Azul Sólido' },
+        { className: 'solid-red', color: '#e53e3e', name: 'Vermelho Sólido' },
+        { className: 'solid-green', color: '#38a169', name: 'Verde Sólido' },
+        { className: 'pattern-stripes', color: 'linear-gradient(45deg, #2d3748 25%, transparent 25%, transparent 50%, #2d3748 50%, #2d3748 75%, transparent 75%, transparent)', name: 'Listras' },
+        { className: 'pattern-dots', color: 'radial-gradient(#3182ce 15%, transparent 16%)', name: 'Pontos' },
+        { className: 'pattern-checkered', color: 'linear-gradient(45deg, #e53e3e 25%, transparent 25%, transparent 50%, #e53e3e 50%, #e53e3e 75%, transparent 75%, transparent)', name: 'Quadriculado' }
+    ];
+
+    newColorOptions.forEach(option => {
+        const colorOption = document.createElement('div');
+        colorOption.className = `color-option ${option.className}`;
+        colorOption.style.background = option.color;
+        colorOption.title = option.name;
+        colorOption.dataset.color = option.color;
+
+        // Adicionar evento de clique para aplicar a cor
+        colorOption.addEventListener('click', function(e) {
+            e.stopPropagation();
+            colorOptions.forEach(opt => opt.classList.remove('active'));
+            this.classList.add('active');
+            favoritesContainer.style.background = option.color;
+            updateBorderColor(option.color);
+            localStorage.setItem('favoritesContainerColor', option.color);
+            colorPalette.classList.remove('show');
+            favoritesContainer.classList.add('color-changed');
+            setTimeout(() => {
+                favoritesContainer.classList.remove('color-changed');
+            }, 500);
+        });
+
+        colorPalette.appendChild(colorOption);
+    });
 });
