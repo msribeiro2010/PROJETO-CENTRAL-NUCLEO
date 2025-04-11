@@ -707,3 +707,307 @@ body.dark .close-btn:hover {
 .open-all-btn {
     display: none !important;
 }
+
+/* Estilos do Calendário */
+.footer-calendar {
+    cursor: pointer;
+    transition: opacity 0.2s ease;
+}
+
+.footer-calendar:hover {
+    opacity: 0.8;
+}
+
+.calendar-popup {
+    display: none;
+    position: fixed;
+    bottom: 60px;
+    left: 20px;
+    width: 300px;
+    background: var(--background-color);
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    z-index: 1000;
+    padding: 16px;
+    font-family: var(--font-family);
+}
+
+/* Responsividade do calendário */
+@media (max-width: 768px) {
+    .calendar-popup {
+        left: 50%;
+        transform: translateX(-50%);
+        width: calc(100% - 40px);
+        max-width: 300px;
+        bottom: 80px;
+    }
+
+    .calendar-popup.show {
+        animation: slideInUp 0.2s ease;
+    }
+
+    @keyframes slideInUp {
+        from {
+            opacity: 0;
+            transform: translate(-50%, 20px);
+        }
+        to {
+            opacity: 1;
+            transform: translate(-50%, 0);
+        }
+    }
+
+    .calendar-year-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 480px) {
+    .calendar-popup {
+        padding: 12px;
+    }
+
+    .calendar-year-grid {
+        gap: 8px;
+    }
+
+    .month-card {
+        padding: 8px;
+    }
+
+    .calendar-day {
+        padding: 6px;
+        font-size: 0.9em;
+    }
+
+    .calendar-weekday {
+        font-size: 0.8em;
+    }
+}
+
+.calendar-popup.show {
+    display: block;
+    animation: slideInLeft 0.2s ease;
+}
+
+/* Nova animação para entrada pela esquerda */
+@keyframes slideInLeft {
+    from {
+        opacity: 0;
+        transform: translateX(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+/* Visualização Anual */
+.calendar-year-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 12px;
+    margin-top: 16px;
+}
+
+.month-card {
+    background: var(--card-background);
+    border: 1px solid var(--border-color);
+    border-radius: 6px;
+    padding: 12px;
+    text-align: center;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.month-card:hover {
+    background: var(--hover-color);
+    transform: translateY(-2px);
+}
+
+.month-card.current-month {
+    background: var(--primary-color);
+    color: white;
+}
+
+.month-name {
+    font-size: 0.9em;
+    font-weight: 500;
+}
+
+/* Cabeçalho do Calendário */
+.calendar-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 16px;
+}
+
+.calendar-title {
+    font-size: 1.1em;
+    font-weight: 600;
+    color: var(--text-color);
+}
+
+.calendar-nav {
+    display: flex;
+    gap: 8px;
+}
+
+.calendar-nav button {
+    background: none;
+    border: none;
+    padding: 4px 8px;
+    cursor: pointer;
+    color: var(--text-color);
+    opacity: 0.7;
+    transition: opacity 0.2s ease;
+    border-radius: 4px;
+}
+
+.calendar-nav button:hover {
+    opacity: 1;
+    background: var(--hover-color);
+}
+
+/* Visualização Mensal */
+.calendar-grid {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 4px;
+}
+
+.calendar-weekday {
+    text-align: center;
+    font-size: 0.9em;
+    font-weight: 600;
+    color: var(--text-color);
+    opacity: 0.7;
+    padding: 4px;
+}
+
+.calendar-day {
+    text-align: center;
+    padding: 8px;
+    cursor: pointer;
+    border-radius: 4px;
+    transition: all 0.2s ease;
+    color: var(--text-color);
+}
+
+.calendar-day:hover {
+    background-color: var(--hover-color);
+}
+
+.calendar-day.other-month {
+    opacity: 0.3;
+    cursor: default;
+}
+
+.calendar-day.today {
+    background-color: var(--primary-color);
+    color: white;
+    font-weight: 600;
+}
+
+.calendar-day.today:hover {
+    background-color: var(--primary-color);
+    opacity: 0.9;
+}
+
+/* Dark mode adjustments */
+[data-theme="dark"] .calendar-popup {
+    background-color: var(--background-color);
+    border-color: var(--border-color);
+}
+
+[data-theme="dark"] .calendar-day:hover {
+    background-color: var(--hover-color);
+}
+
+[data-theme="dark"] .month-card {
+    background-color: var(--card-background);
+    border-color: var(--border-color);
+}
+
+[data-theme="dark"] .month-card:hover {
+    background-color: var(--hover-color);
+}
+
+/* System Info Tooltip */
+#system-info-icon {
+    cursor: pointer;
+    transition: color 0.2s ease;
+}
+
+#system-info-icon:hover {
+    color: var(--primary-color);
+}
+
+.system-info-tooltip {
+    display: none;
+    position: absolute;
+    top: 60px;
+    left: 20px;
+    background: var(--background-color);
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    padding: 16px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    z-index: 1000;
+    min-width: 280px;
+    opacity: 0;
+    transform: translateY(-10px);
+    transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.system-info-tooltip.show {
+    display: block;
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.tooltip-content {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.tooltip-content p {
+    margin: 0;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    color: var(--text-color);
+    font-size: 0.9em;
+}
+
+.tooltip-content i {
+    color: var(--primary-color);
+    font-size: 1em;
+}
+
+/* Dark mode adjustments */
+[data-theme="dark"] .system-info-tooltip {
+    background-color: var(--background-color);
+    border-color: var(--border-color);
+}
+
+[data-theme="dark"] .tooltip-content p {
+    color: var(--text-color);
+}
+
+/* Responsividade do tooltip */
+@media (max-width: 768px) {
+    .system-info-tooltip {
+        left: 50%;
+        transform: translateX(-50%) translateY(-10px);
+        width: calc(100% - 40px);
+        max-width: 280px;
+    }
+
+    .system-info-tooltip.show {
+        transform: translateX(-50%) translateY(0);
+    }
+}

@@ -253,6 +253,35 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
     greetingElement.textContent = `${greeting}, tenha um ótimo trabalho!`;
+
+    // Sistema Info Tooltip
+    const systemIcon = document.getElementById('system-info-icon');
+    const tooltip = document.getElementById('system-info-tooltip');
+    let isTooltipVisible = false;
+
+    if (systemIcon && tooltip) {
+        systemIcon.addEventListener('click', function(e) {
+            e.stopPropagation();
+            isTooltipVisible = !isTooltipVisible;
+            tooltip.classList.toggle('show', isTooltipVisible);
+        });
+
+        // Fechar tooltip ao clicar fora
+        document.addEventListener('click', function(e) {
+            if (!tooltip.contains(e.target) && !systemIcon.contains(e.target)) {
+                isTooltipVisible = false;
+                tooltip.classList.remove('show');
+            }
+        });
+
+        // Fechar tooltip ao pressionar ESC
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape' && isTooltipVisible) {
+                isTooltipVisible = false;
+                tooltip.classList.remove('show');
+            }
+        });
+    }
 });
 
 // Funções para o modal de feriados
