@@ -311,7 +311,7 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
 
-    // Fecha todos os acordeões ao carregar
+    // Fecha todos os acordeons ao carregar
     document.querySelectorAll('.accordion-header').forEach(header => {
         header.setAttribute('aria-expanded', 'false');
         const content = header.nextElementSibling;

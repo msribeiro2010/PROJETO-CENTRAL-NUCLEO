@@ -17,8 +17,11 @@ function initializeCardCustomizer() {
             group.classList.add('group');
         }
         
-        // Adicionar classe padrão
-        group.classList.add('card-white');
+        // Só adiciona card-white se não houver cor salva
+        const savedColor = localStorage.getItem(`card-color-${group.id}`);
+        if (!savedColor) {
+            group.classList.add('card-white');
+        }
     });
 }
 
@@ -119,6 +122,7 @@ document.addEventListener('DOMContentLoaded', function() {
         const customizeBtn = document.createElement('div');
         customizeBtn.className = 'color-customize-btn';
         customizeBtn.title = 'Personalizar cor do card';
+        customizeBtn.innerHTML = '<i class="bi bi-palette"></i>';
         
         // Criar painel de cores
         const colorPanel = document.createElement('div');

@@ -87,12 +87,106 @@ const favoritesColors = [
         background: 'linear-gradient(135deg, rgba(250, 250, 250, 0.15), rgba(255, 255, 255, 0.1))',
         border: 'rgba(255, 255, 255, 0.2)',
         name: 'Branco Translúcido'
+    },
+    // Cores Sólidas adicionais
+    {
+        background: '#e11d48',
+        border: '#e11d48',
+        name: 'Vermelho Sólido'
+    },
+    {
+        background: '#facc15',
+        border: '#facc15',
+        name: 'Amarelo Sólido'
+    },
+    {
+        background: '#64748b',
+        border: '#64748b',
+        name: 'Cinza Sólido'
+    },
+    {
+        background: '#18181b',
+        border: '#18181b',
+        name: 'Preto Sólido'
+    },
+    {
+        background: '#1e293b',
+        border: '#1e293b',
+        name: 'Azul Escuro Sólido'
+    },
+    {
+        background: '#166534',
+        border: '#166534',
+        name: 'Verde Escuro Sólido'
+    },
+    // Estampas com ícones de TI e emojis
+    {
+        background: "url('data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\' width=\'40\' height=\'40\'><text x=\'0\' y=\'25\' font-size=\'24\'>💻</text></svg>') repeat #f1f5f9",
+        border: '#3b82f6',
+        name: 'TI 💻'
+    },
+    {
+        background: "url('data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\' width=\'40\' height=\'40\'><text x=\'0\' y=\'25\' font-size=\'24\'>🖥️</text></svg>') repeat #f1f5f9",
+        border: '#64748b',
+        name: 'Desktop 🖥️'
+    },
+    {
+        background: "url('data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\' width=\'40\' height=\'40\'><text x=\'0\' y=\'25\' font-size=\'24\'>🛡️</text></svg>') repeat #f1f5f9",
+        border: '#7f56d9',
+        name: 'Segurança 🛡️'
+    },
+    {
+        background: "url('data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\' width=\'40\' height=\'40\'><text x=\'0\' y=\'25\' font-size=\'24\'>⚡</text></svg>') repeat #f1f5f9",
+        border: '#facc15',
+        name: 'Energia ⚡'
+    },
+    {
+        background: "url('data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\' width=\'40\' height=\'40\'><text x=\'0\' y=\'25\' font-size=\'24\'>🌐</text></svg>') repeat #f1f5f9",
+        border: '#3b82f6',
+        name: 'Web 🌐'
+    },
+    {
+        background: "url('data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\' width=\'40\' height=\'40\'><text x=\'0\' y=\'25\' font-size=\'24\'>🔒</text></svg>') repeat #f1f5f9",
+        border: '#18181b',
+        name: 'Privacidade 🔒'
     }
 ];
 
-
-
-
+// Adicionar novas opções de cores animadas e com desenhos
+const animatedColors = [
+    {
+        background: 'linear-gradient(270deg, #ff6b6b, #fcd34d, #6c5ce7, #a8e6cf, #ff8787)',
+        border: '#ff6b6b',
+        name: 'Arco-íris',
+        animated: true
+    },
+    {
+        background: 'repeating-linear-gradient(45deg, #3182ce 0 10px, #fff 10px 20px)',
+        border: '#3182ce',
+        name: 'Listras'
+    },
+    {
+        background: 'radial-gradient(circle at 10px 10px, #3182ce 8px, transparent 8px), radial-gradient(circle at 30px 30px, #fcd34d 8px, transparent 8px)',
+        border: '#3182ce',
+        name: 'Bolinhas'
+    },
+    {
+        background: 'repeating-linear-gradient(135deg, #fcd34d 0 8px, #fff 8px 16px)',
+        border: '#fcd34d',
+        name: 'Listras Amarelas'
+    },
+    {
+        background: 'linear-gradient(135deg, #8b5cf6, #7c3aed, #fcd34d, #ff6b6b)',
+        border: '#8b5cf6',
+        name: 'Violeta Mix',
+        animated: true
+    },
+    {
+        background: 'repeating-linear-gradient(90deg, #fff 0 10px, #3182ce 10px 20px)',
+        border: '#3182ce',
+        name: 'Quadriculado'
+    }
+];
 
 // Inicializar o personalizador de favoritos
 function initFavoritesCustomizer() {
@@ -118,7 +212,7 @@ function initFavoritesCustomizer() {
         customizeBtn = document.createElement('button');
         customizeBtn.className = 'favorites-customize-btn';
         customizeBtn.title = 'Personalizar cor do container';
-        customizeBtn.innerHTML = '<i class="bi bi-palette"></i> <span class="favorites-customize-label">Cores</span>';
+        customizeBtn.innerHTML = '<i class="bi bi-palette"></i>';
         // Inserir o botão após o título dos favoritos
         const favoritesTitle = favoritesHeader.querySelector('h3');
         if (favoritesTitle) {
@@ -126,6 +220,10 @@ function initFavoritesCustomizer() {
         } else {
             favoritesHeader.appendChild(customizeBtn);
         }
+    } else {
+        // Se já existe, remova a legenda se houver
+        const label = customizeBtn.querySelector('.favorites-customize-label');
+        if (label) label.remove();
     }
     
     // Criar painel de cores se ainda não existir
@@ -198,6 +296,48 @@ function initFavoritesCustomizer() {
                 showFeedbackMessage(`Tema ${color.name} aplicado com sucesso!`);
             });
             
+            colorOptionsContainer.appendChild(colorWrapper);
+        });
+
+        // Adicione as novas opções ao painel
+        animatedColors.forEach(color => {
+            const colorOption = document.createElement('div');
+            colorOption.className = 'favorites-color-option';
+            colorOption.style.background = color.background;
+            colorOption.style.border = `2px solid ${color.border}`;
+            colorOption.title = color.name;
+            if (color.animated) {
+                colorOption.style.animation = 'animatedGradient 3s linear infinite';
+            }
+            // Adicionar nome da cor abaixo da opção
+            const colorName = document.createElement('span');
+            colorName.className = 'favorites-color-name';
+            colorName.textContent = color.name;
+            const colorWrapper = document.createElement('div');
+            colorWrapper.className = 'favorites-color-wrapper';
+            colorWrapper.appendChild(colorOption);
+            colorWrapper.appendChild(colorName);
+            colorWrapper.addEventListener('click', function() {
+                document.querySelectorAll('.favorites-color-wrapper').forEach(wrapper => {
+                    wrapper.classList.remove('selected');
+                });
+                this.classList.add('selected');
+                favoritesContainer.style.transition = 'background 0.3s ease, border-color 0.3s ease';
+                favoritesContainer.style.background = color.background;
+                favoritesContainer.style.borderColor = color.border;
+                localStorage.setItem('favoritesContainerColor', color.background);
+                localStorage.setItem('favoritesContainerBorder', color.border);
+                localStorage.setItem('favoritesContainerColorName', color.name);
+                setTimeout(() => {
+                    colorPanel.style.display = 'none';
+                    overlay.style.display = 'none';
+                }, 300);
+                favoritesContainer.classList.add('color-changed');
+                setTimeout(() => {
+                    favoritesContainer.classList.remove('color-changed');
+                }, 500);
+                showFeedbackMessage(`Tema ${color.name} aplicado com sucesso!`);
+            });
             colorOptionsContainer.appendChild(colorWrapper);
         });
     }
@@ -437,6 +577,14 @@ function addFeedbackStyles() {
         
         .feedback-message.show {
             opacity: 1;
+        }
+
+        @keyframes animatedGradient {
+            0% { background-position: 0% 50%; }
+            100% { background-position: 100% 50%; }
+        }
+        .favorites-color-option[style*="animatedGradient"] {
+            background-size: 400% 400%;
         }
     `;
     document.head.appendChild(style);
