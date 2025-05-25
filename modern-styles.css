@@ -221,27 +221,46 @@ body {
 }
 
 /* Footer fixo quando grupos estão colapsados */
-.groups-container.collapsed ~ .footer {
+.groups-container.collapsed + .footer {
   position: fixed;
   left: 0;
   right: 0;
-  bottom: 0;
+  bottom: 24px;
   margin-top: 0;
   z-index: 100;
+  background: transparent;
 }
 
 .footer-container {
+  background: var(--primary);
+  color: #fff;
+  border-radius: 0 0 var(--border-radius) var(--border-radius);
+  box-shadow: var(--card-shadow);
+  max-width: 1100px;
+  margin: 0 auto 0 auto;
+  padding: 18px 18px 12px 18px;
+  border-top: 1.5px solid #e2e8f0;
   display: flex;
   flex-wrap: wrap;
   align-items: center;
   justify-content: space-between;
-  max-width: 1100px;
-  margin: 0 auto;
-  padding: 0 18px;
+}
+.footer-container .footer-info,
+.footer-container .windows-clock,
+.footer-container .greeting-message {
+  color: #fff;
 }
 .footer-info, .windows-clock, .greeting-message {
   font-size: 1rem;
   color: var(--text-muted);
+}
+
+.footer-container,
+.footer-container *,
+.footer-container i,
+.footer-container a {
+  color: #fff !important;
+  fill: #fff !important;
 }
 
 /* Responsividade */
