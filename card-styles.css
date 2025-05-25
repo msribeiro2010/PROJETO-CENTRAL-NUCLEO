@@ -1169,3 +1169,60 @@ body.dark .close-btn:hover {
         font-size: 0.85em;
     }
 }
+
+:root {
+  --background-color: #fff;
+  --text-color: #222;
+  --card-background: #f8fafc;
+  --hover-color: #edf2f7;
+  --primary-color: #3182ce;
+  --primary-color-dark: #225ea8;
+  --border-color: #e2e8f0;
+  --text-secondary: #6b7280;
+}
+[data-theme="dark"] {
+  --background-color: #23283a;
+  --text-color: #f3f6fa;
+  --card-background: #181c24;
+  --hover-color: #28304a;
+  --primary-color: #7f56d9;
+  --primary-color-dark: #5b3ea6;
+  --border-color: #334155;
+  --text-secondary: #b0b6c3;
+}
+
+.calendar-popup {
+  background: var(--background-color);
+  border: 1px solid var(--border-color);
+  color: var(--text-color);
+}
+.calendar-header,
+.calendar-title,
+.calendar-weekday {
+  background: var(--background-color);
+  color: var(--text-color);
+}
+.calendar-day {
+  background: var(--card-background);
+  color: var(--text-color);
+  border: 1px solid transparent;
+}
+.calendar-day.today {
+  background: var(--primary-color);
+  color: #fff;
+  font-weight: 700;
+}
+.calendar-day:hover {
+  background: var(--hover-color);
+  color: var(--text-color);
+}
+.month-card {
+  background: var(--card-background);
+  color: var(--text-color);
+  border: 1px solid var(--border-color);
+}
+.month-card.current-month {
+  background: var(--primary-color);
+  color: #fff;
+  border-color: var(--primary-color);
+}
