@@ -294,24 +294,17 @@ document.addEventListener('DOMContentLoaded', function() {
 
         let count = parseInt(localStorage.getItem('btnClick_' + btnId)) || 0;
         counterSpan.textContent = count > 0 ? count : '';
-        if (count > 0) {
-            counterSpan.style.display = 'flex';
-        } else {
-            counterSpan.style.display = 'none';
-        }
+        counterSpan.style.display = count > 0 ? 'flex' : 'none';
         btn.style.position = 'relative';
         if (btn.lastElementChild !== counterSpan) {
             btn.appendChild(counterSpan);
         }
         btn.addEventListener('click', function(e) {
+            count = parseInt(localStorage.getItem('btnClick_' + btnId)) || 0;
             count++;
             localStorage.setItem('btnClick_' + btnId, count);
             counterSpan.textContent = count;
-            if (count > 0) {
-                counterSpan.style.display = 'flex';
-            } else {
-                counterSpan.style.display = 'none';
-            }
+            counterSpan.style.display = count > 0 ? 'flex' : 'none';
             if (count > 3 && !isFavorite(btn)) {
                 toggleFavorite(btn);
             }

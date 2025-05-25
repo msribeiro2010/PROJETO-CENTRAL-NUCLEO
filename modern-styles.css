@@ -307,17 +307,17 @@ body {
   position: absolute !important;
   top: 6px;
   left: 6px;
-  background: #e53e3e;
-  color: #fff;
-  font-size: 0.95em;
-  font-weight: bold;
+  background: #e2e8f0; /* cinza claro */
+  color: #444;
+  font-size: 0.85em;
+  font-weight: 400;
   border-radius: 50%;
-  border: 2px solid #fff;
-  min-width: 22px;
-  min-height: 22px;
-  height: 22px;
-  width: 22px;
-  box-shadow: 0 2px 8px rgba(229,62,62,0.13);
+  border: none;
+  min-width: 20px;
+  min-height: 20px;
+  height: 20px;
+  width: 20px;
+  box-shadow: none;
   text-align: center;
   pointer-events: none;
   z-index: 2;
@@ -326,9 +326,9 @@ body {
 .favorites-list .click-counter {
   left: 6px;
   top: 6px;
-  min-width: 26px;
-  min-height: 26px;
-  height: 26px;
-  width: 26px;
-  font-size: 1em;
+  min-width: 20px;
+  min-height: 20px;
+  height: 20px;
+  width: 20px;
+  font-size: 0.85em;
 } 
