@@ -961,8 +961,9 @@ body.dark .close-btn:hover {
     border-bottom: 2px solid var(--border-color);
     margin-bottom: 4px;
     white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
+    min-width: 32px;
+    overflow: visible;
+    text-overflow: unset;
 }
 
 .calendar-day {
