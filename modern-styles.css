@@ -409,4 +409,109 @@ body {
   height: 20px;
   width: 20px;
   font-size: 0.85em;
+}
+
+/* ===== MODAL SOBRE (system-info-tooltip) ===== */
+.system-info-tooltip {
+  background: linear-gradient(120deg, rgba(49,130,206,0.10) 0%, rgba(255,255,255,0.85) 100%);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border-radius: 18px;
+  box-shadow: 0 8px 32px 0 rgba(49,130,206,0.18);
+  color: #1e293b;
+  padding: 32px 28px 24px 28px;
+  max-width: 420px;
+  margin: 0 auto;
+  border: 1.5px solid #e2e8f0;
+  animation: modalFadeIn 0.5s cubic-bezier(.4,0,.2,1);
+  font-family: 'Poppins', 'Roboto', Arial, sans-serif;
+}
+@keyframes modalFadeIn {
+  from { opacity: 0; transform: translateY(30px) scale(0.98); }
+  to { opacity: 1; transform: translateY(0) scale(1); }
+}
+.system-info-tooltip .tooltip-header {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin-bottom: 18px;
+}
+.system-info-tooltip .tooltip-header i {
+  font-size: 2.2rem;
+  color: #3182ce;
+  filter: drop-shadow(0 2px 8px rgba(49,130,206,0.10));
+}
+.system-info-tooltip .tooltip-title {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: #3182ce;
+  letter-spacing: 0.5px;
+}
+.system-info-tooltip .tooltip-version {
+  font-size: 0.98rem;
+  color: #64748b;
+  font-weight: 500;
+}
+.system-info-tooltip .tooltip-section {
+  margin-bottom: 18px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid #e2e8f0;
+}
+.system-info-tooltip .tooltip-section:last-child {
+  border-bottom: none;
+}
+.system-info-tooltip .tooltip-section-title {
+  font-size: 1.08rem;
+  font-weight: 600;
+  color: #3182ce;
+  margin-bottom: 6px;
+  display: flex;
+  align-items: center;
+  gap: 7px;
+}
+.system-info-tooltip .tooltip-section-title i {
+  color: #3182ce;
+  font-size: 1.1rem;
+}
+.system-info-tooltip .tooltip-dev-info span,
+.system-info-tooltip .tooltip-tech-list li {
+  color: #1e293b;
+  font-size: 1rem;
+  font-weight: 500;
+}
+.system-info-tooltip .tooltip-tech-list {
+  padding-left: 18px;
+  margin: 0;
+}
+.system-info-tooltip .tooltip-footer {
+  margin-top: 18px;
+  font-size: 0.98rem;
+  color: #64748b;
+  text-align: right;
+}
+@media (max-width: 600px) {
+  .system-info-tooltip {
+    padding: 18px 6px 14px 6px;
+    max-width: 98vw;
+  }
+}
+/* Modo escuro para o modal Sobre */
+body.dark .system-info-tooltip {
+  background: linear-gradient(120deg, rgba(30,41,59,0.92) 0%, rgba(49,130,206,0.18) 100%);
+  color: #f3f6fa;
+  border: 1.5px solid #334155;
+}
+body.dark .system-info-tooltip .tooltip-header i,
+body.dark .system-info-tooltip .tooltip-title,
+body.dark .system-info-tooltip .tooltip-section-title,
+body.dark .system-info-tooltip .tooltip-section-title i {
+  color: #60a5fa;
+}
+body.dark .system-info-tooltip .tooltip-dev-info span,
+body.dark .system-info-tooltip .tooltip-tech-list li {
+  color: #f3f6fa;
+}
+body.dark .system-info-tooltip .tooltip-version,
+body.dark .system-info-tooltip .tooltip-footer {
+  color: #b0b6c3;
 } 
