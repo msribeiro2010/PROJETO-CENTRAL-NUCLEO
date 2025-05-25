@@ -282,6 +282,41 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         });
     }
+
+    // Contador de cliques para botões de atalho
+    const buttons = document.querySelectorAll('.button-container button');
+
+    buttons.forEach((btn, idx) => {
+        let btnId = btn.textContent.trim() + '_' + idx;
+        btnId = btnId.replace(/\s+/g, '_').replace(/[^\w\d_]/g, '');
+        const counterSpan = btn.querySelector('.click-counter');
+        if (!counterSpan) return;
+
+        let count = parseInt(localStorage.getItem('btnClick_' + btnId)) || 0;
+        counterSpan.textContent = count > 0 ? count : '';
+        if (count > 0) {
+            counterSpan.style.display = 'flex';
+        } else {
+            counterSpan.style.display = 'none';
+        }
+        btn.style.position = 'relative';
+        if (btn.lastElementChild !== counterSpan) {
+            btn.appendChild(counterSpan);
+        }
+        btn.addEventListener('click', function(e) {
+            count++;
+            localStorage.setItem('btnClick_' + btnId, count);
+            counterSpan.textContent = count;
+            if (count > 0) {
+                counterSpan.style.display = 'flex';
+            } else {
+                counterSpan.style.display = 'none';
+            }
+            if (count > 3 && !isFavorite(btn)) {
+                toggleFavorite(btn);
+            }
+        });
+    });
 });
 
 // Funções para o modal de feriados
@@ -599,6 +634,17 @@ function renderFavorites() {
                     if (index !== -1) {
                         favorites.splice(index, 1);
                         localStorage.setItem('favorites', JSON.stringify(favorites));
+                        // Zera o contador de cliques do botão correspondente
+                        const btnIdx = Array.from(document.querySelectorAll('.button-container button')).findIndex(btn => btn.textContent.trim() === favorite);
+                        if (btnIdx !== -1) {
+                            let btnId = favorite + '_' + btnIdx;
+                            btnId = btnId.replace(/\s+/g, '_').replace(/[^\w\d_]/g, '');
+                            localStorage.removeItem('btnClick_' + btnId);
+                            // Atualiza o badge se existir
+                            const btn = document.querySelectorAll('.button-container button')[btnIdx];
+                            const counterSpan = btn?.querySelector('.click-counter');
+                            if (counterSpan) counterSpan.textContent = '';
+                        }
                         renderFavorites();
                         showToast('Removido dos favoritos');
                     }
