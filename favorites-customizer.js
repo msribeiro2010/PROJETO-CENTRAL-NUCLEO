@@ -149,6 +149,31 @@ const favoritesColors = [
         background: "url('data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\' width=\'40\' height=\'40\'><text x=\'0\' y=\'25\' font-size=\'24\'>🔒</text></svg>') repeat #f1f5f9",
         border: '#18181b',
         name: 'Privacidade 🔒'
+    },
+    {
+        background: "url('data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\' width=\'40\' height=\'40\'><text x=\'0\' y=\'28\' font-size=\'32\'>🐭</text></svg>') repeat #f1f5f9",
+        border: '#64748b',
+        name: 'Rato Correndo',
+        animated: true
+    },
+    {
+        background: "url('data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\' width=\'40\' height=\'40\'><text x=\'0\' y=\'28\' font-size=\'32\'>🐱</text></svg>') repeat #f1f5f9",
+        border: '#e11d48',
+        name: 'Gato Curioso',
+        animated: true
+    },
+    {
+        background: "url('data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\' width=\'40\' height=\'40\'><text x=\'0\' y=\'28\' font-size=\'32\'>👁️</text></svg>') repeat #f1f5f9",
+        border: '#3b82f6',
+        name: 'Olho Observador',
+        animated: true
+    },
+    {
+        background: '#111',
+        border: '#39ff14',
+        name: 'Matrix',
+        animated: true,
+        matrix: true
     }
 ];
 
@@ -210,9 +235,22 @@ function initFavoritesCustomizer() {
     let customizeBtn = document.querySelector('.favorites-customize-btn');
     if (!customizeBtn) {
         customizeBtn = document.createElement('button');
-        customizeBtn.className = 'favorites-customize-btn';
+        customizeBtn.className = 'favorites-customize-btn favorites-customize-btn-compact';
         customizeBtn.title = 'Personalizar cor do container';
         customizeBtn.innerHTML = '<i class="bi bi-palette"></i>';
+        customizeBtn.style.width = '26px';
+        customizeBtn.style.height = '26px';
+        customizeBtn.style.padding = '0';
+        customizeBtn.style.border = '1px solid #e2e8f0';
+        customizeBtn.style.background = '#fff';
+        customizeBtn.style.display = 'flex';
+        customizeBtn.style.alignItems = 'center';
+        customizeBtn.style.justifyContent = 'center';
+        customizeBtn.style.borderRadius = '50%';
+        customizeBtn.style.boxShadow = 'none';
+        customizeBtn.style.transition = 'border 0.2s, background 0.2s';
+        customizeBtn.querySelector('i').style.fontSize = '1.1rem';
+        customizeBtn.querySelector('i').style.color = '#3182ce';
         // Inserir o botão após o título dos favoritos
         const favoritesTitle = favoritesHeader.querySelector('h3');
         if (favoritesTitle) {
@@ -224,6 +262,22 @@ function initFavoritesCustomizer() {
         // Se já existe, remova a legenda se houver
         const label = customizeBtn.querySelector('.favorites-customize-label');
         if (label) label.remove();
+        customizeBtn.classList.add('favorites-customize-btn-compact');
+        customizeBtn.style.width = '26px';
+        customizeBtn.style.height = '26px';
+        customizeBtn.style.padding = '0';
+        customizeBtn.style.border = '1px solid #e2e8f0';
+        customizeBtn.style.background = '#fff';
+        customizeBtn.style.display = 'flex';
+        customizeBtn.style.alignItems = 'center';
+        customizeBtn.style.justifyContent = 'center';
+        customizeBtn.style.borderRadius = '50%';
+        customizeBtn.style.boxShadow = 'none';
+        customizeBtn.style.transition = 'border 0.2s, background 0.2s';
+        if (customizeBtn.querySelector('i')) {
+            customizeBtn.querySelector('i').style.fontSize = '1.1rem';
+            customizeBtn.querySelector('i').style.color = '#3182ce';
+        }
     }
     
     // Criar painel de cores se ainda não existir
@@ -273,8 +327,17 @@ function initFavoritesCustomizer() {
                 
                 // Aplicar a cor ao container com transição suave
                 favoritesContainer.style.transition = 'background 0.3s ease, border-color 0.3s ease';
-                favoritesContainer.style.background = color.background;
-                favoritesContainer.style.borderColor = color.border;
+                // Garante que o background inline prevaleça
+                favoritesContainer.style.setProperty('background', color.background, 'important');
+                favoritesContainer.style.setProperty('border-color', color.border, 'important');
+                
+                // Se o tema for muito claro/transparente e estiver no modo claro, aumenta opacidade
+                const isLight = !document.body.classList.contains('dark') && window.matchMedia('(prefers-color-scheme: light)').matches;
+                if (isLight && color.background.match(/rgba\((\d+), (\d+), (\d+), (0\.[0-3])\)/)) {
+                  // Se for muito transparente, aumenta opacidade
+                  const newBg = color.background.replace(/rgba\((\d+), (\d+), (\d+), (0\.[0-3])\)/g, 'rgba($1, $2, $3, 0.12)');
+                  favoritesContainer.style.setProperty('background', newBg, 'important');
+                }
                 
                 // Salvar a preferência no localStorage
                 localStorage.setItem('favoritesContainerColor', color.background);
@@ -289,12 +352,40 @@ function initFavoritesCustomizer() {
                 
                 // Adicionar efeito visual de feedback
                 favoritesContainer.classList.add('color-changed');
+                favoritesContainer.classList.toggle('animated-bg', !!color.animated);
                 setTimeout(() => {
                     favoritesContainer.classList.remove('color-changed');
                 }, 500);
                 
                 showFeedbackMessage(`Tema ${color.name} aplicado com sucesso!`);
+
+                const emojiMap = {
+                    'TI 💻': '💻',
+                    'Desktop 🖥️': '🖥️',
+                    'Segurança 🛡️': '🛡️',
+                    'Energia ⚡': '⚡',
+                    'Web 🌐': '🌐',
+                    'Privacidade 🔒': '🔒',
+                };
+                if (emojiMap[color.name]) {
+                    showFavoritesEmoji(emojiMap[color.name]);
+                } else {
+                    hideFavoritesEmoji();
+                }
+
+                if (color.name === 'Matrix') {
+                    showMatrixEffect();
+                } else {
+                    hideMatrixEffect();
+                }
             });
+            
+            if (color.animated) {
+                colorOption.classList.add('animated-bg');
+                colorOption.style.backgroundSize = '40px 40px';
+            } else if (color.background && color.background.includes('svg+xml')) {
+                colorOption.style.backgroundSize = '40px 40px';
+            }
             
             colorOptionsContainer.appendChild(colorWrapper);
         });
@@ -308,6 +399,8 @@ function initFavoritesCustomizer() {
             colorOption.title = color.name;
             if (color.animated) {
                 colorOption.style.animation = 'animatedGradient 3s linear infinite';
+                colorOption.classList.add('animated-bg');
+                colorOption.style.backgroundSize = '40px 40px';
             }
             // Adicionar nome da cor abaixo da opção
             const colorName = document.createElement('span');
@@ -333,10 +426,31 @@ function initFavoritesCustomizer() {
                     overlay.style.display = 'none';
                 }, 300);
                 favoritesContainer.classList.add('color-changed');
+                favoritesContainer.classList.toggle('animated-bg', !!color.animated);
                 setTimeout(() => {
                     favoritesContainer.classList.remove('color-changed');
                 }, 500);
                 showFeedbackMessage(`Tema ${color.name} aplicado com sucesso!`);
+
+                const emojiMap = {
+                    'TI 💻': '💻',
+                    'Desktop 🖥️': '🖥️',
+                    'Segurança 🛡️': '🛡️',
+                    'Energia ⚡': '⚡',
+                    'Web 🌐': '🌐',
+                    'Privacidade 🔒': '🔒',
+                };
+                if (emojiMap[color.name]) {
+                    showFavoritesEmoji(emojiMap[color.name]);
+                } else {
+                    hideFavoritesEmoji();
+                }
+
+                if (color.name === 'Matrix') {
+                    showMatrixEffect();
+                } else {
+                    hideMatrixEffect();
+                }
             });
             colorOptionsContainer.appendChild(colorWrapper);
         });
@@ -398,16 +512,37 @@ function initFavoritesCustomizer() {
     // Carregar cor salva, se existir
     const savedBackground = localStorage.getItem('favoritesContainerColor');
     const savedBorder = localStorage.getItem('favoritesContainerBorder');
-    
+    const savedColorName = localStorage.getItem('favoritesContainerColorName');
     if (savedBackground && savedBorder) {
         favoritesContainer.style.background = savedBackground;
         favoritesContainer.style.borderColor = savedBorder;
+        const colorObj = favoritesColors.find(c => c.name === savedColorName);
+        if (colorObj && colorObj.animated) {
+            favoritesContainer.classList.add('animated-bg');
+            favoritesContainer.style.backgroundSize = '40px 40px';
+        } else {
+            favoritesContainer.classList.remove('animated-bg');
+            favoritesContainer.style.backgroundSize = '';
+        }
+        if (colorObj && emojiMap[colorObj.name]) {
+            showFavoritesEmoji(emojiMap[colorObj.name]);
+        } else {
+            hideFavoritesEmoji();
+        }
+
+        if (colorObj && colorObj.name === 'Matrix') {
+            showMatrixEffect();
+        } else {
+            hideMatrixEffect();
+        }
     }
 }
 
 // Adicionar estilo CSS para a mensagem de feedback
 function addFeedbackStyles() {
+    if (document.getElementById('favorites-animated-bg-style')) return;
     const style = document.createElement('style');
+    style.id = 'favorites-animated-bg-style';
     style.textContent = `
         .favorites-container {
             transition: background 0.3s ease, border-color 0.3s ease;
@@ -586,6 +721,16 @@ function addFeedbackStyles() {
         .favorites-color-option[style*="animatedGradient"] {
             background-size: 400% 400%;
         }
+
+        .animated-bg {
+            animation: moveBg 2s linear infinite;
+            background-position: 0 0;
+            background-size: 40px 40px;
+        }
+        @keyframes moveBg {
+            0% { background-position: 0 0; }
+            100% { background-position: 80px 0; }
+        }
     `;
     document.head.appendChild(style);
 }
@@ -611,6 +756,92 @@ function showFeedbackMessage(message, duration = 2000) {
             feedbackMessage.remove();
         }, 300);
     }, duration);
+}
+
+// Função para mostrar emoji grande no container
+function showFavoritesEmoji(emoji) {
+    let emojiSpan = document.getElementById('favorites-emoji-bg');
+    if (!emojiSpan) {
+        emojiSpan = document.createElement('span');
+        emojiSpan.id = 'favorites-emoji-bg';
+        emojiSpan.style.position = 'absolute';
+        emojiSpan.style.top = '50%';
+        emojiSpan.style.left = '50%';
+        emojiSpan.style.transform = 'translate(-50%, -50%)';
+        emojiSpan.style.fontSize = '5rem';
+        emojiSpan.style.opacity = '0.18';
+        emojiSpan.style.pointerEvents = 'none';
+        emojiSpan.style.zIndex = '0';
+        emojiSpan.style.userSelect = 'none';
+        emojiSpan.style.transition = 'opacity 0.3s';
+        document.querySelector('.favorites-container').appendChild(emojiSpan);
+    }
+    emojiSpan.textContent = emoji;
+    emojiSpan.style.display = 'block';
+}
+
+function hideFavoritesEmoji() {
+    const emojiSpan = document.getElementById('favorites-emoji-bg');
+    if (emojiSpan) emojiSpan.style.display = 'none';
+}
+
+// Função para ativar/desativar o efeito Matrix
+function showMatrixEffect() {
+    let matrixCanvas = document.getElementById('favorites-matrix-canvas');
+    if (!matrixCanvas) {
+        matrixCanvas = document.createElement('canvas');
+        matrixCanvas.id = 'favorites-matrix-canvas';
+        matrixCanvas.style.position = 'absolute';
+        matrixCanvas.style.top = '0';
+        matrixCanvas.style.left = '0';
+        matrixCanvas.style.width = '100%';
+        matrixCanvas.style.height = '100%';
+        matrixCanvas.style.zIndex = '0';
+        matrixCanvas.style.pointerEvents = 'none';
+        matrixCanvas.style.opacity = '0.22';
+        matrixCanvas.style.userSelect = 'none';
+        document.querySelector('.favorites-container').appendChild(matrixCanvas);
+    }
+    // Ajustar tamanho
+    const container = document.querySelector('.favorites-container');
+    matrixCanvas.width = container.offsetWidth;
+    matrixCanvas.height = container.offsetHeight;
+    // Matrix effect
+    const ctx = matrixCanvas.getContext('2d');
+    const letters = 'アァカサタナハマヤャラワガザダバパイィキシチニヒミリヰギジヂビピウゥクスツヌフムユュルグズヅブプエェケセテネヘメレヱゲゼデベペオォコソトノホモヨョロヲゴゾドボポヴッンABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
+    const fontSize = 18;
+    const columns = Math.floor(matrixCanvas.width / fontSize);
+    const drops = Array(columns).fill(1);
+    function drawMatrix() {
+        ctx.globalAlpha = 1;
+        ctx.fillStyle = 'rgba(17,17,17,0.18)';
+        ctx.fillRect(0, 0, matrixCanvas.width, matrixCanvas.height);
+        ctx.font = fontSize + 'px monospace';
+        for (let i = 0; i < drops.length; i++) {
+            const text = letters[Math.floor(Math.random() * letters.length)];
+            ctx.globalAlpha = 1;
+            ctx.fillStyle = '#00ff41';
+            ctx.shadowColor = '#00ff41';
+            ctx.shadowBlur = 8;
+            ctx.fillText(text, i * fontSize, drops[i] * fontSize);
+            ctx.shadowBlur = 0;
+            if (drops[i] * fontSize > matrixCanvas.height && Math.random() > 0.975) {
+                drops[i] = 0;
+            }
+            drops[i]++;
+        }
+        ctx.globalAlpha = 1;
+    }
+    if (window.favoritesMatrixInterval) clearInterval(window.favoritesMatrixInterval);
+    window.favoritesMatrixInterval = setInterval(drawMatrix, 60);
+    // Redimensionar ao mudar tamanho do container
+    window.addEventListener('resize', hideMatrixEffect);
+}
+function hideMatrixEffect() {
+    const matrixCanvas = document.getElementById('favorites-matrix-canvas');
+    if (matrixCanvas) matrixCanvas.remove();
+    if (window.favoritesMatrixInterval) clearInterval(window.favoritesMatrixInterval);
+    window.removeEventListener('resize', hideMatrixEffect);
 }
 
 // Inicializar quando o DOM estiver pronto

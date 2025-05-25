@@ -161,24 +161,14 @@ body .card-orange.group,
     border-top: 1px solid #e2e8f0 !important;
 }
 
-/* Botões dentro do grupo */
+/* Botões dentro do grupo - estilo original: fundo branco, texto e ícones azuis */
 .group .button-container button {
-    background: #f1f5f9 !important;
-    background-image: none !important;
-    color: #1e293b !important;
-    border-left: 4px solid #3b82f6 !important;
+    background: #fff !important;
+    color: #3182ce !important;
 }
 
-/* Efeito hover nos botões */
-.group .button-container button:hover {
-    background: #e2e8f0 !important;
-    background-image: none !important;
-    transform: translateX(5px) !important;
-}
-
-/* Ícones nos botões */
 .group .button-container button i {
-    color: #3b82f6 !important;
+    color: #3182ce !important;
 }
 
 /* Botão de personalização */
@@ -186,11 +176,11 @@ body .card-orange.group,
     position: absolute;
     top: 10px;
     right: 10px;
-    width: 32px;
-    height: 32px;
+    width: 26px;
+    height: 26px;
     border-radius: 50%;
     background: #fff;
-    border: 2px solid #e2e8f0;
+    border: 1px solid #e2e8f0;
     box-shadow: none;
     display: flex;
     align-items: center;
@@ -198,15 +188,17 @@ body .card-orange.group,
     cursor: pointer;
     z-index: 3;
     padding: 0;
+    transition: border 0.2s, background 0.2s;
 }
 
 .color-customize-btn:hover {
     background: #f0f4fa;
-    border-color: #3182ce;
+    border-color: #b6c2d1;
 }
 
 .color-customize-btn i {
     color: #3182ce !important;
+    font-size: 1.1rem;
     transition: color 0.2s;
 }
 
