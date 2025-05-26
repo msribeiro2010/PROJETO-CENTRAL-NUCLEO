@@ -2915,9 +2915,8 @@ body.dark .no-favorites .highlight {
 }
 
 .app-title i {
-    color: #3b82f6;
-    font-size: 1.6rem;
-    animation: pulse 2s infinite ease-in-out;
+    color: #f3f6fa !important;
+    font-size: 2.2rem !important;
 }
 
 body.dark .app-title {
@@ -2925,7 +2924,7 @@ body.dark .app-title {
 }
 
 body.dark .app-title i {
-    color: #93c5fd;
+    color: #fff !important;
 }
 
 @keyframes pulse {
