@@ -1224,19 +1224,11 @@ body.dark #current-date {
 
 /* Estilo base para os grupos */
 .group {
-    background: rgba(255, 255, 255, 0.1);
-    border-radius: 8px;
-    overflow: hidden;
-    transition: all 0.3s ease;
-    box-shadow: 
-        0 2px 4px rgba(0, 0, 0, 0.1),
-        0 4px 8px rgba(0, 0, 0, 0.1),
-        0 8px 16px rgba(0, 0, 0, 0.1);
-    height: fit-content;
-    margin-bottom: 12px;
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    transform: translateZ(0);
-    backface-visibility: hidden;
+    background: linear-gradient(135deg, #f5f6fa 80%, #e5e7eb 100%) !important;
+    border-radius: 12px !important;
+    box-shadow: 0 2px 12px rgba(44,62,80,0.07), 0 1.5px 4px 0 rgba(0,0,0,0.04) !important;
+    border: 1px solid #e5e7eb !important;
+    color: #1e293b !important;
 }
 
 .group:hover {
@@ -3813,7 +3805,7 @@ body.dark .group:hover {
 }
 
 .container-favorite .color-option:hover {
-    transform: scale(1.1);
+        transform: scale(1.1);
 }
 
 /* Feedback message styles */
@@ -3861,7 +3853,7 @@ body.dark .feedback-message {
     margin-right: 0 !important;
     border-radius: 0 !important;
   }
-  .groups-row {
+.groups-row {
     grid-template-columns: 1fr !important;
     gap: 10px !important;
     padding: 0 2vw !important;
@@ -3877,7 +3869,7 @@ body.dark .feedback-message {
     font-size: 1em !important;
     padding: 10px 8px !important;
   }
-  .search-box input {
+.search-box input {
     font-size: 1em !important;
     padding: 8px 0 !important;
   }
@@ -3895,10 +3887,10 @@ body.dark .feedback-message {
     gap: 8px !important;
     padding: 2px !important;
   }
-  .search-container {
+.search-container {
     padding: 0 2vw !important;
   }
-  .no-favorites {
+.no-favorites {
     padding: 18px 4vw !important;
   }
   .calendar-wrapper {
@@ -3948,7 +3940,7 @@ body.dark .feedback-message {
 }
 .button-container button:hover, .button-container button:focus {
   background: linear-gradient(135deg, #225ea8 0%, #3182ce 100%) !important;
-  color: #fff !important;
+    color: #fff !important;
   box-shadow: 0 6px 18px 0 rgba(49,130,206,0.18) !important;
   transform: translateY(-2px) scale(1.03);
 }
@@ -4015,7 +4007,7 @@ body.dark .feedback-message {
     margin-right: 0 !important;
     border-radius: 0 !important;
   }
-  .groups-row {
+.groups-row {
     grid-template-columns: 1fr !important;
     gap: 7px !important;
     padding: 0 1vw !important;
@@ -4051,10 +4043,10 @@ body.dark .feedback-message {
     gap: 6px !important;
     padding: 2px !important;
   }
-  .search-container {
+.search-container {
     padding: 0 1vw !important;
   }
-  .no-favorites {
+.no-favorites {
     padding: 12px 2vw !important;
   }
   .calendar-wrapper {
@@ -4067,6 +4059,65 @@ body.dark .feedback-message {
     padding: 6px 0 0 0 !important;
     font-size: 0.93em !important;
   }
+}
+
+/* --- SORTABLE GHOST COM GRADIENTE MODERNO --- */
+.sortable-ghost {
+  background: linear-gradient(120deg, #60a5fa 0%, #a78bfa 100%) !important;
+  border: 2px solid #6366f1 !important;
+  box-shadow: 0 0 12px 2px rgba(99,102,241,0.18), 0 2px 8px rgba(96,165,250,0.12) !important;
+  opacity: 0.85 !important;
+}
+
+/* --- BOTÕES DE ATALHOS COM GRADIENTE MODERNO --- */
+.button-container button {
+  background: linear-gradient(120deg, #60a5fa 0%, #a78bfa 100%) !important;
+  color: #fff !important;
+  border: 1px solid #a78bfa !important;
+  box-shadow: 0 2px 8px rgba(99,102,241,0.10) !important;
+  padding: 12px 16px !important;
+  font-size: 1em !important;
+  font-weight: 500 !important;
+  display: flex !important;
+  align-items: center !important;
+  gap: 10px !important;
+  transition: background 0.18s, box-shadow 0.18s, transform 0.18s, color 0.18s, border 0.18s;
+  cursor: pointer !important;
+  min-height: 42px !important;
+  margin: 0 !important;
+  text-align: left !important;
+  white-space: normal !important;
+  word-break: break-word !important;
+  outline: none !important;
+}
+.button-container button i {
+  font-size: 1.15em !important;
+  color: #fff !important;
+  margin-right: 8px !important;
+  filter: drop-shadow(0 1px 2px rgba(44,62,80,0.10));
+  flex-shrink: 0;
+}
+.button-container button span, .button-container button .title {
+  font-size: 1em !important;
+  font-weight: 500 !important;
+  color: #fff !important;
+  line-height: 1.2 !important;
+  display: flex;
+  align-items: center;
+}
+.button-container button:hover, .button-container button:focus {
+  background: linear-gradient(120deg, #2563eb 0%, #a21caf 100%) !important;
+  color: #fff !important;
+  box-shadow: 0 6px 18px 0 rgba(99,102,241,0.18) !important;
+  border-color: #7c3aed !important;
+  transform: translateY(-2px) scale(1.03);
+}
+.button-container button:active {
+  background: linear-gradient(120deg, #1e3a8a 0%, #7c3aed 100%) !important;
+  color: #e0e7ef !important;
+  box-shadow: 0 2px 6px 0 rgba(99,102,241,0.10) !important;
+  border-color: #6366f1 !important;
+  transform: scale(0.98);
 }
 
 
