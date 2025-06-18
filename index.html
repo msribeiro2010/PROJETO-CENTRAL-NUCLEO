@@ -465,7 +465,10 @@
                                     <span class="click-counter"></span></button>
                                 <button class="btn-feriados" onclick="showHolidays()"><i class="bi bi-calendar2-heart"></i> Feriados-2025
                                     <span class="click-counter"></span></button>
-                                           </div>
+                                <button onclick="window.open('https://apps.abacus.ai/chatllm/?appId=11197f4d90&hideTopBar=2', '_blank')">
+                                    <i class="bi bi-robot"></i> ChatBot Abacus AI
+                                    <span class="click-counter"></span></button>
+                            </div>
                         </div>
                     </div>
 
@@ -548,4 +551,142 @@
             </div>
             
             <div class="greeting-message" id="greeting-message"></div>                        <div class="footer-info">
-                <p><i class="bi bi-person-circle"></i> @msribeiro | 2025</p>            </div>        </div>    </footer>    <!-- Scripts -->    <script src="https://cdn.jsdelivr.net/npm/sortablejs@1.15.0/Sortable.min.js"></script>    <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>    <script src="https://cdnjs.cloudflare.com/ajax/libs/Sortable/1.15.0/Sortable.min.js"></script>    <script src="script.js"></script>    <script src="button-customization.js"></script>    <script src="recuperar-apps-fixos.js"></script>    <script src="header-clock.js"></script>    <script src="add-default-favoritos.js"></script>    <script src="card-customizer.js"></script>    <script src="favorites-customizer.js"></script>    <script src="footer-calendar.js"></script>    <!-- Scripts de animação de aniversário removidos -->    <!-- Modal de Feriados -->    <div id="holiday-modal" class="modal">        <div class="modal-content">            <div class="modal-header">                <h3><i class="bi bi-calendar2-heart"></i> Feriados 2025</h3>                <button class="close-btn" onclick="closeHolidayModal()" title="Fechar modal">                    <i class="bi bi-x-lg"></i>                </button>            </div>            <div class="modal-body">                <div class="next-holiday">                    <h4>Próximo Feriado:</h4>                    <div id="next-holiday"></div>                </div>                <div class="holiday-filters">                    <button class="month-btn" onclick="prevMonth()" title="Mês anterior">                        <i class="bi bi-chevron-left"></i>                    </button>                    <h4 id="current-month">Fevereiro 2025</h4>                    <button class="month-btn" onclick="nextMonth()" title="Próximo mês">                        <i class="bi bi-chevron-right"></i>                    </button>                </div>                <div id="holidays-list"></div>            </div>        </div>    </div></body></html>
+                <p><i class="bi bi-person-circle"></i> @msribeiro | 2025</p>            </div>        </div>    </footer>    <!-- Scripts -->    <script src="https://cdn.jsdelivr.net/npm/sortablejs@1.15.0/Sortable.min.js"></script>    <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>    <script src="https://cdnjs.cloudflare.com/ajax/libs/Sortable/1.15.0/Sortable.min.js"></script>    <script src="script.js"></script>    <script src="button-customization.js"></script>    <script src="recuperar-apps-fixos.js"></script>    <script src="header-clock.js"></script>    <script src="add-default-favoritos.js"></script>    <script src="card-customizer.js"></script>    <script src="favorites-customizer.js"></script>    <script src="footer-calendar.js"></script>    <!-- Scripts de animação de aniversário removidos -->    <!-- Modal de Feriados -->    <div id="holiday-modal" class="modal">        <div class="modal-content">            <div class="modal-header">                <h3><i class="bi bi-calendar2-heart"></i> Feriados 2025</h3>                <button class="close-btn" onclick="closeHolidayModal()" title="Fechar modal">                    <i class="bi bi-x-lg"></i>                </button>            </div>            <div class="modal-body">                <div class="next-holiday">                    <h4>Próximo Feriado:</h4>                    <div id="next-holiday"></div>                </div>                <div class="holiday-filters">                    <button class="month-btn" onclick="prevMonth()" title="Mês anterior">                        <i class="bi bi-chevron-left"></i>                    </button>                    <h4 id="current-month">Fevereiro 2025</h4>                    <button class="month-btn" onclick="nextMonth()" title="Próximo mês">                        <i class="bi bi-chevron-right"></i>                    </button>                </div>                <div id="holidays-list"></div>            </div>        </div>    </div>
+
+    <!-- Botão flutuante do Chatbot ocultado temporariamente -->
+    <!--
+    <button id="open-chatbot" style="
+      position: fixed;
+      bottom: 30px;
+      left: 30px;
+      z-index: 9999;
+      background: #3182ce;
+      color: #fff;
+      border: none;
+      border-radius: 50%;
+      width: 60px;
+      height: 60px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+      font-size: 2rem;
+      cursor: pointer;
+    " title="Abrir Assistente PJe TRT15">
+      <i class="bi bi-robot"></i>
+    </button>
+    -->
+
+    <!-- Modal do Chatbot ocultado temporariamente -->
+    <!--
+    <style>
+      #chatbot-modal {
+        display: none;
+        position: fixed;
+        top: 24px;
+        left: 24px;
+        height: 88vh;
+        width: 400px;
+        z-index: 10000;
+        align-items: flex-start;
+        justify-content: flex-start;
+        background: transparent;
+        transition: opacity 0.25s cubic-bezier(.4,0,.2,1);
+        opacity: 0;
+      }
+      #chatbot-modal.active {
+        display: flex !important;
+        opacity: 1;
+      }
+      #chatbot-modal .chatbot-panel {
+        background: linear-gradient(135deg, #3b82f6 0%, #60a5fa 100%);
+        border-radius: 22px;
+        width: 100%;
+        height: 100%;
+        max-width: 400px;
+        max-height: 88vh;
+        box-shadow: 0 8px 32px rgba(30,41,59,0.18), 0 1.5px 8px rgba(49,130,206,0.10);
+        border: 1.5px solid #e2e8f0;
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        overflow: hidden;
+        animation: chatbot-fadein 0.3s;
+      }
+      @keyframes chatbot-fadein {
+        from { transform: translateY(40px); opacity: 0; }
+        to { transform: translateY(0); opacity: 1; }
+      }
+      #chatbot-modal .close-btn-modern {
+        position: absolute;
+        top: 12px;
+        right: 12px;
+        background: #fff;
+        border: none;
+        border-radius: 50%;
+        width: 38px;
+        height: 38px;
+        box-shadow: 0 2px 8px rgba(30,41,59,0.08);
+        font-size: 1.3rem;
+        color: #64748b;
+        cursor: pointer;
+        z-index: 2;
+        transition: background 0.2s;
+      }
+      #chatbot-modal .close-btn-modern:hover {
+        background: linear-gradient(135deg, #2563eb 0%, #60a5fa 100%);
+        color: #fff;
+      }
+      #chatbot-modal iframe {
+        border: none;
+        width: 100%;
+        height: 100%;
+        border-radius: 0 0 22px 22px;
+        background: transparent;
+      }
+      @media (max-width: 600px) {
+        #chatbot-modal, #chatbot-modal .chatbot-panel {
+          left: 0 !important;
+          top: 0 !important;
+          width: 100vw !important;
+          max-width: 100vw !important;
+          height: 100vh !important;
+          max-height: 100vh !important;
+          border-radius: 0 !important;
+        }
+        #chatbot-modal .close-btn-modern {
+          top: 8px;
+          right: 8px;
+        }
+      }
+    </style>
+    <div id="chatbot-modal">
+      <div class="chatbot-panel">
+        <button class="close-btn-modern" onclick="closeChatbotModal()" title="Fechar"><i class="bi bi-x-lg"></i></button>
+        <iframe 
+          src="https://apps.abacus.ai/chatllm/?appId=11197f4d90&hideTopBar=2" 
+          style="border:none;" 
+          width="100%" 
+          height="600px" 
+          title="Assistente PJe TRT15"
+          allow="microphone; autoplay"
+        ></iframe>
+      </div>
+    </div>
+
+    <script>
+      function openChatbotModal() {
+        var modal = document.getElementById('chatbot-modal');
+        modal.classList.add('active');
+        modal.style.display = 'flex';
+        setTimeout(function(){ modal.style.opacity = 1; }, 10);
+      }
+      function closeChatbotModal() {
+        var modal = document.getElementById('chatbot-modal');
+        modal.style.opacity = 0;
+        setTimeout(function(){ 
+          modal.classList.remove('active');
+          modal.style.display = 'none';
+        }, 250);
+      }
+      document.getElementById('open-chatbot').onclick = openChatbotModal;
+    </script>
+    -->
+</body></html>
