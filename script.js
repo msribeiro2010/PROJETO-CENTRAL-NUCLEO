@@ -35,6 +35,18 @@ function initializeFavorites() {
             e.preventDefault();
             e.stopPropagation();
             toggleFavorite(button);
+            // Analytics
+            if (window.analytics) {
+                window.analytics.trackFavorite(button.textContent.trim(), isFavorite(button) ? 'added' : 'removed');
+            }
+            // Toast
+            if (window.showToast) {
+                if (isFavorite(button)) {
+                    window.showToast.success('Adicionado aos favoritos!');
+                } else {
+                    window.showToast.info('Removido dos favoritos.');
+                }
+            }
             
             // Atualiza a aparência da estrela
             const isFav = isFavorite(button);
@@ -127,7 +139,6 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // Inicializa a busca e favoritos por último
     setTimeout(() => {
-        initializeSearch();
         initializeFavorites();
         
         // Verifica se há um novo grupo de Links Rápidos para inicializar favoritos
@@ -162,7 +173,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
                 // Adiciona evento de clique na estrela
                 starBtn.addEventListener('click', (e) => {
-        e.preventDefault();
+                    e.preventDefault();
                     e.stopPropagation();
                     toggleFavorite(button);
                     
@@ -319,6 +330,26 @@ document.addEventListener('DOMContentLoaded', function() {
             content.classList.remove('active');
             content.style.maxHeight = null;
         }
+    });
+
+    // Substituir initializeSearch por integração debounce
+    const searchInput = document.getElementById('global-search');
+    if (searchInput && window.debouncedSearch) {
+        searchInput.addEventListener('input', function(e) {
+            window.debouncedSearch(e.target.value);
+            if (window.analytics) {
+                window.analytics.trackSearch(e.target.value);
+            }
+        });
+    }
+
+    // Adicionar rastreamento de clique nos atalhos
+    document.querySelectorAll('.button-container button').forEach(button => {
+        button.addEventListener('click', function() {
+            if (window.analytics) {
+                window.analytics.trackClick(button.textContent.trim());
+            }
+        });
     });
 });
 
@@ -549,10 +580,16 @@ function toggleFavorite(button) {
     
     if (index === -1) {
         favorites.push(buttonText);
-        showToast('Adicionado aos favoritos');
-                } else {
+        // Usar novo sistema de toast
+        if (window.showToast) {
+            window.showToast.success('Adicionado aos favoritos!');
+        }
+    } else {
         favorites.splice(index, 1);
-        showToast('Removido dos favoritos');
+        // Usar novo sistema de toast
+        if (window.showToast) {
+            window.showToast.info('Removido dos favoritos.');
+        }
     }
     
     localStorage.setItem('favorites', JSON.stringify(favorites));
@@ -649,7 +686,10 @@ function renderFavorites() {
                             if (counterSpan) counterSpan.textContent = '';
                         }
                         renderFavorites();
-                        showToast('Removido dos favoritos');
+                        // Usar novo sistema de toast
+                        if (window.showToast) {
+                            window.showToast.info('Removido dos favoritos.');
+                        }
                     }
                     return;
                 }
@@ -674,7 +714,10 @@ function renderFavorites() {
                 
                 if (newOrder.length > 0) {
                     localStorage.setItem('favorites', JSON.stringify(newOrder));
-                    showToast('Ordem dos favoritos atualizada');
+                    // Usar novo sistema de toast
+                    if (window.showToast) {
+                        window.showToast.success('Ordem dos favoritos atualizada!');
+                    }
                 }
             }
         });
@@ -740,138 +783,6 @@ function initializeTheme() {
         localStorage.setItem('darkMode', isDarkMode);
         themeIcon.className = isDarkMode ? 'bi bi-sun-fill' : 'bi bi-moon-fill';
     });
-}
-
-// Funções para a busca
-function initializeSearch() {
-    const searchInput = document.getElementById('global-search');
-    const searchResults = document.getElementById('search-results');
-    let searchIndex = [];
-    
-    // Cria o índice de busca
-    document.querySelectorAll('.button-container button').forEach(button => {
-        const text = button.textContent.trim();
-        const url = button.getAttribute('onclick')?.match(/'([^']+)'/)?.[1] || '';
-        const icon = button.querySelector('i')?.className || '';
-        
-        searchIndex.push({
-            text,
-            url,
-            icon,
-            element: button,
-            searchTerms: `${text.toLowerCase()} ${url.toLowerCase()}`
-    });
-});
-
-    // Eventos do input de busca
-    searchInput.addEventListener('input', () => {
-        const query = searchInput.value.toLowerCase();
-        
-        if (query.length < 2) {
-            searchResults.style.display = 'none';
-            return;
-        }
-        
-        const results = searchIndex.filter(item => 
-            item.searchTerms.includes(query)
-        ).slice(0, 5);
-        
-        searchResults.innerHTML = '';
-        
-        if (results.length > 0) {
-            results.forEach(result => {
-                const resultItem = document.createElement('div');
-                resultItem.className = 'search-result-item';
-                resultItem.innerHTML = `
-                    <i class="${result.icon}"></i>
-                    <span>${result.text}</span>
-                    ${result.url ? `<span class="search-result-url">${result.url}</span>` : ''}
-                `;
-                resultItem.addEventListener('click', () => {
-                    result.element.click();
-                    searchInput.value = '';
-                    searchResults.style.display = 'none';
-                });
-                searchResults.appendChild(resultItem);
-            });
-            searchResults.style.display = 'block';
-        } else {
-            searchResults.style.display = 'none';
-        }
-    });
-    
-    // Fecha os resultados ao clicar fora
-    document.addEventListener('click', (e) => {
-        if (!searchInput.contains(e.target) && !searchResults.contains(e.target)) {
-            searchResults.style.display = 'none';
-        }
-    });
-    
-    // Navegação com teclado
-    searchInput.addEventListener('keydown', (e) => {
-        const results = searchResults.querySelectorAll('.search-result-item');
-        const current = searchResults.querySelector('.search-result-item:hover');
-        let next;
-        
-        switch (e.key) {
-            case 'ArrowDown':
-                e.preventDefault();
-                if (!current) {
-                    next = results[0];
-                } else {
-                    const index = Array.from(results).indexOf(current);
-                    next = results[index + 1] || results[0];
-                }
-                break;
-                
-            case 'ArrowUp':
-                e.preventDefault();
-                if (!current) {
-                    next = results[results.length - 1];
-                } else {
-                    const index = Array.from(results).indexOf(current);
-                    next = results[index - 1] || results[results.length - 1];
-                }
-                break;
-                
-            case 'Enter':
-                if (current) {
-                    e.preventDefault();
-                    current.click();
-                }
-                break;
-                
-            case 'Escape':
-                searchResults.style.display = 'none';
-                searchInput.blur();
-                break;
-        }
-        
-        if (next) {
-            current?.classList.remove('hover');
-            next.classList.add('hover');
-            next.scrollIntoView({ block: 'nearest' });
-        }
-    });
-}
-
-// Função para mostrar toast
-function showToast(message) {
-    const toast = document.createElement('div');
-    toast.className = 'toast';
-    toast.textContent = message;
-    document.body.appendChild(toast);
-    
-    setTimeout(() => {
-        toast.classList.add('show');
-    }, 100);
-    
-    setTimeout(() => {
-        toast.classList.remove('show');
-        setTimeout(() => {
-            toast.remove();
-        }, 300);
-    }, 3000);
 }
 
 // Função para carregar aniversariantes

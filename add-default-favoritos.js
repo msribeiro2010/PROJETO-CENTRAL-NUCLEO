@@ -3,7 +3,7 @@ document.addEventListener('DOMContentLoaded', function() {
     console.log('Inicializando favoritos padrão...');
     
     // Lista de favoritos padrão que devem ser carregados automaticamente
-    const defaultFavorites = ['Feriados-2025', 'SecJud', 'Controle/Trabalho', 'ContraChegue'];
+    const defaultFavorites = ['Feriados', 'SecJud', 'Assyst-Abertos', 'Assyst-Atribuidos p/mim', 'Gmail'];
     
     // Espera um pouco para garantir que o sistema de favoritos já foi inicializado
     setTimeout(() => {

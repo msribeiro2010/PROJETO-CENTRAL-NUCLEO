@@ -22,6 +22,7 @@
     <link rel="stylesheet" href="favorites-customizer.css">
     <link rel="stylesheet" href="notes-styles.css">
     <link rel="stylesheet" href="modern-styles.css">
+    <link rel="stylesheet" href="improvements/design-system.css">
   
     <!-- Bibliotecas externas -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
@@ -34,6 +35,10 @@
     <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js" defer></script>
     <script src="notes.js" defer></script>
     <script src="aniversario-click.js" defer></script>
+    <script src="improvements/debounce-search.js" defer></script>
+    <script src="improvements/toast-notifications.js" defer></script>
+    <script src="improvements/analytics.js" defer></script>
+    <script src="add-default-favoritos.js" defer></script>
   </head>
   
 
@@ -689,4 +694,23 @@
       document.getElementById('open-chatbot').onclick = openChatbotModal;
     </script>
     -->
+
+    <script>
+      if ('serviceWorker' in navigator) {
+        window.addEventListener('load', function() {
+          navigator.serviceWorker.register('improvements/enhanced-sw.js');
+        });
+      }
+    </script>
+
+    <script>
+      document.addEventListener('DOMContentLoaded', function() {
+        const searchInput = document.getElementById('global-search');
+        if (searchInput && window.debouncedSearch) {
+          searchInput.addEventListener('input', function(e) {
+            window.debouncedSearch(e.target.value);
+          });
+        }
+      });
+    </script>
 </body></html>
