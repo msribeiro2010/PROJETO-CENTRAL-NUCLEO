@@ -1,5 +1,16 @@
+// Flag para evitar inicialização múltipla
+let favoritesInitialized = false;
+
 function initializeFavorites() {
+    // Evita inicialização múltipla
+    if (favoritesInitialized) {
+        console.log('Favoritos já inicializados, pulando...');
+        return;
+    }
+    
     console.log('Inicializando sistema de favoritos...');
+    favoritesInitialized = true;
+    
     const favoritesList = document.getElementById('favorites-list');
     const favorites = JSON.parse(localStorage.getItem('favorites') || '[]');
 
@@ -30,52 +41,62 @@ function initializeFavorites() {
 
         starBtn.title = isFavorite(button) ? 'Remover dos favoritos' : 'Adicionar aos favoritos';
 
+        // Remove event listeners anteriores se existirem
+        const newStarBtn = starBtn.cloneNode(true);
+        
         // Adiciona evento de clique na estrela
-        starBtn.addEventListener('click', (e) => {
+        newStarBtn.addEventListener('click', (e) => {
             e.preventDefault();
             e.stopPropagation();
+            
+            // Verificar se é favorito antes de fazer o toggle
+            const wasFavorite = isFavorite(button);
+            
             toggleFavorite(button);
-            // Analytics
-            if (window.analytics) {
-                window.analytics.trackFavorite(button.textContent.trim(), isFavorite(button) ? 'added' : 'removed');
-            }
-            // Toast
+            
+            // Toast - apenas uma vez
             if (window.showToast) {
-                if (isFavorite(button)) {
-                    window.showToast.success('Adicionado aos favoritos!');
-                } else {
+                if (wasFavorite) {
                     window.showToast.info('Removido dos favoritos.');
+                } else {
+                    window.showToast.success('Adicionado aos favoritos!');
                 }
             }
             
             // Atualiza a aparência da estrela
             const isFav = isFavorite(button);
-            starBtn.className = `bi bi-star${isFav ? '-fill favorite-star-fill' : ' favorite-star'}`;
-            starBtn.style.color = isFav ? '#fbbf24' : '#6b7280';
-            starBtn.style.opacity = isFav ? '1' : '0.7';
-            starBtn.title = isFav ? 'Remover dos favoritos' : 'Adicionar aos favoritos';
+            newStarBtn.className = `bi bi-star${isFav ? '-fill favorite-star-fill' : ' favorite-star'}`;
+            newStarBtn.style.color = isFav ? '#fbbf24' : '#6b7280';
+            newStarBtn.style.opacity = isFav ? '1' : '0.7';
+            newStarBtn.title = isFav ? 'Remover dos favoritos' : 'Adicionar aos favoritos';
         });
 
         // Adiciona evento de hover
-        starBtn.addEventListener('mouseover', () => {
-            starBtn.style.opacity = '1';
-            starBtn.style.transform = 'scale(1.3)';
+        newStarBtn.addEventListener('mouseover', () => {
+            newStarBtn.style.opacity = '1';
+            newStarBtn.style.transform = 'scale(1.3)';
         });
 
-        starBtn.addEventListener('mouseout', () => {
+        newStarBtn.addEventListener('mouseout', () => {
             if (!isFavorite(button)) {
-                starBtn.style.opacity = '0.7';
+                newStarBtn.style.opacity = '0.7';
             }
-            starBtn.style.transform = 'scale(1)';
+            newStarBtn.style.transform = 'scale(1)';
         });
 
         // Garante que o botão tenha posição relativa para o posicionamento absoluto da estrela
         button.style.position = 'relative';
-        button.appendChild(starBtn);
+        button.appendChild(newStarBtn);
     });
 
     // Renderiza a lista de favoritos
     renderFavorites();
+}
+
+// Função para resetar a inicialização dos favoritos (útil para debugging)
+function resetFavoritesInitialization() {
+    favoritesInitialized = false;
+    console.log('Flag de inicialização dos favoritos resetada');
 }
 
 // Inicialização quando a página carrega
@@ -175,7 +196,20 @@ document.addEventListener('DOMContentLoaded', function() {
                 starBtn.addEventListener('click', (e) => {
                     e.preventDefault();
                     e.stopPropagation();
+                    
+                    // Verificar se é favorito antes de fazer o toggle
+                    const wasFavorite = isFavorite(button);
+                    
                     toggleFavorite(button);
+                    
+                    // Toast - apenas uma vez
+                    if (window.showToast) {
+                        if (wasFavorite) {
+                            window.showToast.info('Removido dos favoritos.');
+                        } else {
+                            window.showToast.success('Adicionado aos favoritos!');
+                        }
+                    }
                     
                     // Atualiza a aparência da estrela
                     const isFav = isFavorite(button);
@@ -580,16 +614,8 @@ function toggleFavorite(button) {
     
     if (index === -1) {
         favorites.push(buttonText);
-        // Usar novo sistema de toast
-        if (window.showToast) {
-            window.showToast.success('Adicionado aos favoritos!');
-        }
     } else {
         favorites.splice(index, 1);
-        // Usar novo sistema de toast
-        if (window.showToast) {
-            window.showToast.info('Removido dos favoritos.');
-        }
     }
     
     localStorage.setItem('favorites', JSON.stringify(favorites));
