@@ -73,21 +73,26 @@ function highlightSearchTerm(text, searchTerm) {
 // Destacar e clicar no botão encontrado
 function highlightAndClickButton(buttonText) {
     const buttons = document.querySelectorAll('.button-container button');
-    const targetButton = Array.from(buttons).find(btn => 
+    const targetButton = Array.from(buttons).find(btn =>
         btn.textContent.trim() === buttonText
     );
-    
+
     if (targetButton) {
         // Destacar temporariamente
         targetButton.style.transform = 'scale(1.1)';
         targetButton.style.boxShadow = '0 0 20px rgba(49, 130, 206, 0.5)';
-        
+
         // Scroll para o botão
-        targetButton.scrollIntoView({ 
-            behavior: 'smooth', 
-            block: 'center' 
+        targetButton.scrollIntoView({
+            behavior: 'smooth',
+            block: 'center'
         });
-        
+
+        // Clicar automaticamente no botão após o scroll
+        setTimeout(() => {
+            targetButton.click();
+        }, 300);
+
         // Remover destaque após 2 segundos
         setTimeout(() => {
             targetButton.style.transform = '';
