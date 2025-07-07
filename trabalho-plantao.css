@@ -1,0 +1,100 @@
+/* Estilos específicos para o grupo Trabalho/Plantão/Averbação/Férias */
+
+/* Estilo base - fundo branco */
+.group.trabalho-plantao {
+    background-color: white !important;
+    background-image: none !important;
+    border: 1px solid #4384d8 !important;
+    color: #1e293b !important;
+}
+
+/* Remover qualquer efeito de hover que mude a cor de fundo */
+.group.trabalho-plantao:hover {
+    background-color: white !important;
+    background-image: none !important;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.08) !important;
+}
+
+/* Estilo para o cabeçalho */
+.group.trabalho-plantao .accordion-header {
+    background: transparent !important;
+    background-image: none !important;
+    color: #1e293b !important;
+    border-left: 4px solid #3b82f6 !important;
+}
+
+/* Ícone do cabeçalho */
+.group.trabalho-plantao .accordion-header i {
+    color: #3b82f6 !important;
+}
+
+/* Conteúdo do acordeão */
+.group.trabalho-plantao .accordion-content {
+    background: #f8fafc !important;
+    border-top: 1px solid #5a8fd5 !important;
+}
+
+/* Botões dentro do grupo */
+.group.trabalho-plantao .button-container button {
+    background: #f1f5f9 !important;
+    background-image: none !important;
+    color: #1e293b !important;
+    border-left: 4px solid #3b82f6 !important;
+}
+
+/* Efeito hover nos botões */
+.group.trabalho-plantao .button-container button:hover {
+    background: #e2e8f0 !important;
+    background-image: none !important;
+    transform: translateX(5px) !important;
+}
+
+/* Ícones nos botões */
+.group.trabalho-plantao .button-container button i {
+    color: #3b82f6 !important;
+}
+
+/* Modo escuro */
+body.dark .group.trabalho-plantao {
+    background-color: #1e293b !important;
+    background-image: none !important;
+    border-color: #334155 !important;
+    color: #f8fafc !important;
+}
+
+body.dark .group.trabalho-plantao:hover {
+    background-color: #1e293b !important;
+    background-image: none !important;
+}
+
+body.dark .group.trabalho-plantao .accordion-header {
+    background: transparent !important;
+    background-image: none !important;
+    color: #f8fafc !important;
+    border-left-color: #60a5fa !important;
+}
+
+body.dark .group.trabalho-plantao .accordion-header i {
+    color: #60a5fa !important;
+}
+
+body.dark .group.trabalho-plantao .accordion-content {
+    background: #0f172a !important;
+    border-top-color: #334155 !important;
+}
+
+body.dark .group.trabalho-plantao .button-container button {
+    background: #334155 !important;
+    background-image: none !important;
+    color: #f8fafc !important;
+    border-left-color: #60a5fa !important;
+}
+
+body.dark .group.trabalho-plantao .button-container button:hover {
+    background: #475569 !important;
+    background-image: none !important;
+}
+
+body.dark .group.trabalho-plantao .button-container button i {
+    color: #60a5fa !important;
+}
