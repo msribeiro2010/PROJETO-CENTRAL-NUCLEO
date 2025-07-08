@@ -244,4 +244,70 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         });
     }
+
+    // --- HEADER COLOR CUSTOMIZER ---
+    const header = document.querySelector('.header');
+    const headerColorToggle = document.getElementById('header-color-toggle');
+    const headerColorPanel = document.getElementById('header-color-panel');
+    if (!header || !headerColorToggle || !headerColorPanel) return;
+
+    // Paleta igual aos cards
+    const headerColors = [
+        { id: 'marble', name: 'Cinza Mármore', background: 'linear-gradient(135deg, #eeeff0, #eaeaed)', text: '#23272f' },
+        { id: 'black', name: 'Preto', background: 'linear-gradient(135deg, #18181b, #23272f)', text: '#f3f4f6' },
+        { id: 'blue', name: 'Azul', background: 'linear-gradient(135deg, #3b82f6, #2563eb)', text: '#fff' },
+        { id: 'green', name: 'Verde', background: 'linear-gradient(135deg, #10b981, #059669)', text: '#fff' },
+        { id: 'red', name: 'Vermelho', background: 'linear-gradient(135deg, #ef4444, #dc2626)', text: '#fff' },
+        { id: 'purple', name: 'Roxo', background: 'linear-gradient(135deg, #8b5cf6, #7c3aed)', text: '#fff' },
+        { id: 'orange', name: 'Laranja', background: 'linear-gradient(135deg, #f97316, #ea580c)', text: '#fff' }
+    ];
+
+    function applyHeaderColor(colorObj) {
+        header.style.background = colorObj.background;
+        header.style.color = colorObj.text;
+        localStorage.setItem('header-color', colorObj.id);
+    }
+
+    function showHeaderColorPanel() {
+        headerColorPanel.innerHTML = '';
+        headerColors.forEach(color => {
+            const colorOption = document.createElement('div');
+            colorOption.className = 'color-option';
+            colorOption.title = color.name;
+            colorOption.style.background = color.background;
+            colorOption.style.width = '38px';
+            colorOption.style.height = '38px';
+            colorOption.style.borderRadius = '50%';
+            colorOption.style.cursor = 'pointer';
+            colorOption.style.margin = '4px';
+            colorOption.style.border = '2px solid #e2e8f0';
+            colorOption.onclick = function(e) {
+                applyHeaderColor(color);
+                headerColorPanel.style.display = 'none';
+                e.stopPropagation();
+            };
+            headerColorPanel.appendChild(colorOption);
+        });
+        headerColorPanel.style.display = 'flex';
+    }
+
+    headerColorToggle.addEventListener('click', function(e) {
+        if (headerColorPanel.style.display === 'flex') {
+            headerColorPanel.style.display = 'none';
+        } else {
+            showHeaderColorPanel();
+        }
+        e.stopPropagation();
+    });
+    document.addEventListener('click', function() {
+        headerColorPanel.style.display = 'none';
+    });
+    headerColorPanel.addEventListener('click', function(e) { e.stopPropagation(); });
+
+    // Restaurar cor salva
+    const saved = localStorage.getItem('header-color');
+    if (saved) {
+        const colorObj = headerColors.find(c => c.id === saved);
+        if (colorObj) applyHeaderColor(colorObj);
+    }
 });

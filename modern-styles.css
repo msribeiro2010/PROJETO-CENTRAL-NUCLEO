@@ -364,18 +364,18 @@ body {
     --card-shadow: 0 4px 24px 0 rgba(49,130,206,0.10);
     --active-border: #3182ce;
   }
+  /*
   .header {
-    /* Gradiente azul puro modo escuro, sem lilás */
     background: linear-gradient(90deg, #3182ce 0%, #225ea8 100%) !important;
     color: #fff;
     box-shadow: 0 6px 32px 0 rgba(49,130,206,0.13);
   }
   .footer {
-    /* Gradiente azul puro modo escuro, sem lilás */
     background: linear-gradient(90deg, #3182ce 0%, #225ea8 100%) !important;
     color: #fff;
     border-top: 1px solid #23283a;
   }
+  */
 }
 
 .click-counter {

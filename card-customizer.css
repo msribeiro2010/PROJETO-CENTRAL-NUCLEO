@@ -325,3 +325,23 @@ body.dark .color-panel {
     background: #1e293b;
     border-color: #334155;
 }
+
+#header-color-panel.color-panel {
+    min-width: 220px;
+    max-width: 320px;
+    padding: 12px 10px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    background: #fff;
+    border-radius: 12px;
+    box-shadow: 0 4px 16px rgba(0,0,0,0.18);
+    z-index: 1001;
+    position: absolute;
+    top: 60px;
+    right: 30px;
+}
+body.dark #header-color-panel.color-panel {
+    background: #23272f;
+    box-shadow: 0 4px 16px rgba(0,0,0,0.35);
+}
