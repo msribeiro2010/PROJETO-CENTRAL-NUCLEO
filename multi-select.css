@@ -137,15 +137,15 @@
 }
 
 .enable-multi-select-btn.active {
-    background: linear-gradient(135deg, #dc2626 0%, #b91c1c 50%, #991b1b 100%);
-    border-color: rgba(255, 255, 255, 0.25);
-    box-shadow: 0 2px 8px rgba(220, 38, 38, 0.3);
+    background: linear-gradient(135deg, #dc2626 0%, #b91c1c 50%, #991b1b 100%) !important;
+    border-color: rgba(255, 255, 255, 0.25) !important;
+    box-shadow: 0 2px 8px rgba(220, 38, 38, 0.3) !important;
 }
 
 .enable-multi-select-btn.active:hover {
-    background: linear-gradient(135deg, #ef4444 0%, #dc2626 50%, #b91c1c 100%);
-    border-color: rgba(255, 255, 255, 0.35);
-    box-shadow: 0 4px 12px rgba(220, 38, 38, 0.4);
+    background: linear-gradient(135deg, #ef4444 0%, #dc2626 50%, #b91c1c 100%) !important;
+    border-color: rgba(255, 255, 255, 0.35) !important;
+    box-shadow: 0 4px 12px rgba(220, 38, 38, 0.4) !important;
 }
 
 /* Container do checkbox */
@@ -703,15 +703,15 @@
 }
 
 [data-theme="dark"] .enable-multi-select-btn.active {
-    background: linear-gradient(135deg, #dc2626 0%, #b91c1c 50%, #991b1b 100%);
-    border-color: rgba(255, 255, 255, 0.18);
-    box-shadow: 0 2px 8px rgba(220, 38, 38, 0.4);
+    background: linear-gradient(135deg, #dc2626 0%, #b91c1c 50%, #991b1b 100%) !important;
+    border-color: rgba(255, 255, 255, 0.18) !important;
+    box-shadow: 0 2px 8px rgba(220, 38, 38, 0.4) !important;
 }
 
 [data-theme="dark"] .enable-multi-select-btn.active:hover {
-    background: linear-gradient(135deg, #ef4444 0%, #dc2626 50%, #b91c1c 100%);
-    border-color: rgba(255, 255, 255, 0.25);
-    box-shadow: 0 4px 12px rgba(220, 38, 38, 0.5);
+    background: linear-gradient(135deg, #ef4444 0%, #dc2626 50%, #b91c1c 100%) !important;
+    border-color: rgba(255, 255, 255, 0.25) !important;
+    box-shadow: 0 4px 12px rgba(220, 38, 38, 0.5) !important;
 }
 
 /* Mensagem informativa da seleção múltipla */
