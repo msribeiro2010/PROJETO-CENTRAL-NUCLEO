@@ -4,8 +4,8 @@
 .group.trabalho-plantao {
     background-color: white !important;
     background-image: none !important;
-    border: 1px solid #4384d8 !important;
-    color: #1e293b !important;
+    border: 1px solid #C4965F !important;
+    color: #5D4E37 !important;
 }
 
 /* Remover qualquer efeito de hover que mude a cor de fundo */
@@ -19,27 +19,27 @@
 .group.trabalho-plantao .accordion-header {
     background: transparent !important;
     background-image: none !important;
-    color: #1e293b !important;
-    border-left: 4px solid #3b82f6 !important;
+    color: #5D4E37 !important;
+    border-left: 4px solid #C4965F !important;
 }
 
 /* Ícone do cabeçalho */
 .group.trabalho-plantao .accordion-header i {
-    color: #3b82f6 !important;
+    color: #C4965F !important;
 }
 
 /* Conteúdo do acordeão */
 .group.trabalho-plantao .accordion-content {
     background: #f8fafc !important;
-    border-top: 1px solid #5a8fd5 !important;
+    border-top: 1px solid #D4B896 !important;
 }
 
 /* Botões dentro do grupo */
 .group.trabalho-plantao .button-container button {
     background: #f1f5f9 !important;
     background-image: none !important;
-    color: #1e293b !important;
-    border-left: 4px solid #3b82f6 !important;
+    color: #5D4E37 !important;
+    border-left: 4px solid #C4965F !important;
 }
 
 /* Efeito hover nos botões */
@@ -51,19 +51,19 @@
 
 /* Ícones nos botões */
 .group.trabalho-plantao .button-container button i {
-    color: #3b82f6 !important;
+    color: #C4965F !important;
 }
 
 /* Modo escuro */
 body.dark .group.trabalho-plantao {
-    background-color: #1e293b !important;
+    background-color: #5D4E37 !important;
     background-image: none !important;
     border-color: #334155 !important;
     color: #f8fafc !important;
 }
 
 body.dark .group.trabalho-plantao:hover {
-    background-color: #1e293b !important;
+    background-color: #5D4E37 !important;
     background-image: none !important;
 }
 
@@ -71,11 +71,11 @@ body.dark .group.trabalho-plantao .accordion-header {
     background: transparent !important;
     background-image: none !important;
     color: #f8fafc !important;
-    border-left-color: #60a5fa !important;
+    border-left-color: #D4B896 !important;
 }
 
 body.dark .group.trabalho-plantao .accordion-header i {
-    color: #60a5fa !important;
+    color: #D4B896 !important;
 }
 
 body.dark .group.trabalho-plantao .accordion-content {
@@ -87,7 +87,7 @@ body.dark .group.trabalho-plantao .button-container button {
     background: #334155 !important;
     background-image: none !important;
     color: #f8fafc !important;
-    border-left-color: #60a5fa !important;
+    border-left-color: #D4B896 !important;
 }
 
 body.dark .group.trabalho-plantao .button-container button:hover {
@@ -96,5 +96,5 @@ body.dark .group.trabalho-plantao .button-container button:hover {
 }
 
 body.dark .group.trabalho-plantao .button-container button i {
-    color: #60a5fa !important;
+    color: #D4B896 !important;
 }

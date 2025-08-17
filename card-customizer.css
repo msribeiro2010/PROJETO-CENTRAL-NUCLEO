@@ -10,19 +10,19 @@
 html body .card-white.group,
 body .card-white.group,
 .card-white.group {
-    background: white !important;
+    background: #F5F1E8 !important;
     background-image: none !important;
-    background-color: white !important;
-    border: 1px solid #e2e8f0 !important;
-    color: #1e293b !important;
+    background-color: #F5F1E8 !important;
+    border: 1px solid #D4B896 !important;
+    color: #5D4E37 !important;
 }
 
 html body .card-blue.group,
 body .card-blue.group,
 .card-blue.group {
-    background: linear-gradient(135deg, #3b82f6, #2563eb) !important;
-    background-image: linear-gradient(135deg, #3b82f6, #2563eb) !important;
-    border: 1px solid #2563eb !important;
+    background: linear-gradient(135deg, #C4965F, #8B7355) !important;
+    background-image: linear-gradient(135deg, #C4965F, #8B7355) !important;
+    border: 1px solid #8B7355 !important;
     color: white !important;
 }
 
@@ -164,11 +164,11 @@ body .card-orange.group,
 /* Botões dentro do grupo - estilo original: fundo branco, texto e ícones azuis */
 .group .button-container button {
     background: #fff !important;
-    color: #3182ce !important;
+    color: #C4965F !important;
 }
 
 .group .button-container button i {
-    color: #3182ce !important;
+    color: #C4965F !important;
 }
 
 /* Botão de personalização */
@@ -197,7 +197,7 @@ body .card-orange.group,
 }
 
 .color-customize-btn i {
-    color: #3182ce !important;
+    color: #C4965F !important;
     font-size: 1.1rem;
     transition: color 0.2s;
 }
@@ -247,8 +247,8 @@ body .card-orange.group,
 
 /* Cores predefinidas */
 .color-blue {
-    background: linear-gradient(135deg, #3b82f6, #2563eb);
-    border: 1px solid #2563eb;
+    background: linear-gradient(135deg, #C4965F, #8B7355);
+    border: 1px solid #8B7355;
 }
 
 .color-green {
@@ -295,11 +295,11 @@ body.dark .group {
 
 body.dark .group .accordion-header {
     color: #f8fafc !important;
-    border-left-color: #60a5fa !important;
+    border-left-color: #D4B896 !important;
 }
 
 body.dark .group .accordion-header i {
-    color: #60a5fa !important;
+    color: #D4B896 !important;
 }
 
 body.dark .group .accordion-content {
@@ -310,7 +310,7 @@ body.dark .group .accordion-content {
 body.dark .group .button-container button {
     background: #334155 !important;
     color: #f8fafc !important;
-    border-left-color: #60a5fa !important;
+    border-left-color: #D4B896 !important;
 }
 
 body.dark .group .button-container button:hover {
@@ -318,7 +318,7 @@ body.dark .group .button-container button:hover {
 }
 
 body.dark .group .button-container button i {
-    color: #60a5fa !important;
+    color: #D4B896 !important;
 }
 
 body.dark .color-panel {

@@ -45,7 +45,7 @@ document.addEventListener('DOMContentLoaded', function() {
 function initAccordions() {
     console.log('Iniciando gerenciamento de accordions');
     
-    // Primeiro, fechar todos os accordions
+    // Primeiro, garantir que todos os accordions iniciem fechados
     closeAllAccordions();
     
     // Remover listeners existentes
@@ -85,6 +85,7 @@ function closeAllAccordions() {
         
         if (content && content.classList.contains('accordion-content')) {
             content.style.maxHeight = null;
+            content.style.display = 'none';
             content.classList.remove('active');
         }
     });
@@ -173,4 +174,4 @@ function handleAccordionClick(e) {
                 }, 300);
             }
         }
-} 
+}

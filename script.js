@@ -225,16 +225,36 @@ document.addEventListener('DOMContentLoaded', function() {
             
             // Toggle da classe no container
             groupsContainer.classList.toggle('collapsed');
+            groupsContainer.classList.toggle('expanded');
+            
+            // Atualiza o ícone
+            const icon = toggleButton.querySelector('i');
+            if (!isExpanded) {
+                icon.className = 'bi bi-chevron-up';
+                groupsContainer.setAttribute('aria-hidden', 'false');
+            } else {
+                icon.className = 'bi bi-chevron-down';
+                groupsContainer.setAttribute('aria-hidden', 'true');
+            }
             
             // Salva o estado no localStorage
             localStorage.setItem('groupsContainerState', !isExpanded ? 'expanded' : 'collapsed');
         });
         
-        // Restaura o estado salvo
+        // Restaura o estado salvo ou define como encolhido por padrão
         const savedState = localStorage.getItem('groupsContainerState');
-        if (savedState === 'collapsed') {
+        if (savedState === 'expanded') {
+            toggleButton.setAttribute('aria-expanded', 'true');
+            groupsContainer.classList.remove('collapsed');
+            groupsContainer.classList.add('expanded');
+            toggleButton.querySelector('i').className = 'bi bi-chevron-up';
+        } else {
+            // Por padrão, inicia encolhido
             toggleButton.setAttribute('aria-expanded', 'false');
             groupsContainer.classList.add('collapsed');
+            groupsContainer.classList.remove('expanded');
+            toggleButton.querySelector('i').className = 'bi bi-chevron-down';
+            localStorage.setItem('groupsContainerState', 'collapsed');
         }
     }
 
@@ -318,6 +338,49 @@ document.addEventListener('DOMContentLoaded', function() {
 let currentMonthIndex = new Date().getMonth();
 const months = ['Janeiro', 'Fevereiro', 'Março', 'Abril', 'Maio', 'Junho', 'Julho', 'Agosto', 'Setembro', 'Outubro', 'Novembro', 'Dezembro'];
 
+// Dados dos feriados 2025 embutidos para evitar problemas de CORS
+const holidaysData = [
+    {"data": "01/01/2025", "nome": "Recesso de Janeiro 2025", "tipo": "RECESSO"},
+    {"data": "02/01/2025", "nome": "Recesso de Janeiro 2025", "tipo": "RECESSO"},
+    {"data": "03/01/2025", "nome": "Recesso de Janeiro 2025", "tipo": "RECESSO"},
+    {"data": "04/01/2025", "nome": "Recesso de Janeiro 2025", "tipo": "RECESSO"},
+    {"data": "05/01/2025", "nome": "Recesso de Janeiro 2025", "tipo": "RECESSO"},
+    {"data": "06/01/2025", "nome": "Recesso de Janeiro 2025", "tipo": "RECESSO"},
+    {"data": "03/03/2025", "nome": "Carnaval", "tipo": "Nacional"},
+    {"data": "04/03/2025", "nome": "Carnaval", "tipo": "Nacional"},
+    {"data": "05/03/2025", "nome": "Quarta-feira de Cinzas", "tipo": "Facultativo"},
+    {"data": "16/04/2025", "nome": "Semana Santa", "tipo": "Nacional"},
+    {"data": "17/04/2025", "nome": "Semana Santa", "tipo": "Nacional"},
+    {"data": "18/04/2025", "nome": "Sexta-feira Santa", "tipo": "Nacional"},
+    {"data": "21/04/2025", "nome": "Tiradentes", "tipo": "Nacional"},
+    {"data": "01/05/2025", "nome": "Dia do Trabalho", "tipo": "Nacional"},
+    {"data": "02/05/2025", "nome": "Emenda de Feriado", "tipo": "Facultativo"},
+    {"data": "19/06/2025", "nome": "Corpus Christi", "tipo": "Nacional"},
+    {"data": "20/06/2025", "nome": "Emenda de Feriado", "tipo": "Facultativo"},
+    {"data": "09/07/2025", "nome": "Revolução Constitucionalista", "tipo": "Estadual"},
+    {"data": "11/08/2025", "nome": "Dia do Estudante", "tipo": "Nacional"},
+    {"data": "07/09/2025", "nome": "Independência do Brasil", "tipo": "Nacional"},
+    {"data": "12/10/2025", "nome": "Nossa Senhora Aparecida", "tipo": "Nacional"},
+    {"data": "27/10/2025", "nome": "Dia do Servidor Público", "tipo": "Nacional"},
+    {"data": "02/11/2025", "nome": "Finados", "tipo": "Nacional"},
+    {"data": "15/11/2025", "nome": "Proclamação da República", "tipo": "Nacional"},
+    {"data": "20/11/2025", "nome": "Dia da Consciência Negra", "tipo": "Municipal"},
+    {"data": "21/11/2025", "nome": "Emenda de Feriado", "tipo": "Facultativo"},
+    {"data": "08/12/2025", "nome": "Dia de Nossa Senhora da Conceição", "tipo": "Municipal"},
+    {"data": "25/12/2025", "nome": "Natal", "tipo": "Nacional"},
+    {"data": "20/12/2025", "nome": "Recesso de Final de Ano", "tipo": "RECESSO"},
+    {"data": "21/12/2025", "nome": "Recesso de Final de Ano", "tipo": "RECESSO"},
+    {"data": "22/12/2025", "nome": "Recesso de Final de Ano", "tipo": "RECESSO"},
+    {"data": "23/12/2025", "nome": "Recesso de Final de Ano", "tipo": "RECESSO"},
+    {"data": "24/12/2025", "nome": "Recesso de Final de Ano", "tipo": "RECESSO"},
+    {"data": "26/12/2025", "nome": "Recesso de Final de Ano", "tipo": "RECESSO"},
+    {"data": "27/12/2025", "nome": "Recesso de Final de Ano", "tipo": "RECESSO"},
+    {"data": "28/12/2025", "nome": "Recesso de Final de Ano", "tipo": "RECESSO"},
+    {"data": "29/12/2025", "nome": "Recesso de Final de Ano", "tipo": "RECESSO"},
+    {"data": "30/12/2025", "nome": "Recesso de Final de Ano", "tipo": "RECESSO"},
+    {"data": "31/12/2025", "nome": "Recesso de Final de Ano", "tipo": "RECESSO"}
+];
+
 async function showHolidays() {
     const modal = document.getElementById('holiday-modal');
     modal.style.display = 'block';
@@ -336,10 +399,12 @@ function closeHolidayModal() {
     }, 300);
 }
 
+
 async function loadHolidays() {
     const holidaysList = document.getElementById('holidays-list');
     
     try {
+        console.log('Iniciando carregamento dos feriados...');
         // Mostra o estado de loading
         holidaysList.innerHTML = `
             <div class="loading-state">
@@ -348,11 +413,14 @@ async function loadHolidays() {
             </div>
         `;
         
-        const response = await fetch('feriados_2025.json');
-        if (!response.ok) {
-            throw new Error(`HTTP error! status: ${response.status}`);
-        }
-        const holidays = await response.json();
+        console.log('Usando dados embarcados dos feriados...');
+        
+        // Usar dados embarcados ao invés de fetch
+        console.log('Processando dados dos feriados...');
+        
+        // Os dados já estão no formato correto
+        const holidays = holidaysData;
+        console.log('Feriados carregados:', holidays.length, 'items');
         
         // Atualiza o mês atual no título
         document.getElementById('current-month').textContent = `${months[currentMonthIndex]} 2025`;
@@ -431,23 +499,46 @@ async function loadHolidays() {
 }
 
 function updateNextHoliday(holidays) {
+    // Filtrar feriados do mês atual ou futuros
     const today = new Date();
-    const nextHolidays = holidays.filter(holiday => {
+    const currentViewDate = new Date(2025, currentMonthIndex, 1);
+    
+    const relevantHolidays = holidays.filter(holiday => {
         const [day, month] = holiday.data.split('/');
         const holidayDate = new Date(2025, parseInt(month)-1, parseInt(day));
+        
+        // Se estamos visualizando um mês futuro, mostrar feriados desse mês
+        if (currentViewDate > today) {
+            return holidayDate.getMonth() === currentMonthIndex;
+        }
+        // Se estamos no mês atual ou passado, mostrar próximos feriados
         return holidayDate >= today;
     });
     
-    if (nextHolidays.length > 0) {
-        const nextHoliday = nextHolidays[0];
+    if (relevantHolidays.length > 0) {
+        const nextHoliday = relevantHolidays[0];
         const [day, month] = nextHoliday.data.split('/');
-        const weekday = new Date(2025, parseInt(month)-1, parseInt(day)).toLocaleDateString('pt-BR', { weekday: 'long' });
+        const holidayDate = new Date(2025, parseInt(month)-1, parseInt(day));
+        const weekday = holidayDate.toLocaleDateString('pt-BR', { weekday: 'long' });
+        
+        // Calcular dias restantes
+        const timeDiff = holidayDate - today;
+        const daysRemaining = Math.ceil(timeDiff / (1000 * 60 * 60 * 24));
+        
+        let daysText = '';
+        if (daysRemaining > 0) {
+            daysText = `<small>(em ${daysRemaining} dia${daysRemaining > 1 ? 's' : ''})</small>`;
+        } else if (daysRemaining === 0) {
+            daysText = '<small style="color: #C4965F; font-weight: bold;">(HOJE!)</small>';
+        } else {
+            daysText = '<small>(passou)</small>';
+        }
         
         document.getElementById('next-holiday').innerHTML = `
             <div class="next-holiday-content">
                 <div class="next-holiday-date">
                     <i class="bi bi-calendar-heart"></i>
-                    ${nextHoliday.data} (${weekday})
+                    ${nextHoliday.data} (${weekday}) ${daysText}
                 </div>
                 <div class="next-holiday-name">
                     ${nextHoliday.nome}
@@ -458,7 +549,11 @@ function updateNextHoliday(holidays) {
             </div>
         `;
     } else {
-        document.getElementById('next-holiday').innerHTML = '<p>Não há feriados próximos.</p>';
+        if (currentViewDate > today) {
+            document.getElementById('next-holiday').innerHTML = '<p>Não há feriados neste mês.</p>';
+        } else {
+            document.getElementById('next-holiday').innerHTML = '<p>Não há feriados próximos.</p>';
+        }
     }
 }
 
@@ -616,11 +711,11 @@ function renderFavorites() {
             }
             
             favoriteItem.innerHTML = `
+                <button class="remove-favorite" title="Desfavoritar">
+                    <i class="bi bi-star-fill"></i>
+                </button>
                 <i class="${icon}"></i>
                 <span>${favorite}</span>
-                <button class="remove-favorite" title="Remover dos favoritos">
-                    <i class="bi bi-trash"></i>
-                </button>
             `;
             
             favoriteItem.onclick = (e) => {
@@ -678,11 +773,22 @@ function renderFavorites() {
 
 // Funções para os accordions
 function initializeAccordions() {
+    // Primeiro, garantir que todos os accordions iniciem fechados
     document.querySelectorAll('.accordion-header').forEach(header => {
+        const content = header.nextElementSibling;
+        const icon = header.querySelector('.accordion-icon');
+        
+        // Definir estado inicial como fechado
+        header.setAttribute('aria-expanded', 'false');
+        if (content) {
+            content.style.display = 'none';
+        }
+        if (icon) {
+            icon.style.transform = 'rotate(0deg)';
+        }
+        
+        // Adicionar event listener para toggle
         header.addEventListener('click', () => {
-            const content = header.nextElementSibling;
-            const icon = header.querySelector('.accordion-icon');
-            
             // Toggle aria-expanded
             const isExpanded = header.getAttribute('aria-expanded') === 'true';
             header.setAttribute('aria-expanded', !isExpanded);
@@ -725,11 +831,13 @@ function initializeTheme() {
     const isDark = localStorage.getItem('darkMode') === 'true';
     
     if (isDark) {
+        document.documentElement.classList.add('dark');
         document.body.classList.add('dark');
         themeIcon.className = 'bi bi-sun-fill';
     }
     
     themeToggle.addEventListener('click', () => {
+        document.documentElement.classList.toggle('dark');
         document.body.classList.toggle('dark');
         const isDarkMode = document.body.classList.contains('dark');
         localStorage.setItem('darkMode', isDarkMode);
@@ -780,7 +888,6 @@ function initializeSearch() {
                 resultItem.innerHTML = `
                     <i class="${result.icon}"></i>
                     <span>${result.text}</span>
-                    ${result.url ? `<span class="search-result-url">${result.url}</span>` : ''}
                 `;
                 resultItem.addEventListener('click', () => {
                     result.element.click();

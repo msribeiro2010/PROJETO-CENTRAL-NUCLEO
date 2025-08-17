@@ -6,20 +6,20 @@
 }
 
 :root {
-    --primary-color: #6a82fb; /* Azul suave */
-    --secondary-color: #c7d2fe; /* Azul claro */
-    --accent-color: #e0e7ff; /* Azul muito claro */
-    --text-color: #334155; /* Cinza escuro */
-    --border-color: #cbd5e1; /* Cinza claro */
-    --shadow-color: rgba(0, 0, 0, 0.08); /* Sombra mais suave */
+    --primary-color: #C4965F; /* Terracota desértica */
+    --secondary-color: #E8DCC0; /* Bege pergaminho */
+    --accent-color: #F5F1E8; /* Papiro claro */
+    --text-color: #5D4E37; /* Marrom escuro desértico */
+    --border-color: #D4B896; /* Areia dourada */
+    --shadow-color: rgba(93, 78, 55, 0.15); /* Sombra desértica suave */
 
     /* Variáveis para o modo escuro */
-    --dark-primary: #1e293b; /* Azul escuro */
-    --dark-secondary: #334155; /* Azul acinzentado */
-    --dark-accent: #475569; /* Azul acinzentado mais claro */
-    --dark-text: #e2e8f0; /* Cinza claro */
-    --dark-border: #4a5568; /* Cinza azulado */
-    --dark-shadow: rgba(0, 0, 0, 0.25); /* Sombra mais pronunciada para contraste */
+    --dark-primary: #5D4E37; /* Marrom escuro desértico */
+    --dark-secondary: #8B7355; /* Marrom desértico médio */
+    --dark-accent: #A0956B; /* Marrom claro desértico */
+    --dark-text: #F5F1E8; /* Papiro claro */
+    --dark-border: #8B7355; /* Marrom desértico */
+    --dark-shadow: rgba(45, 37, 27, 0.35); /* Sombra escura desértica */
 }
 
 html, body {
@@ -27,13 +27,13 @@ html, body {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    background: #f3f4f6;
+    background: linear-gradient(135deg, #F5F1E8 0%, #E8DCC0 100%);
 }
 
 body {
     display: flex;
     flex-direction: column;
-    font-family: 'Roboto', sans-serif;
+    font-family: 'Source Sans Pro', 'Roboto', sans-serif;
     transition: background 0.3s ease;
     background-size: 400% 400%;
     color: var(--text-color);
@@ -49,18 +49,18 @@ body {
 /* Estilo para o modo escuro */
 html.dark,
 body.dark {
-    background: linear-gradient(135deg, #141a23 0%, #1a2333 100%, #22304a 100%);
+    background: linear-gradient(135deg, #2D251B 0%, #3A332A 100%, #4A4037 100%);
     background-size: 400% 400%;
     animation: gradientBG 18s ease infinite;
-    color: #a9c4e8;
+    color: #E8DCC0;
     transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 body.dark .container {
-    background: linear-gradient(120deg, rgba(34,48,74,0.92) 0%, rgba(26,35,51,0.92) 100%);
+    background: linear-gradient(120deg, rgba(93,78,55,0.92) 0%, rgba(139,115,85,0.92) 100%);
     background-size: 400% 400%;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.35), inset 0 0 80px rgba(0,0,0,0.18), inset 0 0 20px rgba(255,255,255,0.10);
-    border-color: rgba(255,255,255,0.12);
+    box-shadow: 0 10px 30px rgba(45,37,27,0.45), inset 0 0 80px rgba(45,37,27,0.25), inset 0 0 20px rgba(245,241,232,0.10);
+    border-color: rgba(245,241,232,0.15);
     -webkit-backdrop-filter: blur(18px);
     backdrop-filter: blur(18px);
 }
@@ -70,27 +70,26 @@ body.dark .container {
 .container {
     max-width: 1400px;
     margin: 20px auto;
-    background: linear-gradient(135deg, #e0e7ff, #c7d2fe);
+    background: linear-gradient(135deg, #F5F1E8, #E8DCC0);
     background-size: 400% 400%;
     padding: 20px;
     border-radius: 16px;
     transition: all 0.3s ease;
     -webkit-backdrop-filter: blur(10px);
     backdrop-filter: blur(10px);
-    border: 1px solid rgba(255, 255, 255, 0.3);
+    border: 1px solid rgba(212, 184, 150, 0.3);
     position: relative;
     overflow: hidden;
-    background: none !important;
-    box-shadow: none;
+    box-shadow: 0 4px 20px rgba(93, 78, 55, 0.1);
 }
 
 body.dark .container {
-    background: linear-gradient(135deg, #404041, #1f1f20, #3a3c40);
+    background: linear-gradient(135deg, #5D4E37, #8B7355, #A0956B);
     background-size: 400% 400%;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25),
-                inset 0 0 80px rgba(0, 0, 0, 0.1),
-                inset 0 0 20px rgba(255, 255, 255, 0.15);
-    border-color: rgba(255, 255, 255, 0.2);
+    box-shadow: 0 10px 30px rgba(45, 37, 27, 0.35),
+                inset 0 0 80px rgba(45, 37, 27, 0.15),
+                inset 0 0 20px rgba(245, 241, 232, 0.10);
+    border-color: rgba(245, 241, 232, 0.15);
 }
 
 .group {
@@ -131,7 +130,7 @@ body.dark .accordion-header {
 }
 
 body.dark .accordion-header .header-content i {
-    color: #60a5fa;
+    color: #D4B896;
 }
 
 body.dark .button-container button {
@@ -347,7 +346,7 @@ body.dark .holiday-btn:hover {
 }
 
 .holiday-btn {
-    background: linear-gradient(135deg, #3182ce 0%, #63b3ed 100%);
+    background: linear-gradient(135deg, #C4965F 0%, #D4B896 100%);
     border: none;
     color: white;
     padding: 10px 20px;
@@ -358,14 +357,14 @@ body.dark .holiday-btn:hover {
     gap: 10px;
     transition: all 0.3s ease;
     font-size: 0.95rem;
-    font-family: 'Roboto', sans-serif;
+    font-family: 'Source Sans Pro', 'Roboto', sans-serif;
     font-weight: 500;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 2px 4px rgba(93, 78, 55, 0.2);
     white-space: nowrap;
 }
 
 .holiday-btn:hover {
-    background: linear-gradient(135deg, #2c5282 0%, #3182ce 100%);
+    background: linear-gradient(135deg, #8B7355 0%, #C4965F 100%);
     transform: translateY(-2px);
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
 }
@@ -434,7 +433,7 @@ body.dark .holiday-btn:hover {
     color: rgba(255, 255, 255, 0.9);
 }
 
-/* Calendário wrapper com fundo azul */
+/* Calendário wrapper com fundo desértico */
 .calendar-wrapper {
     position: fixed;
     top: 20px;
@@ -469,15 +468,15 @@ body.dark .holiday-btn:hover {
 .time-container i,
 .date-container i {
     font-size: 1.1rem;
-    color: #3182CE;
+    color: #C4965F;
 }
 
 #clock {
     font-weight: 500;
     font-size: 1.2rem;
-    color: #3182CE;
+    color: #C4965F;
     letter-spacing: 0.5px;
-    font-family: 'Roboto Mono', monospace;
+    font-family: 'Source Sans Pro', 'Roboto Mono', monospace;
 }
 
 #weekday {
@@ -568,11 +567,11 @@ body.dark .date-container {
 
 body.dark .time-container i,
 body.dark .date-container i {
-    color: #63b3ed;
+    color: #D4B896;
 }
 
 body.dark #clock {
-    color: #60a5fa;
+    color: #D4B896;
 }
 
 body.dark #weekday,
@@ -705,9 +704,9 @@ body.dark #current-date {
 
 .group.sistema-pje .accordion-header {
     background: linear-gradient(90deg,
-        #63b3ed 0%,
-        #4299e1 20%,
-        #3182ce 50%,
+        #D4B896 0%,
+        #C4965F 20%,
+        #8B7355 50%,
         #2b6cb0 80%,
         #2c5282 100%
     );
@@ -991,7 +990,7 @@ body.dark .accordion-content::-webkit-scrollbar-thumb:hover {
     background: linear-gradient(145deg, #f0f9ff, #dbeafe);
     transform: translateY(-3px);
     box-shadow: 0 6px 12px rgba(0, 0, 0, 0.08);
-    color: #2563eb;
+    color: #8B7355;
 }
 
 .button-container button i,
@@ -1450,11 +1449,11 @@ body.dark .group .accordion-content {
     gap: 4px;
     color: rgba(255, 255, 255, 0.9);
     background: linear-gradient(90deg, 
-        #60a5fa 0%,
-        #3b82f6 20%,
-        #2563eb 50%,
-        #1d4ed8 80%,
-        #2563eb 100%
+        #D4B896 0%,
+        #C4965F 20%,
+        #8B7355 50%,
+        #5D4E37 80%,
+        #8B7355 100%
     );
     padding: 8px;
     border-radius: 8px;
@@ -1845,7 +1844,7 @@ body.dark .no-favorites {
 }
 
 .modal-header h3 i {
-    color: #3b82f6;
+    color: #C4965F;
 }
 
 .close-btn {
@@ -1874,7 +1873,7 @@ body.dark .no-favorites {
 
 /* Estilização do próximo feriado */
 .next-holiday {
-    background: linear-gradient(135deg, #3b82f6, #2563eb);
+    background: linear-gradient(135deg, #C4965F, #8B7355);
     border-radius: 12px;
     padding: 20px;
     margin-bottom: 20px;
@@ -2036,7 +2035,7 @@ body.dark .next-holiday {
 .month-btn i {
     position: relative;
     z-index: 2;
-    color: #3b82f6;
+    color: #C4965F;
     font-size: 1.2rem;
     transition: all 0.3s ease;
 }
@@ -2083,7 +2082,7 @@ body.dark .month-btn:hover i {
 #current-month {
     font-size: 1.2rem;
     font-weight: 600;
-    color: #3b82f6;
+    color: #C4965F;
     min-width: 180px;
     text-align: center;
 }
@@ -2094,10 +2093,231 @@ body.dark .holiday-filters {
 }
 
 body.dark #current-month {
-    color: #60a5fa;
+    color: #D4B896;
 }
 
 /* Estilização da lista de feriados */
+
+/* ===== MODAL DA PALETA DE CORES ===== */
+.color-palette-modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 10000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    backdrop-filter: blur(5px);
+    animation: fadeIn 0.3s ease;
+}
+
+.color-palette-content {
+    background: white;
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+    max-width: 400px;
+    width: 90%;
+    max-height: 90vh;
+    overflow-y: auto;
+    animation: slideIn 0.3s ease;
+}
+
+.color-palette-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 20px;
+    border-bottom: 1px solid #e2e8f0;
+}
+
+.color-palette-header h3 {
+    margin: 0;
+    color: #1e293b;
+    font-size: 1.2rem;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.color-palette-header h3 i {
+    color: #3b82f6;
+    font-size: 1.3rem;
+}
+
+.close-btn {
+    background: none;
+    border: none;
+    font-size: 1.5rem;
+    color: #64748b;
+    cursor: pointer;
+    padding: 5px;
+    border-radius: 50%;
+    transition: all 0.2s ease;
+    width: 35px;
+    height: 35px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.close-btn:hover {
+    background: #f1f5f9;
+    color: #ef4444;
+    transform: scale(1.1);
+}
+
+.color-palette-body {
+    padding: 20px;
+}
+
+.color-options {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 15px;
+    margin-bottom: 20px;
+}
+
+.color-option {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    cursor: pointer;
+    border: 3px solid transparent;
+    transition: all 0.3s ease;
+    position: relative;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+}
+
+.color-option:hover {
+    transform: scale(1.1);
+    border-color: #1e293b;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.25);
+}
+
+.color-option.selected {
+    border-color: #1e293b;
+    transform: scale(1.15);
+    box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.3);
+}
+
+.color-option.selected::after {
+    content: '✓';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: white;
+    font-weight: bold;
+    font-size: 1.2rem;
+    text-shadow: 0 1px 3px rgba(0, 0, 0, 0.5);
+}
+
+.color-palette-footer {
+    text-align: center;
+    padding-top: 15px;
+    border-top: 1px solid #e2e8f0;
+}
+
+.reset-btn {
+    background: #f8fafc;
+    border: 1px solid #e2e8f0;
+    color: #64748b;
+    padding: 10px 20px;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    font-size: 0.9rem;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin: 0 auto;
+}
+
+.reset-btn:hover {
+    background: #e2e8f0;
+    color: #1e293b;
+    transform: translateY(-1px);
+}
+
+/* Dark mode para o modal */
+body.dark .color-palette-content {
+    background: #1e293b;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+}
+
+body.dark .color-palette-header {
+    border-bottom-color: #334155;
+}
+
+body.dark .color-palette-header h3 {
+    color: #e2e8f0;
+}
+
+body.dark .close-btn {
+    color: #94a3b8;
+}
+
+body.dark .close-btn:hover {
+    background: #334155;
+    color: #f87171;
+}
+
+body.dark .color-palette-footer {
+    border-top-color: #334155;
+}
+
+body.dark .reset-btn {
+    background: #334155;
+    border-color: #475569;
+    color: #94a3b8;
+}
+
+body.dark .reset-btn:hover {
+    background: #475569;
+    color: #e2e8f0;
+}
+
+/* Animações */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes slideIn {
+    from {
+        opacity: 0;
+        transform: translateY(-20px) scale(0.95);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+/* Responsividade */
+@media (max-width: 480px) {
+    .color-palette-content {
+        width: 95%;
+        margin: 10px;
+    }
+    
+    .color-options {
+        grid-template-columns: repeat(4, 1fr);
+        gap: 12px;
+    }
+    
+    .color-option {
+        width: 45px;
+        height: 45px;
+    }
+}
 #holidays-list {
     display: flex;
     flex-direction: column;
@@ -2213,7 +2433,7 @@ body.dark #current-month {
 
 .loading-state i {
     font-size: 2rem;
-    color: #3b82f6;
+    color: #C4965F;
     animation: spin 1s linear infinite;
 }
 
@@ -2267,7 +2487,7 @@ body.dark .holiday-item:hover {
 }
 
 body.dark .holiday-date {
-    color: #60a5fa;
+    color: #D4B896;
 }
 
 body.dark .holiday-weekday {
@@ -2370,7 +2590,7 @@ body.dark .retry-button:hover {
 }
 
 .search-box i {
-    color: #3182ce;
+    color: #C4965F;
     font-size: 1.2rem;
         margin-right: 10px;
     }
@@ -2430,7 +2650,7 @@ body.dark .retry-button:hover {
 
 .search-result-item i {
     font-size: 1.2rem;
-    color: #3b82f6;
+    color: #C4965F;
     width: 24px;
     text-align: center;
 }
@@ -2460,14 +2680,14 @@ body.dark .retry-button:hover {
 
 /* Estilização da Seção de Favoritos */
 .favorites-container {
-    background: rgba(40, 90, 140, 0.35); /* azul mais escuro e um pouco mais opaco */
+    background: rgba(139, 115, 85, 0.35); /* desértico mais escuro e um pouco mais opaco */
     backdrop-filter: blur(12px);
     -webkit-backdrop-filter: blur(12px); /* Suporte Safari */
     border-radius: 16px;
     padding: 24px;
     margin: 20px 0 30px 0;
     box-shadow: 0 10px 25px rgba(0, 0, 0, 0.06), 0 4px 12px rgba(0, 0, 0, 0.04);
-    border: 1px solid rgba(70, 130, 180, 0.4); /* azul intermediário translúcido */
+    border: 1px solid rgba(196, 150, 95, 0.4); /* desértico intermediário translúcido */
     position: relative;
     overflow: hidden;
     transition: all 0.35s cubic-bezier(0.3, 0, 0.2, 1);
@@ -2491,7 +2711,7 @@ body.dark .retry-button:hover {
     align-items: center;
     font-size: 1.2rem;
     font-weight: 600;
-    color: #3b82f6;
+    color: #C4965F;
     margin-bottom: 18px;
     padding-bottom: 10px;
     border-bottom: 1px solid rgba(148, 163, 184, 0.3);
@@ -2523,7 +2743,7 @@ body.dark .retry-button:hover {
     opacity: 0.5;
     background: #f0f9ff !important;
     box-shadow: 0 0 8px rgba(14, 165, 233, 0.5) !important;
-    border: 2px dashed #0ea5e9 !important;
+    border: 2px dashed #C4965F !important;
 }
 
 .sortable-chosen {
@@ -2538,9 +2758,9 @@ body.dark .retry-button:hover {
 }
 
 body.dark .sortable-ghost {
-    background: #082f49 !important;
+    background: #5D4E37 !important;
     box-shadow: 0 0 8px rgba(56, 189, 248, 0.5) !important;
-    border: 2px dashed #38bdf8 !important;
+    border: 2px dashed #D4B896 !important;
 }
 
 body.dark .sortable-chosen {
@@ -2569,7 +2789,7 @@ body.dark .sortable-chosen {
 }
 
 .favorite-item:hover {
-    background: linear-gradient(135deg, #3b82f6, #2563eb);
+    background: linear-gradient(135deg, #C4965F, #8B7355);
     transform: translateY(-2px);
     padding-right: 42px;
     box-shadow: 
@@ -2579,38 +2799,50 @@ body.dark .sortable-chosen {
 
 .favorite-item .remove-favorite {
     position: absolute;
-    right: -20px;
-    top: 50%;
-    transform: translateY(-50%);
+    right: -24px;
+    top: 10px;
     display: flex;
     align-items: center;
     justify-content: center;
-    padding: 4px;
-    font-size: 1rem;
-    color: rgba(255, 255, 255, 0.8);
+    padding: 3px;
+    font-size: 0.8rem;
+    color: #ffd700;
     opacity: 0;
     transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     cursor: pointer;
-    width: 28px;
-    height: 28px;
+    width: 20px;
+    height: 20px;
     border-radius: 50%;
-    background: rgba(255, 255, 255, 0.1);
+    background: linear-gradient(135deg, rgba(255, 215, 0, 0.2), rgba(255, 193, 7, 0.3));
+    border: 1px solid rgba(255, 215, 0, 0.4);
+    backdrop-filter: blur(10px);
+    box-shadow: 0 2px 6px rgba(255, 215, 0, 0.3);
 }
 
 .favorite-item:hover .remove-favorite {
     opacity: 1;
-    right: 8px;
+    right: 4px;
+    transform: scale(1.05);
 }
 
 .favorite-item .remove-favorite:hover {
-    color: #ef4444;
-    transform: translateY(-50%) scale(1.1);
-    background: rgba(255, 255, 255, 0.2);
+    color: #ffed4e;
+    transform: scale(1.1) rotate(10deg);
+    background: linear-gradient(135deg, rgba(255, 215, 0, 0.4), rgba(255, 193, 7, 0.5));
+    border-color: rgba(255, 215, 0, 0.8);
+    box-shadow: 0 3px 10px rgba(255, 215, 0, 0.5), 0 0 0 2px rgba(255, 215, 0, 0.2);
+}
+
+.favorite-item .remove-favorite:active {
+    transform: scale(0.95) rotate(5deg);
+    transition: all 0.1s ease;
 }
 
 .favorite-item .remove-favorite i {
-    font-size: 1rem;
+    font-size: 0.8rem;
     color: inherit;
+    filter: drop-shadow(0 1px 2px rgba(0, 0, 0, 0.3));
+    transition: all 0.3s ease;
 }
 
 .favorite-item i {
@@ -2650,7 +2882,7 @@ body.dark .sortable-chosen {
 }
 
 .no-favorites .message-primary {
-    color: #3b82f6;
+    color: #C4965F;
     font-size: 1.1rem;
     font-weight: 500;
     margin-bottom: 5px;
@@ -2700,7 +2932,7 @@ body.dark .no-favorites {
 }
 
 body.dark .no-favorites .message-primary {
-    color: #60a5fa;
+    color: #D4B896;
 }
 
 body.dark .no-favorites .message-secondary {
@@ -2723,33 +2955,63 @@ body.dark .no-favorites .highlight {
 }
 
 .app-title {
-    font-size: 1.8rem;
+    font-size: 3.2rem;
     font-weight: 600;
     color: #1e3a8a;
-    margin: 0;
+    margin: 0 0 20px 0;
     display: flex;
     align-items: center;
-    gap: 10px;
+    gap: 15px;
+    text-align: center;
+    justify-content: center;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
 .app-title i {
-    color: #3b82f6;
-    font-size: 1.6rem;
-    animation: pulse 2s infinite ease-in-out;
+    color: #C4965F;
+    font-size: 2rem;
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+
+.app-title i:hover {
+    color: #B8854A;
+    transform: scale(1.1);
 }
 
 body.dark .app-title {
-    color: #60a5fa;
+    color: #D4B896;
 }
 
 body.dark .app-title i {
     color: #93c5fd;
 }
 
-@keyframes pulse {
-    0% { transform: scale(1); }
-    50% { transform: scale(1.1); }
-    100% { transform: scale(1); }
+body.dark .app-title i:hover {
+    color: #7dd3fc;
+}
+
+/* Responsividade para o título */
+@media (max-width: 768px) {
+    .app-title {
+        font-size: 2.5rem;
+        gap: 12px;
+    }
+    
+    .app-title i {
+        font-size: 1.8rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .app-title {
+        font-size: 2rem;
+        gap: 10px;
+    }
+    
+    .app-title i {
+        font-size: 1.5rem;
+    }
 }
 
 /* Footer estilo Apple */
@@ -2758,23 +3020,55 @@ body.dark .app-title i {
     bottom: 0;
     left: 0;
     width: 100%;
-    background: linear-gradient(135deg, #e0e7ff, #c7d2fe);
+    background: linear-gradient(135deg, 
+        rgba(224, 231, 255, 0.85) 0%, 
+        rgba(199, 210, 254, 0.9) 50%, 
+        rgba(165, 180, 252, 0.85) 100%);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
     color: var(--text-color);
     padding: 15px 20px;
-    box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.05);
+    box-shadow: 
+        0 -2px 20px rgba(0, 0, 0, 0.08),
+        0 -1px 0 rgba(255, 255, 255, 0.2),
+        inset 0 1px 0 rgba(255, 255, 255, 0.15);
+    border-top: 1px solid rgba(255, 255, 255, 0.2);
     z-index: 100;
-    transition: transform 0.3s ease-out;
+    transition: all 0.3s ease-out;
 }
 
 body.dark .footer {
-    background: linear-gradient(135deg, #1a2333 0%, #22304a 100%);
-    border-top: 1px solid #23283a;
-    color: #e2e8f0;
-}
-
-body.dark .footer {
-    background: rgba(28, 28, 30, 0.9);
+    background: linear-gradient(135deg, 
+        rgba(26, 35, 51, 0.85) 0%, 
+        rgba(34, 48, 74, 0.9) 50%, 
+        rgba(45, 55, 72, 0.85) 100%);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
     border-top: 1px solid rgba(255, 255, 255, 0.1);
+    color: #e2e8f0;
+    box-shadow: 
+        0 -2px 20px rgba(0, 0, 0, 0.25),
+        0 -1px 0 rgba(255, 255, 255, 0.05),
+        inset 0 1px 0 rgba(255, 255, 255, 0.08);
+}
+
+/* Efeito hover sutil no footer */
+.footer:hover {
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    box-shadow: 
+        0 -4px 25px rgba(0, 0, 0, 0.12),
+        0 -1px 0 rgba(255, 255, 255, 0.25),
+        inset 0 1px 0 rgba(255, 255, 255, 0.2);
+}
+
+body.dark .footer:hover {
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    box-shadow: 
+        0 -4px 25px rgba(0, 0, 0, 0.35),
+        0 -1px 0 rgba(255, 255, 255, 0.08),
+        inset 0 1px 0 rgba(255, 255, 255, 0.12);
 }
 
 .footer-content {
@@ -3020,14 +3314,14 @@ body.dark .windows-clock .date i {
 
 .sortable-drag {
     opacity: 1;
-    background: linear-gradient(135deg, #3b82f6, #2563eb);
+    background: linear-gradient(135deg, #C4965F, #8B7355);
     transform: scale(1.05);
     box-shadow: 0 8px 16px rgba(59, 130, 246, 0.3);
 }
 
 /* Dark mode styles para favoritos */
 body.dark .favorite-item {
-    background: linear-gradient(135deg, #3b82f6, #2563eb);
+    background: linear-gradient(135deg, #C4965F, #8B7355);
     border-color: rgba(59, 130, 246, 0.4);
     box-shadow: 
         0 4px 6px rgba(37, 99, 235, 0.3),
@@ -3042,11 +3336,17 @@ body.dark .favorite-item:hover {
 }
 
 body.dark .favorite-item .remove-favorite {
-    color: rgba(255, 255, 255, 0.9);
+    color: #ffd700;
+    background: linear-gradient(135deg, rgba(255, 215, 0, 0.15), rgba(255, 193, 7, 0.25));
+    border: 1px solid rgba(255, 215, 0, 0.3);
+    box-shadow: 0 2px 6px rgba(255, 215, 0, 0.2);
 }
 
 body.dark .favorite-item .remove-favorite:hover {
-    color: #f87171;
+    color: #ffed4e;
+    background: linear-gradient(135deg, rgba(255, 215, 0, 0.3), rgba(255, 193, 7, 0.4));
+    border-color: rgba(255, 215, 0, 0.6);
+    box-shadow: 0 3px 10px rgba(255, 215, 0, 0.4), 0 0 0 2px rgba(255, 215, 0, 0.15);
 }
 
 /* Animação suave para o botão expandir */
@@ -3261,7 +3561,7 @@ body.dark .group.consulta-documentos .button-container button:hover {
     display: flex;
     align-items: center;
     gap: 12px;
-    background: linear-gradient(135deg, #63b3ed 0%, #4299e1 100%);
+    background: linear-gradient(135deg, #C4965F 0%, #8B7355 100%);
     border: none;
     border-radius: 12px;
     padding: 12px 24px;
@@ -3269,15 +3569,16 @@ body.dark .group.consulta-documentos .button-container button:hover {
     font-size: 0.95rem;
     color: white;
     transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-    box-shadow: 0 4px 6px rgba(66, 153, 225, 0.2);
+    box-shadow: 0 4px 6px rgba(196, 150, 95, 0.2);
     font-weight: 500;
     letter-spacing: 0.3px;
+    font-family: 'Source Sans Pro', sans-serif;
 }
 
 .toggle-groups-btn:hover {
     transform: translateY(-2px);
-    box-shadow: 0 6px 12px rgba(66, 153, 225, 0.3);
-    background: linear-gradient(135deg, #4299e1 0%, #2b6cb0 100%);
+    box-shadow: 0 6px 12px rgba(139, 115, 85, 0.3);
+    background: linear-gradient(135deg, #8B7355 0%, #5D4E37 100%);
 }
 
 .toggle-groups-btn i {
@@ -3413,7 +3714,7 @@ body.dark .search-box:hover {
 }
 
 body.dark .search-box i {
-    color: #63b3ed;
+    color: #D4B896;
 }
 
 body.dark .search-box input {
@@ -3489,25 +3790,7 @@ body.dark .search-box:focus-within input::placeholder {
     text-align: right;
 }
 
-/* Melhorar a fluidez ao clicar na estrela para favoritar um link */
-.favorite-item .remove-favorite i {
-    transition: transform 0.3s ease, color 0.3s ease;
-}
-
-.favorite-item:hover .remove-favorite i {
-    transform: scale(1.2);
-    color: #ffcc00; /* Cor de destaque ao favoritar */
-}
-
-.favorite-item:active .remove-favorite i {
-    animation: pulse 0.5s;
-}
-
-@keyframes pulse {
-    0% { transform: scale(1); }
-    50% { transform: scale(1.1); }
-    100% { transform: scale(1); }
-}
+/* Estilos do ícone de desfavoritar já definidos acima */
 
 /* Restaurar o estilo do ícone do modo escuro */
 .theme-toggle {
@@ -3560,13 +3843,13 @@ body.dark .group:hover {
 /* Melhorar o ícone de paletas de cores do grupo 'Meus Atalhos Favoritos' */
 .favorites-color-button i {
     font-size: 1.5rem; /* Aumentar o tamanho do ícone */
-    color: #3182ce; /* Cor azul para destaque */
+    color: #C4965F; /* Cor azul para destaque */
     transition: transform 0.3s ease, color 0.3s ease;
 }
 
 .favorites-color-button:hover i {
     transform: scale(1.2);
-    color: #63b3ed; /* Cor mais clara ao passar o mouse */
+    color: #D4B896; /* Cor mais clara ao passar o mouse */
 }
 
 /* Adicionar mais cores escuras e sólidas ao ícone de paletas de cores */
@@ -3694,9 +3977,110 @@ body.dark .group.pje .pje-producao-title {
 }
 
 body.dark .header {
-    background: linear-gradient(135deg, #101014, #23272f);
-    border-color: rgba(255, 255, 255, 0.18);
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25);
+    background: linear-gradient(135deg, #5D4E37, #8B7355);
+    border-color: rgba(245, 241, 232, 0.18);
+    box-shadow: 0 10px 30px rgba(45, 37, 27, 0.35);
+}
+
+/* ===== FONTES ELEGANTES TEMA DESÉRTICO ===== */
+
+/* Títulos principais - Playfair Display */
+h1, .app-title, .header h1 {
+    font-family: 'Playfair Display', serif !important;
+    font-weight: 600;
+    letter-spacing: -0.5px;
+}
+
+/* Títulos secundários */
+h2, h3, .tooltip-title, .modal-header h3 {
+    font-family: 'Playfair Display', serif !important;
+    font-weight: 500;
+}
+
+/* Texto corpo */
+body, p, span, div, button {
+    font-family: 'Source Sans Pro', sans-serif !important;
+}
+
+/* Textos decorativos e especiais */
+.aniversariantes-lista .nome,
+.tooltip-dev-info,
+.greeting-message {
+    font-family: 'Crimson Text', serif !important;
+    font-weight: 400;
+}
+
+/* Botões elegantes */
+button, .btn {
+    font-family: 'Source Sans Pro', sans-serif !important;
+    font-weight: 500;
+    letter-spacing: 0.3px;
+}
+
+/* Inputs e formulários */
+input, textarea, select {
+    font-family: 'Source Sans Pro', sans-serif !important;
+}
+
+/* Footer e elementos menores */
+.footer, .footer p, .footer a {
+    font-family: 'Source Sans Pro', sans-serif !important;
+    font-weight: 400;
+}
+
+/* ===== SISTEMA DE CORES DESÉRTICO HARMONIOSO ===== */
+
+/* Sobrescrever qualquer cor azul remanescente */
+*[style*="#3182ce"], *[style*="#3b82f6"], *[style*="#2563eb"], 
+*[style*="#60a5fa"], *[style*="#63b3ed"], *[style*="#225ea8"] {
+    color: #C4965F !important;
+}
+
+/* Efeito papiro texturizado */
+.papyrus-texture {
+    background-image: 
+        radial-gradient(circle at 20% 50%, rgba(212, 184, 150, 0.1) 0%, transparent 20%),
+        radial-gradient(circle at 80% 50%, rgba(196, 150, 95, 0.1) 0%, transparent 20%),
+        radial-gradient(circle at 40% 80%, rgba(139, 115, 85, 0.1) 0%, transparent 20%);
+    background-size: 100px 100px, 150px 150px, 80px 80px;
+}
+
+/* Gradientes desérticos consistentes */
+.bg-desert-primary {
+    background: linear-gradient(135deg, #C4965F, #8B7355) !important;
+}
+
+.bg-desert-secondary {
+    background: linear-gradient(135deg, #E8DCC0, #D4B896) !important;
+}
+
+.bg-desert-light {
+    background: linear-gradient(135deg, #F5F1E8, #E8DCC0) !important;
+}
+
+/* Cores de texto desérticas */
+.text-desert-primary { color: #C4965F !important; }
+.text-desert-secondary { color: #8B7355 !important; }
+.text-desert-dark { color: #5D4E37 !important; }
+.text-desert-light { color: #E8DCC0 !important; }
+
+/* Bordas desérticas */
+.border-desert { border-color: #D4B896 !important; }
+.border-desert-dark { border-color: #8B7355 !important; }
+
+/* Estados hover desérticos */
+.hover-desert:hover { 
+    background-color: #C4965F !important; 
+    color: white !important;
+}
+
+/* Sistema de sombras desértico */
+.shadow-desert {
+    box-shadow: 0 4px 20px rgba(93, 78, 55, 0.15) !important;
+}
+
+.shadow-desert-lg {
+    box-shadow: 0 10px 30px rgba(93, 78, 55, 0.25) !important;
 }
 
 

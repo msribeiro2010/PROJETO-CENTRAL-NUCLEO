@@ -1,0 +1,20 @@
+version: '3.8'
+
+services:
+  central-nucleo:
+    build: .
+    container_name: central-nucleo-app
+    ports:
+      - "8080:80"
+    restart: unless-stopped
+    environment:
+      - NGINX_HOST=localhost
+      - NGINX_PORT=80
+    volumes:
+      - ./nginx.conf:/etc/nginx/conf.d/default.conf:ro
+    networks:
+      - central-nucleo-network
+
+networks:
+  central-nucleo-network:
+    driver: bridge

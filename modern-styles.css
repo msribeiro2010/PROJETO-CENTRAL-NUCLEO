@@ -1,23 +1,23 @@
 /* ===== Modern Styles for NAPJe App ===== */
 
 :root {
-  --primary: #3182ce;
-  --primary-dark: #225ea8;
-  --accent: #7f56d9;
-  --background: #f7fafc;
-  --card-bg: rgba(255,255,255,0.85); /* Glassmorphism */
-  --card-shadow: 0 4px 24px 0 rgba(49, 130, 206, 0.08);
+  --primary: #C4965F;
+  --primary-dark: #8B7355;
+  --accent: #D4B896;
+  --background: #F5F1E8;
+  --card-bg: rgba(245, 241, 232, 0.85); /* Glassmorphism desértico */
+  --card-shadow: 0 4px 24px 0 rgba(196, 150, 95, 0.12);
   --border-radius: 18px;
-  --text-main: #222;
-  --text-muted: #6b7280;
+  --text-main: #5D4E37;
+  --text-muted: #8B7355;
   --transition: 0.2s cubic-bezier(.4,0,.2,1);
-  --active-border: #7f56d9;
+  --active-border: #D4B896;
   --glass-blur: blur(8px);
 }
 
 body {
   background: var(--background);
-  font-family: 'Poppins', 'Roboto', Arial, sans-serif;
+  font-family: 'Source Sans Pro', 'Playfair Display', 'Poppins', 'Roboto', Arial, sans-serif;
   color: var(--text-main);
   font-size: 1.05rem;
   line-height: 1.6;
@@ -30,11 +30,11 @@ body {
 }
 
 .header {
-  /* Gradiente azul puro, sem lilás */
-  background: linear-gradient(90deg, #3182ce 0%, #225ea8 100%) !important;
+  /* Gradiente desértico terracota */
+  background: linear-gradient(90deg, #C4965F 0%, #8B7355 100%) !important;
   color: #fff;
   border-radius: var(--border-radius);
-  box-shadow: 0 2px 8px 0 rgba(49,130,206,0.08);
+  box-shadow: 0 2px 8px 0 rgba(196, 150, 95, 0.15);
   padding: 2px 6px 2px 6px;
   margin-bottom: 10px;
   position: relative;
@@ -234,7 +234,7 @@ body {
 
 .footer {
   /* Gradiente azul puro, sem lilás, acompanhando a borda do sistema */
-  background: linear-gradient(90deg, #3182ce 0%, #225ea8 100%) !important;
+  background: linear-gradient(90deg, #C4965F 0%, #8B7355 100%) !important;
   border-top: 1px solid #e2e8f0;
   margin-top: 48px;
   padding: 18px 0;
@@ -354,24 +354,24 @@ body {
 /* Modo escuro aprimorado */
 @media (prefers-color-scheme: dark) {
   :root {
-    --background: #181c24;
-    --card-bg: rgba(30,34,44,0.92);
-    --text-main: #f3f6fa;
-    --text-muted: #b0b6c3;
-    --primary: #3182ce;
-    --primary-dark: #225ea8;
-    --accent: #3182ce;
-    --card-shadow: 0 4px 24px 0 rgba(49,130,206,0.10);
-    --active-border: #3182ce;
+    --background: #2D251B;
+    --card-bg: rgba(93, 78, 55, 0.92);
+    --text-main: #F5F1E8;
+    --text-muted: #D4B896;
+    --primary: #C4965F;
+    --primary-dark: #8B7355;
+    --accent: #D4B896;
+    --card-shadow: 0 4px 24px 0 rgba(139, 115, 85, 0.15);
+    --active-border: #D4B896;
   }
   /*
   .header {
-    background: linear-gradient(90deg, #3182ce 0%, #225ea8 100%) !important;
+    background: linear-gradient(90deg, #C4965F 0%, #8B7355 100%) !important;
     color: #fff;
     box-shadow: 0 6px 32px 0 rgba(49,130,206,0.13);
   }
   .footer {
-    background: linear-gradient(90deg, #3182ce 0%, #225ea8 100%) !important;
+    background: linear-gradient(90deg, #C4965F 0%, #8B7355 100%) !important;
     color: #fff;
     border-top: 1px solid #23283a;
   }
@@ -418,7 +418,7 @@ body {
   -webkit-backdrop-filter: blur(16px);
   border-radius: 18px;
   box-shadow: 0 8px 32px 0 rgba(49,130,206,0.18);
-  color: #1e293b;
+  color: #5D4E37;
   padding: 32px 28px 24px 28px;
   max-width: 420px;
   margin: 0 auto;
@@ -438,13 +438,13 @@ body {
 }
 .system-info-tooltip .tooltip-header i {
   font-size: 2.2rem;
-  color: #3182ce;
+  color: #C4965F;
   filter: drop-shadow(0 2px 8px rgba(49,130,206,0.10));
 }
 .system-info-tooltip .tooltip-title {
   font-size: 1.25rem;
   font-weight: 700;
-  color: #3182ce;
+  color: #C4965F;
   letter-spacing: 0.5px;
 }
 .system-info-tooltip .tooltip-version {
@@ -463,19 +463,19 @@ body {
 .system-info-tooltip .tooltip-section-title {
   font-size: 1.08rem;
   font-weight: 600;
-  color: #3182ce;
+  color: #C4965F;
   margin-bottom: 6px;
   display: flex;
   align-items: center;
   gap: 7px;
 }
 .system-info-tooltip .tooltip-section-title i {
-  color: #3182ce;
+  color: #C4965F;
   font-size: 1.1rem;
 }
 .system-info-tooltip .tooltip-dev-info span,
 .system-info-tooltip .tooltip-tech-list li {
-  color: #1e293b;
+  color: #5D4E37;
   font-size: 1rem;
   font-weight: 500;
 }
@@ -505,7 +505,7 @@ body.dark .system-info-tooltip .tooltip-header i,
 body.dark .system-info-tooltip .tooltip-title,
 body.dark .system-info-tooltip .tooltip-section-title,
 body.dark .system-info-tooltip .tooltip-section-title i {
-  color: #60a5fa;
+  color: #D4B896;
 }
 body.dark .system-info-tooltip .tooltip-dev-info span,
 body.dark .system-info-tooltip .tooltip-tech-list li {

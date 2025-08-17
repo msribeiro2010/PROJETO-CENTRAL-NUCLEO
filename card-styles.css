@@ -1,15 +1,16 @@
 /* Card Styles CSS - Centralized styles for cards and groups */
 
-/* Base group styles - Estilo padronizado azul com fontes brancas */
+/* Base group styles - Estilo padronizado desértico com fontes brancas */
 .group {
-    background: linear-gradient(135deg, #3b82f6, #2563eb);
+    background: linear-gradient(135deg, #C4965F, #8B7355);
     border-radius: 8px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 2px 4px rgba(93, 78, 55, 0.2);
     overflow: hidden;
     transition: all 0.3s ease;
     margin-bottom: 20px;
-    border: 1px solid #2563eb;
+    border: 1px solid #8B7355;
     color: white;
+    font-family: 'Source Sans Pro', sans-serif;
 }
 
 .group:hover {
@@ -73,7 +74,7 @@
 
 .accordion-header .header-content i {
     font-size: 1.1rem;
-    color: #3182ce;
+    color: #C4965F;
 }
 
 .accordion-icon {
@@ -142,7 +143,7 @@
 
 .button-container button i {
     font-size: 1rem;
-    color: #3182ce;
+    color: #C4965F;
 }
 
 /* Specific group styles - Todos no estilo Contra-cheque em branco */
@@ -564,7 +565,7 @@ body.dark .group.sistema-pje .accordion-header .header-content i {
 }
 
 body.dark .group.pje .accordion-header .header-content i {
-    color: #63b3ed;
+    color: #D4B896;
 }
 
 body.dark .group.google-apps .accordion-header .header-content i {
@@ -588,7 +589,7 @@ body.dark .group.info-holerite .accordion-header .header-content i {
 }
 
 body.dark .group.sistemas-satelites .accordion-header .header-content i {
-    color: #63b3ed;
+    color: #D4B896;
 }
 
 body.dark .group.apps-externos .accordion-header .header-content i {
@@ -618,7 +619,7 @@ body.dark .accordion-header {
 }
 
 body.dark .accordion-header .header-content i {
-    color: #63b3ed;
+    color: #D4B896;
 }
 
 body.dark .accordion-content {
@@ -637,13 +638,13 @@ body.dark .button-container button {
 }
 
 body.dark .button-container button i {
-    color: #63b3ed;
+    color: #D4B896;
 }
 
 body.dark .button-container button:hover {
     background-color: #4a5568;
     color: #e2e8f0;
-    border-color: #63b3ed;
+    border-color: #D4B896;
 }
 
 /* Modal styles - more compact */
@@ -1176,8 +1177,8 @@ body.dark .close-btn:hover {
   --text-color: #222;
   --card-background: #f8fafc;
   --hover-color: #edf2f7;
-  --primary-color: #3182ce;
-  --primary-color-dark: #225ea8;
+  --primary-color: #C4965F;
+  --primary-color-dark: #8B7355;
   --border-color: #e2e8f0;
   --text-secondary: #6b7280;
 }

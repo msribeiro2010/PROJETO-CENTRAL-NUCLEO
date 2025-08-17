@@ -190,6 +190,15 @@ const favoritesColors = [
 ];
 
 // Adicionar novas opções de cores animadas e com desenhos
+const emojiMap = {
+    'TI 💻': '💻',
+    'Desktop 🖥️': '🖥️',
+    'Segurança 🛡️': '🛡️',
+    'Energia ⚡': '⚡',
+    'Web 🌐': '🌐',
+    'Privacidade 🔒': '🔒',
+};
+
 const animatedColors = [
     {
         background: 'linear-gradient(270deg, #ff6b6b, #fcd34d, #6c5ce7, #a8e6cf, #ff8787)',
@@ -371,19 +380,9 @@ function initFavoritesCustomizer() {
                 
                 showFeedbackMessage(`Tema ${color.name} aplicado com sucesso!`);
 
-                const emojiMap = {
-                    'TI 💻': '💻',
-                    'Desktop 🖥️': '🖥️',
-                    'Segurança 🛡️': '🛡️',
-                    'Energia ⚡': '⚡',
-                    'Web 🌐': '🌐',
-                    'Privacidade 🔒': '🔒',
-                };
-                if (emojiMap[color.name]) {
-                    showFavoritesEmoji(emojiMap[color.name]);
-                } else {
-                    hideFavoritesEmoji();
-                }
+
+                // Remover referência ao emojiMap que não existe mais
+                hideFavoritesEmoji();
 
                 if (color.name === 'Matrix') {
                     showMatrixEffect();
@@ -456,14 +455,7 @@ function initFavoritesCustomizer() {
                 }, 500);
                 showFeedbackMessage(`Tema ${color.name} aplicado com sucesso!`);
 
-                const emojiMap = {
-                    'TI 💻': '💻',
-                    'Desktop 🖥️': '🖥️',
-                    'Segurança 🛡️': '🛡️',
-                    'Energia ⚡': '⚡',
-                    'Web 🌐': '🌐',
-                    'Privacidade 🔒': '🔒',
-                };
+
                 if (emojiMap[color.name]) {
                     showFavoritesEmoji(emojiMap[color.name]);
                 } else {
