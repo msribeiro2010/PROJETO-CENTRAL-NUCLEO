@@ -1,14 +1,14 @@
 /* Card Styles CSS - Centralized styles for cards and groups */
 
-/* Base group styles - Estilo padronizado desértico com fontes brancas */
+/* Base group styles - Estilo padronizado cinza com fontes brancas */
 .group {
-    background: linear-gradient(135deg, #C4965F, #8B7355);
+    background: linear-gradient(135deg, #6B7280, #4B5563);
     border-radius: 8px;
-    box-shadow: 0 2px 4px rgba(93, 78, 55, 0.2);
+    box-shadow: 0 2px 4px rgba(75, 85, 99, 0.2);
     overflow: hidden;
     transition: all 0.3s ease;
     margin-bottom: 20px;
-    border: 1px solid #8B7355;
+    border: 1px solid #4B5563;
     color: white;
     font-family: 'Source Sans Pro', sans-serif;
 }
@@ -74,7 +74,7 @@
 
 .accordion-header .header-content i {
     font-size: 1.1rem;
-    color: #C4965F;
+    color: #6B7280;
 }
 
 .accordion-icon {
@@ -143,7 +143,7 @@
 
 .button-container button i {
     font-size: 1rem;
-    color: #C4965F;
+    color: #6B7280;
 }
 
 /* Specific group styles - Todos no estilo Contra-cheque em branco */
@@ -163,7 +163,7 @@
 }
 
 .group.sistema-pje .accordion-header .header-content i {
-    color: #319795;
+    color: #6B7280;
 }
 
 .group.sistema-pje .button-container button {
@@ -179,7 +179,7 @@
 }
 
 .group.sistema-pje .button-container button i {
-    color: #319795;
+    color: #6B7280;
 }
 
 /* PJe Group */
@@ -198,7 +198,7 @@
 }
 
 .group.pje .accordion-header .header-content i {
-    color: #3182CE;
+    color: #6B7280;
 }
 
 .group.pje .button-container button {
@@ -214,7 +214,7 @@
 }
 
 .group.pje .button-container button i {
-    color: #3182CE;
+    color: #6B7280;
 }
 
 /* Google Apps Group */
@@ -233,7 +233,7 @@
 }
 
 .group.google-apps .accordion-header .header-content i {
-    color: #DD6B20;
+    color: #6B7280;
 }
 
 .group.google-apps .button-container button {
@@ -249,7 +249,7 @@
 }
 
 .group.google-apps .button-container button i {
-    color: #DD6B20;
+    color: #6B7280;
 }
 
 /* ASSYST-PJe Group */
@@ -268,7 +268,7 @@
 }
 
 .group.assyst-pje .accordion-header .header-content i {
-    color: #805AD5;
+    color: #6B7280;
 }
 
 .group.assyst-pje .button-container button {
@@ -284,7 +284,7 @@
 }
 
 .group.assyst-pje .button-container button i {
-    color: #805AD5;
+    color: #6B7280;
 }
 
 /* SISCONDJ Group */
@@ -303,7 +303,7 @@
 }
 
 .group.siscondj .accordion-header .header-content i {
-    color: #38A169;
+    color: #6B7280;
 }
 
 .group.siscondj .button-container button {
@@ -319,7 +319,7 @@
 }
 
 .group.siscondj .button-container button i {
-color: #38A169;
+color: #6B7280;
 }
 
 /* Aniversariantes Group */
@@ -338,7 +338,7 @@ color: #38A169;
 }
 
 .group.aniversariantes .accordion-header .header-content i {
-    color: #ED8936;
+    color: #6B7280;
 }
 
 /* Estilos da lista de aniversariantes */
@@ -400,7 +400,7 @@ color: #38A169;
 }
 
 .group.info-holerite .accordion-header .header-content i {
-    color: #3182CE;
+    color: #6B7280;
 }
 
 .group.info-holerite .button-container button {
@@ -416,7 +416,7 @@ color: #38A169;
 }
 
 .group.info-holerite .button-container button i {
-    color: #3182CE;
+    color: #6B7280;
 }
 
 /* Sistemas Satélites Group */
@@ -435,7 +435,7 @@ color: #38A169;
 }
 
 .group.sistemas-satelites .accordion-header .header-content i {
-    color: #4299E1;
+    color: #6B7280;
 }
 
 .group.sistemas-satelites .button-container button {
@@ -451,7 +451,7 @@ color: #38A169;
 }
 
 .group.sistemas-satelites .button-container button i {
-    color: #4299E1;
+    color: #6B7280;
 }
 
 /* Apps Externos Group */
@@ -470,7 +470,7 @@ color: #38A169;
 }
 
 .group.apps-externos .accordion-header .header-content i {
-    color: #38A169;
+    color: #6B7280;
 }
 
 .group.apps-externos .button-container button {
@@ -486,7 +486,7 @@ color: #38A169;
 }
 
 .group.apps-externos .button-container button i {
-    color: #38A169;
+    color: #6B7280;
 }
 
 /* Atendimento Externo Group */

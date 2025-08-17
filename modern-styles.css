@@ -1,17 +1,17 @@
 /* ===== Modern Styles for NAPJe App ===== */
 
 :root {
-  --primary: #C4965F;
-  --primary-dark: #8B7355;
-  --accent: #D4B896;
-  --background: #F5F1E8;
-  --card-bg: rgba(245, 241, 232, 0.85); /* Glassmorphism desértico */
-  --card-shadow: 0 4px 24px 0 rgba(196, 150, 95, 0.12);
+  --primary: #6B7280;
+  --primary-dark: #4B5563;
+  --accent: #9CA3AF;
+  --background: #F3F4F6;
+  --card-bg: rgba(243, 244, 246, 0.85); /* Glassmorphism cinza */
+  --card-shadow: 0 4px 24px 0 rgba(107, 114, 128, 0.12);
   --border-radius: 18px;
-  --text-main: #5D4E37;
-  --text-muted: #8B7355;
+  --text-main: #374151;
+  --text-muted: #6B7280;
   --transition: 0.2s cubic-bezier(.4,0,.2,1);
-  --active-border: #D4B896;
+  --active-border: #9CA3AF;
   --glass-blur: blur(8px);
 }
 
@@ -30,11 +30,11 @@ body {
 }
 
 .header {
-  /* Gradiente desértico terracota */
-  background: linear-gradient(90deg, #C4965F 0%, #8B7355 100%) !important;
+  /* Gradiente cinza */
+  background: linear-gradient(90deg, #6B7280 0%, #4B5563 100%) !important;
   color: #fff;
   border-radius: var(--border-radius);
-  box-shadow: 0 2px 8px 0 rgba(196, 150, 95, 0.15);
+  box-shadow: 0 2px 8px 0 rgba(107, 114, 128, 0.15);
   padding: 2px 6px 2px 6px;
   margin-bottom: 10px;
   position: relative;
@@ -104,11 +104,11 @@ body {
   align-items: center;
   gap: 7px;
   margin-bottom: 12px;
-  text-shadow: 0 2px 8px rgba(49,130,206,0.12);
+  text-shadow: 0 2px 8px rgba(107, 114, 128, 0.12);
   letter-spacing: 0.5px;
 }
 .favorites-header h3 .bi-star-fill {
-  color: #ffd700;
+  color: #9CA3AF;
   font-size: 1.35rem;
   margin-right: 2px;
 }
@@ -139,7 +139,7 @@ body {
   animation: groupFadeIn 0.7s cubic-bezier(.4,0,.2,1) forwards;
 }
 .group:hover {
-  box-shadow: 0 12px 36px 0 rgba(127,86,217,0.18), 0 8px 32px 0 rgba(49,130,206,0.13);
+  box-shadow: 0 12px 36px 0 rgba(107, 114, 128, 0.18), 0 8px 32px 0 rgba(107, 114, 128, 0.13);
   transform: translateY(-4px) scale(1.03);
   border-left: 5px solid var(--accent);
 }
@@ -147,7 +147,7 @@ body {
 /* Borda colorida no grupo ativo (quando aberto) */
 .group[aria-expanded="true"], .group.active, .group.open {
   border-left: 5px solid var(--active-border);
-  box-shadow: 0 16px 40px 0 rgba(127,86,217,0.18), 0 8px 32px 0 rgba(49,130,206,0.13);
+  box-shadow: 0 16px 40px 0 rgba(107, 114, 128, 0.18), 0 8px 32px 0 rgba(107, 114, 128, 0.13);
 }
 
 @keyframes groupFadeIn {
@@ -174,7 +174,7 @@ body {
   transition: background var(--transition), color var(--transition);
 }
 .accordion-header:hover {
-  background: #f0f4fa;
+  background: #F9FAFB;
   color: var(--accent);
 }
 
@@ -193,7 +193,7 @@ body {
   padding: 10px 8px;
   font-size: 1rem;
   font-weight: 500;
-  box-shadow: 0 2px 8px 0 rgba(49,130,206,0.10);
+  box-shadow: 0 2px 8px 0 rgba(107, 114, 128, 0.10);
   cursor: pointer;
   transition: background 0.18s cubic-bezier(.4,0,.2,1), box-shadow 0.18s, transform 0.18s;
   position: relative;
@@ -211,12 +211,12 @@ body {
 }
 .button-container button:hover {
   background: var(--accent);
-  box-shadow: 0 4px 16px 0 rgba(127,86,217,0.13);
+  box-shadow: 0 4px 16px 0 rgba(107, 114, 128, 0.13);
   transform: translateY(-2px) scale(1.04);
 }
 .button-container button:active {
   background: var(--primary-dark);
-  box-shadow: 0 1px 4px 0 rgba(49,130,206,0.10);
+  box-shadow: 0 1px 4px 0 rgba(107, 114, 128, 0.10);
   transform: scale(0.97);
 }
 
@@ -233,12 +233,12 @@ body {
 }
 
 .footer {
-  /* Gradiente azul puro, sem lilás, acompanhando a borda do sistema */
-  background: linear-gradient(90deg, #C4965F 0%, #8B7355 100%) !important;
+  /* Gradiente cinza */
+  background: linear-gradient(90deg, #6B7280 0%, #4B5563 100%) !important;
   border-top: 1px solid #e2e8f0;
   margin-top: 48px;
   padding: 18px 0;
-  box-shadow: 0 -2px 12px 0 rgba(49,130,206,0.04);
+  box-shadow: 0 -2px 12px 0 rgba(107, 114, 128, 0.04);
   transition: bottom 0.3s;
   max-width: 1100px;
   margin-left: auto;
@@ -514,4 +514,4 @@ body.dark .system-info-tooltip .tooltip-tech-list li {
 body.dark .system-info-tooltip .tooltip-version,
 body.dark .system-info-tooltip .tooltip-footer {
   color: #b0b6c3;
-} 
+}

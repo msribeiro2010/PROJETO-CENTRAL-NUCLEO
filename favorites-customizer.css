@@ -3,7 +3,7 @@
     position: relative;
     height: 32px;
     border-radius: 8px;
-    background: rgba(59, 130, 246, 0.9);
+    background: rgba(107, 114, 128, 0.9);
     border: 1px solid rgba(255, 255, 255, 0.3);
     color: white;
     display: flex;
@@ -24,7 +24,7 @@
 }
 
 .favorites-customize-btn:hover {
-    background: rgba(59, 130, 246, 1);
+    background: rgba(107, 114, 128, 1);
     transform: translateY(-1px);
     box-shadow: 0 3px 6px rgba(0, 0, 0, 0.15);
 }
@@ -98,7 +98,7 @@
 
 .favorites-color-option.selected {
     border: 2px solid white;
-    box-shadow: 0 0 0 2px var(--accent-color, #C4965F);
+    box-shadow: 0 0 0 2px var(--accent-color, #6B7280);
 }
 
 /* Efeito de mudança de cor */
@@ -176,7 +176,7 @@ body.dark .favorites-color-panel {
     right: 50px;
     height: 32px;
     border-radius: 16px;
-    background-color: #C4965F;
+    background-color: #6B7280;
     border: 1px solid rgba(255, 255, 255, 0.4);
     color: white;
     display: flex;
@@ -197,7 +197,7 @@ body.dark .favorites-color-panel {
 
 .favorites-open-all-btn:hover {
     transform: scale(1.05);
-    background-color: #8B7355;
+    background-color: #4B5563;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 

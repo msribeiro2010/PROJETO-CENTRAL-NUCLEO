@@ -10,55 +10,55 @@
 html body .card-white.group,
 body .card-white.group,
 .card-white.group {
-    background: #F5F1E8 !important;
+    background: #F3F4F6 !important;
     background-image: none !important;
-    background-color: #F5F1E8 !important;
-    border: 1px solid #D4B896 !important;
-    color: #5D4E37 !important;
+    background-color: #F3F4F6 !important;
+    border: 1px solid #D1D5DB !important;
+    color: #374151 !important;
 }
 
 html body .card-blue.group,
 body .card-blue.group,
 .card-blue.group {
-    background: linear-gradient(135deg, #C4965F, #8B7355) !important;
-    background-image: linear-gradient(135deg, #C4965F, #8B7355) !important;
-    border: 1px solid #8B7355 !important;
+    background: linear-gradient(135deg, #6B7280, #4B5563) !important;
+    background-image: linear-gradient(135deg, #6B7280, #4B5563) !important;
+    border: 1px solid #4B5563 !important;
     color: white !important;
 }
 
 html body .card-green.group,
 body .card-green.group,
 .card-green.group {
-    background: linear-gradient(135deg, #10b981, #059669) !important;
-    background-image: linear-gradient(135deg, #10b981, #059669) !important;
-    border: 1px solid #059669 !important;
+    background: linear-gradient(135deg, #9CA3AF, #6B7280) !important;
+    background-image: linear-gradient(135deg, #9CA3AF, #6B7280) !important;
+    border: 1px solid #6B7280 !important;
     color: white !important;
 }
 
 html body .card-red.group,
 body .card-red.group,
 .card-red.group {
-    background: linear-gradient(135deg, #ef4444, #dc2626) !important;
-    background-image: linear-gradient(135deg, #ef4444, #dc2626) !important;
-    border: 1px solid #dc2626 !important;
+    background: linear-gradient(135deg, #9CA3AF, #6B7280) !important;
+    background-image: linear-gradient(135deg, #9CA3AF, #6B7280) !important;
+    border: 1px solid #6B7280 !important;
     color: white !important;
 }
 
 html body .card-purple.group,
 body .card-purple.group,
 .card-purple.group {
-    background: linear-gradient(135deg, #8b5cf6, #7c3aed) !important;
-    background-image: linear-gradient(135deg, #8b5cf6, #7c3aed) !important;
-    border: 1px solid #7c3aed !important;
+    background: linear-gradient(135deg, #6B7280, #4B5563) !important;
+    background-image: linear-gradient(135deg, #6B7280, #4B5563) !important;
+    border: 1px solid #4B5563 !important;
     color: white !important;
 }
 
 html body .card-orange.group,
 body .card-orange.group,
 .card-orange.group {
-    background: linear-gradient(135deg, #f97316, #ea580c) !important;
-    background-image: linear-gradient(135deg, #f97316, #ea580c) !important;
-    border: 1px solid #ea580c !important;
+    background: linear-gradient(135deg, #9CA3AF, #6B7280) !important;
+    background-image: linear-gradient(135deg, #9CA3AF, #6B7280) !important;
+    border: 1px solid #6B7280 !important;
     color: white !important;
 }
 
@@ -69,27 +69,27 @@ body .card-orange.group,
 }
 
 .card-blue:hover {
-    box-shadow: 0 4px 12px rgba(37, 99, 235, 0.4) !important;
+    box-shadow: 0 4px 12px rgba(107, 114, 128, 0.4) !important;
     transform: translateY(-2px) !important;
 }
 
 .card-green:hover {
-    box-shadow: 0 4px 12px rgba(5, 150, 105, 0.4) !important;
+    box-shadow: 0 4px 12px rgba(156, 163, 175, 0.4) !important;
     transform: translateY(-2px) !important;
 }
 
 .card-red:hover {
-    box-shadow: 0 4px 12px rgba(220, 38, 38, 0.4) !important;
+    box-shadow: 0 4px 12px rgba(156, 163, 175, 0.4) !important;
     transform: translateY(-2px) !important;
 }
 
 .card-purple:hover {
-    box-shadow: 0 4px 12px rgba(124, 58, 237, 0.4) !important;
+    box-shadow: 0 4px 12px rgba(107, 114, 128, 0.4) !important;
     transform: translateY(-2px) !important;
 }
 
 .card-orange:hover {
-    box-shadow: 0 4px 12px rgba(234, 88, 12, 0.4) !important;
+    box-shadow: 0 4px 12px rgba(156, 163, 175, 0.4) !important;
     transform: translateY(-2px) !important;
 }
 

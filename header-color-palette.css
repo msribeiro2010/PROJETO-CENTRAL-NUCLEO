@@ -166,16 +166,16 @@ body.dark .color-palette-close:hover {
 }
 
 /* Cores específicas */
-.color-default { background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); }
-.color-blue { background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%); }
-.color-green { background: linear-gradient(135deg, #43e97b 0%, #38f9d7 100%); }
-.color-purple { background: linear-gradient(135deg, #fa709a 0%, #fee140 100%); }
-.color-orange { background: linear-gradient(135deg, #ff9a9e 0%, #fecfef 100%); }
-.color-red { background: linear-gradient(135deg, #ff6b6b 0%, #ffa500 100%); }
-.color-teal { background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); }
-.color-indigo { background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); }
-.color-pink { background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%); }
-.color-dark { background: linear-gradient(135deg, #2c3e50 0%, #34495e 100%); }
+.color-default { background: linear-gradient(135deg, #9CA3AF 0%, #6B7280 100%); }
+.color-blue { background: linear-gradient(135deg, #D1D5DB 0%, #9CA3AF 100%); }
+.color-green { background: linear-gradient(135deg, #E5E7EB 0%, #D1D5DB 100%); }
+.color-purple { background: linear-gradient(135deg, #9CA3AF 0%, #6B7280 100%); }
+.color-orange { background: linear-gradient(135deg, #F3F4F6 0%, #E5E7EB 100%); }
+.color-red { background: linear-gradient(135deg, #6B7280 0%, #4B5563 100%); }
+.color-teal { background: linear-gradient(135deg, #9CA3AF 0%, #6B7280 100%); }
+.color-indigo { background: linear-gradient(135deg, #9CA3AF 0%, #6B7280 100%); }
+.color-pink { background: linear-gradient(135deg, #D1D5DB 0%, #9CA3AF 100%); }
+.color-dark { background: linear-gradient(135deg, #374151 0%, #1F2937 100%); }
 
 /* Botão Reset */
 .reset-color-btn {
