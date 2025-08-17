@@ -890,6 +890,12 @@ function initializeSearch() {
                     <span>${result.text}</span>
                 `;
                 resultItem.addEventListener('click', () => {
+                    // Adiciona automaticamente aos favoritos se não estiver já
+                    if (!isFavorite(result.element)) {
+                        toggleFavorite(result.element);
+                    }
+                    
+                    // Executa o clique no botão original
                     result.element.click();
                     searchInput.value = '';
                     searchResults.style.display = 'none';
