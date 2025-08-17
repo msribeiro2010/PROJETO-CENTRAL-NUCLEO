@@ -44,6 +44,12 @@ class MultiSelectManager {
         // Adicionar classe ao body
         document.body.classList.add('multi-select-mode');
         
+        // Ocultar seção de favoritos
+        this.hideFavoritesSection();
+        
+        // Mostrar mensagem informativa
+        this.showInfoMessage();
+        
         // Encontrar apenas os botões dos grupos de atalhos (excluindo favoritos)
         const buttons = document.querySelectorAll('.button-container button');
         
@@ -80,6 +86,12 @@ class MultiSelectManager {
     disableMultiSelectMode() {
         // Remover classe do body
         document.body.classList.remove('multi-select-mode');
+        
+        // Exibir seção de favoritos novamente
+        this.showFavoritesSection();
+        
+        // Ocultar mensagem informativa
+        this.hideInfoMessage();
         
         // Remover todos os checkboxes
         const checkboxes = document.querySelectorAll('.checkbox-container');
@@ -606,6 +618,72 @@ class MultiSelectManager {
             if (header) {
                 header.insertAdjacentElement('afterend', listContainer);
             }
+        }
+    }
+
+    // Método para ocultar a seção de favoritos
+    hideFavoritesSection() {
+        const favoritesContainer = document.querySelector('.favorites-container');
+        if (favoritesContainer) {
+            // Salvar o estado de display original se ainda não foi salvo
+            if (!favoritesContainer.hasAttribute('data-original-display')) {
+                const originalDisplay = window.getComputedStyle(favoritesContainer).display;
+                favoritesContainer.setAttribute('data-original-display', originalDisplay);
+            }
+            
+            // Adicionar classe para animação suave
+            favoritesContainer.style.transition = 'opacity 0.3s ease, transform 0.3s ease';
+            favoritesContainer.style.opacity = '0';
+            favoritesContainer.style.transform = 'translateY(-10px)';
+            
+            // Ocultar após a animação
+            setTimeout(() => {
+                favoritesContainer.style.display = 'none';
+            }, 300);
+        }
+    }
+
+    // Método para exibir a seção de favoritos
+    showFavoritesSection() {
+        const favoritesContainer = document.querySelector('.favorites-container');
+        if (favoritesContainer) {
+            // Restaurar o display original
+            const originalDisplay = favoritesContainer.getAttribute('data-original-display') || 'block';
+            favoritesContainer.style.display = originalDisplay;
+            
+            // Forçar reflow para garantir que a animação funcione
+            favoritesContainer.offsetHeight;
+            
+            // Animar a entrada
+            favoritesContainer.style.opacity = '1';
+            favoritesContainer.style.transform = 'translateY(0)';
+            
+            // Remover estilos de transição após a animação
+            setTimeout(() => {
+                favoritesContainer.style.transition = '';
+                favoritesContainer.style.opacity = '';
+                favoritesContainer.style.transform = '';
+            }, 300);
+        }
+    }
+
+    showInfoMessage() {
+        const infoMessage = document.getElementById('multi-select-info');
+        if (infoMessage) {
+            infoMessage.style.display = 'block';
+            // Forçar reflow para garantir que a animação funcione
+            infoMessage.offsetHeight;
+            infoMessage.classList.add('show');
+        }
+    }
+
+    hideInfoMessage() {
+        const infoMessage = document.getElementById('multi-select-info');
+        if (infoMessage) {
+            infoMessage.classList.remove('show');
+            setTimeout(() => {
+                infoMessage.style.display = 'none';
+            }, 400); // Tempo da transição CSS
         }
     }
 
