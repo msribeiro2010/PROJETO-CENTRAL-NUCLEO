@@ -247,3 +247,146 @@
 [data-theme="dark"] .age-stat-card.primary:hover {
     background: linear-gradient(135deg, #d32f2f, #b71c1c);
 }
+
+/* Estilos para mensagens motivacionais */
+.motivational-result {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    border-radius: 20px;
+    padding: 30px;
+    margin: 20px 0;
+    color: white;
+    text-align: center;
+    box-shadow: 0 10px 30px rgba(102, 126, 234, 0.3);
+    animation: slideInUp 0.6s ease-out;
+    position: relative;
+    overflow: hidden;
+}
+
+.motivational-result::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: linear-gradient(45deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+    transform: rotate(45deg);
+    animation: shimmer 3s infinite;
+}
+
+.motivational-header {
+    margin-bottom: 25px;
+}
+
+.motivational-greeting {
+    font-size: 1.8rem;
+    font-weight: 600;
+    margin-bottom: 10px;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.motivational-subtitle {
+    font-size: 1rem;
+    opacity: 0.9;
+    font-weight: 300;
+}
+
+.motivational-quote {
+    background: rgba(255, 255, 255, 0.15);
+    border-radius: 15px;
+    padding: 25px;
+    margin: 20px 0;
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.quote-icon {
+    font-size: 2.5rem;
+    opacity: 0.7;
+    margin-bottom: 15px;
+    display: block;
+}
+
+.quote-text {
+    font-size: 1.3rem;
+    line-height: 1.6;
+    font-style: italic;
+    margin-bottom: 15px;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+}
+
+.motivational-footer {
+    margin-top: 25px;
+    padding-top: 20px;
+    border-top: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.motivational-message {
+    font-size: 1rem;
+    opacity: 0.9;
+    font-weight: 300;
+}
+
+.heart-icon {
+    color: #ff6b6b;
+    animation: heartbeat 2s infinite;
+    margin: 0 5px;
+}
+
+/* Animações */
+@keyframes shimmer {
+    0% {
+        transform: translateX(-100%) translateY(-100%) rotate(45deg);
+    }
+    100% {
+        transform: translateX(100%) translateY(100%) rotate(45deg);
+    }
+}
+
+@keyframes heartbeat {
+    0%, 100% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.2);
+    }
+}
+
+/* Tema escuro para mensagens motivacionais */
+.dark-theme .motivational-result {
+    background: linear-gradient(135deg, #2d3748 0%, #4a5568 100%);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+}
+
+.dark-theme .motivational-quote {
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+}
+
+/* Responsividade para mensagens motivacionais */
+@media (max-width: 768px) {
+    .motivational-result {
+        padding: 20px;
+        margin: 15px 0;
+    }
+    
+    .motivational-greeting {
+        font-size: 1.5rem;
+    }
+    
+    .motivational-subtitle {
+        font-size: 0.9rem;
+    }
+    
+    .quote-text {
+        font-size: 1.1rem;
+    }
+    
+    .quote-icon {
+        font-size: 2rem;
+    }
+    
+    .motivational-message {
+        font-size: 0.9rem;
+    }
+}

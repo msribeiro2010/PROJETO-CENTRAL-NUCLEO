@@ -861,6 +861,106 @@ function isYearOnly(input) {
     return yearOnlyRegex.test(input.trim());
 }
 
+// Função para detectar se é um nome
+function isName(query) {
+    // Remove espaços extras e verifica se contém apenas letras, espaços e acentos
+    const cleanQuery = query.trim().toLowerCase();
+    const namePattern = /^[a-zA-ZÀ-ÿ\s]{2,}$/;
+    
+    // Lista de nomes dos funcionários do NAPje que DEVEM gerar mensagens motivacionais
+     const napjeNames = [
+         'marta', 'marcelo', 'silvio', 'sílvio', 'nathany', 'lloyd', 'wagner', 'tatiana', 'natalia', 'natália', 'edson', 'caetano'
+     ];
+    
+    // Lista de termos que definitivamente NÃO são nomes pessoais
+    const systemTerms = [
+        'contra', 'contracheque', 'folha', 'pagamento', 'salario', 'salário',
+        'ferias', 'férias', 'licenca', 'licença', 'atestado', 'prevjud',
+        'ponto', 'frequencia', 'frequência', 'banco', 'horas',
+        'sistema', 'portal', 'acesso', 'login', 'senha',
+        'cadastro', 'dados', 'informacao', 'informação',
+        'documento', 'certidao', 'certidão', 'declaracao', 'declaração',
+        'comprovante', 'extrato', 'relatorio', 'relatório',
+        'consulta', 'pesquisa', 'busca', 'procurar',
+        'ajuda', 'suporte', 'contato', 'telefone',
+        'endereco', 'endereço', 'email', 'site', 'internet',
+        'download', 'arquivo', 'pdf', 'excel', 'word',
+        'impressao', 'impressão', 'imprimir', 'visualizar',
+        'calendario', 'calendário', 'agenda', 'evento',
+        'reuniao', 'reunião', 'meeting', 'zoom', 'teams',
+        'trabalho', 'servico', 'serviço', 'funcao', 'função',
+        'cargo', 'departamento', 'setor', 'unidade',
+        'tribunal', 'justica', 'justiça', 'processo', 'juridico', 'jurídico'
+    ];
+    
+    // Verifica se é um termo do sistema (não é nome)
+    if (systemTerms.includes(cleanQuery)) {
+        return false;
+    }
+    
+    // Verifica se é um nome da equipe NAPje
+    if (napjeNames.includes(cleanQuery)) {
+        return true;
+    }
+    
+    // Para outros nomes, não exibe mensagem motivacional
+    return false;
+}
+
+// Sistema de frases motivacionais
+const motivationalQuotes = [
+    "Acredite em si mesmo e todo o resto se encaixará. Tenha fé em suas próprias habilidades, trabalhe duro e não há nada que você não possa realizar.",
+    "O sucesso não é final, o fracasso não é fatal: é a coragem de continuar que conta.",
+    "Você é mais corajoso do que acredita, mais forte do que parece e mais inteligente do que pensa.",
+    "A única maneira de fazer um excelente trabalho é amar o que você faz.",
+    "Não espere por oportunidades extraordinárias. Agarre ocasiões comuns e as torne grandiosas.",
+    "O futuro pertence àqueles que acreditam na beleza de seus sonhos.",
+    "Seja você mesmo; todos os outros já foram tomados.",
+    "A vida é 10% do que acontece com você e 90% de como você reage a isso.",
+    "Grandes coisas nunca vêm de zonas de conforto.",
+    "Você não precisa ser perfeito, você só precisa ser você mesmo.",
+    "Cada dia é uma nova oportunidade para ser melhor do que ontem.",
+    "Acredite que você pode e você já está no meio do caminho.",
+    "O único limite para nossa realização de amanhã serão nossas dúvidas de hoje.",
+    "Seja a mudança que você quer ver no mundo.",
+    "A persistência é o caminho do êxito.",
+    "Você é capaz de coisas incríveis quando acredita em si mesmo.",
+    "Sonhe grande e ouse falhar.",
+    "A felicidade não é algo pronto. Ela vem de suas próprias ações.",
+    "Seja gentil consigo mesmo. Você está fazendo o melhor que pode.",
+    "Cada pequeno passo conta. Continue caminhando."
+];
+
+// Função para obter uma frase motivacional aleatória
+function getMotivationalQuote() {
+    const randomIndex = Math.floor(Math.random() * motivationalQuotes.length);
+    return motivationalQuotes[randomIndex];
+}
+
+// Função para criar resultado motivacional
+function createMotivationalResult(name, quote) {
+    const resultItem = document.createElement('div');
+    resultItem.className = 'motivational-result';
+    resultItem.innerHTML = `
+        <div class="motivational-header">
+            <i class="bi bi-heart-fill" style="color: #e91e63;"></i>
+            <span>Mensagem Especial${name ? ` para ${name}` : ''}</span>
+        </div>
+        <div class="motivational-content">
+            <div class="quote-text">
+                <i class="bi bi-quote quote-icon"></i>
+                ${quote}
+            </div>
+            ${name ? `<div class="personal-message">Continue brilhando, ${name}! ✨</div>` : ''}
+        </div>
+        <div class="motivational-footer">
+            <small><i class="bi bi-lightbulb"></i> Uma dose de inspiração para o seu dia</small>
+        </div>
+    `;
+    
+    return resultItem;
+}
+
 // Função para calcular estatísticas de vida
 function calculateLifeStats(birthDate) {
     const now = new Date();
@@ -1046,6 +1146,16 @@ function initializeSearch() {
         
         if (query.length === 0) {
             searchResults.style.display = 'none';
+            return;
+        }
+        
+        // Verifica se é um nome e exibe mensagem motivacional
+        if (isName(query)) {
+            const motivationalQuote = getMotivationalQuote();
+            searchResults.innerHTML = '';
+            const motivationalResult = createMotivationalResult(query, motivationalQuote);
+            searchResults.appendChild(motivationalResult);
+            searchResults.style.display = 'block';
             return;
         }
         
