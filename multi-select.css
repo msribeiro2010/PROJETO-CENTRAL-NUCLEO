@@ -137,13 +137,15 @@
 }
 
 .enable-multi-select-btn.active {
-    background: linear-gradient(135deg, #9ca3af 0%, #6b7280 50%, #4b5563 100%);
+    background: linear-gradient(135deg, #dc2626 0%, #b91c1c 50%, #991b1b 100%);
     border-color: rgba(255, 255, 255, 0.25);
+    box-shadow: 0 2px 8px rgba(220, 38, 38, 0.3);
 }
 
 .enable-multi-select-btn.active:hover {
-    background: linear-gradient(135deg, #8b9199 0%, #5b6470 50%, #3f4651 100%);
+    background: linear-gradient(135deg, #ef4444 0%, #dc2626 50%, #b91c1c 100%);
     border-color: rgba(255, 255, 255, 0.35);
+    box-shadow: 0 4px 12px rgba(220, 38, 38, 0.4);
 }
 
 /* Container do checkbox */
@@ -701,13 +703,15 @@
 }
 
 [data-theme="dark"] .enable-multi-select-btn.active {
-    background: linear-gradient(135deg, #4b5563 0%, #374151 50%, #1f2937 100%);
+    background: linear-gradient(135deg, #dc2626 0%, #b91c1c 50%, #991b1b 100%);
     border-color: rgba(255, 255, 255, 0.18);
+    box-shadow: 0 2px 8px rgba(220, 38, 38, 0.4);
 }
 
 [data-theme="dark"] .enable-multi-select-btn.active:hover {
-    background: linear-gradient(135deg, #2d3748 0%, #1f2937 50%, #111827 100%);
+    background: linear-gradient(135deg, #ef4444 0%, #dc2626 50%, #b91c1c 100%);
     border-color: rgba(255, 255, 255, 0.25);
+    box-shadow: 0 4px 12px rgba(220, 38, 38, 0.5);
 }
 
 /* Mensagem informativa da seleção múltipla */
