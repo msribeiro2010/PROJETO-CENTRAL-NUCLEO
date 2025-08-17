@@ -846,6 +846,180 @@ function initializeTheme() {
 }
 
 // Funções para a busca
+// Função para detectar se o input é uma data de nascimento ou ano
+function isDateOfBirth(input) {
+    const trimmed = input.trim();
+    // Formatos aceitos: DD/MM/YYYY, DD-MM-YYYY, DD.MM.YYYY ou apenas YYYY
+    const fullDateRegex = /^(\d{1,2})[\/.\-](\d{1,2})[\/.\-](\d{4})$/;
+    const yearOnlyRegex = /^(\d{4})$/;
+    return fullDateRegex.test(trimmed) || yearOnlyRegex.test(trimmed);
+}
+
+// Função para detectar se é apenas um ano
+function isYearOnly(input) {
+    const yearOnlyRegex = /^(\d{4})$/;
+    return yearOnlyRegex.test(input.trim());
+}
+
+// Função para calcular estatísticas de vida
+function calculateLifeStats(birthDate) {
+    const now = new Date();
+    const birth = new Date(birthDate);
+    
+    if (birth > now) {
+        return null; // Data futura
+    }
+    
+    const diffMs = now - birth;
+    const diffDays = Math.floor(diffMs / (1000 * 60 * 60 * 24));
+    const diffHours = Math.floor(diffMs / (1000 * 60 * 60));
+    const diffMinutes = Math.floor(diffMs / (1000 * 60));
+    const diffSeconds = Math.floor(diffMs / 1000);
+    
+    // Cálculo de anos, meses e dias precisos
+    let years = now.getFullYear() - birth.getFullYear();
+    let months = now.getMonth() - birth.getMonth();
+    let days = now.getDate() - birth.getDate();
+    
+    if (days < 0) {
+        months--;
+        const lastMonth = new Date(now.getFullYear(), now.getMonth(), 0);
+        days += lastMonth.getDate();
+    }
+    
+    if (months < 0) {
+        years--;
+        months += 12;
+    }
+    
+    // Estatísticas criativas (valores médios)
+    const heartbeats = Math.floor(diffMinutes * 70); // 70 bpm médio
+    const breaths = Math.floor(diffMinutes * 16); // 16 respirações por minuto
+    const steps = Math.floor(diffDays * 7500); // 7500 passos por dia médio
+    const blinks = Math.floor(diffMinutes * 17); // 17 piscadas por minuto
+    const sleepHours = Math.floor(diffHours * 0.33); // 8 horas de sono por dia
+    
+    return {
+        years,
+        months,
+        days: days,
+        totalDays: diffDays,
+        totalHours: diffHours,
+        totalMinutes: diffMinutes,
+        totalSeconds: diffSeconds,
+        heartbeats,
+        breaths,
+        steps,
+        blinks,
+        sleepHours
+    };
+}
+
+// Função para formatar números grandes
+function formatNumber(num) {
+    return num.toLocaleString('pt-BR');
+}
+
+// Função para calcular apenas a idade quando informado só o ano
+function calculateSimpleAge(year) {
+    const currentYear = new Date().getFullYear();
+    const age = currentYear - year;
+    
+    if (age < 0) {
+        return null; // Ano futuro
+    }
+    
+    return age;
+}
+
+// Função para criar resultado simples de idade (apenas ano)
+function createSimpleAgeResult(age, year) {
+    const resultItem = document.createElement('div');
+    resultItem.className = 'age-curiosity-result simple-age';
+    resultItem.innerHTML = `
+        <div class="age-result-header">
+            <i class="bi bi-calendar-check" style="color: #4CAF50;"></i>
+            <span>Idade Calculada</span>
+        </div>
+        <div class="simple-age-display">
+            <div class="age-number">${age}</div>
+            <div class="age-label">anos de idade</div>
+            <div class="birth-year">nascido(a) em ${year}</div>
+        </div>
+        <div class="age-result-footer">
+            <small><i class="bi bi-info-circle"></i> Cálculo baseado no ano de nascimento</small>
+        </div>
+    `;
+    
+    return resultItem;
+}
+
+// Função para criar o resultado da curiosidade de idade
+function createAgeResult(stats, birthDateStr) {
+    const resultItem = document.createElement('div');
+    resultItem.className = 'age-curiosity-result';
+    resultItem.innerHTML = `
+        <div class="age-result-header">
+            <i class="bi bi-calendar-heart" style="color: #e91e63;"></i>
+            <span>Curiosidade: Sua Jornada de Vida</span>
+        </div>
+        <div class="age-stats-grid">
+            <div class="age-stat-card primary">
+                <div class="stat-icon"><i class="bi bi-cake2"></i></div>
+                <div class="stat-content">
+                    <div class="stat-number">${stats.years}</div>
+                    <div class="stat-label">anos, ${stats.months} meses e ${stats.days} dias</div>
+                </div>
+            </div>
+            
+            <div class="age-stat-card">
+                <div class="stat-icon"><i class="bi bi-clock"></i></div>
+                <div class="stat-content">
+                    <div class="stat-number">${formatNumber(stats.totalHours)}</div>
+                    <div class="stat-label">horas vividas</div>
+                </div>
+            </div>
+            
+            <div class="age-stat-card">
+                <div class="stat-icon"><i class="bi bi-heart-pulse"></i></div>
+                <div class="stat-content">
+                    <div class="stat-number">${formatNumber(stats.heartbeats)}</div>
+                    <div class="stat-label">batimentos cardíacos</div>
+                </div>
+            </div>
+            
+            <div class="age-stat-card">
+                <div class="stat-icon"><i class="bi bi-wind"></i></div>
+                <div class="stat-content">
+                    <div class="stat-number">${formatNumber(stats.breaths)}</div>
+                    <div class="stat-label">respirações</div>
+                </div>
+            </div>
+            
+            <div class="age-stat-card">
+                <div class="stat-icon"><i class="bi bi-person-walking"></i></div>
+                <div class="stat-content">
+                    <div class="stat-number">${formatNumber(stats.steps)}</div>
+                    <div class="stat-label">passos dados</div>
+                </div>
+            </div>
+            
+            <div class="age-stat-card">
+                <div class="stat-icon"><i class="bi bi-eye"></i></div>
+                <div class="stat-content">
+                    <div class="stat-number">${formatNumber(stats.blinks)}</div>
+                    <div class="stat-label">piscadas</div>
+                </div>
+            </div>
+        </div>
+        <div class="age-result-footer">
+            <small><i class="bi bi-info-circle"></i> Baseado em médias estatísticas para data: ${birthDateStr}</small>
+        </div>
+    `;
+    
+    return resultItem;
+}
+
 function initializeSearch() {
     const searchInput = document.getElementById('global-search');
     const searchResults = document.getElementById('search-results');
@@ -868,15 +1042,58 @@ function initializeSearch() {
 
     // Eventos do input de busca
     searchInput.addEventListener('input', () => {
-        const query = searchInput.value.toLowerCase();
+        const query = searchInput.value.trim();
         
+        if (query.length === 0) {
+            searchResults.style.display = 'none';
+            return;
+        }
+        
+        // Verifica se é uma data de nascimento ou apenas ano
+          if (isDateOfBirth(query)) {
+              // Se for apenas um ano (YYYY)
+              if (isYearOnly(query)) {
+                  const year = parseInt(query);
+                  const age = calculateSimpleAge(year);
+                  
+                  if (age !== null) {
+                      searchResults.innerHTML = '';
+                      const ageResult = createSimpleAgeResult(age, year);
+                      searchResults.appendChild(ageResult);
+                      searchResults.style.display = 'block';
+                      return;
+                  }
+              } else {
+                  // Data completa (DD/MM/YYYY)
+                  const dateMatch = query.match(/^(\d{1,2})[\/.\-](\d{1,2})[\/.\-](\d{4})$/);
+                  if (dateMatch) {
+                      const [, day, month, year] = dateMatch;
+                      const birthDate = new Date(year, month - 1, day);
+                      
+                      // Verifica se a data é válida
+                      if (!isNaN(birthDate.getTime())) {
+                          const stats = calculateLifeStats(birthDate);
+                          
+                          if (stats) {
+                              searchResults.innerHTML = '';
+                              const ageResult = createAgeResult(stats, query);
+                              searchResults.appendChild(ageResult);
+                              searchResults.style.display = 'block';
+                              return;
+                          }
+                      }
+                  }
+              }
+          }
+        
+        // Busca normal por botões (só se não for data)
         if (query.length < 2) {
             searchResults.style.display = 'none';
             return;
         }
         
         const results = searchIndex.filter(item => 
-            item.searchTerms.includes(query)
+            item.searchTerms.includes(query.toLowerCase())
         ).slice(0, 5);
         
         searchResults.innerHTML = '';
