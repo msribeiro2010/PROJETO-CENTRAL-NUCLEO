@@ -1,0 +1,347 @@
+/* Estilos para cards personalizáveis */
+
+/* Estilo base para todos os cards */
+.group {
+    position: relative;
+    transition: all 0.3s ease !important;
+}
+
+/* Classes de cores para os cards - com alta especificidade */
+html body .card-white.group,
+body .card-white.group,
+.card-white.group {
+    background: #F3F4F6 !important;
+    background-image: none !important;
+    background-color: #F3F4F6 !important;
+    border: 1px solid #D1D5DB !important;
+    color: #374151 !important;
+}
+
+html body .card-blue.group,
+body .card-blue.group,
+.card-blue.group {
+    background: linear-gradient(135deg, #6B7280, #4B5563) !important;
+    background-image: linear-gradient(135deg, #6B7280, #4B5563) !important;
+    border: 1px solid #4B5563 !important;
+    color: white !important;
+}
+
+html body .card-green.group,
+body .card-green.group,
+.card-green.group {
+    background: linear-gradient(135deg, #9CA3AF, #6B7280) !important;
+    background-image: linear-gradient(135deg, #9CA3AF, #6B7280) !important;
+    border: 1px solid #6B7280 !important;
+    color: white !important;
+}
+
+html body .card-red.group,
+body .card-red.group,
+.card-red.group {
+    background: linear-gradient(135deg, #9CA3AF, #6B7280) !important;
+    background-image: linear-gradient(135deg, #9CA3AF, #6B7280) !important;
+    border: 1px solid #6B7280 !important;
+    color: white !important;
+}
+
+html body .card-purple.group,
+body .card-purple.group,
+.card-purple.group {
+    background: linear-gradient(135deg, #6B7280, #4B5563) !important;
+    background-image: linear-gradient(135deg, #6B7280, #4B5563) !important;
+    border: 1px solid #4B5563 !important;
+    color: white !important;
+}
+
+html body .card-orange.group,
+body .card-orange.group,
+.card-orange.group {
+    background: linear-gradient(135deg, #9CA3AF, #6B7280) !important;
+    background-image: linear-gradient(135deg, #9CA3AF, #6B7280) !important;
+    border: 1px solid #6B7280 !important;
+    color: white !important;
+}
+
+/* Efeitos hover para cada tipo de card */
+.card-white:hover {
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1) !important;
+    transform: translateY(-2px) !important;
+}
+
+.card-blue:hover {
+    box-shadow: 0 4px 12px rgba(107, 114, 128, 0.4) !important;
+    transform: translateY(-2px) !important;
+}
+
+.card-green:hover {
+    box-shadow: 0 4px 12px rgba(156, 163, 175, 0.4) !important;
+    transform: translateY(-2px) !important;
+}
+
+.card-red:hover {
+    box-shadow: 0 4px 12px rgba(156, 163, 175, 0.4) !important;
+    transform: translateY(-2px) !important;
+}
+
+.card-purple:hover {
+    box-shadow: 0 4px 12px rgba(107, 114, 128, 0.4) !important;
+    transform: translateY(-2px) !important;
+}
+
+.card-orange:hover {
+    box-shadow: 0 4px 12px rgba(156, 163, 175, 0.4) !important;
+    transform: translateY(-2px) !important;
+}
+
+/* Estilos para botões dentro de cards coloridos */
+.card-blue .button-container button,
+.card-green .button-container button,
+.card-red .button-container button,
+.card-purple .button-container button,
+.card-orange .button-container button {
+    background-color: rgba(255, 255, 255, 0.2) !important;
+    background-image: none !important;
+    color: white !important;
+    border-left: 3px solid rgba(255, 255, 255, 0.5) !important;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2) !important;
+}
+
+.card-blue .button-container button:hover,
+.card-green .button-container button:hover,
+.card-red .button-container button:hover,
+.card-purple .button-container button:hover,
+.card-orange .button-container button:hover {
+    background-color: rgba(255, 255, 255, 0.3) !important;
+}
+
+/* Garantir que os ícones nos botões sejam visíveis */
+.card-blue .button-container button i,
+.card-green .button-container button i,
+.card-red .button-container button i,
+.card-purple .button-container button i,
+.card-orange .button-container button i {
+    color: white !important;
+}
+
+/* Estilo para o cabeçalho */
+.group .accordion-header {
+    background: transparent !important;
+    border-left: 3px solid rgba(0, 0, 0, 0.1) !important;
+}
+
+.group .accordion-header i {
+    opacity: 0.7 !important;
+}
+
+/* Estilos para cabeçalhos em cards coloridos */
+.card-blue .accordion-header,
+.card-green .accordion-header,
+.card-red .accordion-header,
+.card-purple .accordion-header,
+.card-orange .accordion-header {
+    background-color: rgba(255, 255, 255, 0.15) !important;
+    border-left: 3px solid rgba(255, 255, 255, 0.5) !important;
+    color: white !important;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2) !important;
+}
+
+/* Garantir que os ícones nos cabeçalhos sejam visíveis */
+.card-blue .accordion-header i,
+.card-green .accordion-header i,
+.card-red .accordion-header i,
+.card-purple .accordion-header i,
+.card-orange .accordion-header i {
+    color: white !important;
+    opacity: 0.9 !important;
+}
+
+/* Conteúdo do acordeão */
+.group .accordion-content {
+    background: #f8fafc !important;
+    border-top: 1px solid #e2e8f0 !important;
+}
+
+/* Botões dentro do grupo - estilo original: fundo branco, texto e ícones azuis */
+.group .button-container button {
+    background: #fff !important;
+    color: #C4965F !important;
+}
+
+.group .button-container button i {
+    color: #C4965F !important;
+}
+
+/* Botão de personalização */
+.color-customize-btn {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    width: 26px;
+    height: 26px;
+    border-radius: 50%;
+    background: #fff;
+    border: 1px solid #e2e8f0;
+    box-shadow: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    z-index: 3;
+    padding: 0;
+    transition: border 0.2s, background 0.2s;
+}
+
+.color-customize-btn:hover {
+    background: #f0f4fa;
+    border-color: #b6c2d1;
+}
+
+.color-customize-btn i {
+    color: #C4965F !important;
+    font-size: 1.1rem;
+    transition: color 0.2s;
+}
+
+.color-customize-btn:hover i {
+    color: #7f56d9 !important;
+}
+
+/* Painel de cores */
+.color-panel {
+    position: absolute;
+    top: 48px;
+    right: 0;
+    background: #fff;
+    border: 1px solid #e2e8f0;
+    border-radius: 10px;
+    padding: 8px;
+    display: none;
+    flex-wrap: wrap;
+    width: 140px;
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.15);
+    z-index: 10;
+    justify-content: center;
+    animation: fadeIn 0.2s ease;
+    overflow: visible;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(-10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.color-option {
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    margin: 5px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.color-option:hover {
+    transform: scale(1.2);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+/* Cores predefinidas */
+.color-blue {
+    background: linear-gradient(135deg, #C4965F, #8B7355);
+    border: 1px solid #8B7355;
+}
+
+.color-green {
+    background: linear-gradient(135deg, #10b981, #059669);
+    border: 1px solid #059669;
+}
+
+.color-red {
+    background: linear-gradient(135deg, #ef4444, #dc2626);
+    border: 1px solid #dc2626;
+}
+
+.color-purple {
+    background: linear-gradient(135deg, #8b5cf6, #7c3aed);
+    border: 1px solid #7c3aed;
+}
+
+.color-orange {
+    background: linear-gradient(135deg, #f97316, #ea580c);
+    border: 1px solid #ea580c;
+}
+
+.color-pink {
+    background: linear-gradient(135deg, #ec4899, #db2777);
+    border: 1px solid #db2777;
+}
+
+.color-yellow {
+    background: linear-gradient(135deg, #eab308, #ca8a04);
+    border: 1px solid #ca8a04;
+}
+
+.color-white {
+    background: white;
+    border: 1px solid #e2e8f0;
+}
+
+/* Modo escuro */
+body.dark .group {
+    background-color: #1e293b !important;
+    border-color: #334155 !important;
+    color: #f8fafc !important;
+}
+
+body.dark .group .accordion-header {
+    color: #f8fafc !important;
+    border-left-color: #D4B896 !important;
+}
+
+body.dark .group .accordion-header i {
+    color: #D4B896 !important;
+}
+
+body.dark .group .accordion-content {
+    background: #0f172a !important;
+    border-top-color: #334155 !important;
+}
+
+body.dark .group .button-container button {
+    background: #334155 !important;
+    color: #f8fafc !important;
+    border-left-color: #D4B896 !important;
+}
+
+body.dark .group .button-container button:hover {
+    background: #475569 !important;
+}
+
+body.dark .group .button-container button i {
+    color: #D4B896 !important;
+}
+
+body.dark .color-panel {
+    background: #1e293b;
+    border-color: #334155;
+}
+
+#header-color-panel.color-panel {
+    min-width: 220px;
+    max-width: 320px;
+    padding: 12px 10px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    background: #fff;
+    border-radius: 12px;
+    box-shadow: 0 4px 16px rgba(0,0,0,0.18);
+    z-index: 1001;
+    position: absolute;
+    top: 60px;
+    right: 30px;
+}
+body.dark #header-color-panel.color-panel {
+    background: #23272f;
+    box-shadow: 0 4px 16px rgba(0,0,0,0.35);
+}

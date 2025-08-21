@@ -1,0 +1,782 @@
+/* Estilos para Seleção Múltipla de Links */
+
+/* Controles de Seleção Múltipla */
+.multi-select-controls {
+    background: linear-gradient(135deg, #6b7280 0%, #4b5563 50%, #374151 100%);
+    border-radius: 12px;
+    padding: 20px;
+    margin: 20px 0;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.15);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    backdrop-filter: blur(10px);
+    animation: slideDown 0.3s ease-out;
+}
+
+.multi-select-header h3 {
+    color: white;
+    margin: 0 0 15px 0;
+    font-size: 1.2rem;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.multi-select-buttons {
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+    align-items: center;
+}
+
+.control-btn {
+    background: rgba(255, 255, 255, 0.2);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    color: white;
+    padding: 10px 16px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 0.9rem;
+    font-weight: 500;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    backdrop-filter: blur(5px);
+    transform: scale(1);
+    position: relative;
+    overflow: hidden;
+}
+
+.control-btn::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+    transition: left 0.5s;
+}
+
+.control-btn:hover::before {
+    left: 100%;
+}
+
+.control-btn:hover:not(:disabled) {
+    background: rgba(255, 255, 255, 0.3);
+    transform: translateY(-2px) scale(1.05);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+}
+
+.control-btn:active {
+    transform: translateY(0) scale(0.98);
+    transition: all 0.1s ease;
+}
+
+.control-btn:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+    transform: none;
+}
+
+.control-btn.open-selected:not(:disabled) {
+    background: linear-gradient(135deg, #4CAF50, #45a049);
+    border-color: #4CAF50;
+}
+
+.control-btn.open-selected.has-selection {
+    background: linear-gradient(135deg, #4CAF50, #45a049) !important;
+    border-color: #4CAF50 !important;
+    animation: pulse 2s infinite;
+    box-shadow: 0 0 0 3px rgba(76, 175, 80, 0.3);
+}
+
+.control-btn.open-selected:disabled {
+    background: rgba(255, 255, 255, 0.1) !important;
+    border-color: rgba(255, 255, 255, 0.2) !important;
+    color: rgba(255, 255, 255, 0.5) !important;
+    animation: none !important;
+    box-shadow: none !important;
+}
+
+.control-btn.toggle-select {
+    background: linear-gradient(135deg, #2196F3, #1976D2);
+    border-color: #2196F3;
+}
+
+.control-btn.toggle-select:hover:not(:disabled) {
+    background: linear-gradient(135deg, #1976D2, #1565C0);
+    border-color: #1976D2;
+}
+
+/* Botão para ativar seleção múltipla */
+.enable-multi-select-btn {
+    background: linear-gradient(135deg, #6b7280 0%, #4b5563 50%, #374151 100%);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    color: white;
+    padding: 12px 20px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 0.9rem;
+    font-weight: 500;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-left: 15px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+    backdrop-filter: blur(5px);
+}
+
+.enable-multi-select-btn:hover {
+    background: linear-gradient(135deg, #5b6470 0%, #3f4651 50%, #2d3748 100%);
+    border-color: rgba(255, 255, 255, 0.3);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+.enable-multi-select-btn.active {
+    background: linear-gradient(135deg, #dc2626 0%, #b91c1c 50%, #991b1b 100%) !important;
+    border-color: rgba(255, 255, 255, 0.25) !important;
+    box-shadow: 0 2px 8px rgba(220, 38, 38, 0.3) !important;
+}
+
+.enable-multi-select-btn.active:hover {
+    background: linear-gradient(135deg, #ef4444 0%, #dc2626 50%, #b91c1c 100%) !important;
+    border-color: rgba(255, 255, 255, 0.35) !important;
+    box-shadow: 0 4px 12px rgba(220, 38, 38, 0.4) !important;
+}
+
+/* Container do checkbox */
+.checkbox-container {
+    position: absolute;
+    bottom: 6px;
+    right: 6px;
+    width: 28px;
+    height: 28px;
+    cursor: pointer;
+    z-index: 20;
+    opacity: 0;
+    transition: all 0.3s ease;
+    pointer-events: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Checkboxes nos botões */
+.link-checkbox {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    cursor: pointer;
+    opacity: 0;
+    z-index: 22;
+    margin: 0;
+    padding: 0;
+}
+
+.link-checkbox-custom {
+    width: 28px;
+    height: 28px;
+    background: rgba(255, 255, 255, 0.95);
+    border: 2px solid #007bff;
+    border-radius: 6px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+    backdrop-filter: blur(5px);
+    z-index: 21;
+    pointer-events: auto;
+}
+
+.link-checkbox-custom i {
+    color: #007bff;
+    font-size: 16px;
+    font-weight: bold;
+    opacity: 0;
+    transition: all 0.2s ease;
+    transform: scale(0.5);
+}
+
+/* Estados do checkbox */
+.link-checkbox:checked + .link-checkbox-custom,
+.link-checkbox-custom.checked {
+    background: linear-gradient(135deg, #4CAF50, #45a049) !important;
+    border-color: #4CAF50 !important;
+    transform: scale(1.05);
+    box-shadow: 0 0 0 2px rgba(76, 175, 80, 0.3);
+    animation: checkboxSuccess 0.3s ease;
+}
+
+@keyframes checkboxSuccess {
+    0% {
+        transform: scale(1);
+        box-shadow: 0 0 0 0 rgba(76, 175, 80, 0.7);
+    }
+    50% {
+        transform: scale(1.1);
+        box-shadow: 0 0 0 4px rgba(76, 175, 80, 0.4);
+    }
+    100% {
+        transform: scale(1.05);
+        box-shadow: 0 0 0 2px rgba(76, 175, 80, 0.3);
+    }
+}
+
+.link-checkbox:checked + .link-checkbox-custom i,
+.link-checkbox-custom.checked i {
+    color: white !important;
+    opacity: 1 !important;
+    transform: scale(1) !important;
+}
+
+/* Modo de seleção múltipla ativo */
+.multi-select-mode .checkbox-container {
+    opacity: 1;
+    pointer-events: auto;
+    animation: fadeInScale 0.3s ease-out;
+    z-index: 25;
+}
+
+.multi-select-mode .button-container button {
+    padding-bottom: 45px !important;
+    position: relative;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.multi-select-mode .button-container button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+}
+
+.multi-select-mode .button-container button.selected {
+    background: rgba(76, 175, 80, 0.2) !important;
+    border-color: #4CAF50 !important;
+    box-shadow: 0 0 0 2px rgba(76, 175, 80, 0.4);
+    animation: selectedPulse 2s infinite;
+}
+
+@keyframes selectedPulse {
+    0%, 100% {
+        box-shadow: 0 0 0 2px rgba(76, 175, 80, 0.4);
+    }
+    50% {
+        box-shadow: 0 0 0 4px rgba(76, 175, 80, 0.2);
+    }
+}
+
+.multi-select-mode .checkbox-container:hover .link-checkbox-custom {
+    transform: scale(1.1);
+    box-shadow: 0 4px 12px rgba(0, 123, 255, 0.3);
+    border-color: #0056b3;
+}
+
+.multi-select-mode .checkbox-container:hover .link-checkbox-custom i {
+    transform: scale(0.6);
+    opacity: 0.7;
+}
+
+/* Melhorar área clicável */
+.multi-select-mode .checkbox-container {
+    padding: 2px;
+    margin: -2px;
+}
+
+/* Feedback visual ao clicar */
+.checkbox-container:active .link-checkbox-custom {
+    transform: scale(0.95);
+    transition: transform 0.1s ease;
+}
+
+/* Garantir que o checkbox seja clicável */
+.multi-select-mode .link-checkbox {
+    pointer-events: auto !important;
+    cursor: pointer !important;
+}
+
+.multi-select-mode .link-checkbox-custom {
+    pointer-events: auto !important;
+    cursor: pointer !important;
+}
+
+/* Animação para aparecer o checkbox */
+@keyframes fadeInScale {
+    from {
+        opacity: 0;
+        transform: scale(0.5);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+/* Botão selecionado */
+.multi-select-mode .button-container button.selected {
+    background: linear-gradient(135deg, #e3f2fd, #bbdefb) !important;
+    border-left: 4px solid #2196F3 !important;
+    transform: translateX(4px);
+}
+
+/* Estilos para os checkboxes reais (invisíveis) */
+.link-checkbox {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    cursor: pointer;
+    opacity: 0;
+    z-index: 16;
+    margin: 0;
+}
+
+/* Estilo para botões selecionados */
+.multi-select-mode .button-container button.selected {
+    background: linear-gradient(135deg, #e8f5e8, #c8e6c9) !important;
+    border-left: 4px solid #4CAF50 !important;
+    transform: translateX(2px);
+    box-shadow: 0 2px 8px rgba(76, 175, 80, 0.3);
+}
+
+/* Animações */
+@keyframes slideDown {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes pulse {
+    0%, 100% {
+        transform: scale(1);
+        box-shadow: 0 0 0 3px rgba(76, 175, 80, 0.3);
+    }
+    50% {
+        transform: scale(1.02);
+        box-shadow: 0 0 0 6px rgba(76, 175, 80, 0.2);
+    }
+}
+
+/* Contador de selecionados */
+#selected-count {
+    background: rgba(255, 255, 255, 0.2);
+    padding: 2px 8px;
+    border-radius: 12px;
+    font-weight: bold;
+    margin-left: 4px;
+}
+
+.control-btn.has-selection #selected-count {
+    background: rgba(255, 255, 255, 0.3);
+    color: #fff;
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+    .multi-select-buttons {
+        flex-direction: column;
+        gap: 8px;
+    }
+
+    .control-btn {
+        width: 100%;
+        justify-content: center;
+    }
+
+    .enable-multi-select-btn {
+        margin-left: 0;
+        margin-top: 10px;
+        width: 100%;
+        justify-content: center;
+    }
+    
+    /* Checkboxes maiores em mobile */
+    .checkbox-container {
+        width: 32px;
+        height: 32px;
+        top: 4px;
+        left: 4px;
+    }
+    
+    .link-checkbox-custom {
+        width: 32px;
+        height: 32px;
+    }
+    
+    .link-checkbox-custom i {
+        font-size: 18px;
+    }
+    
+    .multi-select-mode .button-container button {
+        padding-left: 50px !important;
+    }
+    
+    /* Ajustes específicos para favoritos em mobile - SEMPRE VISÍVEIS */
+    .favorite-item button .checkbox-container {
+        width: 28px;
+        height: 28px;
+        top: 4px;
+        left: 4px;
+    }
+    
+    .favorite-item .link-checkbox-custom {
+        width: 28px;
+        height: 28px;
+        border-width: 2px;
+    }
+    
+    .favorite-item .link-checkbox-custom i {
+        font-size: 14px;
+    }
+    
+    .favorite-item button {
+        padding-top: 35px !important;
+        padding-left: 35px !important;
+    }
+}
+
+/* Ajustar padding dos botões no modo multi-select */
+.multi-select-mode .shortcut-button {
+    padding-bottom: 45px;
+}
+
+/* Estilos específicos para botões favoritos - SEMPRE VISÍVEIS */
+.favorite-item button .checkbox-container {
+    position: absolute;
+    top: 4px;
+    left: 4px;
+    width: 24px;
+    height: 24px;
+    z-index: 25;
+    opacity: 1;
+    transform: scale(1);
+    transition: all 0.3s ease;
+    background: rgba(255, 255, 255, 0.95);
+    border-radius: 6px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+    backdrop-filter: blur(8px);
+    pointer-events: auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Checkboxes permanentes para favoritos */
+.favorite-item button .checkbox-container.permanent-checkbox {
+    opacity: 1 !important;
+    transform: scale(1) !important;
+    pointer-events: auto !important;
+    visibility: visible !important;
+    display: flex !important;
+}
+
+.favorite-item button {
+    padding-top: 35px !important;
+    padding-left: 35px !important;
+    position: relative;
+}
+
+/* Hover effect para checkboxes sempre visíveis */
+.favorite-item .checkbox-container:hover {
+    transform: scale(1.1);
+    box-shadow: 0 4px 12px rgba(0, 123, 255, 0.3);
+}
+
+/* Checkbox customizado para favoritos - SEMPRE VISÍVEL */
+.favorite-item .link-checkbox-custom {
+    width: 24px;
+    height: 24px;
+    background: rgba(255, 255, 255, 0.98);
+    border: 2px solid #007bff;
+    border-radius: 4px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+    backdrop-filter: blur(8px);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+    pointer-events: auto;
+}
+
+/* Estilos para checkboxes permanentes */
+.favorite-item button .permanent-checkbox .link-checkbox-custom {
+    background: rgba(255, 255, 255, 0.15);
+    border: 2px solid rgba(255, 255, 255, 0.4);
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.25);
+}
+
+.favorite-item button .permanent-checkbox .link-checkbox-custom:hover {
+    background: rgba(255, 255, 255, 0.25);
+    border-color: rgba(255, 255, 255, 0.6);
+    transform: scale(1.05);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+}
+
+.favorite-item .link-checkbox-custom i {
+    font-size: 12px;
+    font-weight: bold;
+    color: #007bff;
+    opacity: 0;
+    transition: all 0.2s ease;
+    transform: scale(0.5);
+}
+
+/* Hover effect melhorado para favoritos */
+.favorite-item .checkbox-container:hover .link-checkbox-custom {
+    transform: scale(1.1);
+    box-shadow: 0 4px 12px rgba(0, 123, 255, 0.4);
+    border-color: #0056b3;
+    background: rgba(255, 255, 255, 1);
+}
+
+/* Estado checked para favoritos - SEMPRE VISÍVEL */
+.favorite-item .link-checkbox:checked + .link-checkbox-custom,
+.favorite-item .link-checkbox-custom.checked {
+    background: linear-gradient(135deg, #28a745, #20c997) !important;
+    border-color: #28a745 !important;
+    transform: scale(1.05);
+    box-shadow: 0 0 0 3px rgba(40, 167, 69, 0.3), 0 4px 12px rgba(40, 167, 69, 0.4) !important;
+    animation: checkboxSuccess 0.3s ease-out;
+}
+
+.favorite-item .link-checkbox:checked + .link-checkbox-custom i,
+.favorite-item .link-checkbox-custom.checked i {
+    color: white !important;
+    opacity: 1 !important;
+    transform: scale(1.2) !important;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+}
+
+/* Animação para feedback visual do checkbox */
+@keyframes checkboxSuccess {
+    0% {
+        transform: scale(1);
+        box-shadow: 0 0 0 0 rgba(40, 167, 69, 0.7);
+    }
+    50% {
+        transform: scale(1.15);
+        box-shadow: 0 0 0 5px rgba(40, 167, 69, 0.4);
+    }
+    100% {
+        transform: scale(1.05);
+        box-shadow: 0 0 0 3px rgba(40, 167, 69, 0.3), 0 4px 12px rgba(40, 167, 69, 0.4);
+    }
+}
+
+/* Feedback visual para favorito selecionado */
+.favorite-item.selected {
+    background: rgba(40, 167, 69, 0.1) !important;
+    border-left: 3px solid #28a745 !important;
+    transform: translateX(2px);
+    box-shadow: 0 2px 8px rgba(40, 167, 69, 0.2);
+}
+
+/* Responsividade para grupos */
+@media (max-width: 768px) {
+    .groups-toggle {
+        flex-direction: column;
+        gap: 10px;
+    }
+}
+
+/* Lista de botões selecionados */
+.selected-buttons-list {
+    margin-top: 15px;
+    padding: 15px;
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.08) 0%, rgba(255, 255, 255, 0.05) 100%);
+    border-radius: 8px;
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    backdrop-filter: blur(5px);
+}
+
+.selected-buttons-list h4 {
+    color: white;
+    margin: 0 0 12px 0;
+    font-size: 1rem;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.selected-items {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    max-height: 200px;
+    overflow-y: auto;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 8px;
+}
+
+.selected-items li {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 8px 12px;
+    color: rgba(255, 255, 255, 0.9);
+    font-size: 0.85rem;
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.06) 0%, rgba(255, 255, 255, 0.03) 100%);
+    border-radius: 6px;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    transition: all 0.2s ease;
+}
+
+.selected-items li:hover {
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.1) 0%, rgba(255, 255, 255, 0.06) 100%);
+    border-color: rgba(255, 255, 255, 0.15);
+    transform: translateY(-1px);
+}
+
+.selected-items li i {
+    color: rgba(255, 255, 255, 0.7);
+    font-size: 0.8rem;
+    flex-shrink: 0;
+}
+
+.selected-items li span {
+    flex: 1;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+/* Modo escuro para seleção múltipla */
+[data-theme="dark"] .multi-select-controls {
+    background: linear-gradient(135deg, #1f2937 0%, #374151 50%, #4b5563 100%);
+    border-color: rgba(255, 255, 255, 0.08);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.25);
+}
+
+[data-theme="dark"] .control-btn {
+    background: rgba(255, 255, 255, 0.1);
+    border-color: rgba(255, 255, 255, 0.2);
+}
+
+[data-theme="dark"] .control-btn:hover {
+    background: rgba(255, 255, 255, 0.2);
+    border-color: rgba(255, 255, 255, 0.3);
+}
+
+[data-theme="dark"] .control-btn:disabled {
+    background: rgba(255, 255, 255, 0.05);
+    color: rgba(255, 255, 255, 0.3);
+    border-color: rgba(255, 255, 255, 0.1);
+}
+
+[data-theme="dark"] .selected-buttons-list {
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.04) 0%, rgba(255, 255, 255, 0.02) 100%);
+    border-color: rgba(255, 255, 255, 0.08);
+}
+
+[data-theme="dark"] .selected-items li {
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.03) 0%, rgba(255, 255, 255, 0.01) 100%);
+    border-color: rgba(255, 255, 255, 0.05);
+}
+
+[data-theme="dark"] .selected-items li:hover {
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.06) 0%, rgba(255, 255, 255, 0.03) 100%);
+    border-color: rgba(255, 255, 255, 0.1);
+}
+
+/* Botão de seleção múltipla no modo escuro */
+[data-theme="dark"] .enable-multi-select-btn {
+    background: linear-gradient(135deg, #1f2937 0%, #374151 50%, #4b5563 100%);
+    border-color: rgba(255, 255, 255, 0.15);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.25);
+}
+
+[data-theme="dark"] .enable-multi-select-btn:hover {
+    background: linear-gradient(135deg, #111827 0%, #1f2937 50%, #374151 100%);
+    border-color: rgba(255, 255, 255, 0.2);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+}
+
+[data-theme="dark"] .enable-multi-select-btn.active {
+    background: linear-gradient(135deg, #dc2626 0%, #b91c1c 50%, #991b1b 100%) !important;
+    border-color: rgba(255, 255, 255, 0.18) !important;
+    box-shadow: 0 2px 8px rgba(220, 38, 38, 0.4) !important;
+}
+
+[data-theme="dark"] .enable-multi-select-btn.active:hover {
+    background: linear-gradient(135deg, #ef4444 0%, #dc2626 50%, #b91c1c 100%) !important;
+    border-color: rgba(255, 255, 255, 0.25) !important;
+    box-shadow: 0 4px 12px rgba(220, 38, 38, 0.5) !important;
+}
+
+/* Mensagem informativa da seleção múltipla */
+.multi-select-info {
+    margin: 15px 0;
+    padding: 0;
+    opacity: 0;
+    transform: translateY(-10px);
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    max-height: 0;
+    overflow: hidden;
+}
+
+.multi-select-info.show {
+    opacity: 1;
+    transform: translateY(0);
+    max-height: 100px;
+    padding: 12px 0;
+}
+
+.info-content {
+    background: linear-gradient(135deg, #e3f2fd 0%, #bbdefb 100%);
+    border: 1px solid #2196f3;
+    border-radius: 8px;
+    padding: 12px 16px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    color: #1565c0;
+    font-size: 0.9rem;
+    font-weight: 500;
+    box-shadow: 0 2px 8px rgba(33, 150, 243, 0.15);
+    backdrop-filter: blur(5px);
+}
+
+.info-content i {
+    font-size: 1.1rem;
+    color: #2196f3;
+    flex-shrink: 0;
+}
+
+/* Modo escuro */
+[data-theme="dark"] .info-content {
+    background: linear-gradient(135deg, rgba(33, 150, 243, 0.15) 0%, rgba(33, 150, 243, 0.08) 100%);
+    border-color: rgba(33, 150, 243, 0.3);
+    color: #90caf9;
+    box-shadow: 0 2px 8px rgba(33, 150, 243, 0.2);
+}
+
+[data-theme="dark"] .info-content i {
+    color: #64b5f6;
+}
+
+/* Modo escuro */
+.dark-mode .multi-select-controls {
+    background: linear-gradient(135deg, #2d3748 0%, #4a5568 100%);
+    border-color: rgba(255, 255, 255, 0.1);
+}
+
+.dark-mode .link-checkbox-custom {
+    background: rgba(45, 55, 72, 0.9);
+    border-color: #4a5568;
+}
+
+.dark-mode .multi-select-mode .button-container button.selected {
+    background: linear-gradient(135deg, #2d3748, #4a5568) !important;
+    border-left: 4px solid #63b3ed !important;
+}

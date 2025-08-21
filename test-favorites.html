@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Teste - Favoritos Seleção Múltipla</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            padding: 20px;
+            background: #f5f5f5;
+        }
+        .test-container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        .test-section {
+            margin-bottom: 30px;
+            padding: 15px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+        .test-button {
+            background: #007bff;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            margin: 5px;
+        }
+        .test-button:hover {
+            background: #0056b3;
+        }
+        .result {
+            margin-top: 10px;
+            padding: 10px;
+            background: #f8f9fa;
+            border-radius: 3px;
+            border-left: 4px solid #28a745;
+        }
+        .error {
+            border-left-color: #dc3545;
+            background: #f8d7da;
+        }
+    </style>
+</head>
+<body>
+    <div class="test-container">
+        <h1>Teste - Funcionalidade "Abrir Selecionados" nos Favoritos</h1>
+        
+        <div class="test-section">
+            <h3>Instruções para Teste:</h3>
+            <ol>
+                <li>Abra a página principal do projeto: <a href="/" target="_blank">http://localhost:8000/</a></li>
+                <li>Vá até a seção "Meus Atalhos Favoritos"</li>
+                <li>Ative o modo "Seleção Múltipla" clicando no botão correspondente</li>
+                <li>Selecione múltiplos favoritos marcando os checkboxes</li>
+                <li>Clique em "Abrir Selecionados"</li>
+                <li>Verifique se os links são abertos corretamente</li>
+            </ol>
+        </div>
+        
+        <div class="test-section">
+            <h3>Teste Rápido:</h3>
+            <p>Clique no botão abaixo para abrir a página principal e testar:</p>
+            <button class="test-button" onclick="window.open('/', '_blank')">Abrir Página Principal</button>
+        </div>
+        
+        <div class="test-section">
+            <h3>Verificações Implementadas:</h3>
+            <ul>
+                <li>✅ Função openSelected modificada para suportar favoritos</li>
+                <li>✅ Detecção de elementos com classe 'favorite-item'</li>
+                <li>✅ Busca do botão original correspondente ao favorito</li>
+                <li>✅ Tratamento especial para o item "Feriados-2025"</li>
+                <li>✅ Execução do onclick do botão original</li>
+                <li>✅ Contagem correta de links abertos</li>
+                <li>✅ Tratamento de erros</li>
+            </ul>
+        </div>
+        
+        <div class="test-section">
+            <h3>Código Implementado:</h3>
+            <p>A função <code>openSelected()</code> no arquivo <code>multi-select.js</code> foi modificada para:</p>
+            <ul>
+                <li>Verificar se o elemento selecionado é um botão normal ou um favorito</li>
+                <li>Para favoritos, buscar o botão original correspondente</li>
+                <li>Executar a ação apropriada (window.open ou showHolidays)</li>
+                <li>Manter a compatibilidade com botões normais</li>
+            </ul>
+        </div>
+        
+        <div id="test-result" class="result" style="display: none;">
+            <strong>Resultado do Teste:</strong>
+            <div id="result-content"></div>
+        </div>
+    </div>
+    
+    <script>
+        // Função para mostrar resultado do teste
+        function showTestResult(success, message) {
+            const resultDiv = document.getElementById('test-result');
+            const contentDiv = document.getElementById('result-content');
+            
+            resultDiv.style.display = 'block';
+            resultDiv.className = success ? 'result' : 'result error';
+            contentDiv.textContent = message;
+        }
+        
+        // Verificar se a página principal está acessível
+        fetch('/')
+            .then(response => {
+                if (response.ok) {
+                    showTestResult(true, 'Página principal acessível. Pronto para testar!');
+                } else {
+                    showTestResult(false, 'Erro ao acessar a página principal.');
+                }
+            })
+            .catch(error => {
+                showTestResult(false, 'Servidor não está rodando. Inicie o servidor primeiro.');
+            });
+    </script>
+</body>
+</html>

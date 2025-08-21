@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Central Núcleo - Health Check</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .health-container {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 40px;
+            text-align: center;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            max-width: 500px;
+            width: 100%;
+        }
+        .status-icon {
+            font-size: 4rem;
+            margin-bottom: 20px;
+            animation: pulse 2s infinite;
+        }
+        .status-text {
+            font-size: 1.5rem;
+            margin-bottom: 10px;
+            font-weight: 600;
+        }
+        .timestamp {
+            font-size: 0.9rem;
+            opacity: 0.8;
+            margin-bottom: 30px;
+        }
+        .info-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            margin-top: 30px;
+        }
+        .info-item {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 15px;
+            border-radius: 10px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        .info-label {
+            font-size: 0.8rem;
+            opacity: 0.8;
+            margin-bottom: 5px;
+        }
+        .info-value {
+            font-size: 1.1rem;
+            font-weight: 600;
+        }
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+            100% { transform: scale(1); }
+        }
+        .back-link {
+            display: inline-block;
+            margin-top: 20px;
+            padding: 10px 20px;
+            background: rgba(255, 255, 255, 0.2);
+            color: white;
+            text-decoration: none;
+            border-radius: 25px;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            transition: all 0.3s ease;
+        }
+        .back-link:hover {
+            background: rgba(255, 255, 255, 0.3);
+            transform: translateY(-2px);
+        }
+    </style>
+</head>
+<body>
+    <div class="health-container">
+        <div class="status-icon">✅</div>
+        <div class="status-text">Sistema Operacional</div>
+        <div class="timestamp" id="timestamp"></div>
+        
+        <div class="info-grid">
+            <div class="info-item">
+                <div class="info-label">Status</div>
+                <div class="info-value">Online</div>
+            </div>
+            <div class="info-item">
+                <div class="info-label">Versão</div>
+                <div class="info-value">1.0.0</div>
+            </div>
+            <div class="info-item">
+                <div class="info-label">Uptime</div>
+                <div class="info-value" id="uptime">Calculando...</div>
+            </div>
+            <div class="info-item">
+                <div class="info-label">Porta</div>
+                <div class="info-value" id="port">8080</div>
+            </div>
+        </div>
+        
+        <a href="/" class="back-link">← Voltar ao Central Núcleo</a>
+    </div>
+
+    <script>
+        // Atualizar timestamp
+        function updateTimestamp() {
+            const now = new Date();
+            document.getElementById('timestamp').textContent = 
+                'Última verificação: ' + now.toLocaleString('pt-BR');
+        }
+        
+        // Calcular uptime (simulado)
+        function updateUptime() {
+            const startTime = localStorage.getItem('appStartTime') || Date.now();
+            if (!localStorage.getItem('appStartTime')) {
+                localStorage.setItem('appStartTime', Date.now());
+            }
+            
+            const uptime = Date.now() - parseInt(startTime);
+            const hours = Math.floor(uptime / (1000 * 60 * 60));
+            const minutes = Math.floor((uptime % (1000 * 60 * 60)) / (1000 * 60));
+            
+            document.getElementById('uptime').textContent = `${hours}h ${minutes}m`;
+        }
+        
+        // Detectar porta atual
+        function updatePort() {
+            const port = window.location.port || (window.location.protocol === 'https:' ? '443' : '80');
+            document.getElementById('port').textContent = port;
+        }
+        
+        // Inicializar
+        updateTimestamp();
+        updateUptime();
+        updatePort();
+        
+        // Atualizar a cada 30 segundos
+        setInterval(() => {
+            updateTimestamp();
+            updateUptime();
+        }, 30000);
+    </script>
+</body>
+</html>

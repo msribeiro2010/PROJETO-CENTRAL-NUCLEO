@@ -1,0 +1,1334 @@
+[
+  {
+    "codigo": "0001",
+    "orgao": "1ª Vara do Trabalho de Campinas"
+  },
+  {
+    "codigo": "0002",
+    "orgao": "1ª Vara do Trabalho de Jundiaí"
+  },
+  {
+    "codigo": "0003",
+    "orgao": "1ª Vara do Trabalho de Sorocaba"
+  },
+  {
+    "codigo": "0004",
+    "orgao": "1ª Vara do Trabalho de Ribeirão Preto"
+  },
+  {
+    "codigo": "0005",
+    "orgao": "1ª Vara do Trabalho de Bauru"
+  },
+  {
+    "codigo": "0006",
+    "orgao": "1ª Vara do Trabalho de Araraquara"
+  },
+  {
+    "codigo": "0007",
+    "orgao": "1ª Vara do Trabalho de Americana"
+  },
+  {
+    "codigo": "0008",
+    "orgao": "1ª Vara do Trabalho de São Carlos"
+  },
+  {
+    "codigo": "0009",
+    "orgao": "1ª Vara do Trabalho de Taubaté"
+  },
+  {
+    "codigo": "0010",
+    "orgao": "Vara do Trabalho de Rio Claro"
+  },
+  {
+    "codigo": "0011",
+    "orgao": "Vara do Trabalho de Barretos"
+  },
+  {
+    "codigo": "0012",
+    "orgao": "1ª Vara do Trabalho de Piracicaba"
+  },
+  {
+    "codigo": "0013",
+    "orgao": "1ª Vara do Trabalho de São José dos Campos"
+  },
+  {
+    "codigo": "0014",
+    "orgao": "1ª Vara do Trabalho de Limeira"
+  },
+  {
+    "codigo": "0015",
+    "orgao": "1ª Vara do Trabalho de Franca"
+  },
+  {
+    "codigo": "0016",
+    "orgao": "2ª Vara do Trabalho de Sorocaba"
+  },
+  {
+    "codigo": "0017",
+    "orgao": "1ª Vara do Trabalho de São José do Rio Preto"
+  },
+  {
+    "codigo": "0018",
+    "orgao": "Vara do Trabalho de Itu"
+  },
+  {
+    "codigo": "0019",
+    "orgao": "1ª Vara do Trabalho de Araçatuba"
+  },
+  {
+    "codigo": "0020",
+    "orgao": "Vara do Trabalho de Guaratinguetá"
+  },
+  {
+    "codigo": "0021",
+    "orgao": "2ª Vara do Trabalho de Jundiaí"
+  },
+  {
+    "codigo": "0022",
+    "orgao": "Vara do Trabalho de Mogi Mirim"
+  },
+  {
+    "codigo": "0023",
+    "orgao": "1ª Vara do Trabalho de Jacareí"
+  },
+  {
+    "codigo": "0024",
+    "orgao": "1ª Vara do Trabalho de Jaú"
+  },
+  {
+    "codigo": "0025",
+    "orgao": "Vara do Trabalho de Botucatu"
+  },
+  {
+    "codigo": "0026",
+    "orgao": "1ª Vara do Trabalho de Presidente Prudente"
+  },
+  {
+    "codigo": "0027",
+    "orgao": "Vara do Trabalho de Votuporanga"
+  },
+  {
+    "codigo": "0028",
+    "orgao": "1ª Vara do Trabalho de Catanduva"
+  },
+  {
+    "codigo": "0029",
+    "orgao": "1ª Vara do Trabalho de Jaboticabal"
+  },
+  {
+    "codigo": "0030",
+    "orgao": "Vara do Trabalho de Ourinhos"
+  },
+  {
+    "codigo": "0031",
+    "orgao": "Vara do Trabalho de Avaré"
+  },
+  {
+    "codigo": "0032",
+    "orgao": "2ª Vara do Trabalho de Campinas"
+  },
+  {
+    "codigo": "0033",
+    "orgao": "1ª Vara do Trabalho de Marília"
+  },
+  {
+    "codigo": "0034",
+    "orgao": "Vara do Trabalho de São João da Boa Vista"
+  },
+  {
+    "codigo": "0035",
+    "orgao": "Vara do Trabalho de São José do Rio Pardo"
+  },
+  {
+    "codigo": "0036",
+    "orgao": "1ª Vara do Trabalho de Assis"
+  },
+  {
+    "codigo": "0037",
+    "orgao": "Vara do Trabalho de Fernandópolis"
+  },
+  {
+    "codigo": "0038",
+    "orgao": "Vara do Trabalho de Bragança Paulista"
+  },
+  {
+    "codigo": "0039",
+    "orgao": "Vara do Trabalho de Capivari"
+  },
+  {
+    "codigo": "0040",
+    "orgao": "Vara do Trabalho de Cruzeiro"
+  },
+  {
+    "codigo": "0041",
+    "orgao": "Vara do Trabalho de Itapetininga"
+  },
+  {
+    "codigo": "0042",
+    "orgao": "2ª Vara do Trabalho de Ribeirão Preto"
+  },
+  {
+    "codigo": "0043",
+    "orgao": "3ª Vara do Trabalho de Campinas"
+  },
+  {
+    "codigo": "0044",
+    "orgao": "2ª Vara do Trabalho de São José do Rio Preto"
+  },
+  {
+    "codigo": "0045",
+    "orgao": "2ª Vara do Trabalho de São José dos Campos"
+  },
+  {
+    "codigo": "0046",
+    "orgao": "Vara do Trabalho de Araras"
+  },
+  {
+    "codigo": "0047",
+    "orgao": "Vara do Trabalho de Itapeva"
+  },
+  {
+    "codigo": "0048",
+    "orgao": "Vara do Trabalho de Porto Ferreira"
+  },
+  {
+    "codigo": "0049",
+    "orgao": "Vara do Trabalho de Itápolis"
+  },
+  {
+    "codigo": "0050",
+    "orgao": "Vara do Trabalho de Dracena"
+  },
+  {
+    "codigo": "0051",
+    "orgao": "2ª Vara do Trabalho de Piracicaba"
+  },
+  {
+    "codigo": "0052",
+    "orgao": "Vara do Trabalho de Ituverava"
+  },
+  {
+    "codigo": "0053",
+    "orgao": "4ª Vara do Trabalho de Campinas"
+  },
+  {
+    "codigo": "0054",
+    "orgao": "1ª Vara do Trabalho de Sertãozinho"
+  },
+  {
+    "codigo": "0055",
+    "orgao": "2ª Vara do Trabalho de Jaú"
+  },
+  {
+    "codigo": "0056",
+    "orgao": "Vara do Trabalho de Andradina"
+  },
+  {
+    "codigo": "0057",
+    "orgao": "Vara do Trabalho de Presidente Venceslau"
+  },
+  {
+    "codigo": "0058",
+    "orgao": "Vara do Trabalho de Bebedouro"
+  },
+  {
+    "codigo": "0059",
+    "orgao": "Vara do Trabalho de Pindamonhangaba"
+  },
+  {
+    "codigo": "0060",
+    "orgao": "Vara do Trabalho de Amparo"
+  },
+  {
+    "codigo": "0061",
+    "orgao": "2ª Vara do Trabalho de Araçatuba"
+  },
+  {
+    "codigo": "0062",
+    "orgao": "Vara do Trabalho de Lins"
+  },
+  {
+    "codigo": "0063",
+    "orgao": "Vara do Trabalho de Caraguatatuba"
+  },
+  {
+    "codigo": "0064",
+    "orgao": "Vara do Trabalho de Itanhaém"
+  },
+  {
+    "codigo": "0065",
+    "orgao": "Vara do Trabalho de Tupã"
+  },
+  {
+    "codigo": "0066",
+    "orgao": "3ª Vara do Trabalho de Ribeirão Preto"
+  },
+  {
+    "codigo": "0067",
+    "orgao": "4ª Vara do Trabalho de Ribeirão Preto"
+  },
+  {
+    "codigo": "0068",
+    "orgao": "Vara do Trabalho de Adamantina"
+  },
+  {
+    "codigo": "0069",
+    "orgao": "Vara do Trabalho de Registro"
+  },
+  {
+    "codigo": "0070",
+    "orgao": "2ª Vara do Trabalho de Catanduva"
+  },
+  {
+    "codigo": "0071",
+    "orgao": "Vara do Trabalho de Mogi Guaçu"
+  },
+  {
+    "codigo": "0072",
+    "orgao": "Vara do Trabalho de Rancharia"
+  },
+  {
+    "codigo": "0073",
+    "orgao": "Vara do Trabalho de Birigui"
+  },
+  {
+    "codigo": "0074",
+    "orgao": "1ª Vara do Trabalho de Lençóis Paulista"
+  },
+  {
+    "codigo": "0075",
+    "orgao": "Vara do Trabalho de Batatais"
+  },
+  {
+    "codigo": "0076",
+    "orgao": "2ª Vara do Trabalho de Franca"
+  },
+  {
+    "codigo": "0077",
+    "orgao": "Vara do Trabalho de Indaiatuba"
+  },
+  {
+    "codigo": "0078",
+    "orgao": "Vara do Trabalho de Piedade"
+  },
+  {
+    "codigo": "0079",
+    "orgao": "2ª Vara do Trabalho de Araraquara"
+  },
+  {
+    "codigo": "0080",
+    "orgao": "Vara do Trabalho de Jales"
+  },
+  {
+    "codigo": "0081",
+    "orgao": "Vara do Trabalho de Matão"
+  },
+  {
+    "codigo": "0082",
+    "orgao": "3ª Vara do Trabalho de São José do Rio Preto"
+  },
+  {
+    "codigo": "0083",
+    "orgao": "3ª Vara do Trabalho de São José dos Campos"
+  },
+  {
+    "codigo": "0084",
+    "orgao": "4ª Vara do Trabalho de São José dos Campos"
+  },
+  {
+    "codigo": "0085",
+    "orgao": "Vara do Trabalho de Salto"
+  },
+  {
+    "codigo": "0086",
+    "orgao": "Vara do Trabalho de Santa Bárbara D'Oeste"
+  },
+  {
+    "codigo": "0087",
+    "orgao": "1ª Vara do Trabalho de Paulínia"
+  },
+  {
+    "codigo": "0088",
+    "orgao": "Vara do Trabalho de Lorena"
+  },
+  {
+    "codigo": "0089",
+    "orgao": "2ª Vara do Trabalho de Bauru"
+  },
+  {
+    "codigo": "0090",
+    "orgao": "3ª Vara do Trabalho de Bauru"
+  },
+  {
+    "codigo": "0091",
+    "orgao": "4ª Vara do Trabalho de Bauru"
+  },
+  {
+    "codigo": "0092",
+    "orgao": "5ª Vara do Trabalho de Campinas"
+  },
+  {
+    "codigo": "0093",
+    "orgao": "6ª Vara do Trabalho de Campinas"
+  },
+  {
+    "codigo": "0094",
+    "orgao": "7ª Vara do Trabalho de Campinas"
+  },
+  {
+    "codigo": "0095",
+    "orgao": "8ª Vara do Trabalho de Campinas"
+  },
+  {
+    "codigo": "0096",
+    "orgao": "3ª Vara do Trabalho de Jundiaí"
+  },
+  {
+    "codigo": "0097",
+    "orgao": "4ª Vara do Trabalho de Jundiaí"
+  },
+  {
+    "codigo": "0098",
+    "orgao": "Vara do Trabalho de Garça"
+  },
+  {
+    "codigo": "0099",
+    "orgao": "2ª Vara do Trabalho de Americana"
+  },
+  {
+    "codigo": "0100",
+    "orgao": "2ª Vara do Trabalho de Assis"
+  },
+  {
+    "codigo": "0101",
+    "orgao": "2ª Vara do Trabalho de Marília"
+  },
+  {
+    "codigo": "0102",
+    "orgao": "2ª Vara do Trabalho de Taubaté"
+  },
+  {
+    "codigo": "0103",
+    "orgao": "3ª Vara do Trabalho de Araçatuba"
+  },
+  {
+    "codigo": "0104",
+    "orgao": "Vara do Trabalho de Tanabi"
+  },
+  {
+    "codigo": "0105",
+    "orgao": "Vara do Trabalho de Campo Limpo Paulista"
+  },
+  {
+    "codigo": "0106",
+    "orgao": "2ª Vara do Trabalho de São Carlos"
+  },
+  {
+    "codigo": "0107",
+    "orgao": "Vara do Trabalho de Olímpia"
+  },
+  {
+    "codigo": "0108",
+    "orgao": "Vara do Trabalho de São Roque"
+  },
+  {
+    "codigo": "0109",
+    "orgao": "3ª Vara do Trabalho de Sorocaba"
+  },
+  {
+    "codigo": "0110",
+    "orgao": "Vara do Trabalho de José Bonifácio"
+  },
+  {
+    "codigo": "0111",
+    "orgao": "Vara do Trabalho de Tietê"
+  },
+  {
+    "codigo": "0112",
+    "orgao": "Vara do Trabalho de Cajuru"
+  },
+  {
+    "codigo": "0113",
+    "orgao": "5ª Vara do Trabalho de Ribeirão Preto"
+  },
+  {
+    "codigo": "0114",
+    "orgao": "9ª Vara do Trabalho de Campinas"
+  },
+  {
+    "codigo": "0115",
+    "orgao": "2ª Vara do Trabalho de Presidente Prudente"
+  },
+  {
+    "codigo": "0116",
+    "orgao": "Vara do Trabalho de Tatuí"
+  },
+  {
+    "codigo": "0117",
+    "orgao": "Vara do Trabalho de São Joaquim da Barra"
+  },
+  {
+    "codigo": "0118",
+    "orgao": "Vara do Trabalho de Itapira"
+  },
+  {
+    "codigo": "0119",
+    "orgao": "Vara do Trabalho de Caçapava"
+  },
+  {
+    "codigo": "0120",
+    "orgao": "2ª Vara do Trabalho de Jaboticabal"
+  },
+  {
+    "codigo": "0121",
+    "orgao": "Vara do Trabalho de São Sebastião"
+  },
+  {
+    "codigo": "0122",
+    "orgao": "Vara do Trabalho de Sumaré"
+  },
+  {
+    "codigo": "0123",
+    "orgao": "Vara do Trabalho de Capão Bonito"
+  },
+  {
+    "codigo": "0124",
+    "orgao": "Vara do Trabalho de Penápolis"
+  },
+  {
+    "codigo": "0125",
+    "orgao": "2ª Vara do Trabalho de Sertãozinho"
+  },
+  {
+    "codigo": "0126",
+    "orgao": "2ª Vara do Trabalho de Paulínia"
+  },
+  {
+    "codigo": "0127",
+    "orgao": "Vara do Trabalho de Teodoro Sampaio"
+  },
+  {
+    "codigo": "0128",
+    "orgao": "2ª Vara do Trabalho de Limeira"
+  },
+  {
+    "codigo": "0129",
+    "orgao": "10ª Vara do Trabalho de Campinas"
+  },
+  {
+    "codigo": "0130",
+    "orgao": "11ª Vara do Trabalho de Campinas"
+  },
+  {
+    "codigo": "0131",
+    "orgao": "12ª Vara do Trabalho de Campinas"
+  },
+  {
+    "codigo": "0132",
+    "orgao": "5ª Vara do Trabalho de São José dos Campos"
+  },
+  {
+    "codigo": "0133",
+    "orgao": "4ª Vara do Trabalho de São José do Rio Preto"
+  },
+  {
+    "codigo": "0134",
+    "orgao": "Vara do Trabalho de Leme"
+  },
+  {
+    "codigo": "0135",
+    "orgao": "4ª Vara do Trabalho de Sorocaba"
+  },
+  {
+    "codigo": "0136",
+    "orgao": "Vara do Trabalho de Pirassununga"
+  },
+  {
+    "codigo": "0137",
+    "orgao": "3ª Vara do Trabalho de Piracicaba"
+  },
+  {
+    "codigo": "0138",
+    "orgao": "2ª Vara do Trabalho de Jacareí"
+  },
+  {
+    "codigo": "0139",
+    "orgao": "Vara do Trabalho de Ubatuba"
+  },
+  {
+    "codigo": "0140",
+    "orgao": "Vara do Trabalho de Atibaia"
+  },
+  {
+    "codigo": "0141",
+    "orgao": "Vara do Trabalho de Mococa"
+  },
+  {
+    "codigo": "0142",
+    "orgao": "Vara do Trabalho de Taquaritinga"
+  },
+  {
+    "codigo": "0143",
+    "orgao": "Vara do Trabalho de Santa Cruz do Rio Pardo"
+  },
+  {
+    "codigo": "0144",
+    "orgao": "Vara do Trabalho de Pederneiras"
+  },
+  {
+    "codigo": "0145",
+    "orgao": "Vara do Trabalho de Itatiba"
+  },
+  {
+    "codigo": "0146",
+    "orgao": "Vara do Trabalho de Orlândia"
+  },
+  {
+    "codigo": "0147",
+    "orgao": "Vara do Trabalho de Aparecida"
+  },
+  {
+    "codigo": "0148",
+    "orgao": "Vara do Trabalho de Itararé"
+  },
+  {
+    "codigo": "0149",
+    "orgao": "2ª Vara do Trabalho de Lençóis Paulista"
+  },
+  {
+    "codigo": "0150",
+    "orgao": "Vara do Trabalho de Cravinhos"
+  },
+  {
+    "codigo": "0151",
+    "orgao": "3ª Vara do Trabalho de Araraquara"
+  },
+  {
+    "codigo": "0152",
+    "orgao": "Vara do Trabalho de Hortolândia"
+  },
+  {
+    "codigo": "0153",
+    "orgao": "6ª Vara do Trabalho de Ribeirão Preto"
+  },
+  {
+    "codigo": "0188",
+    "orgao": "5ª Vara do Trabalho de Jundiaí"
+  },
+  {
+    "codigo": "0201",
+    "orgao": "Corregedoria-Geral"
+  },
+  {
+    "codigo": "0341",
+    "orgao": "Assessoria de Precatórios"
+  },
+  {
+    "codigo": "0401",
+    "orgao": "Divisão de Execução de Araçatuba"
+  },
+  {
+    "codigo": "0402",
+    "orgao": "DIVEX - Araraquara"
+  },
+  {
+    "codigo": "0403",
+    "orgao": "DIVEX - Bauru"
+  },
+  {
+    "codigo": "0404",
+    "orgao": "DIVEX - Campinas"
+  },
+  {
+    "codigo": "0405",
+    "orgao": "Divisão de Execução de Franca"
+  },
+  {
+    "codigo": "0406",
+    "orgao": "DIVEX - Jundiaí"
+  },
+  {
+    "codigo": "0407",
+    "orgao": "Divisão de Execução de Limeira"
+  },
+  {
+    "codigo": "0408",
+    "orgao": "DIVEX - Piracicaba"
+  },
+  {
+    "codigo": "0409",
+    "orgao": "DIVEX - Presidente Prudente"
+  },
+  {
+    "codigo": "0410",
+    "orgao": "DIVEX - Ribeirão Preto"
+  },
+  {
+    "codigo": "0411",
+    "orgao": "DIVEX - São José dos Campos"
+  },
+  {
+    "codigo": "0412",
+    "orgao": "DIVEX - São José do Rio Preto"
+  },
+  {
+    "codigo": "0413",
+    "orgao": "DIVEX - Sorocaba"
+  },
+  {
+    "codigo": "0414",
+    "orgao": "Divisão de Execução de Taubaté"
+  },
+  {
+    "codigo": "0415",
+    "orgao": "LIQ2 - Bauru"
+  },
+  {
+    "codigo": "0416",
+    "orgao": "LIQ1 - Campinas"
+  },
+  {
+    "codigo": "0417",
+    "orgao": "LIQ1 - São José do Rio Preto"
+  },
+  {
+    "codigo": "0418",
+    "orgao": "LIQ1 - Sorocaba"
+  },
+  {
+    "codigo": "0419",
+    "orgao": "CON2 - Bauru"
+  },
+  {
+    "codigo": "0420",
+    "orgao": "CON2 - Campinas"
+  },
+  {
+    "codigo": "0421",
+    "orgao": "CON2 - São José do Rio Preto"
+  },
+  {
+    "codigo": "0422",
+    "orgao": "CON2 - Sorocaba"
+  },
+  {
+    "codigo": "0423",
+    "orgao": "EXE2 - Bauru"
+  },
+  {
+    "codigo": "0424",
+    "orgao": "EXE1 - Campinas"
+  },
+  {
+    "codigo": "0425",
+    "orgao": "EXE1 - São José do Rio Preto"
+  },
+  {
+    "codigo": "0426",
+    "orgao": "EXE1 - Sorocaba"
+  },
+  {
+    "codigo": "0427",
+    "orgao": "EXE4 - Bauru"
+  },
+  {
+    "codigo": "0428",
+    "orgao": "EXE5 - Campinas"
+  },
+  {
+    "codigo": "0429",
+    "orgao": "EXE3 - São José do Rio Preto"
+  },
+  {
+    "codigo": "0430",
+    "orgao": "EXE2 - Sorocaba"
+  },
+  {
+    "codigo": "0431",
+    "orgao": "EXE3 - Campinas"
+  },
+  {
+    "codigo": "0432",
+    "orgao": "EXE4 - Campinas"
+  },
+  {
+    "codigo": "0433",
+    "orgao": "EXE1 - Jundiaí"
+  },
+  {
+    "codigo": "0434",
+    "orgao": "EXE2 - Jundiaí"
+  },
+  {
+    "codigo": "0435",
+    "orgao": "LIQ1 - Jundiaí"
+  },
+  {
+    "codigo": "0436",
+    "orgao": "CON1 - Jundiaí"
+  },
+  {
+    "codigo": "0437",
+    "orgao": "CON2 - Jundiaí"
+  },
+  {
+    "codigo": "0438",
+    "orgao": "EXE2 - Campinas"
+  },
+  {
+    "codigo": "0439",
+    "orgao": "CON1 - São José dos Campos"
+  },
+  {
+    "codigo": "0440",
+    "orgao": "EXE1 - São José dos Campos"
+  },
+  {
+    "codigo": "0441",
+    "orgao": "EXE2 - São José dos Campos"
+  },
+  {
+    "codigo": "0442",
+    "orgao": "EXE4 - São José dos Campos"
+  },
+  {
+    "codigo": "0443",
+    "orgao": "LIQ1 - São José dos Campos"
+  },
+  {
+    "codigo": "0444",
+    "orgao": "CON1 - Piracicaba"
+  },
+  {
+    "codigo": "0445",
+    "orgao": "EXE1 - Piracicaba"
+  },
+  {
+    "codigo": "0446",
+    "orgao": "LIQ1 - Piracicaba"
+  },
+  {
+    "codigo": "0447",
+    "orgao": "CON1 - Araraquara"
+  },
+  {
+    "codigo": "0448",
+    "orgao": "EXE1 - Araraquara"
+  },
+  {
+    "codigo": "0449",
+    "orgao": "LIQ2 - Araraquara"
+  },
+  {
+    "codigo": "0450",
+    "orgao": "CON2 - Ribeirão Preto"
+  },
+  {
+    "codigo": "0451",
+    "orgao": "LIQ1 - Ribeirão Preto"
+  },
+  {
+    "codigo": "0453",
+    "orgao": "EXE2 - São José do Rio Preto"
+  },
+  {
+    "codigo": "0454",
+    "orgao": "EXE6 - Campinas"
+  },
+  {
+    "codigo": "0455",
+    "orgao": "LIQ2 - Ribeirão Preto"
+  },
+  {
+    "codigo": "0456",
+    "orgao": "EXE4 - São José do Rio Preto"
+  },
+  {
+    "codigo": "0457",
+    "orgao": "CON1 - Ribeirão Preto"
+  },
+  {
+    "codigo": "0458",
+    "orgao": "EXE1 - Ribeirão Preto"
+  },
+  {
+    "codigo": "0459",
+    "orgao": "EXE2 - Ribeirão Preto"
+  },
+  {
+    "codigo": "0460",
+    "orgao": "EXE4 - Ribeirão Preto"
+  },
+  {
+    "codigo": "0461",
+    "orgao": "DAM - Araraquara"
+  },
+  {
+    "codigo": "0462",
+    "orgao": "DAM - Bauru"
+  },
+  {
+    "codigo": "0463",
+    "orgao": "DAM - Campinas"
+  },
+  {
+    "codigo": "0464",
+    "orgao": "DAM - Jundiaí"
+  },
+  {
+    "codigo": "0465",
+    "orgao": "DAM - Piracicaba"
+  },
+  {
+    "codigo": "0466",
+    "orgao": "DAM - Ribeirão Preto"
+  },
+  {
+    "codigo": "0467",
+    "orgao": "DAM - São José do Rio Preto"
+  },
+  {
+    "codigo": "0468",
+    "orgao": "DAM - São José dos Campos"
+  },
+  {
+    "codigo": "0469",
+    "orgao": "Divisão de Apoio aos Magistrados de Sertãozinho"
+  },
+  {
+    "codigo": "0470",
+    "orgao": "DAM - Sorocaba"
+  },
+  {
+    "codigo": "0471",
+    "orgao": "Assessoria de Execução I de Sertãozinho, Orlândia, Batatais e Franca"
+  },
+  {
+    "codigo": "0472",
+    "orgao": "Assessoria de Execução II de Sertãozinho, Orlândia, Batatais e Franca"
+  },
+  {
+    "codigo": "0473",
+    "orgao": "EXE3 - Ribeirão Preto"
+  },
+  {
+    "codigo": "0474",
+    "orgao": "EXE1 - Bauru"
+  },
+  {
+    "codigo": "0475",
+    "orgao": "EXE2 - Araraquara"
+  },
+  {
+    "codigo": "0476",
+    "orgao": "EXE3 - Araraquara"
+  },
+  {
+    "codigo": "0477",
+    "orgao": "EXE4 - Araraquara"
+  },
+  {
+    "codigo": "0478",
+    "orgao": "LIQ2 - Campinas"
+  },
+  {
+    "codigo": "0479",
+    "orgao": "EXE2 - Piracicaba"
+  },
+  {
+    "codigo": "0480",
+    "orgao": "EXE4 - Piracicaba"
+  },
+  {
+    "codigo": "0481",
+    "orgao": "CON1 - São José do Rio Preto"
+  },
+  {
+    "codigo": "0482",
+    "orgao": "LIQ2 - São José do Rio Preto"
+  },
+  {
+    "codigo": "0483",
+    "orgao": "EXE4 - Sorocaba"
+  },
+  {
+    "codigo": "0484",
+    "orgao": "LIQ2 - Piracicaba"
+  },
+  {
+    "codigo": "0485",
+    "orgao": "EXE3 - Piracicaba"
+  },
+  {
+    "codigo": "0486",
+    "orgao": "CON2 - Piracicaba"
+  },
+  {
+    "codigo": "0487",
+    "orgao": "EXE3 - Sorocaba"
+  },
+  {
+    "codigo": "0488",
+    "orgao": "LIQ2 - Sorocaba"
+  },
+  {
+    "codigo": "0489",
+    "orgao": "CON1 - Sorocaba"
+  },
+  {
+    "codigo": "0490",
+    "orgao": "CON2 - Araraquara"
+  },
+  {
+    "codigo": "0491",
+    "orgao": "LIQ1 - Araraquara"
+  },
+  {
+    "codigo": "0492",
+    "orgao": "CON1 - Bauru"
+  },
+  {
+    "codigo": "0493",
+    "orgao": "LIQ1 - Bauru"
+  },
+  {
+    "codigo": "0494",
+    "orgao": "EXE3 - Bauru"
+  },
+  {
+    "codigo": "0495",
+    "orgao": "CON1 - Campinas"
+  },
+  {
+    "codigo": "0496",
+    "orgao": "LIQ2 - Jundiaí"
+  },
+  {
+    "codigo": "0497",
+    "orgao": "EXE3 - Jundiaí"
+  },
+  {
+    "codigo": "0498",
+    "orgao": "EXE4 - Jundiaí"
+  },
+  {
+    "codigo": "0499",
+    "orgao": "CON2 - São José dos Campos"
+  },
+  {
+    "codigo": "0500",
+    "orgao": "EXE3 - São José dos Campos"
+  },
+  {
+    "codigo": "0501",
+    "orgao": "LIQ2 - São José dos Campos"
+  },
+  {
+    "codigo": "0502",
+    "orgao": "CON1 - Presidente Prudente"
+  },
+  {
+    "codigo": "0503",
+    "orgao": "CON2 - Presidente Prudente"
+  },
+  {
+    "codigo": "0504",
+    "orgao": "LIQ1 - Presidente Prudente"
+  },
+  {
+    "codigo": "0505",
+    "orgao": "LIQ2 - Presidente Prudente"
+  },
+  {
+    "codigo": "0506",
+    "orgao": "EXE1 - Presidente Prudente"
+  },
+  {
+    "codigo": "0507",
+    "orgao": "EXE2 - Presidente Prudente"
+  },
+  {
+    "codigo": "0508",
+    "orgao": "EXE3 - Presidente Prudente"
+  },
+  {
+    "codigo": "0509",
+    "orgao": "EXE4 - Presidente Prudente"
+  },
+  {
+    "codigo": "0510",
+    "orgao": "DAM - Presidente Prudente"
+  },
+  {
+    "codigo": "0511",
+    "orgao": "DIVEX_ - Presidente Prudente"
+  },
+  {
+    "codigo": "0601",
+    "orgao": "Órgão Centralizador de Leilões Judiciais de Araçatuba"
+  },
+  {
+    "codigo": "0602",
+    "orgao": "Órgão Centralizador de Leilões Judiciais de Araraquara"
+  },
+  {
+    "codigo": "0603",
+    "orgao": "Órgão Centralizador de Leilões Judiciais de Bauru"
+  },
+  {
+    "codigo": "0604",
+    "orgao": "Órgão Centralizador de Leilões Judiciais de Campinas"
+  },
+  {
+    "codigo": "0605",
+    "orgao": "Órgão Centralizador de Leilões Judiciais de Franca"
+  },
+  {
+    "codigo": "0606",
+    "orgao": "Órgão Centralizador de Leilões Judiciais de Jundiaí"
+  },
+  {
+    "codigo": "0607",
+    "orgao": "Órgão Centralizador de Leilões Judiciais de Limeira"
+  },
+  {
+    "codigo": "0608",
+    "orgao": "Órgão Centralizador de Leilões Judiciais de Piracicaba"
+  },
+  {
+    "codigo": "0609",
+    "orgao": "Órgão Centralizador de Leilões Judiciais de Presidente Prudente"
+  },
+  {
+    "codigo": "0610",
+    "orgao": "Órgão Centralizador de Leilões Judiciais de Ribeirão Preto"
+  },
+  {
+    "codigo": "0611",
+    "orgao": "Órgão Centralizador de Leilões Judiciais de São José do Rio Preto"
+  },
+  {
+    "codigo": "0612",
+    "orgao": "Órgão Centralizador de Leilões Judiciais de São José dos Campos"
+  },
+  {
+    "codigo": "0613",
+    "orgao": "Órgão Centralizador de Leilões Judiciais de Sorocaba"
+  },
+  {
+    "codigo": "0614",
+    "orgao": "Órgão Centralizador de Leilões Judiciais de Taubaté"
+  },
+  {
+    "codigo": "0615",
+    "orgao": "CEJUSC ARAÇATUBA - JT Centro Judiciário de Métodos Consensuais de Solução de Disputas da Justiça do Trabalho"
+  },
+  {
+    "codigo": "0616",
+    "orgao": "CEJUSC BAURU - JT Centro Judiciário de Métodos Consensuais de Solução de Disputas da Justiça do Trabalho"
+  },
+  {
+    "codigo": "0617",
+    "orgao": "CEJUSC CAMPINAS - JT Centro Judiciário de Métodos Consensuais de Solução de Disputas da Justiça do Trabalho"
+  },
+  {
+    "codigo": "0618",
+    "orgao": "CEJUSC PRESIDENTE PRUDENTE - JT Centro Judiciário de Métodos Consensuais de Solução de Disputas da Justiça do Trabalho"
+  },
+  {
+    "codigo": "0619",
+    "orgao": "CEJUSC RIBEIRÃO PRETO - JT Centro Judiciário de Métodos Consensuais de Solução de Disputas da Justiça do Trabalho"
+  },
+  {
+    "codigo": "0620",
+    "orgao": "CEJUSC SJCAMPOS - JT Centro Judiciário de Métodos Consensuais de Solução de Disputas da Justiça do Trabalho"
+  },
+  {
+    "codigo": "0621",
+    "orgao": "CEJUSC SJRIO PRETO - JT Centro Judiciário de Métodos Consensuais de Solução de Disputas da Justiça do Trabalho"
+  },
+  {
+    "codigo": "0622",
+    "orgao": "CEJUSC SOROCABA - JT Centro Judiciário de Métodos Consensuais de Solução de Disputas da Justiça do Trabalho"
+  },
+  {
+    "codigo": "0623",
+    "orgao": "CEJUSC ARARAQUARA - JT Centro Judiciário de Métodos Consensuais de Solução de Disputas da Justiça do Trabalho"
+  },
+  {
+    "codigo": "0624",
+    "orgao": "CEJUSC FRANCA - JT Centro Judiciário de Métodos Consensuais de Solução de Disputas da Justiça do Trabalho"
+  },
+  {
+    "codigo": "0625",
+    "orgao": "CEJUSC LIMEIRA - JT Centro Judiciário de Métodos Consensuais de Solução de Disputas da Justiça do Trabalho"
+  },
+  {
+    "codigo": "0626",
+    "orgao": "CEJUSC PIRACICABA - JT Centro Judiciário de Métodos Consensuais de Solução de Disputas da Justiça do Trabalho"
+  },
+  {
+    "codigo": "0627",
+    "orgao": "CEJUSC JUNDIAÍ - JT Centro Judiciário de Métodos Consensuais de Solução de Disputas da Justiça do Trabalho"
+  },
+  {
+    "codigo": "0628",
+    "orgao": "CEJUSC TAUBATÉ - JT Centro Judiciário de Métodos Consensuais de Solução de Disputas da Justiça do Trabalho"
+  },
+  {
+    "codigo": "0629",
+    "orgao": "Juizado Especial da Infância e Adolescência de Araçatuba"
+  },
+  {
+    "codigo": "0630",
+    "orgao": "Juizado Especial da Infância e Adolescência de Bauru"
+  },
+  {
+    "codigo": "0631",
+    "orgao": "Juizado Especial da Infância e Adolescência de Campinas"
+  },
+  {
+    "codigo": "0632",
+    "orgao": "Juizado Especial da Infância e Adolescência de Fernandópolis"
+  },
+  {
+    "codigo": "0633",
+    "orgao": "Juizado Especial da Infância e Adolescência de Franca"
+  },
+  {
+    "codigo": "0634",
+    "orgao": "Juizado Especial da Infância e Adolescência de Presidente Prudente"
+  },
+  {
+    "codigo": "0635",
+    "orgao": "Juizado Especial da Infância e Adolescência de Ribeirão Preto"
+  },
+  {
+    "codigo": "0636",
+    "orgao": "Juizado Especial da Infância e Adolescência de Sorocaba"
+  },
+  {
+    "codigo": "0637",
+    "orgao": "Juizado Especial da Infância e Adolescência de São José do Rio Preto"
+  },
+  {
+    "codigo": "0638",
+    "orgao": "Juizado Especial da Infância e Adolescência de São José dos Campos"
+  },
+  {
+    "codigo": "0900",
+    "orgao": "1º Núcleo de Justiça 4.0"
+  },
+  {
+    "codigo": "0901",
+    "orgao": "Posto Avançado da Justiça do Trabalho de Amparo em Pedreira"
+  },
+  {
+    "codigo": "0902",
+    "orgao": "Posto Avançado da Justiça do Trabalho de Andradina em Pereira Barreto"
+  },
+  {
+    "codigo": "0903",
+    "orgao": "Posto Avançado da Justiça do Trabalho de Araraquara em Américo Brasiliense"
+  },
+  {
+    "codigo": "0904",
+    "orgao": "Justiça Itinerante/Posto Avançado da Justiça do Trabalho de Ituverava em Igarapava"
+  },
+  {
+    "codigo": "0905",
+    "orgao": "Posto Avançado da Justiça do Trabalho de Jundiaí em Vinhedo"
+  },
+  {
+    "codigo": "0906",
+    "orgao": "Posto Avançado da Justiça do Trabalho de Orlândia em Morro Agudo"
+  },
+  {
+    "codigo": "0907",
+    "orgao": "Posto Avançado da Justiça do Trabalho de Pederneiras em Bariri"
+  },
+  {
+    "codigo": "0908",
+    "orgao": "Posto Avançado da Justiça do Trabalho de Pindamonhangaba em Campos do Jordão"
+  },
+  {
+    "codigo": "0909",
+    "orgao": "Posto Avançado da Justiça do Trabalho de São João da Boa Vista em Espírito Santo Do Pinhal"
+  },
+  {
+    "codigo": "0910",
+    "orgao": "Posto Avançado da Justiça do Trabalho de Campinas em Valinhos"
+  },
+  {
+    "codigo": "1000",
+    "orgao": "Posto Avançado da Justiça do Trabalho da 15ª Região"
+  },
+  {
+    "codigo": "1901",
+    "orgao": "CCP ARARAQUARA - Centro de Conciliação Pré Processual"
+  },
+  {
+    "codigo": "1902",
+    "orgao": "CCP ARAÇATUBA - Centro de Conciliação Pré Processual"
+  },
+  {
+    "codigo": "1903",
+    "orgao": "CCP BAURU - Centro de Conciliação Pré Processual"
+  },
+  {
+    "codigo": "1904",
+    "orgao": "CCP CAMPINAS - Centro de Conciliação Pré Processual"
+  },
+  {
+    "codigo": "1905",
+    "orgao": "CCP FRANCA - Centro de Conciliação Pré Processual"
+  },
+  {
+    "codigo": "1906",
+    "orgao": "CCP JUNDIAÍ - Centro de Conciliação Pré Processual"
+  },
+  {
+    "codigo": "1907",
+    "orgao": "CCP LIMEIRA - Centro de Conciliação Pré Processual"
+  },
+  {
+    "codigo": "1908",
+    "orgao": "CCP PIRACICABA - Centro de Conciliação Pré Processual"
+  },
+  {
+    "codigo": "1909",
+    "orgao": "CCP PRESIDENTE PRUDENTE - Centro de Conciliação Pré Processual"
+  },
+  {
+    "codigo": "1910",
+    "orgao": "CCP RIBEIRÃO PRETO - Centro de Conciliação Pré Processual"
+  },
+  {
+    "codigo": "1911",
+    "orgao": "CCP SOROCABA - Centro de Conciliação Pré Processual"
+  },
+  {
+    "codigo": "1912",
+    "orgao": "CCP SÃO JOSÉ DO RIO PRETO - Centro de Conciliação Pré Processual"
+  },
+  {
+    "codigo": "1913",
+    "orgao": "CCP SÃO JOSÉ DOS CAMPOS - Centro de Conciliação Pré Processual"
+  },
+  {
+    "codigo": "1914",
+    "orgao": "CCP TAUBATÉ - Centro de Conciliação Pré Processual"
+  },
+  {
+    "codigo": "1915",
+    "orgao": "CCP DE 2º GRAU - Centro de Conciliação Pré Processual"
+  },
+  {
+    "codigo": "4710",
+    "orgao": "PARA USO POSTERIOR"
+  },
+  {
+    "codigo": "5100",
+    "orgao": "# (DESATIVADO - NÃO TRAMITAR) 1º Grau - JT Centro Judiciário de Métodos Consensuais de Solução de Disputas da Justiça do Trabalho"
+  }
+]
