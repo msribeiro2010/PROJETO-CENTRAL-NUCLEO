@@ -6,12 +6,12 @@
 }
 
 :root {
-    --primary-color: #6B7280; /* Cinza médio */
-    --secondary-color: #D1D5DB; /* Cinza claro */
-    --accent-color: #F3F4F6; /* Cinza muito claro */
-    --text-color: #374151; /* Cinza escuro */
-    --border-color: #9CA3AF; /* Cinza médio claro */
-    --shadow-color: rgba(55, 65, 81, 0.15); /* Sombra cinza suave */
+    --primary-color: #e9d8a6; /* Papiro suave */
+    --secondary-color: #f6eec7; /* Papiro mais claro */
+    --accent-color: #fdf6e3; /* Papiro quase branco */
+    --text-color: #7c6f57; /* Marrom suave para texto */
+    --border-color: #d4b896; /* Bege claro */
+    --shadow-color: rgba(212, 184, 150, 0.15); /* Sombra bege suave */
 
     /* Variáveis para o modo escuro */
     --dark-primary: #374151; /* Cinza escuro */
@@ -27,7 +27,7 @@ html, body {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    background: linear-gradient(135deg, #F3F4F6 0%, #D1D5DB 100%);
+    background: linear-gradient(135deg, #fdf6e3 0%, #f6eec7 100%);
 }
 
 body {
@@ -70,7 +70,7 @@ body.dark .container {
 .container {
     max-width: 1400px;
     margin: 20px auto;
-    background: linear-gradient(135deg, #F3F4F6, #D1D5DB);
+    background: linear-gradient(135deg, #fdf6e3, #f6eec7);
     background-size: 400% 400%;
     padding: 20px;
     border-radius: 16px;
@@ -94,7 +94,7 @@ body.dark .container {
 
 .group {
     border-radius: 14px;
-    background: linear-gradient(145deg, #ffffff, #f8fafc);
+    background: linear-gradient(145deg, #f6eec7, #fdf6e3);
     box-shadow: 0 4px 8px var(--shadow-color);
     border: 1px solid var(--border-color);
     overflow: hidden;
@@ -113,14 +113,14 @@ body.dark .group {
 }
 
 .accordion-header {
-    background: linear-gradient(135deg, #ffffff, #f1f5f9);
+    background: linear-gradient(135deg, #fdf6e3, #f6eec7);
     border-bottom: 1px solid var(--border-color);
     transition: all 0.3s ease;
     color: var(--primary-color);
 }
 
 .accordion-header:hover {
-    background: linear-gradient(135deg, #f1f5f9, #e2e8f0);
+    background: linear-gradient(135deg, #f6eec7, #e9d8a6);
 }
 
 body.dark .accordion-header {
