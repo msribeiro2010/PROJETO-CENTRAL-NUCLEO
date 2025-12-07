@@ -3,12 +3,23 @@ const cors = require('cors');
 const fs = require('fs').promises;
 const path = require('path');
 
+// Importa a API do PJe
+const pjeApi = require('./pje-api');
+const config = require('./config');
+
 const app = express();
-const PORT = process.env.PORT || 3000;
+const PORT = config.server.port;
 
 // Middleware
-app.use(cors());
+app.use(cors({
+  origin: '*', // Em produção, especifique os domínios permitidos
+  methods: ['GET', 'POST', 'OPTIONS'],
+  allowedHeaders: ['Content-Type', 'Authorization']
+}));
 app.use(express.json());
+
+// Servir arquivos estáticos do diretório pai (frontend)
+app.use(express.static(path.join(__dirname, '..')));
 
 // Helper function to read JSON files
 async function readJsonFile(filename) {
@@ -22,7 +33,10 @@ async function readJsonFile(filename) {
   }
 }
 
-// Endpoints
+// ==========================================
+// Endpoints existentes
+// ==========================================
+
 app.get('/api/aniversariantes', async (req, res) => {
   try {
     const data = await readJsonFile('aniversariantes.json');
@@ -41,6 +55,22 @@ app.get('/api/feriados', async (req, res) => {
   }
 });
 
+// ==========================================
+// Registrar rotas da API PJe
+// ==========================================
+pjeApi.registerRoutes(app);
+
+// ==========================================
+// Rota de health check
+// ==========================================
+app.get('/api/health', (req, res) => {
+  res.json({ 
+    status: 'ok', 
+    timestamp: new Date().toISOString(),
+    version: '1.0.0'
+  });
+});
+
 // Error handling middleware
 app.use((err, req, res, next) => {
   console.error(err.stack);
@@ -48,6 +78,34 @@ app.use((err, req, res, next) => {
 });
 
 // Start server
-app.listen(PORT, () => {
-  console.log(`Server is running on port ${PORT}`);
+const server = app.listen(PORT, () => {
+  console.log(`
+╔════════════════════════════════════════════════════════════╗
+║     Central NAPJe - Servidor com API PJe                   ║
+╠════════════════════════════════════════════════════════════╣
+║  🚀 Servidor rodando na porta: ${PORT}                         ║
+║  📁 Frontend: http://localhost:${PORT}                         ║
+║  🔌 API PJe: http://localhost:${PORT}/api/pje/status            ║
+║  📊 Health: http://localhost:${PORT}/api/health                 ║
+╚════════════════════════════════════════════════════════════╝
+  `);
+});
+
+// Graceful shutdown
+process.on('SIGTERM', async () => {
+  console.log('Recebido SIGTERM, encerrando servidor...');
+  await pjeApi.closeConnections();
+  server.close(() => {
+    console.log('Servidor encerrado');
+    process.exit(0);
+  });
+});
+
+process.on('SIGINT', async () => {
+  console.log('Recebido SIGINT, encerrando servidor...');
+  await pjeApi.closeConnections();
+  server.close(() => {
+    console.log('Servidor encerrado');
+    process.exit(0);
+  });
 }); 

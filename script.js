@@ -1322,13 +1322,21 @@ function createProcessResult(processNumber, courtName) {
   resultDiv.className = "search-result-item process-result";
 
   resultDiv.innerHTML = `
-        <div class="process-info">
-            <div class="court-info">
-                <i class="bi bi-building"></i>
-                <span class="court-name">${courtName}</span>
-                <button class="copy-court-btn" title="Copiar nome da vara">
-                    <i class="bi bi-copy"></i>
-                </button>
+        <div class="process-info" style="width: 100%;">
+            <div class="court-info" style="display: flex; align-items: center; justify-content: space-between; width: 100%; gap: 10px;">
+                <div style="display: flex; align-items: center; gap: 8px; flex: 1;">
+                    <i class="bi bi-building"></i>
+                    <span class="court-name">${courtName}</span>
+                </div>
+                <div style="display: flex; gap: 8px;">
+                    <button class="copy-court-btn" title="Copiar nome da vara" style="background: #e2e8f0; border: none; padding: 8px 12px; border-radius: 6px; cursor: pointer; display: flex; align-items: center; gap: 4px;">
+                        <i class="bi bi-copy"></i>
+                    </button>
+                    <button class="consultar-processo-btn" title="Consultar detalhes do processo" style="background: linear-gradient(135deg, #1e3a5f, #2d5a87); color: white; border: none; padding: 8px 16px; border-radius: 6px; cursor: pointer; display: flex; align-items: center; gap: 6px; font-weight: 500;">
+                        <i class="bi bi-search"></i>
+                        Consultar Detalhes
+                    </button>
+                </div>
             </div>
         </div>
     `;
@@ -1347,7 +1355,56 @@ function createProcessResult(processNumber, courtName) {
       });
   });
 
+  // Adiciona evento de clique para consultar detalhes do processo
+  const consultarBtn = resultDiv.querySelector(".consultar-processo-btn");
+  consultarBtn.addEventListener("click", (e) => {
+    e.stopPropagation();
+    // Preenche o campo de busca do modal e abre
+    if (typeof openProcessoModal === 'function') {
+      openProcessoModal();
+      setTimeout(() => {
+        const modalInput = document.getElementById('processo-search-input');
+        if (modalInput) {
+          modalInput.value = processNumber;
+          // Dispara a busca automaticamente
+          if (typeof buscarProcesso === 'function') {
+            buscarProcesso();
+          }
+        }
+      }, 100);
+    } else {
+      // Fallback: busca direta via API
+      consultarProcessoDirecto(processNumber);
+    }
+  });
+
   return resultDiv;
+}
+
+// Função para consultar processo diretamente (fallback)
+async function consultarProcessoDirecto(numero) {
+  showToast("Buscando dados do processo...");
+  try {
+    const response = await fetch(`/api/processo/${numero}/completo`);
+    if (!response.ok) {
+      throw new Error('Processo não encontrado');
+    }
+    const data = await response.json();
+    
+    // Mostra os dados em um alert formatado (fallback simples)
+    const info = `
+PROCESSO: ${data.numero}
+CLASSE: ${data.classe?.nome || 'N/A'}
+ÓRGÃO: ${data.orgaoJulgador?.nome || 'N/A'}
+VALOR: R$ ${data.valorCausa?.toLocaleString('pt-BR') || '0,00'}
+STATUS: ${data.localizacao?.status || 'N/A'}
+AUTUAÇÃO: ${data.dataAutuacao ? new Date(data.dataAutuacao).toLocaleDateString('pt-BR') : 'N/A'}
+    `;
+    
+    alert(info);
+  } catch (error) {
+    showToast("Erro ao consultar processo: " + error.message);
+  }
 }
 
 function initializeSearch() {
@@ -1381,13 +1438,36 @@ function initializeSearch() {
 
     // Verifica se é um número de processo
     if (isProcessNumber(query)) {
+      searchResults.innerHTML = `
+        <div class="search-result-item" style="justify-content: center; padding: 20px;">
+          <i class="bi bi-arrow-repeat spin" style="animation: spin 1s linear infinite;"></i>
+          <span style="margin-left: 8px;">Consultando processo...</span>
+        </div>
+      `;
+      searchResults.style.display = "block";
+      
+      // Tentar buscar dados reais do banco de dados primeiro
+      try {
+        const response = await fetch(`/api/processo/${query}`);
+        if (response.ok) {
+          const data = await response.json();
+          searchResults.innerHTML = "";
+          const processResult = createProcessResult(query, data.orgaoJulgador?.nome || 'Vara não identificada');
+          searchResults.appendChild(processResult);
+          return;
+        }
+      } catch (error) {
+        console.log("API não disponível, usando arquivo local");
+      }
+      
+      // Fallback: usar arquivo JSON local (vara de origem)
       const courtCode = extractCourtCode(query);
       const courtName = await findCourtByCode(courtCode);
 
       searchResults.innerHTML = "";
 
       if (courtName) {
-        const processResult = createProcessResult(query, courtName);
+        const processResult = createProcessResult(query, courtName + " (vara de origem)");
         searchResults.appendChild(processResult);
       } else {
         const noResultDiv = document.createElement("div");

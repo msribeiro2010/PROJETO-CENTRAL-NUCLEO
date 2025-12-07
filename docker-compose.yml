@@ -5,15 +5,48 @@ services:
     build: .
     container_name: central-nucleo-app
     ports:
-      - "8080:80"
+      - "8080:80"     # Frontend (Nginx)
+      - "3000:3000"   # Backend API (Node.js) - opcional, para debug
     restart: unless-stopped
     environment:
-      - NGINX_HOST=localhost
-      - NGINX_PORT=80
-    volumes:
-      - ./nginx.conf:/etc/nginx/conf.d/default.conf:ro
+      # Configurações do Servidor
+      - NODE_ENV=production
+      - PORT=3000
+      
+      # Banco de Dados PJe - 1º Grau
+      - DB_1GRAU_HOST=${DB_1GRAU_HOST:-pje-dbpr-a1-replica}
+      - DB_1GRAU_PORT=${DB_1GRAU_PORT:-5432}
+      - DB_1GRAU_NAME=${DB_1GRAU_NAME:-pje_1grau}
+      - DB_1GRAU_USER=${DB_1GRAU_USER:-msribeiro}
+      - DB_1GRAU_PASSWORD=${DB_1GRAU_PASSWORD:-msrq1w2e3}
+      
+      # Banco de Dados PJe - 2º Grau
+      - DB_2GRAU_HOST=${DB_2GRAU_HOST:-pje-dbpr-a2-replica}
+      - DB_2GRAU_PORT=${DB_2GRAU_PORT:-5432}
+      - DB_2GRAU_NAME=${DB_2GRAU_NAME:-pje_2grau}
+      - DB_2GRAU_USER=${DB_2GRAU_USER:-msribeiro}
+      - DB_2GRAU_PASSWORD=${DB_2GRAU_PASSWORD:-msrq1w2e3}
+    
+    # Healthcheck para verificar se o serviço está saudável
+    healthcheck:
+      test: ["CMD", "wget", "-q", "--spider", "http://localhost/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 40s
+    
     networks:
       - central-nucleo-network
+    
+    # Recursos (opcional - ajuste conforme necessidade)
+    deploy:
+      resources:
+        limits:
+          cpus: '1.0'
+          memory: 512M
+        reservations:
+          cpus: '0.25'
+          memory: 256M
 
 networks:
   central-nucleo-network:
