@@ -904,18 +904,30 @@ button:focus-visible,
 .header-quick-btn {
   display: flex;
   align-items: center;
-  gap: 8px;
-  padding: 8px 12px;
-  background: var(--nb-primary) !important;
-  color: #fdf6ec !important;
-  border: 2px solid var(--nb-border) !important;
-  border-radius: 14px !important;
+  gap: 10px;
+  padding: 10px 14px;
+  background: var(--nb-bg-alt) !important;
+  color: var(--nb-text) !important;
+  border: 3px solid var(--nb-border) !important;
+  border-radius: 0 !important;
   box-shadow: var(--nb-shadow) !important;
   cursor: pointer;
-  font-weight: 600;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  font-family: 'Poppins','Roboto',Arial,sans-serif;
 }
 .header-quick-btn:hover {
   background: var(--nb-secondary) !important;
+  box-shadow: 6px 6px 0 #020617 !important;
+}
+.header-quick-btn i {
+  color: var(--nb-border) !important;
+  font-size: 1.1rem;
+}
+.header-quick-btn:focus-visible {
+  outline: 3px solid var(--nb-border);
+  outline-offset: 2px;
 }
 @media (max-width: 768px) {
   .header-quick-btn span { display: none; }
