@@ -1332,10 +1332,6 @@ function createProcessResult(processNumber, courtName) {
                     <button class="copy-court-btn" title="Copiar nome da vara" style="background: #e2e8f0; border: none; padding: 8px 12px; border-radius: 6px; cursor: pointer; display: flex; align-items: center; gap: 4px;">
                         <i class="bi bi-copy"></i>
                     </button>
-                    <button class="consultar-processo-btn" title="Consultar detalhes do processo" style="background: linear-gradient(135deg, #1e3a5f, #2d5a87); color: white; border: none; padding: 8px 16px; border-radius: 6px; cursor: pointer; display: flex; align-items: center; gap: 6px; font-weight: 500;">
-                        <i class="bi bi-search"></i>
-                        Consultar Detalhes
-                    </button>
                 </div>
             </div>
         </div>
@@ -1353,29 +1349,6 @@ function createProcessResult(processNumber, courtName) {
       .catch(() => {
         showToast("Erro ao copiar nome da vara");
       });
-  });
-
-  // Adiciona evento de clique para consultar detalhes do processo
-  const consultarBtn = resultDiv.querySelector(".consultar-processo-btn");
-  consultarBtn.addEventListener("click", (e) => {
-    e.stopPropagation();
-    // Preenche o campo de busca do modal e abre
-    if (typeof openProcessoModal === 'function') {
-      openProcessoModal();
-      setTimeout(() => {
-        const modalInput = document.getElementById('processo-search-input');
-        if (modalInput) {
-          modalInput.value = processNumber;
-          // Dispara a busca automaticamente
-          if (typeof buscarProcesso === 'function') {
-            buscarProcesso();
-          }
-        }
-      }, 100);
-    } else {
-      // Fallback: busca direta via API
-      consultarProcessoDirecto(processNumber);
-    }
   });
 
   return resultDiv;
@@ -1737,10 +1710,32 @@ async function carregarAniversariantes() {
     // Marca o card de aniversariantes do mês quando houver aniversariantes
     const grupoAniversariantes = document.querySelector(".group.aniversariantes");
     if (grupoAniversariantes) {
-      grupoAniversariantes.classList.toggle(
-        "has-birthdays",
-        aniversariantesMes.length > 0
-      );
+      const temAniversariantes = aniversariantesMes.length > 0;
+
+      grupoAniversariantes.classList.toggle("has-birthdays", temAniversariantes);
+
+      const header = grupoAniversariantes.querySelector(".accordion-header");
+
+      if (header && temAniversariantes) {
+        // Calcula o menor dia do mês atual entre os aniversariantes
+        const diasValidos = aniversariantesMes
+          .map((aniversariante) => {
+            const [dia, mes] = (aniversariante.data || "").split("/");
+            return parseInt(mes) === mesAtual ? parseInt(dia) : NaN;
+          })
+          .filter((dia) => !isNaN(dia));
+
+        if (diasValidos.length > 0) {
+          const menorDia = Math.min(...diasValidos);
+          const diaStr = String(menorDia).padStart(2, "0");
+          const mesStr = String(mesAtual).padStart(2, "0");
+          header.setAttribute("data-next-birthday", `${diaStr}/${mesStr}`);
+        } else {
+          header.removeAttribute("data-next-birthday");
+        }
+      } else if (header) {
+        header.removeAttribute("data-next-birthday");
+      }
     }
 
     // Ordena por dia

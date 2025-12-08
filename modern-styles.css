@@ -222,7 +222,7 @@ body {
 
 .btn-controle, .btn-plantao, .btn-feriados {
   background: var(--accent) !important;
-  color: #fff !important;
+  color: #2b1b12 !important;
 }
 .btn-controle:hover, .btn-plantao:hover, .btn-feriados:hover {
   background: var(--primary-dark) !important;
@@ -516,17 +516,19 @@ body.dark .system-info-tooltip .tooltip-footer {
   color: #b0b6c3;
 }
 
-/* ===== Neo Brutalism Theme Overrides ===== */
+/* ===== Neo Brutalism Theme Overrides (Pastel / Papiro / Vintage) ===== */
 :root {
-  --nb-bg: #fff9e6;
-  --nb-bg-alt: #fef3c7;
-  --nb-primary: #e7d795; /* amarelo forte */
-  --nb-secondary: #22d3ee; /* ciano */
-  --nb-accent: #fb7185; /* rosa */
-  --nb-text: #111827;
-  --nb-text-muted: #4b5563;
-  --nb-border: #020617;
-  --nb-shadow: 4px 4px 0 #020617;
+  /* Paleta clara em tons de pergaminho */
+  --nb-bg: #f4ecdd;        /* fundo pergaminho claro */
+  --nb-bg-alt: #f0e1c6;    /* cartões pergaminho */
+  --nb-primary: #4f6178;   /* azul-acinzentado profundo (painéis/botões) */
+  --nb-secondary: #8d9aab; /* azul-acinzentado mais claro */
+  --nb-accent: #e5d4b3;    /* bege destaque */
+  --nb-text: #3f2f25;      /* marrom escuro "tinta" */
+  --nb-text-muted: #6b6054;
+  --nb-text-soft: #8b7a6d;
+  --nb-border: #2b1b12;    /* contorno marrom escuro */
+  --nb-shadow: 4px 4px 0 #2b1b12;
   --nb-radius: 14px;
 }
 
@@ -544,7 +546,7 @@ body {
 
 /* Header brutalista */
 .header {
-  background: var(--nb-primary) !important;
+  background: linear-gradient(135deg, var(--nb-secondary), var(--nb-primary)) !important;
   color: var(--nb-text) !important;
   border-radius: 0;
   border: 3px solid var(--nb-border);
@@ -569,27 +571,27 @@ body {
 
 .group {
   background: var(--nb-bg-alt) !important;
-  border-radius: 0;
-  border: 3px solid var(--nb-border);
-  box-shadow: var(--nb-shadow) !important;
-  transform: translate(0, 0) !important;
+  border-radius: 16px;
+  border: 2px solid var(--nb-border);
+  box-shadow: 0 10px 24px rgba(0, 0, 0, 0.15) !important;
+  transform: none !important;
 }
 
 .group:hover {
-  transform: translate(-3px, -3px) !important;
-  box-shadow: 7px 7px 0 #020617 !important;
+  transform: none !important;
+  box-shadow: 0 14px 32px rgba(0, 0, 0, 0.20) !important;
 }
 
 .accordion-header {
-  background: transparent !important;
-  border-radius: 0 !important;
-  border-bottom: 3px solid var(--nb-border);
-  padding: 14px 16px !important;
+  background: rgba(255, 255, 255, 0.7) !important;
+  border-radius: 16px 16px 0 0 !important;
+  border-bottom: 2px solid var(--nb-border);
+  padding: 14px 20px !important;
   color: var(--nb-text) !important;
 }
 
 .accordion-header:hover {
-  background: #fee2e2 !important;
+  background: #c4c2c2 !important;
 }
 
 .accordion-header .header-content i {
@@ -597,7 +599,7 @@ body {
 }
 
 .accordion-content {
-  background: #fff7ed !important;
+  background: #fcf6e8 !important;
 }
 
 /* Botões em estilo brutalista */
@@ -607,18 +609,19 @@ body {
 }
 
 .button-container button {
-  background: #ffffff !important;
-  color: var(--nb-text) !important;
-  border-radius: 0 !important;
-  border: 3px solid var(--nb-border) !important;
-  box-shadow: var(--nb-shadow) !important;
+  background: var(--nb-primary) !important;
+  color: #fdf6ec !important;
+  border-radius: 14px !important;
+  border: 2px solid #1f2933 !important;
+  box-shadow: 0 8px 18px rgba(0, 0, 0, 0.18) !important;
   padding: 10px 10px !important;
 }
 
 .button-container button:hover {
-  transform: translate(-3px, -3px) !important;
-  box-shadow: 7px 7px 0 #020617 !important;
+  transform: none !important;
+  box-shadow: 0 10px 22px rgba(0, 0, 0, 0.22) !important;
   background: var(--nb-secondary) !important;
+  color: #f4ecdd !important;
 }
 
 .button-container button i {
@@ -627,7 +630,7 @@ body {
 
 /* Footer brutalista */
 .footer {
-  background: var(--nb-primary) !important;
+  background: linear-gradient(135deg, var(--nb-primary), #38485c) !important;
   border-radius: 0 !important;
   border-top: 3px solid var(--nb-border);
   box-shadow: 0 -4px 0 var(--nb-border);
@@ -637,7 +640,7 @@ body {
 .footer-container *,
 .footer-container i,
 .footer-container a {
-  color: var(--nb-text) !important;
+  color: var(--nb-text-soft) !important;
 }
 
 /* Tooltip / modal em Neo Brutalism */
@@ -660,43 +663,43 @@ body {
 
 /* Dark mode versão brutalista */
 body.dark {
-  background: #020617 !important;
-  color: #f9fafb !important;
+  background: #18130f !important;  /* pergaminho escuro */
+  color: #f5f0e6 !important;
 }
 
 body.dark .header,
 body.dark .footer {
-  background: #0f172a !important;
-  color: #f9fafb !important;
-  border-color: #f9fafb;
-  box-shadow: 4px 4px 0 #0f172a;
+  background: linear-gradient(135deg, #4f3924, #2f2117) !important;
+  color: #f5f0e6 !important;
+  border-color: #f5f0e6;
+  box-shadow: 4px 4px 0 #120c08;
 }
 
 body.dark .group {
-  background: #020617 !important;
-  border-color: #e5e7eb !important;
-  box-shadow: 4px 4px 0 #0f172a !important;
+  background: #271b14 !important;
+  border-color: #bfa58a !important;
+  box-shadow: 4px 4px 0 #120c08 !important;
 }
 
 body.dark .accordion-header {
-  border-color: #e5e7eb !important;
-  color: #f9fafb !important;
+  border-color: #bfa58a !important;
+  color: #f5f0e6 !important;
 }
 
 body.dark .accordion-content {
-  background: #020617 !important;
+  background: #18130f !important;
 }
 
 body.dark .button-container button {
-  background: #020617 !important;
-  color: #f9fafb !important;
-  border-color: #e5e7eb !important;
-  box-shadow: 4px 4px 0 #0f172a !important;
+  background: #251910 !important;
+  color: #f5f0e6 !important;
+  border-color: #bfa58a !important;
+  box-shadow: 4px 4px 0 #120c08 !important;
 }
 
 body.dark .button-container button:hover {
-  background: #22d3ee !important;
-  color: #020617 !important;
+  background: #b4c5d8 !important;
+  color: #271b14 !important;
 }
 
 body.dark .system-info-tooltip,
@@ -704,6 +707,12 @@ body.dark .modal-content {
   background: #020617 !important;
   color: #f9fafb !important;
   border-color: #e5e7eb !important;
+}
+
+/* Remover ícones de paleta dos cards (personalização individual) */
+.color-customize-btn,
+.favorites-customize-btn {
+  display: none !important;
 }
 
 /* Alerta visual para card de aniversariantes do mês quando houver aniversariantes */
@@ -714,7 +723,7 @@ body.dark .modal-content {
 }
 
 .group.aniversariantes.has-birthdays .accordion-header::before {
-  content: "🎉 Aniversariantes neste mês";
+  content: attr(data-next-birthday);
   position: absolute;
   top: 6px;
   right: 10px;
@@ -765,4 +774,99 @@ body.dark .theme-toggle {
 body.dark .theme-toggle i,
 body.dark #theme-icon {
   color: #020617 !important;
+}
+
+.theme-toggle i,
+#theme-icon {
+  color: var(--nb-secondary) !important;
+}
+
+.favorites-container {
+  background: var(--nb-bg-alt) !important;
+  border: 2px solid var(--nb-border) !important;
+  border-radius: 16px !important;
+  box-shadow: 0 10px 24px rgba(0, 0, 0, 0.15) !important;
+  color: var(--nb-text) !important;
+  padding: 16px !important;
+}
+
+.favorites-header h3 {
+  color: var(--nb-text) !important;
+}
+
+.favorites-header h3 .bi-star-fill {
+  color: var(--nb-accent) !important;
+}
+
+.favorite-item {
+  background: var(--nb-accent) !important;
+  color: var(--nb-text) !important;
+  border: 2px solid var(--nb-border) !important;
+  border-radius: 14px !important;
+  box-shadow: 0 6px 14px rgba(0, 0, 0, 0.15) !important;
+}
+
+.favorite-item:hover {
+  background: #dcc69f !important;
+}
+
+.favorite-item span {
+  color: var(--nb-text-soft) !important;
+  font-weight: 600 !important;
+}
+
+.favorite-item i {
+  color: var(--nb-text-soft) !important;
+}
+
+/* Inputs e busca em Neo Brutalism */
+.search-box {
+  background: #ffffff !important;
+  border: 2px solid var(--nb-border) !important;
+  border-radius: 0 !important;
+  box-shadow: var(--nb-shadow) !important;
+}
+.search-box i { color: var(--nb-border) !important; }
+.search-box input { color: var(--nb-text) !important; }
+.search-box:focus-within { box-shadow: 6px 6px 0 var(--nb-border) !important; }
+
+/* Acessibilidade: foco visível */
+button:focus-visible,
+.toggle-groups-btn:focus-visible,
+.control-btn:focus-visible {
+  outline: 3px solid var(--nb-border);
+  outline-offset: 2px;
+}
+
+.groups-toggle {
+  margin-top: 14px !important;
+}
+
+.toggle-groups-btn {
+  background: var(--nb-bg-alt) !important;
+  color: var(--nb-text) !important;
+  border: 2px solid var(--nb-border) !important;
+  border-radius: 14px !important;
+  box-shadow: var(--nb-shadow) !important;
+}
+
+.enable-multi-select-btn {
+  background: linear-gradient(135deg, var(--nb-secondary), var(--nb-primary)) !important;
+  color: #fdf6ec !important;
+  border: 2px solid #1f2933 !important;
+  border-radius: 14px !important;
+}
+
+.multi-select-controls .multi-select-header {
+  background: linear-gradient(135deg, var(--nb-secondary), var(--nb-primary)) !important;
+  color: #fdf6ec !important;
+  border: 2px solid var(--nb-border) !important;
+  border-radius: 14px !important;
+}
+
+.multi-select-buttons .control-btn {
+  background: var(--nb-primary) !important;
+  color: #fdf6ec !important;
+  border: 2px solid var(--nb-border) !important;
+  border-radius: 12px !important;
 }
