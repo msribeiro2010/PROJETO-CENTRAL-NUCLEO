@@ -1734,6 +1734,15 @@ async function carregarAniversariantes() {
       }
     });
 
+    // Marca o card de aniversariantes do mês quando houver aniversariantes
+    const grupoAniversariantes = document.querySelector(".group.aniversariantes");
+    if (grupoAniversariantes) {
+      grupoAniversariantes.classList.toggle(
+        "has-birthdays",
+        aniversariantesMes.length > 0
+      );
+    }
+
     // Ordena por dia
     aniversariantesMes.sort((a, b) => {
       const diaA = parseInt(a.data.split("/")[0]);

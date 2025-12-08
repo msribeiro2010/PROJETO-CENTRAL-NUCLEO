@@ -706,6 +706,41 @@ body.dark .modal-content {
   border-color: #e5e7eb !important;
 }
 
+/* Alerta visual para card de aniversariantes do mês quando houver aniversariantes */
+.group.aniversariantes.has-birthdays {
+  border-color: #f97316 !important;
+  box-shadow: 0 0 0 3px #fed7aa, 4px 4px 0 #020617 !important;
+  position: relative;
+}
+
+.group.aniversariantes.has-birthdays .accordion-header::before {
+  content: "🎉 Aniversariantes neste mês";
+  position: absolute;
+  top: -16px;
+  left: 12px;
+  background: #f97316;
+  color: #111827;
+  font-size: 0.7rem;
+  font-weight: 700;
+  padding: 2px 8px;
+  border: 2px solid #020617;
+  box-shadow: 3px 3px 0 #020617;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+
+body.dark .group.aniversariantes.has-birthdays {
+  border-color: #facc15 !important;
+  box-shadow: 0 0 0 3px #854d0e, 4px 4px 0 #0f172a !important;
+}
+
+body.dark .group.aniversariantes.has-birthdays .accordion-header::before {
+  background: #facc15;
+  color: #020617;
+  border-color: #020617;
+}
+
+
 /* Botão de alternância de tema em estilo Neo Brutalism */
 .theme-toggle {
   background: #0f172a !important;
