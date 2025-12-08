@@ -515,3 +515,219 @@ body.dark .system-info-tooltip .tooltip-version,
 body.dark .system-info-tooltip .tooltip-footer {
   color: #b0b6c3;
 }
+
+/* ===== Neo Brutalism Theme Overrides ===== */
+:root {
+  --nb-bg: #fff9e6;
+  --nb-bg-alt: #fef3c7;
+  --nb-primary: #e7d795; /* amarelo forte */
+  --nb-secondary: #22d3ee; /* ciano */
+  --nb-accent: #fb7185; /* rosa */
+  --nb-text: #111827;
+  --nb-text-muted: #4b5563;
+  --nb-border: #020617;
+  --nb-shadow: 4px 4px 0 #020617;
+  --nb-radius: 14px;
+}
+
+body {
+  background: var(--nb-bg) !important;
+  color: var(--nb-text) !important;
+  font-family: 'Poppins', 'Roboto', Arial, sans-serif;
+}
+
+.center-wrapper, .container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 24px 12px 0 12px;
+}
+
+/* Header brutalista */
+.header {
+  background: var(--nb-primary) !important;
+  color: var(--nb-text) !important;
+  border-radius: 0;
+  border: 3px solid var(--nb-border);
+  box-shadow: var(--nb-shadow);
+  padding: 10px 12px;
+}
+
+.app-title {
+  color: var(--nb-text) !important;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+
+.header .bi {
+  color: var(--nb-border) !important;
+}
+
+/* Grupos / cards brutalistas */
+.groups-row, .favorites-list {
+  gap: 18px;
+}
+
+.group {
+  background: var(--nb-bg-alt) !important;
+  border-radius: 0;
+  border: 3px solid var(--nb-border);
+  box-shadow: var(--nb-shadow) !important;
+  transform: translate(0, 0) !important;
+}
+
+.group:hover {
+  transform: translate(-3px, -3px) !important;
+  box-shadow: 7px 7px 0 #020617 !important;
+}
+
+.accordion-header {
+  background: transparent !important;
+  border-radius: 0 !important;
+  border-bottom: 3px solid var(--nb-border);
+  padding: 14px 16px !important;
+  color: var(--nb-text) !important;
+}
+
+.accordion-header:hover {
+  background: #fee2e2 !important;
+}
+
+.accordion-header .header-content i {
+  color: var(--nb-border) !important;
+}
+
+.accordion-content {
+  background: #fff7ed !important;
+}
+
+/* Botões em estilo brutalista */
+.button-container {
+  background: transparent !important;
+  gap: 10px;
+}
+
+.button-container button {
+  background: #ffffff !important;
+  color: var(--nb-text) !important;
+  border-radius: 0 !important;
+  border: 3px solid var(--nb-border) !important;
+  box-shadow: var(--nb-shadow) !important;
+  padding: 10px 10px !important;
+}
+
+.button-container button:hover {
+  transform: translate(-3px, -3px) !important;
+  box-shadow: 7px 7px 0 #020617 !important;
+  background: var(--nb-secondary) !important;
+}
+
+.button-container button i {
+  color: var(--nb-border) !important;
+}
+
+/* Footer brutalista */
+.footer {
+  background: var(--nb-primary) !important;
+  border-radius: 0 !important;
+  border-top: 3px solid var(--nb-border);
+  box-shadow: 0 -4px 0 var(--nb-border);
+}
+
+.footer-container,
+.footer-container *,
+.footer-container i,
+.footer-container a {
+  color: var(--nb-text) !important;
+}
+
+/* Tooltip / modal em Neo Brutalism */
+.system-info-tooltip,
+.modal-content {
+  background: #ffffff !important;
+  border-radius: 0 !important;
+  border: 3px solid var(--nb-border) !important;
+  box-shadow: var(--nb-shadow) !important;
+}
+
+.system-info-tooltip .tooltip-title,
+.system-info-tooltip .tooltip-section-title {
+  color: var(--nb-text) !important;
+}
+
+.close-btn {
+  border-radius: 0;
+}
+
+/* Dark mode versão brutalista */
+body.dark {
+  background: #020617 !important;
+  color: #f9fafb !important;
+}
+
+body.dark .header,
+body.dark .footer {
+  background: #0f172a !important;
+  color: #f9fafb !important;
+  border-color: #f9fafb;
+  box-shadow: 4px 4px 0 #0f172a;
+}
+
+body.dark .group {
+  background: #020617 !important;
+  border-color: #e5e7eb !important;
+  box-shadow: 4px 4px 0 #0f172a !important;
+}
+
+body.dark .accordion-header {
+  border-color: #e5e7eb !important;
+  color: #f9fafb !important;
+}
+
+body.dark .accordion-content {
+  background: #020617 !important;
+}
+
+body.dark .button-container button {
+  background: #020617 !important;
+  color: #f9fafb !important;
+  border-color: #e5e7eb !important;
+  box-shadow: 4px 4px 0 #0f172a !important;
+}
+
+body.dark .button-container button:hover {
+  background: #22d3ee !important;
+  color: #020617 !important;
+}
+
+body.dark .system-info-tooltip,
+body.dark .modal-content {
+  background: #020617 !important;
+  color: #f9fafb !important;
+  border-color: #e5e7eb !important;
+}
+
+/* Botão de alternância de tema em estilo Neo Brutalism */
+.theme-toggle {
+  background: #0f172a !important;
+  border-radius: 0 !important;
+  border: 3px solid var(--nb-border) !important;
+  box-shadow: 4px 4px 0 #020617 !important;
+  z-index: 1100;
+}
+
+.theme-toggle i,
+#theme-icon {
+  color: var(--nb-primary) !important;
+}
+
+/* Versão dark do botão de tema */
+body.dark .theme-toggle {
+  background: var(--nb-primary) !important;
+  border-color: #020617 !important;
+  box-shadow: 4px 4px 0 #0f172a !important;
+}
+
+body.dark .theme-toggle i,
+body.dark #theme-icon {
+  color: #020617 !important;
+}
