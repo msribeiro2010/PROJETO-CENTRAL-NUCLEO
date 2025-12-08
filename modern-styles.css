@@ -900,6 +900,27 @@ button:focus-visible,
   border: 2px solid var(--nb-border) !important;
   border-radius: 12px !important;
 }
+
+.header-quick-btn {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 12px;
+  background: var(--nb-primary) !important;
+  color: #fdf6ec !important;
+  border: 2px solid var(--nb-border) !important;
+  border-radius: 14px !important;
+  box-shadow: var(--nb-shadow) !important;
+  cursor: pointer;
+  font-weight: 600;
+}
+.header-quick-btn:hover {
+  background: var(--nb-secondary) !important;
+}
+@media (max-width: 768px) {
+  .header-quick-btn span { display: none; }
+  .header-quick-btn { padding: 8px; }
+}
 #footer .windows-clock i,
 .footer-container .windows-clock i {
   color: var(--nb-secondary) !important;
