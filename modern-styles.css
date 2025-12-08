@@ -716,8 +716,8 @@ body.dark .modal-content {
 .group.aniversariantes.has-birthdays .accordion-header::before {
   content: "🎉 Aniversariantes neste mês";
   position: absolute;
-  top: -16px;
-  left: 12px;
+  top: 6px;
+  right: 10px;
   background: #f97316;
   color: #111827;
   font-size: 0.7rem;
