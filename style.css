@@ -4113,41 +4113,8 @@ body.dark .group:hover {
 }
 
 /* Melhorar o ícone de paletas de cores do grupo 'Meus Atalhos Favoritos' */
-.favorites-color-button i {
-    font-size: 1.5rem; /* Aumentar o tamanho do ícone */
-    color: #C4965F; /* Cor azul para destaque */
-    transition: transform 0.3s ease, color 0.3s ease;
-}
-
-.favorites-color-button:hover i {
-    transform: scale(1.2);
-    color: #D4B896; /* Cor mais clara ao passar o mouse */
-}
-
-/* Adicionar mais cores escuras e sólidas ao ícone de paletas de cores */
-.favorites-color-button i {
-    background: linear-gradient(135deg, #2d3748, #1a202c); /* Fundo escuro com gradiente */
-    border-radius: 50%;
-    padding: 5px;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
-}
-
-.favorites-color-button:hover i {
-    background: linear-gradient(135deg, #4a5568, #2d3748); /* Fundo mais claro ao passar o mouse */
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
-}
-
-/* Adicionar mais opções de cores sólidas e padrões ao botão de cores */
-.favorites-color-button i {
-    background: linear-gradient(135deg, #2d3748, #1a202c), url('pattern.png'); /* Fundo escuro com padrão */
-    border-radius: 50%;
-    padding: 5px;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
-}
-
-.favorites-color-button:hover i {
-    background: linear-gradient(135deg, #4a5568, #2d3748), url('pattern-hover.png'); /* Fundo mais claro com padrão ao passar o mouse */
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
+.favorites-color-button {
+    display: none !important; /* Esconde o botão de paleta de cores dos cards */
 }
 
 /* Adicionar mais opções de cores sólidas e padrões ao componente de alteração de cores */

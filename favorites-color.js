@@ -9,6 +9,11 @@ document.addEventListener('DOMContentLoaded', function() {
     const colorPickerBtn = document.getElementById('color-picker-btn');
     const colorPalette = document.getElementById('color-palette');
     
+    // Segurança: se algum elemento essencial não existir, não executa o restante
+    if (!favoritesContainer || !colorPickerBtn || !colorPalette) {
+        return;
+    }
+    
     // Função para extrair a cor base do rgba
     function extractBaseColor(rgbaColor) {
         // Extrai os valores RGB do formato rgba(r, g, b, a)
