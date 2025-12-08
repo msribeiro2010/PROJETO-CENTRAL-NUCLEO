@@ -738,6 +738,36 @@ body.dark .modal-content {
   letter-spacing: 0.06em;
 }
 
+/* Badge de versão nova para PJe-Produção (Neo Brutalism) */
+.group.pje.has-new-version {
+  border-color: #facc15 !important;
+  box-shadow: 0 0 0 3px #fed7aa, 4px 4px 0 #020617 !important;
+}
+.group.pje.has-new-version .accordion-header::before {
+  content: 'NEW';
+  position: absolute;
+  top: 6px;
+  right: 10px;
+  background: #f97316;
+  color: #111827;
+  font-size: 0.7rem;
+  font-weight: 700;
+  padding: 2px 8px;
+  border: 2px solid #020617;
+  box-shadow: 3px 3px 0 #020617;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+body.dark .group.pje.has-new-version {
+  border-color: #facc15 !important;
+  box-shadow: 0 0 0 3px #854d0e, 4px 4px 0 #0f172a !important;
+}
+body.dark .group.pje.has-new-version .accordion-header::before {
+  background: #facc15;
+  color: #020617;
+  border-color: #020617;
+}
+
 body.dark .group.aniversariantes.has-birthdays {
   border-color: #facc15 !important;
   box-shadow: 0 0 0 3px #854d0e, 4px 4px 0 #0f172a !important;
@@ -869,4 +899,15 @@ button:focus-visible,
   color: #fdf6ec !important;
   border: 2px solid var(--nb-border) !important;
   border-radius: 12px !important;
+}
+#footer .windows-clock i,
+.footer-container .windows-clock i {
+  color: var(--nb-secondary) !important;
+}
+
+.footer-container .date,
+.footer-container .time,
+.footer .greeting-message,
+.footer-container .greeting-message {
+  color: var(--nb-text-soft) !important;
 }

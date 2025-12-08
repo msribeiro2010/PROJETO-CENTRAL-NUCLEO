@@ -218,6 +218,20 @@ document.addEventListener("DOMContentLoaded", function () {
     console.log("Sistema de busca e favoritos inicializado");
   }, 100);
 
+  // Badge "NEW" no card PJe-Produção quando a versão mudar
+  const pjeGroup = document.getElementById('pje-producao');
+  const versionEl = document.querySelector('#pje-producao .versao-pje-producao');
+  if (pjeGroup && versionEl) {
+    const currentVersion = versionEl.textContent.trim();
+    const savedVersion = localStorage.getItem('pjeProducaoVersion');
+    if (!savedVersion || savedVersion !== currentVersion) {
+      pjeGroup.classList.add('has-new-version');
+      const header = pjeGroup.querySelector('.accordion-header');
+      if (header) header.setAttribute('data-new-version', 'NEW');
+      localStorage.setItem('pjeProducaoVersion', currentVersion);
+    }
+  }
+
   // Inicializar o relógio do Windows
   updateWindowsClock();
 
